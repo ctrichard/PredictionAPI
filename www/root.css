@@ -1,0 +1,21 @@
+
+
+
+
+.BigButton{
+
+    height: 200px;
+    width : 300px;
+    font-size: 150px;
+    background-color: darkblue;
+    border : 3px solid red;
+    color : red;
+}
+
+.BigButton:hover{
+
+    background-color: red;
+    border-color : darkblue;
+    color : darkblue;
+}
+
