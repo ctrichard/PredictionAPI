@@ -1,15 +1,30 @@
 
+a{
+    text-decoration: none;
+}
 
 
+.Title{
+
+    height: 150px;
+    width : 250px;
+
+}
 
 .BigButton{
 
-    height: 200px;
-    width : 300px;
+    height : 200px;
+    width : 50%;
+
+    min-height: 150px;
+    min-width : 20%;
     font-size: 150px;
     background-color: darkblue;
     border : 3px solid red;
     color : red;
+    border-radius: 5%;
+    display : flex;
+    justify-content: center;
 }
 
 .BigButton:hover{
@@ -19,3 +34,13 @@
     color : darkblue;
 }
 
+.BigButton .Text{
+    max-height : 100%;
+    max-width : 100%;
+}
+
+
+.BigButton img{
+    max-height : 100%;
+    max-width : 100%;
+}
