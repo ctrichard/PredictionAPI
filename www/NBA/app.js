@@ -11,7 +11,7 @@ function selectTeam(Side='Dom',value){
 
 function selectLogo(Side='LogoA',value){
 
-    teamname = value.replace(" ","_").toLowerCase()
+    teamname = value.replace("%20","_").replace(" ","_").toLowerCase()
     document.getElementById(Side).src = '../pictures/'+teamname+'_2021.png'
 
 
