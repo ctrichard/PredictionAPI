@@ -1,0 +1,12 @@
+sudo apt install apache2
+sudo apt install php
+sudo apt install libapache2-mod-php
+
+#enable mod php for apache:
+sudo a2enmod php7.4
+
+# list des mod apache  : /etc/apache2/mods-available/
+# list des header apache  : /etc/apache2/mods-available/
+
+
+sudo systemctl restart apache2

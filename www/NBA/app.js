@@ -1,5 +1,16 @@
-function CreateMaterialSelectionOptions(Team='A'){
-    let element = document.getElementById('TeamAselection'+Team);
+const MatchData = {}
+
+
+function selectTeam(Side='Dom',value){
+
+    MatchData[Side] = value
+    console.log(MatchData)
+
+}
+
+
+function CreateTeamSelectionOptions(Team='A',NBAData){
+    let element = document.getElementById('Teamselection'+Team);
   
     let x = element.length +1;
     for (let i = 0; i <  x ; i++) {
@@ -8,12 +19,10 @@ function CreateMaterialSelectionOptions(Team='A'){
 
     let count=0;
 
-    fetch()
-
-    for (code of Object.entries(NBAData['TEAMCodes_Names'])) {
+    for (team of Object.entries(NBAData['TEAMCodes_Names'])) {
 
       let opt = document.createElement('option');   
-      opt.appendChild( document.createTextNode(NBAData['TEAMCodes_Names'][code]) );
+      opt.appendChild( document.createTextNode(NBAData['TEAMCodes_Names'][team[0]]) );
       element.appendChild(opt); 
   
     }
@@ -24,15 +33,42 @@ function CreateMaterialSelectionOptions(Team='A'){
 
 async function LoadData(){
       
-      const NBAData = await fetch('/Data.json', {
+    const NBAData = await fetch('./Data.json', {
           headers: {
               'Accept': 'application/json'
           }
-      });
+      })
+      .then(response => response.json());
+
+    // const NBAData = NBADataResp.json()
+
+    CreateTeamSelectionOptions('A',NBAData)
+    CreateTeamSelectionOptions('B',NBAData)
+
 }
 
 LoadData();
 
-document.getElementById('TeamAselection').addEventListener('change', (event) => {
-    selectTeam();
+document.getElementById('TeamselectionA').addEventListener('change', (event) => {
+    selectTeam("Dom",document.getElementById('TeamselectionA').value);
+
+});
+document.getElementById('TeamselectionB').addEventListener('change', (event) => {
+    selectTeam("Vis",document.getElementById('TeamselectionB').value);
+});
+document.getElementById('matchDate').addEventListener('change', (event) => {
+    selectTeam("Date",document.getElementById('matchDate').value);
+});
+
+document.getElementById('ResultsPrediction').addEventListener('click', (event) => {
+
+    const Prediction = await fetch('./Data.json', {
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => response.json());
+
+    console.log(Prediction)
+
 });
