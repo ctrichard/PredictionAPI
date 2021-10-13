@@ -9,6 +9,15 @@ function selectTeam(Side='Dom',value){
 }
 
 
+function selectLogo(Side='Dom',value){
+
+    teamname = value.replace(" ","_").toLowerCase()
+    document.getElementById('LogoA').src = '../Pictures/'+teamname+'.png'
+
+
+}
+
+
 function CreateTeamSelectionOptions(Team='A',NBAData){
     let element = document.getElementById('Teamselection'+Team);
   
@@ -29,6 +38,15 @@ function CreateTeamSelectionOptions(Team='A',NBAData){
   }
 
 
+function ShowPrediction(Data){
+
+
+    document.getElementById('LogoA').src = Data['Dom']
+    img.src.replace("_t", "_b");
+
+}
+
+
 async function GetPrediction(){
       
     const Prediction = await fetch('./Predict.php', {
@@ -38,6 +56,8 @@ async function GetPrediction(){
     })
     .then(response => response.json())
     console.log(Prediction)
+
+    ShowPrediction(Prediction)
 
     return Prediction;
 }
@@ -62,6 +82,7 @@ LoadData();
 
 document.getElementById('TeamselectionA').addEventListener('change', (event) => {
     selectTeam("Dom",document.getElementById('TeamselectionA').value);
+    selectLogo("A",document.getElementById('TeamselectionA').value);
 
 });
 document.getElementById('TeamselectionB').addEventListener('change', (event) => {
@@ -74,6 +95,5 @@ document.getElementById('matchDate').addEventListener('change', (event) => {
 document.getElementById('ResultsPrediction').addEventListener('click', (event) => {
 
     let Prediction =  GetPrediction()
-    console.log(Prediction)
 
 });
