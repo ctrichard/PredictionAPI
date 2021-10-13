@@ -17,8 +17,6 @@ function CreateTeamSelectionOptions(Team='A',NBAData){
         element.remove(element.length-1);
     }
 
-    let count=0;
-
     for (team of Object.entries(NBAData['TEAMCodes_Names'])) {
 
       let opt = document.createElement('option');   
@@ -29,6 +27,8 @@ function CreateTeamSelectionOptions(Team='A',NBAData){
 
 
   }
+
+
 async function GetPrediction(){
       
     const Prediction = await fetch('./Predict.php', {
@@ -37,6 +37,7 @@ async function GetPrediction(){
         }
     })
     .then(response => response.json())
+    console.log(Prediction)
 
     return Prediction;
 }
@@ -72,7 +73,7 @@ document.getElementById('matchDate').addEventListener('change', (event) => {
 
 document.getElementById('ResultsPrediction').addEventListener('click', (event) => {
 
-    let Prediction = await GetPrediction()
+    let Prediction =  GetPrediction()
     console.log(Prediction)
 
 });
