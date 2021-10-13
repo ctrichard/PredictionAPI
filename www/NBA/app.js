@@ -72,7 +72,7 @@ document.getElementById('matchDate').addEventListener('change', (event) => {
 
 document.getElementById('ResultsPrediction').addEventListener('click', (event) => {
 
-    let Prediction = GetPrediction()
+    let Prediction = await GetPrediction()
     console.log(Prediction)
 
 });
