@@ -10,10 +10,10 @@ function CreateMaterialSelectionOptions(Team='A'){
 
     fetch()
 
-    for (code, teamname of Object.entries(NBAData['TEAMCodes_Names'])) {
+    for (code of Object.entries(NBAData['TEAMCodes_Names'])) {
 
       let opt = document.createElement('option');   
-      opt.appendChild( document.createTextNode(teamname) );
+      opt.appendChild( document.createTextNode(NBAData['TEAMCodes_Names'][code]) );
       element.appendChild(opt); 
   
     }
