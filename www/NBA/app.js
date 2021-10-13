@@ -29,7 +29,17 @@ function CreateTeamSelectionOptions(Team='A',NBAData){
 
 
   }
+async function GetPrediction(){
+      
+    const Prediction = fetch('./Data.json', {
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => response.json())
 
+    return Prediction;
+}
 
 async function LoadData(){
       
@@ -62,13 +72,7 @@ document.getElementById('matchDate').addEventListener('change', (event) => {
 
 document.getElementById('ResultsPrediction').addEventListener('click', (event) => {
 
-    const Prediction = fetch('./Data.json', {
-        headers: {
-            'Accept': 'application/json'
-        }
-    })
-    .then(response => response.json());
-
+    let Prediction = GetPrediction()
     console.log(Prediction)
 
 });
