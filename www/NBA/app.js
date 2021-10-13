@@ -9,10 +9,10 @@ function selectTeam(Side='Dom',value){
 }
 
 
-function selectLogo(Side='Dom',value){
+function selectLogo(Side='LogoA',value){
 
     teamname = value.replace(" ","_").toLowerCase()
-    document.getElementById('LogoA').src = '../pictures/'+teamname+'_2021.png'
+    document.getElementById(Side).src = '../pictures/'+teamname+'_2021.png'
 
 
 }
@@ -82,11 +82,13 @@ LoadData();
 
 document.getElementById('TeamselectionA').addEventListener('change', (event) => {
     selectTeam("Dom",document.getElementById('TeamselectionA').value);
-    selectLogo("A",document.getElementById('TeamselectionA').value);
+    selectLogo("LogoA",document.getElementById('TeamselectionA').value);
 
 });
 document.getElementById('TeamselectionB').addEventListener('change', (event) => {
     selectTeam("Vis",document.getElementById('TeamselectionB').value);
+    selectLogo("LogoB",document.getElementById('TeamselectionB').value);
+
 });
 document.getElementById('matchDate').addEventListener('change', (event) => {
     selectTeam("Date",document.getElementById('matchDate').value);
