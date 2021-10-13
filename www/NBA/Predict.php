@@ -2,7 +2,7 @@
 
 
 
-$response = {};
+$response = [];
 
 $response['Data'] ='oui';
 
