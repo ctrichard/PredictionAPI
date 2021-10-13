@@ -31,7 +31,7 @@ function CreateTeamSelectionOptions(Team='A',NBAData){
   }
 async function GetPrediction(){
       
-    const Prediction = fetch('./Data.json', {
+    const Prediction = await fetch('./Predict.php', {
         headers: {
             'Accept': 'application/json'
         }
