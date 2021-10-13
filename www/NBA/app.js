@@ -12,7 +12,7 @@ function selectTeam(Side='Dom',value){
 function selectLogo(Side='Dom',value){
 
     teamname = value.replace(" ","_").toLowerCase()
-    document.getElementById('LogoA').src = '../Pictures/'+teamname+'.png'
+    document.getElementById('LogoA').src = '../pictures/'+teamname+'.png'
 
 
 }
