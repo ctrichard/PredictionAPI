@@ -62,7 +62,7 @@ document.getElementById('matchDate').addEventListener('change', (event) => {
 
 document.getElementById('ResultsPrediction').addEventListener('click', (event) => {
 
-    const Prediction = await fetch('./Data.json', {
+    const Prediction = fetch('./Data.json', {
         headers: {
             'Accept': 'application/json'
         }
