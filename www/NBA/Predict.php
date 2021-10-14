@@ -23,6 +23,7 @@ function IsValidTeamName($Name,$Teams){
 
 echo 'ok';
 print_r($_POST);
+print_r($_GET);
 exit();
 
 $response = [];
