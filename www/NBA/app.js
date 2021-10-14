@@ -39,7 +39,6 @@ function selectLogo(Side='LogoA',value){
     teamname = value.replaceAll(" ","_").toLowerCase();
     document.getElementById(Side).src = '../pictures/'+teamname+'_2021.png'
 
-
 }
 
 
@@ -116,7 +115,7 @@ function ShowPredictionError(){
 }
 
 
-async function GetPrediction(){
+async function GetPrediction(DomCode,VisCode){
 
     if(!IsValidMatch() ){
         console.error('Not valid match to fetch predictions')
@@ -130,11 +129,15 @@ async function GetPrediction(){
 
 
     const Prediction = await fetch('./Predict.php', {
+        method: 'POST',
         headers: {
-            'Accept': 'application/json'
-        }
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({Dom: DomCode, Vis : VisCode}),
     })
     .then(response => response.json())
+    
     console.log(Prediction)
 
     if(Prediction['Success'])

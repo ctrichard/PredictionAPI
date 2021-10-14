@@ -21,14 +21,17 @@ function IsValidTeamName($Name,$Teams){
 }
 
 
+print_r($_POST);
+exit()
+
 $response = [];
 $response['Success'] = False;
 $Teams = json_decode(file_get_contents('./Data.json'),true);
 
 
-if(isset($_GET['Dom']) && isset($_GET['Vis']) ){
-    $Dom =  htmlspecialchars($_GET['Dom']);
-    $Vis =  htmlspecialchars($_GET['Vis']);
+if(isset($_POST['Dom']) && isset($_POST['Vis']) ){
+    $Dom =  htmlspecialchars($_POST['Dom']);
+    $Vis =  htmlspecialchars($_POST['Vis']);
 
     if(IsValidTeamName($Dom,$Teams) && IsValidTeamName($Vis,$Teams)){
 
