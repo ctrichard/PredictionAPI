@@ -74,8 +74,8 @@ function ResetPredictions(){
     document.getElementById('TextBarA').innerHTML =  ''
     document.getElementById('TextBarB').innerHTML =  ''
 
-    document.getElementsByClassName('ResultText')[0].style.opacity = 0
-    document.getElementsByClassName('ResultText')[1].style.opacity = 0
+    document.getElementsById('TextBarA').style.opacity = 0
+    document.getElementsById('TextBarB').style.opacity = 0
 
     document.getElementById('BarA').style.transitionDuration = temptransi
     document.getElementById('BarB').style.transitionDuration = temptransi
@@ -92,8 +92,8 @@ function ShowPrediction(Data){
     document.getElementById('TextBarA').innerHTML =  Data['Dom']
     document.getElementById('TextBarB').innerHTML =  Data['Vis']
 
-    document.getElementsByClassName('ResultText')[0].style.opacity = 1
-    document.getElementsByClassName('ResultText')[1].style.opacity = 1
+    document.getElementsById('TextBarA').style.opacity = 1
+    document.getElementsById('TextBarB').style.opacity = 1
 
 }
 
@@ -106,12 +106,11 @@ function ShowPredictionError(){
     document.getElementById('BarB').style.width = '100%'
     document.getElementById('BarB').style.backgroundColor = 'rgba(148, 148, 148, 0.582)'
 
-
     document.getElementById('TextBarA').innerHTML =  '?'
     document.getElementById('TextBarB').innerHTML =  '?'
 
-    document.getElementsByClassName('ResultText')[0].style.opacity = 1
-    document.getElementsByClassName('ResultText')[1].style.opacity = 1
+    document.getElementsById('TextBarA').style.opacity = 1
+    document.getElementsById('TextBarB').style.opacity = 1
 
 
 }
