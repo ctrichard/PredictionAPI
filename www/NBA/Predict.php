@@ -20,11 +20,7 @@ function IsValidTeamName($Name,$Teams){
 
 }
 
-$InputData = json_decode(file_get_contents('php://input'));
-print_r(file_get_contents('php://input'));
-echo 'pp';
-print_r($InputData);
-exit();
+$InputData = json_decode(file_get_contents('php://input'),true);
 
 $response = [];
 $response['Success'] = False;
