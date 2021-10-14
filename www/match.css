@@ -111,7 +111,8 @@
 .TeamSelect{
     font-size: var(--font-size );
     background-color: rgba(173, 173, 245, 0.582);
-    max-width: fit-content;
+    width: fit-content;
+    max-width: 100%;
 }
 
 .ResultsContainer{
