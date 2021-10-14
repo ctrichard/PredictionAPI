@@ -27,7 +27,7 @@ $response['Success'] = False;
 $Teams = json_decode(file_get_contents('./Data.json'),true);
 
 
-if(isset($_POST['Dom']) && isset($_POST['Vis']) ){
+if(isset($InputData['Dom']) && isset($InputData['Vis']) ){
     $Dom =  htmlspecialchars($InputData['Dom']);
     $Vis =  htmlspecialchars($InputData['Vis']);
 
