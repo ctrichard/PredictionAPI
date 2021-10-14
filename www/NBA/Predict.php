@@ -21,6 +21,7 @@ function IsValidTeamName($Name,$Teams){
 }
 
 
+echo 'ok';
 print_r($_POST);
 exit();
 
