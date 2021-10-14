@@ -20,12 +20,7 @@ function IsValidTeamName($Name,$Teams){
 
 }
 
-$request_body = file_get_contents('php://input');
-print_r($request_body);
-echo 'ok';
-print_r($_POST);
-print_r($_GET);
-exit();
+$InputData = json_decode(file_get_contents('php://input'));
 
 $response = [];
 $response['Success'] = False;
@@ -33,8 +28,8 @@ $Teams = json_decode(file_get_contents('./Data.json'),true);
 
 
 if(isset($_POST['Dom']) && isset($_POST['Vis']) ){
-    $Dom =  htmlspecialchars($_POST['Dom']);
-    $Vis =  htmlspecialchars($_POST['Vis']);
+    $Dom =  htmlspecialchars($InputData['Dom']);
+    $Vis =  htmlspecialchars($InputData['Vis']);
 
     if(IsValidTeamName($Dom,$Teams) && IsValidTeamName($Vis,$Teams)){
 
