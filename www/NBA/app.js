@@ -29,6 +29,7 @@ function selectTeam(Side='Dom',value){
     MatchData[Side] = value
     console.log(MatchData)
     UpdatePredictButton()
+    ResetPredictions()
 
 }
 
@@ -61,6 +62,26 @@ function CreateTeamSelectionOptions(Team='A',NBAData){
 
   }
 
+function ResetPredictions(){
+
+    temptransi = document.getElementById('BarA').style.transitionDuration
+    document.getElementById('BarA').style.transitionDuration = '0'
+    document.getElementById('BarB').style.transitionDuration = '0'
+    
+    document.getElementById('BarA').style.width = '0%'
+    document.getElementById('BarB').style.width = '0%'
+
+    document.getElementById('TextBarA').innerHTML =  ''
+    document.getElementById('TextBarB').innerHTML =  ''
+
+    document.getElementsByClassName('ResultText')[0].style.opacity = 0
+    document.getElementsByClassName('ResultText')[1].style.opacity = 0
+
+    document.getElementById('BarA').style.transitionDuration = temptransi
+    document.getElementById('BarB').style.transitionDuration = temptransi
+
+
+}
 
 function ShowPrediction(Data){
 
@@ -75,6 +96,7 @@ function ShowPrediction(Data){
     document.getElementsByClassName('ResultText')[1].style.opacity = 1
 
 }
+
 
 
 function ShowPredictionError(){
