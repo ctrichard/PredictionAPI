@@ -20,7 +20,8 @@ function IsValidTeamName($Name,$Teams){
 
 }
 
-
+$request_body = file_get_contents('php://input');
+print_r($request_body)
 echo 'ok';
 print_r($_POST);
 print_r($_GET);
