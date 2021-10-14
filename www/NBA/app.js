@@ -65,7 +65,32 @@ function CreateTeamSelectionOptions(Team='A',NBAData){
 function ShowPrediction(Data){
 
 
-    document.getElementById('LogoA').src = Data['Dom']
+    document.getElementById('BarA').style.width = Data['Dom']
+    document.getElementById('BarB').style.width = Data['Vis']
+
+    document.getElementById('TextBarA').innerHTML =  Data['Dom']
+    document.getElementById('TextBarB').innerHTML =  Data['Vis']
+
+    document.getElementsByClassName('ResultText')[0].style.opacity = 1
+    document.getElementsByClassName('ResultText')[1].style.opacity = 1
+
+}
+
+
+function ShowPredictionError(){
+
+    document.getElementById('BarA').style.width = '100%'
+    document.getElementById('BarA').style.backgroundColor = 'rgba(148, 148, 148, 0.582)'
+    document.getElementById('BarB').style.width = '100%'
+    document.getElementById('BarB').style.backgroundColor = 'rgba(148, 148, 148, 0.582)'
+
+
+    document.getElementById('TextBarA').innerHTML =  '?'
+    document.getElementById('TextBarB').innerHTML =  '?'
+
+    document.getElementsByClassName('ResultText')[0].style.opacity = 1
+    document.getElementsByClassName('ResultText')[1].style.opacity = 1
+
 
 }
 
@@ -82,16 +107,6 @@ async function GetPrediction(){
         console.log('Valid match to fetch predictions')
 
 
-    document.getElementById('BarA').style.width = '70%'
-    document.getElementById('BarB').style.width = '5%'
-
-    document.getElementById('TextBarA').innerHTML = "70%"
-    document.getElementById('TextBarB').innerHTML = "20%"
-
-    document.getElementsByClassName('ResultText')[0].style.opacity = 1
-    document.getElementsByClassName('ResultText')[1].style.opacity = 1
-
-    
 
     const Prediction = await fetch('./Predict.php', {
         headers: {
@@ -101,7 +116,11 @@ async function GetPrediction(){
     .then(response => response.json())
     console.log(Prediction)
 
-    ShowPrediction(Prediction)
+    if(Prediction['Success'])
+        ShowPrediction(Prediction)
+    else
+        ShowPredictionError()
+
 
     return Prediction;
 }
