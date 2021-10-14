@@ -7,7 +7,7 @@
 function GetPrediction($Dom,$Vis){
 
 
-    $p = shell_exec( ' env ');
+    $p = shell_exec( ' conda env list ');
 
     print_r($p);
 
