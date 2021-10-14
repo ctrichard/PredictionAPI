@@ -24,7 +24,7 @@ $InputData = json_decode(file_get_contents('php://input'),true);
 
 $response = [];
 $response['Success'] = False;
-$Teams = json_decode(file_get_contents('./Data.json'),true);
+$Teams = json_decode(file_get_contents('./Data.json'),true)['TEAMCodes_Names'];
 
 
 if(isset($InputData['Dom']) && isset($InputData['Vis']) ){
