@@ -83,14 +83,16 @@
 
 .ResultsContainer, .LogoContainer{
 
-    width : 100%;
 
+    width : 100%;
     display: flex;
     justify-content: center;
     flex-direction: row ;
     flex-wrap: nowrap ;
     margin-bottom: 2%;
 }
+
+
 
 .TeamLogo {
 
@@ -110,4 +112,64 @@
     font-size: var(--font-size );
     background-color: rgba(173, 173, 245, 0.582);
     max-width: fit-content;
+}
+
+.ResultsContainer{
+    margin-top: 3%;
+    height: calc( var(--font-size) *3);
+
+}
+
+.ResultsGroup{
+
+    width : 49%;
+    height : 100%;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.GroupA{
+    justify-content:right;
+}
+.GroupB{
+    justify-content:left;
+}
+
+.ResultsGroupSeparation{
+
+    width : 2%;
+    min-width : 1%;
+    height: 100%;
+    background-color: rgb(92, 91, 91);
+}
+
+.ResultBar{
+    height : 80%;
+    background-color: rgb(172, 27, 27);
+    width : 0%;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    font-size: calc( var(--font-size) *1.5);
+    transition-duration: 1.5s;
+    transition-timing-function: ease-in-out;
+}
+
+.GroupA .ResultBar{
+    justify-content:right;
+}
+
+.GroupB .ResultBar{
+    justify-content:left;
+}
+
+.ResultText{
+    opacity : 0;
+    transition-delay: 1.5s;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-right: 20px;
 }

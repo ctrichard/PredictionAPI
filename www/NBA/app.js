@@ -74,10 +74,24 @@ async function GetPrediction(){
 
     if(!IsValidMatch() ){
         console.error('Not valid match to fetch predictions')
+        // arclassList.add('Active');
+
         return
     }
     else
         console.log('Valid match to fetch predictions')
+
+
+    document.getElementById('BarA').style.width = '70%'
+    document.getElementById('BarB').style.width = '5%'
+
+    document.getElementById('TextBarA').innerHTML = "70%"
+    document.getElementById('TextBarB').innerHTML = "20%"
+
+    document.getElementsByClassName('ResultText')[0].style.opacity = 1
+    document.getElementsByClassName('ResultText')[1].style.opacity = 1
+
+    
 
     const Prediction = await fetch('./Predict.php', {
         headers: {
