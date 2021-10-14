@@ -30,14 +30,7 @@
         "SAS" :  "San Antonio Spurs",
         "TOR" :  "Toronto Raptors",
         "UTA" :  "Utah Jazz",
-        "WAS" :  "Washington Wizards",
-    
-        "NJN" :  "New Jersey Nets",
-        "SEA" :  "Seattle SuperSonics",
-        "NOH" :  "New Orleans Hornets",
-        "NOK" :  "New Orleans/Oklahoma City Hornets",
-        "CHA" :  "Charlotte Bobcats",
-        "CHH" :  "Charlotte Hornets"
+        "WAS" :  "Washington Wizards"
     }
 
 

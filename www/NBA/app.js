@@ -1,10 +1,34 @@
 const MatchData = {}
 
 
+function IsValidMatch(){
+
+    if(  MatchData['Dom']!=undefined &&  MatchData['Vis']!=undefined &&  MatchData['Dom'] != MatchData['Vis']  ){
+        return true;
+    }
+    else{
+        return false;
+    }
+
+}
+
+function UpdatePredictButton(){
+
+    if( IsValidMatch() ){
+        document.getElementById('ResultsPrediction').classList.add('Active');
+        console.log("Active")
+    }
+    else{
+        document.getElementById('ResultsPrediction').classList.remove('Active');
+        console.log("Not Active")
+    }
+}
+
 function selectTeam(Side='Dom',value){
 
     MatchData[Side] = value
     console.log(MatchData)
+    UpdatePredictButton()
 
 }
 
@@ -42,13 +66,19 @@ function ShowPrediction(Data){
 
 
     document.getElementById('LogoA').src = Data['Dom']
-    img.src.replace("_t", "_b");
 
 }
 
 
 async function GetPrediction(){
-      
+
+    if(!IsValidMatch() ){
+        console.error('Not valid match to fetch predictions')
+        return
+    }
+    else
+        console.log('Valid match to fetch predictions')
+
     const Prediction = await fetch('./Predict.php', {
         headers: {
             'Accept': 'application/json'
@@ -90,9 +120,9 @@ document.getElementById('TeamselectionB').addEventListener('change', (event) => 
     selectLogo("LogoB",document.getElementById('TeamselectionB').value);
 
 });
-document.getElementById('matchDate').addEventListener('change', (event) => {
-    selectTeam("Date",document.getElementById('matchDate').value);
-});
+// document.getElementById('matchDate').addEventListener('change', (event) => {
+//     selectTeam("Date",document.getElementById('matchDate').value);
+// });
 
 document.getElementById('ResultsPrediction').addEventListener('click', (event) => {
 
