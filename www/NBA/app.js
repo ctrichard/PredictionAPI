@@ -96,8 +96,6 @@ function ShowPrediction(Data){
 
 }
 
-
-
 function ShowPredictionError(){
 
     document.getElementById('BarA').style.width = '100%'
@@ -137,7 +135,7 @@ async function GetPrediction(DomCode,VisCode){
         body: JSON.stringify({Dom: DomCode, Vis : VisCode}),
     })
     .then(response => response.json())
-    
+
     console.log(Prediction)
 
     if(Prediction['Success'])
@@ -183,6 +181,6 @@ document.getElementById('TeamselectionB').addEventListener('change', (event) => 
 
 document.getElementById('ResultsPrediction').addEventListener('click', (event) => {
 
-    let Prediction =  GetPrediction()
+    let Prediction =  GetPrediction(MatchData['Dom'],MatchData['Vis'])
 
 });
