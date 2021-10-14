@@ -74,8 +74,8 @@ function ResetPredictions(){
     document.getElementById('TextBarA').innerHTML =  ''
     document.getElementById('TextBarB').innerHTML =  ''
 
-    document.getElementsById('TextBarA').style.opacity = 0
-    document.getElementsById('TextBarB').style.opacity = 0
+    document.getElementById('TextBarA').style.opacity = 0
+    document.getElementById('TextBarB').style.opacity = 0
 
     document.getElementById('BarA').style.transitionDuration = temptransi
     document.getElementById('BarB').style.transitionDuration = temptransi
@@ -92,8 +92,8 @@ function ShowPrediction(Data){
     document.getElementById('TextBarA').innerHTML =  Data['Dom']
     document.getElementById('TextBarB').innerHTML =  Data['Vis']
 
-    document.getElementsById('TextBarA').style.opacity = 1
-    document.getElementsById('TextBarB').style.opacity = 1
+    document.getElementById('TextBarA').style.opacity = 1
+    document.getElementById('TextBarB').style.opacity = 1
 
 }
 
@@ -109,8 +109,8 @@ function ShowPredictionError(){
     document.getElementById('TextBarA').innerHTML =  '?'
     document.getElementById('TextBarB').innerHTML =  '?'
 
-    document.getElementsById('TextBarA').style.opacity = 1
-    document.getElementsById('TextBarB').style.opacity = 1
+    document.getElementById('TextBarA').style.opacity = 1
+    document.getElementById('TextBarB').style.opacity = 1
 
 
 }
