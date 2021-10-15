@@ -8,10 +8,10 @@ function GetPrediction($Dom,$Vis){
 
 
     $p = shell_exec( 'whoami ');
-    $p += shell_exec( ' env ');
-    $p += shell_exec( ' conda env lisst ');
-
-
+    print_r($p);
+    $p = shell_exec( ' env ');
+    print_r($p);
+    $p = shell_exec( ' conda env list ');
     print_r($p);
 
 }
