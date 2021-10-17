@@ -12,7 +12,7 @@ try {
        throw new BadSeason('Bad input : '.$InputData['Season']);
 
 
-    $Season = int($InputData['Season']);
+    $Season = intval($InputData['Season']);
 
     $DomCode = MyTools::GetTeamCodeFromName($InputData['TeamDom']);
     $VisCode = MyTools::GetTeamCodeFromName($InputData['TeamVis']);
