@@ -30,6 +30,26 @@ function selectTeam(Side='Dom',value){
     console.log(MatchData)
     UpdatePredictButton()
     ResetPredictions()
+    UpdateTeamInfo()
+
+}
+
+
+async function UpdateTeamInfo(){
+    
+    $Season = int($InputData['Season']);
+
+    let Prediction = await fetch('./TeamInfo.php', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({TeamDom: MatchData['Dom'], TeamVis : MatchData['Vis'],Season :  MatchData['Season']}),
+    })
+    .then(response => response.json())
+
+    console.log(Prediction)
 
 }
 

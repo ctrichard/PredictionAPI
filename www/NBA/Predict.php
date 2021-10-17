@@ -1,6 +1,7 @@
 <?php
 
 
+require_once 'MyTools.php'
 
 
 
@@ -17,17 +18,12 @@ function GetPrediction($Dom,$Vis){
 }
 
 
-function IsValidTeamName($Name,$Teams){
-
-    return in_array($Name,array_values($Teams));
-
-}
-
 $InputData = json_decode(file_get_contents('php://input'),true);
 
 $response = [];
 $response['Success'] = False;
 $Teams = json_decode(file_get_contents('./Data.json'),true)['TEAMCodes_Names'];
+
 
 
 if(isset($InputData['Dom']) && isset($InputData['Vis']) ){
