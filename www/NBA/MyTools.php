@@ -42,7 +42,7 @@ $TeamDataLocation = $DataLocation.'Teams/';
 
 
 function GetTeamFilePath($DomCode,$Season){
-    $path = $TeamDataLocation.$DomCode.'_'.$Season.'.csv';
+    $path = $GLOBALS['TeamDataLocation'].$DomCode.'_'.$Season.'.csv';
     if(file_exists($path))
         return $path;
     else
@@ -58,6 +58,13 @@ function GetTeamCodeFromName($TeamName){
 
     if(!IsValidTeamName($TeamName,$Teams) ){
         throw new BadTeamName("Bad team name : ".$TeamName);
+    }
+
+
+    foreach($Teams as $key => $value) {
+
+        if($value == $TeamName)
+            return $key;
     }
 
 
