@@ -14,12 +14,12 @@ try {
 
     $Season = intval($InputData['Season']);
 
-    $DomCode = MyTools::GetTeamCodeFromName($InputData['TeamDom']);
-    $VisCode = MyTools::GetTeamCodeFromName($InputData['TeamVis']);
+    $DomCode = GetTeamCodeFromName($InputData['TeamDom']);
+    $VisCode = GetTeamCodeFromName($InputData['TeamVis']);
 
 
-    $DomFile = file_get_contents(MyTools::GetTeamFilePath($DomCode,$Season));
-    $VisFile = file_get_contents(MyTools::GetTeamFilePath($VisCode,$Season));
+    $DomFile = file_get_contents(GetTeamFilePath($DomCode,$Season));
+    $VisFile = file_get_contents(GetTeamFilePath($VisCode,$Season));
 
     $ArrayDom = array_map("str_getcsv", explode("\n", $DomFile));
     $ArrayVis = array_map("str_getcsv", explode("\n", $DomFile));
