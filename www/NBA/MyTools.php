@@ -5,7 +5,7 @@
 class BadInput extends Exceptions{
 
 
-    $BadInputType = "BadInput"
+    protected $BadInputType = "BadInput";
 
     public __construct(string $message = "", int $code = 0, ?Throwable $previous = null){
         // some code
@@ -19,19 +19,19 @@ class BadInput extends Exceptions{
 
 class BadTeamName extends BadInput{
 
-    $BadInputType = "BadTeamName"
+    protected $BadInputType = "BadTeamName";
 
 
 }
 class BadSeason extends Exceptions{
 
-    $BadInputType = "BadSeason"
+    protected $BadInputType = "BadSeason";
 
 }
 
 class FileNotFound extends Exceptions{
 
-    $BadInputType = "File not found"
+    protected $BadInputType = "File not found";
 
 }
 
