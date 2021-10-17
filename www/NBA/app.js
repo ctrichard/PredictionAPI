@@ -37,8 +37,6 @@ function selectTeam(Side='Dom',value){
 
 async function UpdateTeamInfo(){
     
-    $Season = int($InputData['Season']);
-
     let Prediction = await fetch('./TeamInfo.php', {
         method: 'POST',
         headers: {
