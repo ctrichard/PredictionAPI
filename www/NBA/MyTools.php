@@ -2,7 +2,7 @@
 
 
 
-class BadInput extends Exceptions{
+class BadInput extends Exception{
 
 
     protected $BadInputType = "BadInput";
@@ -23,13 +23,13 @@ class BadTeamName extends BadInput{
 
 
 }
-class BadSeason extends Exceptions{
+class BadSeason extends BadInput{
 
     protected $BadInputType = "BadSeason";
 
 }
 
-class FileNotFound extends Exceptions{
+class FileNotFound extends Exception{
 
     protected $BadInputType = "File not found";
 
