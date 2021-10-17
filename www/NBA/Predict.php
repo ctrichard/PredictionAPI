@@ -1,7 +1,7 @@
 <?php
 
 
-require_once 'MyTools.php'
+require_once 'MyTools.php';
 
 
 
