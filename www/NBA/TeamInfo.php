@@ -37,7 +37,7 @@ catch( Exception $e){
 
 }
 
-print($response);
+print_r($response);
 die();
 echo json_encode($response);
 
