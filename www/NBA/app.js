@@ -1,4 +1,4 @@
-const MatchData = {}
+const MatchData = {Season : 2021}
 
 
 function IsValidMatch(){
