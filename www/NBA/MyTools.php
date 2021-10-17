@@ -7,7 +7,7 @@ class BadInput extends Exceptions{
 
     protected $BadInputType = "BadInput";
 
-    public __construct(string $message = "", int $code = 0, ?Throwable $previous = null){
+    public function __construct(string $message = "", int $code = 0, ?Throwable $previous = null){
         // some code
     
         $message = $BadInputType.' : '.$message;
