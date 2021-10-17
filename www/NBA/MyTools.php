@@ -46,7 +46,7 @@ function GetTeamFilePath($DomCode,$Season){
     if(file_exists($path))
         return $path;
     else
-        throw new FileNotFound($path)
+        throw new FileNotFound($path);
 
     
 }
