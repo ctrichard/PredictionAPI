@@ -35,8 +35,6 @@ function selectTeam(Side='Dom',value){
 
     ResetTeamPlayers()
     UpdateTeamInfo()
-    DrawTeamPlayer('Dom')
-    DrawTeamPlayer('Vis')
 
 }
 
@@ -59,11 +57,9 @@ async function UpdateTeamInfo(){
     TeamPlayers['Vis'] = JSON.parse(ResponseData['Vis'])
 
 
-    console.log(TeamPlayers)
-    TeamPlayers["Dom"].forEach(element => {
-        console.log(element)
+    DrawTeamPlayer('Dom')
+    DrawTeamPlayer('Vis')
 
-    });
     
 }
 
