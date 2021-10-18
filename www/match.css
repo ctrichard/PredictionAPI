@@ -138,7 +138,9 @@
 }
 
 .TeamPlayers{
-    width:fit-content;
+    height:fit-content;
+    flex-direction: row ;
+    flex-wrap: wrap ;
 }
 
 .TeamPlayersA{
