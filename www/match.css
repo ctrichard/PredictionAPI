@@ -133,7 +133,7 @@
 .GroupA, .TeamPlayersA{
     justify-content:right;
 }
-.GroupB .TeamPlayersB{
+.GroupB, .TeamPlayersB{
     justify-content:left;
 }
 
@@ -141,6 +141,7 @@
     height:fit-content;
     flex-direction: row ;
     flex-wrap: wrap ;
+    font-size: var(--font-size) ;
 }
 
 .TeamPlayersA{
