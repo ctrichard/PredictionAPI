@@ -122,9 +122,13 @@ function DrawTeamPlayer(Side){
                 evt.currentTarget.value = MatchDuration
             }
             
-            if(evt.currentTarget.value < MinPlayerTime){
+            if(evt.currentTarget.value < MinPlayerTime && evt.currentTarget.value >0){
                 CreateNotification('Fail','Ne pas mettre moins de '+MinPlayerTime+' minutes')
                 evt.currentTarget.value = MinPlayerTime
+            }
+
+            if(evt.currentTarget.value < 0){
+                evt.currentTarget.value = 0
             }
 
             if(MatchPlayerData[evt.currentTarget.Side]=='')
