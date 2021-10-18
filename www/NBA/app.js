@@ -18,7 +18,7 @@ function IsValidMatch(){
     lefttimeVis = CheckTeamTotalTimePlayed('Vis')
 
     if(  MatchData['Dom']!=undefined &&  MatchData['Vis']!=undefined &&  MatchData['Dom'] != MatchData['Vis'] 
-            && lefttimeDom && lefttimeVis){
+            && lefttimeDom==0 && lefttimeVis==0){
 
         return true;
     }
