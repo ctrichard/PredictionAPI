@@ -137,6 +137,9 @@
     justify-content:left;
 }
 
+.TeamPlayers{
+    width:fit-content;
+}
 
 .TeamPlayersA{
     margin-right: 5%;
