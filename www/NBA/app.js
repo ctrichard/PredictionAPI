@@ -94,8 +94,16 @@ function DrawTeamPlayer(Side){
         parentdiv.appendChild(div);
         div.appendChild(input);
 
+
+        function InputModifs(input,playername){
+            MatchPlayerData[Side][playername] = input.value;
+            console.log(MatchPlayerData)
+            console.log(MatchPlayerData)
+        }
+
         document.getElementById(input.id).addEventListener('change', (event) => {
-            MatchPlayerData[Side][element[1]] = input.value;
+
+            InputModifs(document.getElementById(input.id),element[1]);
         });
 
     });
