@@ -148,7 +148,7 @@ function UpdateTeamTotalTimePlayed(Side){
     TotalTimePlayed = TotalPlayerTimePerTeam
 
     TeamPlayers[Side].forEach(playerdata => {
-        if(element[1]=='Name' | element[0]==undefined)
+        if(playerdata[1]=='Name' | playerdata[0]==undefined)
           return //=>continue
 
         console.log('TimeInput'+playerdata[1])
