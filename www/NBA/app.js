@@ -98,16 +98,18 @@ function DrawTeamPlayer(Side){
         div.appendChild(input);
 
 
-        function InputModifs(evt,input){
+        function InputModifs(evt){
 
-            MatchPlayerData[evt.currentTarget.Side][evt.currentTarget.PlayerName] = input.value;
+            if(MatchPlayerData[evt.currentTarget.Side]=='')
+                MatchPlayerData[evt.currentTarget.Side]={}
+                
+            MatchPlayerData[evt.currentTarget.Side][evt.currentTarget.PlayerName] = evt.currentTarget.value;
             console.log(MatchPlayerData)
-            console.log(input.value)
         }
 
         document.getElementById(input.id).addEventListener('change', (event) => {
 
-            InputModifs(event,document.getElementById(input.id));
+            InputModifs(event);
         });
 
     });
