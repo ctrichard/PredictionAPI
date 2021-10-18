@@ -137,8 +137,17 @@
     justify-content:left;
 }
 
+
+.TeamPlayersA{
+    margin-right: 5%;
+}
+.TeamPlayersB{
+    margin-left: 5%;
+}
+
+
 .TeamPlayer{
-    margin : 0.1%;
+    margin : 1%;
     background-color: darkgray;
 }
 
