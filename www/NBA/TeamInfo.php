@@ -25,6 +25,8 @@ try {
     $ArrayVis = array_map("str_getcsv", explode("\n", $DomFile));
 
     $response['Success'] = True; 
+    $response['Dom'].pop(0);
+    $response['Vis'].pop(0);
     $response['Dom'] = json_encode($ArrayDom);
     $response['Vis'] = json_encode($ArrayVis); 
 
@@ -38,8 +40,7 @@ catch( Exception $e){
 }
 
 
-$response['Dom'].pop(0)
-$response['Vis'].pop(0)
+
 echo json_encode($response);
 
 
