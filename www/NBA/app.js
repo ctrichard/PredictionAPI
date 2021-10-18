@@ -1,6 +1,6 @@
 const MatchData = {Season : 2021}
-var DomTeamPlayers = {}
-var VisTeamPlayers = {}
+
+var TeamPlayers =  {'Dom' : '', 'Vis' : ''}
 
 
 function IsValidMatch(){
@@ -35,7 +35,8 @@ function selectTeam(Side='Dom',value){
 
     ResetTeamPlayers()
     UpdateTeamInfo()
-    DrawTeamPlayer()
+    DrawTeamPlayer('Dom')
+    DrawTeamPlayer('Vis')
 
 }
 
@@ -54,16 +55,9 @@ async function UpdateTeamInfo(){
     .then(response => response.json())
 
     
-    DomTeamPlayers=JSON.parse(ResponseData['Dom'])
-    VisTeamPlayers=JSON.parse(ResponseData['Vis'])
+    TeamPlayers['Dom'] = JSON.parse(ResponseData['Dom'])
+    TeamPlayers['Vis'] = JSON.parse(ResponseData['Vis'])
 
-    console.log(DomTeamPlayers)
-    console.log(VisTeamPlayers)
-
-
-    DomTeamPlayers.forEach(element => {
-        console.log(element)
-    });
     
 }
 
@@ -71,8 +65,16 @@ function ResetTeamPlayers(){
 
 }
 
-function DrawTeamPlayer(){
-    
+function DrawTeamPlayer(Side){
+    TeamPlayers[Side].forEach(element => {
+        console.log(element)
+        let div = document.createElement('div');
+        div.innerHTML = element
+        parentdiv = document.getElementById('TeamPlayersVis')
+        parentdiv.appendChild(div);
+
+
+    });
 }
 
 
