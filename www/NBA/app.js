@@ -1,4 +1,5 @@
-const MatchData = {Season : 2021}
+var MatchData = {Season : 2021}
+var MatchPlayerData = {Dom : '', Vis : ''}
 
 var TeamPlayers =  {'Dom' : '', 'Vis' : ''}
 
@@ -81,11 +82,22 @@ function DrawTeamPlayer(Side){
         let div = document.createElement('div');
         div.classList.add("TeamPlayer")
         div.innerHTML = element[1]+' '+element[element.length - 1]
+
+        let input = document.createElement("input");
+        input.classList.add("TeamPlayerTimeInput")
+        input.type = "text";
+        input.id = 'Timeinput'+element[1];
+
         let parentdiv = document.getElementById('TeamPlayers'+Side)
         parentdiv.appendChild(div);
 
+        input.addEventListener('change', (event) => {
+            MatchPlayerData[Side][element[1]] = event.value;
+        });
 
     });
+
+
 }
 
 

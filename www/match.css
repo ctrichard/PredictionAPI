@@ -130,13 +130,16 @@
     justify-content:center;
 }
 
-.GroupA, .TeamPlayersA{
+.GroupA{
     justify-content:right;
 }
-.GroupB, .TeamPlayersB{
+.GroupB{
     justify-content:left;
 }
 
+.TeamPlayersA, .TeamPlayersB{
+    justify-content:left;
+}
 .TeamPlayers{
     height:fit-content;
     flex-direction: row ;
