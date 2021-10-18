@@ -32,12 +32,16 @@ function selectTeam(Side='Dom',value){
     console.log(MatchData)
     UpdatePredictButton()
     ResetPredictions()
+
+    ResetTeamPlayers()
     UpdateTeamInfo()
+    DrawTeamPlayer()
 
 }
 
 
 async function UpdateTeamInfo(){
+
     
     let ResponseData = await fetch('./TeamInfo.php', {
         method: 'POST',
@@ -55,6 +59,19 @@ async function UpdateTeamInfo(){
 
     console.log(DomTeamPlayers)
     console.log(VisTeamPlayers)
+
+
+    DomTeamPlayers.array.forEach(element => {
+        console.log(element)
+    });
+    
+}
+
+function ResetTeamPlayers(){
+
+}
+
+function DrawTeamPlayer(){
     
 }
 

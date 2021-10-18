@@ -81,7 +81,7 @@
 }
 
 
-.ResultsContainer, .LogoContainer{
+.ResultsContainer, .LogoContainer,.TeamPlayerContainer{
 
 
     width : 100%;
@@ -121,7 +121,7 @@
 
 }
 
-.ResultsGroup{
+.ResultsGroup,.TeamPlayers{
 
     width : 49%;
     height : 100%;
@@ -130,12 +130,14 @@
     justify-content:center;
 }
 
-.GroupA{
+.GroupA, .TeamPlayersA{
     justify-content:right;
 }
-.GroupB{
+.GroupB .TeamPlayersB{
     justify-content:left;
 }
+
+
 
 .ResultsGroupSeparation{
 
