@@ -58,6 +58,12 @@ async function UpdateTeamInfo(){
     TeamPlayers['Dom'] = JSON.parse(ResponseData['Dom'])
     TeamPlayers['Vis'] = JSON.parse(ResponseData['Vis'])
 
+
+    console.log(TeamPlayers)
+    TeamPlayers["Dom"].forEach(element => {
+        console.log(element)
+
+    });
     
 }
 
