@@ -61,7 +61,7 @@ async function UpdateTeamInfo(){
     console.log(VisTeamPlayers)
 
 
-    DomTeamPlayers.array.forEach(element => {
+    DomTeamPlayers.forEach(element => {
         console.log(element)
     });
     
