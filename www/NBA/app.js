@@ -10,6 +10,9 @@ const TotalPlayerTimePerTeam = MatchDuration*5
 
 const MinPlayerTime = 10 // to avoid small times
 
+
+const NotifDuration = 10
+
 function IsValidMatch(){
 
     if(  MatchData['Dom']!=undefined &&  MatchData['Vis']!=undefined &&  MatchData['Dom'] != MatchData['Vis']  ){
@@ -300,6 +303,7 @@ function CreateNotification(Type='Fail',Message=''){
     let Notif = {}
     Notif['Type']= Type
     Notif['Messages'] = [Message]
+    console.log(Message)
     
     Notify(Notif);
 
@@ -341,7 +345,7 @@ function Notify(Notif){
   
     document.body.appendChild(newDiv);
   
-    d3.select('#Notif').transition().delay(50000).duration(1000)
+    d3.select('#Notif').transition().delay(50000).duration(NotifDuration)
     .style('opacity','0')
     .on('end',function (){
       newDiv.remove();
