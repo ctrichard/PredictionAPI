@@ -105,7 +105,7 @@ function DrawTeamPlayer(Side){
         // input.value =  element[1] / element[3] : 0;
         input.value = 0    
         if(element[5] > 0 && ( (element[5] / element[3]) > MinPlayerTime) )
-            input.value =  element[1] / element[3];
+            input.value =  element[5] / element[3];
 
 
         let parentdiv = document.getElementById('TeamPlayers'+Side)
