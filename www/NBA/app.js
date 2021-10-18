@@ -151,7 +151,6 @@ function UpdateTeamTotalTimePlayed(Side){
         if(playerdata[1]=='Name' | playerdata[0]==undefined)
           return //=>continue
 
-        console.log('TimeInput'+playerdata[1])
         let element = document.getElementById('TimeInput'+playerdata[1])
         TotalTimePlayed -= element.value
 
@@ -160,6 +159,8 @@ function UpdateTeamTotalTimePlayed(Side){
     if(TotalTimePlayed <0 ){
         CreateNotification('Warning','Le nombre total de temps par équipe ne peut pas excéder '+TotalPlayerTimePerTeam+' minutes.')
     }
+
+    console.log('Left ',TotalTimePlayed,'minutes for team',Side)
 
 }
 
