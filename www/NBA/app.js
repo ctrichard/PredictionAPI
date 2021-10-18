@@ -85,15 +85,17 @@ function DrawTeamPlayer(Side){
 
         let input = document.createElement("input");
         input.classList.add("TeamPlayerTimeInput")
-        input.type = "text";
-        input.id = 'Timeinput'+element[1];
+        input.type = "number";
+        input.id = 'TimeInput'+element[1];
+        input.min = '10'
+        input.max = '48'
 
         let parentdiv = document.getElementById('TeamPlayers'+Side)
         parentdiv.appendChild(div);
         div.appendChild(input);
 
         input.addEventListener('change', (event) => {
-            MatchPlayerData[Side][element[1]] = event.value;
+            MatchPlayerData[Side][element[1]] = input.value;
         });
 
     });
