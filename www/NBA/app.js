@@ -94,7 +94,7 @@ function DrawTeamPlayer(Side){
         parentdiv.appendChild(div);
         div.appendChild(input);
 
-        input.addEventListener('change', (event) => {
+        document.getElementById(input.id).addEventListener('change', (event) => {
             MatchPlayerData[Side][element[1]] = input.value;
         });
 
