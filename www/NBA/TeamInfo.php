@@ -38,7 +38,8 @@ catch( Exception $e){
 }
 
 
-$response.pop(0)
+$response['Dom'].pop(0)
+$response['Vis'].pop(0)
 echo json_encode($response);
 
 
