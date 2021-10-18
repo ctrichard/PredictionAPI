@@ -1,4 +1,6 @@
 const MatchData = {Season : 2021}
+var DomTeamPlayers = {}
+var VisTeamPlayers = {}
 
 
 function IsValidMatch(){
@@ -37,7 +39,7 @@ function selectTeam(Side='Dom',value){
 
 async function UpdateTeamInfo(){
     
-    let Prediction = await fetch('./TeamInfo.php', {
+    let ResponseData = await fetch('./TeamInfo.php', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -47,8 +49,13 @@ async function UpdateTeamInfo(){
     })
     .then(response => response.json())
 
-    console.log(Prediction)
+    
+    DomTeamPlayers=JSON.parse(ResponseData)['Dom']
+    VisTeamPlayers=JSON.parse(ResponseData)['Vis']
 
+    console.log(DomTeamPlayers)
+    console.log(VisTeamPlayers)
+    
 }
 
 
