@@ -50,8 +50,8 @@ async function UpdateTeamInfo(){
     .then(response => response.json())
 
     
-    DomTeamPlayers=JSON.parse(ResponseData)['Dom']
-    VisTeamPlayers=JSON.parse(ResponseData)['Vis']
+    DomTeamPlayers=JSON.parse(ResponseData['Dom'])
+    VisTeamPlayers=JSON.parse(ResponseData['Vis'])
 
     console.log(DomTeamPlayers)
     console.log(VisTeamPlayers)
