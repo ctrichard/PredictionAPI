@@ -136,7 +136,7 @@ function DrawTeamPlayer(Side){
         document.getElementById(input.id).addEventListener('change', (event) => {
 
             InputModifs(event);
-            UpdateTeamTotalTimePlayed(evt.currentTarget.Side)
+            UpdateTeamTotalTimePlayed(event.currentTarget.Side)
         });
 
     });
