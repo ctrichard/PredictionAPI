@@ -84,6 +84,7 @@ function ResetTeamPlayers(Side){
 }
 
 function DrawTeamPlayer(Side){
+
     TeamPlayers[Side].forEach(element => {
         if(element[1]=='Name' | element[0]==undefined)
           return //=>continue
@@ -91,6 +92,8 @@ function DrawTeamPlayer(Side){
         let div = document.createElement('div');
         div.classList.add("TeamPlayer")
         div.innerHTML = element[1]+' '+element[element.length - 1]
+        if(element[5] > 0 && element[3]>0 ) //&& ( (element[5] / element[3]) > MinPlayerTime) )
+            div.innerHTML += ' '+parseInt(element[5] / element[3]);
 
         let input = document.createElement("input");
         input.classList.add("TeamPlayerTimeInput")
@@ -103,9 +106,7 @@ function DrawTeamPlayer(Side){
         input.size = 2;
 
         // input.value =  element[1] / element[3] : 0;
-        input.value = 0    
-        if(element[5] > 0 && ( (element[5] / element[3]) > MinPlayerTime) )
-            input.value =  parseInt(element[5] / element[3]);
+        // input.value = 0    
 
 
         let parentdiv = document.getElementById('TeamPlayers'+Side)
@@ -114,7 +115,6 @@ function DrawTeamPlayer(Side){
 
 
         function InputModifs(evt){
-
 
             if(evt.currentTarget.value > MatchDuration){
                 CreateNotification('Fail','Un match dure au maximum '+MatchDuration+' minutes')
@@ -136,10 +136,27 @@ function DrawTeamPlayer(Side){
         document.getElementById(input.id).addEventListener('change', (event) => {
 
             InputModifs(event);
+            UpdateTeamTotalTimePlayed(evt.currentTarget.Side)
         });
 
     });
 
+}
+
+function UpdateTeamTotalTimePlayed(Side){
+
+    TotalTimePlayed = TotalPlayerTimePerTeam
+
+    TeamPlayers[Side].forEach(playerdata => {
+
+        let element = document.getElementById('TimeInput'+playerdata[1])
+        TotalTimePlayed -= element.value
+
+    })
+
+    if(TotalTimePlayed <0 ){
+        CreateNotification('Warning','Le nombre total de temps par équipe ne peut pas excéder '+TotalPlayerTimePerTeam+' minutes.')
+    }
 
 }
 

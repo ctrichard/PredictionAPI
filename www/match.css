@@ -140,8 +140,9 @@
 }
 .TeamPlayers{
     height:fit-content;
-    flex-direction: row ;
-    flex-wrap: wrap ;
+    /* flex-direction: row ; */
+    /* flex-wrap: wrap ; */
+    display : block;
     font-size: var(--font-size) ;
 }
 
