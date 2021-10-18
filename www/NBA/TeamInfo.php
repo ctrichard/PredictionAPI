@@ -25,9 +25,8 @@ try {
     $ArrayVis = array_map("str_getcsv", explode("\n", $DomFile));
 
     $response['Success'] = True; 
-    print($response);
-    unset($response['Dom'][0]);
-    unset($response['Vis'][0]);
+    unset($ArrayDom['Dom'][0]);
+    unset($ArrayVis['Vis'][0]);
     $response['Dom'] = json_encode($ArrayDom);
     $response['Vis'] = json_encode($ArrayVis); 
 
