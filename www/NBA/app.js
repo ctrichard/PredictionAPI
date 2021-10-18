@@ -95,7 +95,7 @@ function DrawTeamPlayer(Side){
         div.appendChild(input);
 
 
-        function InputModifs(input,playername){
+        function InputModifs(input,playername,Side){
             MatchPlayerData[Side][playername] = input.value;
             console.log(MatchPlayerData)
             console.log(input.value)
@@ -103,7 +103,7 @@ function DrawTeamPlayer(Side){
 
         document.getElementById(input.id).addEventListener('change', (event) => {
 
-            InputModifs(document.getElementById(input.id),element[1]);
+            InputModifs(document.getElementById(input.id),element[1],Side);
         });
 
     });
