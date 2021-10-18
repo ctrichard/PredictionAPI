@@ -10,13 +10,16 @@ const TotalPlayerTimePerTeam = MatchDuration*5
 
 const MinPlayerTime = 10 // to avoid small times
 
-
 const NotifDuration = 10
 
+
 function IsValidMatch(){
+    lefttimeDom = CheckTeamTotalTimePlayed('Dom') 
+    lefttimeVis = CheckTeamTotalTimePlayed('Vis')
 
     if(  MatchData['Dom']!=undefined &&  MatchData['Vis']!=undefined &&  MatchData['Dom'] != MatchData['Vis'] 
-           &&  CheckTeamTotalTimePlayed('Dom')==0 &&  CheckTeamTotalTimePlayed('Vis')==0  ){
+            && lefttimeDom && lefttimeVis){
+
         return true;
     }
     else{
