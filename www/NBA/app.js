@@ -33,7 +33,6 @@ function selectTeam(Side='Dom',value){
     UpdatePredictButton()
     ResetPredictions()
 
-    ResetTeamPlayers()
     UpdateTeamInfo()
 
 }
@@ -41,6 +40,8 @@ function selectTeam(Side='Dom',value){
 
 async function UpdateTeamInfo(){
 
+    ResetTeamPlayers('Dom')
+    ResetTeamPlayers("Vis")
     
     let ResponseData = await fetch('./TeamInfo.php', {
         method: 'POST',
