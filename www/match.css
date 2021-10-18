@@ -137,6 +137,11 @@
     justify-content:left;
 }
 
+.TeamPlayer{
+    margin : 0.1%;
+    background-color: darkgray;
+}
+
 
 
 .ResultsGroupSeparation{

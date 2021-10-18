@@ -71,7 +71,8 @@ function DrawTeamPlayer(Side){
     TeamPlayers[Side].forEach(element => {
         console.log(element)
         let div = document.createElement('div');
-        div.innerHTML = element
+        div.classList.add("TeamPlayer")
+        div.innerHTML = element[1]+' '+element[-1]
         parentdiv = document.getElementById('TeamPlayersVis')
         parentdiv.appendChild(div);
 
