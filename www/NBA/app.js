@@ -63,19 +63,24 @@ async function UpdateTeamInfo(){
     
 }
 
-function ResetTeamPlayers(){
+function ResetTeamPlayers(Side){
+
+    let div = document.getElementById('TeamPlayers'+Side)
+    while (div.firstChild) {
+        div.removeChild(div.lastChild);
+      }
 
 }
 
 function DrawTeamPlayer(Side){
     TeamPlayers[Side].forEach(element => {
-        if(element[0]=='Name' | element[0]==undefined)
+        if(element[1]=='Name' | element[0]==undefined)
           return //=>continue
 
         let div = document.createElement('div');
         div.classList.add("TeamPlayer")
         div.innerHTML = element[1]+' '+element[element.length - 1]
-        parentdiv = document.getElementById('TeamPlayers'+Side)
+        let parentdiv = document.getElementById('TeamPlayers'+Side)
         parentdiv.appendChild(div);
 
 
