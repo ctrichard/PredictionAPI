@@ -110,13 +110,15 @@ function DrawTeamPlayer(Side){
         function InputModifs(evt){
 
 
-            if(evt.currentTarget.value > MatchDuration)
+            if(evt.currentTarget.value > MatchDuration){
                 CreateNotification('Fail','Un match dure au maximum '+MatchDuration+' minutes')
                 evt.currentTarget.value = MatchDuration
+            }
             
-            if(evt.currentTarget.value < MinPlayerTime)
+            if(evt.currentTarget.value < MinPlayerTime){
                 CreateNotification('Fail','Ne pas mettre moins de '+MinPlayerTime+' minutes')
                 evt.currentTarget.value = MinPlayerTime
+            }
 
             if(MatchPlayerData[evt.currentTarget.Side]=='')
                 MatchPlayerData[evt.currentTarget.Side]={}
