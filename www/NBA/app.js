@@ -100,7 +100,8 @@ function DrawTeamPlayer(Side){
         input.max = '48'
         input.PlayerName = element[1];
         input.Side = Side;
-        input.value = element[3] > 0 ? element[1] / element[3] : 0;
+        input.size = 2;
+        input.value = element[3] > MinPlayerTime ? element[1] / element[3] : 0;
 
 
         let parentdiv = document.getElementById('TeamPlayers'+Side)
