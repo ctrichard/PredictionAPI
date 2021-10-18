@@ -26,7 +26,7 @@ function IsValidMatch(){
 
 function UpdatePredictButton(){
 
-    if( IsValidMatch() ){
+    if( IsValidMatch() &&  CheckTeamTotalTimePlayed('Dom')==0 &&  CheckTeamTotalTimePlayed('Vis')==0 ){
         document.getElementById('ResultsPrediction').classList.add('Active');
         console.log("Active")
     }
@@ -40,11 +40,11 @@ function selectTeam(Side='Dom',value){
 
     MatchData[Side] = value
     console.log(MatchData)
-    UpdatePredictButton()
     ResetPredictions()
-
+    
     UpdateTeamInfo()
-
+    
+    UpdatePredictButton()
 }
 
 
@@ -136,14 +136,15 @@ function DrawTeamPlayer(Side){
         document.getElementById(input.id).addEventListener('change', (event) => {
 
             InputModifs(event);
-            UpdateTeamTotalTimePlayed(event.currentTarget.Side)
+            // CheckTeamTotalTimePlayed(event.currentTarget.Side)
+            UpdatePredictButton()
         });
 
     });
 
 }
 
-function UpdateTeamTotalTimePlayed(Side){
+function CheckTeamTotalTimePlayed(Side){
 
     TotalTimePlayed = TotalPlayerTimePerTeam
 
@@ -161,6 +162,8 @@ function UpdateTeamTotalTimePlayed(Side){
     }
 
     console.log('Left ',TotalTimePlayed,'minutes for team',Side)
+
+    return TotalTimePlayed
 
 }
 
