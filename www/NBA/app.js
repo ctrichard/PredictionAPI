@@ -89,21 +89,25 @@ function DrawTeamPlayer(Side){
         input.id = 'TimeInput'+element[1];
         input.min = '10'
         input.max = '48'
+        input.PlayerName = element[1];
+        input.Side = Side;
+
 
         let parentdiv = document.getElementById('TeamPlayers'+Side)
         parentdiv.appendChild(div);
         div.appendChild(input);
 
 
-        function InputModifs(input,playername,Side){
-            MatchPlayerData[Side][playername] = input.value;
+        function InputModifs(evt,input){
+
+            MatchPlayerData[evt.currentTarget.Side][evt.currentTarget.PlayerName] = input.value;
             console.log(MatchPlayerData)
             console.log(input.value)
         }
 
         document.getElementById(input.id).addEventListener('change', (event) => {
 
-            InputModifs(document.getElementById(input.id),element[1],Side);
+            InputModifs(event,document.getElementById(input.id));
         });
 
     });
