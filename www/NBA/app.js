@@ -44,7 +44,7 @@ function selectTeam(Side='Dom',value){
     
     UpdateTeamInfo()
     
-    UpdatePredictButton()
+    // UpdatePredictButton()
 }
 
 
