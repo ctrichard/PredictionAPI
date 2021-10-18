@@ -24,6 +24,7 @@ $response = [];
 $response['Success'] = False;
 $Teams = json_decode(file_get_contents('./Data.json'),true)['TEAMCodes_Names'];
 
+$response['PlayerList'] = $InputData['PlayerList'] ?? 'Unknown';
 
 
 if(isset($InputData['Dom']) && isset($InputData['Vis']) ){

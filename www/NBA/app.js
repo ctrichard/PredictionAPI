@@ -236,7 +236,7 @@ async function GetPrediction(DomCode,VisCode){
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({Dom: DomCode, Vis : VisCode}),
+        body: JSON.stringify({Dom: DomCode, Vis : VisCode, PlayerList : MatchPlayerData}),
     })
     .then(response => response.json())
 
