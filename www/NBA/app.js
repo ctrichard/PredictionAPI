@@ -15,7 +15,8 @@ const NotifDuration = 10
 
 function IsValidMatch(){
 
-    if(  MatchData['Dom']!=undefined &&  MatchData['Vis']!=undefined &&  MatchData['Dom'] != MatchData['Vis']  ){
+    if(  MatchData['Dom']!=undefined &&  MatchData['Vis']!=undefined &&  MatchData['Dom'] != MatchData['Vis'] 
+           &&  CheckTeamTotalTimePlayed('Dom')==0 &&  CheckTeamTotalTimePlayed('Vis')==0  ){
         return true;
     }
     else{
@@ -26,7 +27,7 @@ function IsValidMatch(){
 
 function UpdatePredictButton(){
 
-    if( IsValidMatch() &&  CheckTeamTotalTimePlayed('Dom')==0 &&  CheckTeamTotalTimePlayed('Vis')==0 ){
+    if( IsValidMatch()){
         document.getElementById('ResultsPrediction').classList.add('Active');
         console.log("Active")
     }
