@@ -50,3 +50,59 @@ a{
     max-width : 100%;
 }
 
+
+
+
+/*------*\
+notifs 
+\*------*/
+
+
+.basicNotif{
+    border: thin solid rgb(55, 56, 47);
+    background : rgb(134, 133, 133);
+    text-align: left;
+    border-radius: 10px ;
+    justify-content: center;
+    width : 20%;
+    height : 25%;
+    padding : 5px;
+    position : absolute;
+    top : 0;
+    left : 0;
+    z-index : 100;
+    animation-duration: 10s;
+  }   
+  
+  .SuccessNotif{
+    border: thick solid rgb(27, 97, 0,0.9);
+    background : rgb(47, 187, 43,0.8);
+    color : black;
+    font : bold;
+  }   
+  
+  .FailNotif{
+    border: thick solid rgba(138, 5, 5, 0.9);
+    background : rgba(133, 31, 31, 0.8);
+    color : var(--basic-color);
+    font : bold;
+  }   
+  
+  .NeutralNotif{
+    width : 20%;
+    height : 50%;
+    border: thick solid rgba(32, 44, 51, 0.9);
+    background : rgba(33, 34, 43, 0.8);
+    color : var(--basic-color);
+    font : bold;
+  }  
+  .WarningNotif{
+    width : 20%;
+    height : 50%;
+    border: thick solid rgba(235, 115, 17, 0.9);
+    background : rgba(97, 47, 7, 0.9);
+    color : var(--basic-color);
+    font : bold;
+  }   
+  
+  

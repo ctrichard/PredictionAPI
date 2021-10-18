@@ -4,6 +4,12 @@ var MatchPlayerData = {Dom : '', Vis : ''}
 var TeamPlayers =  {'Dom' : '', 'Vis' : ''}
 
 
+
+const MatchDuration = 48
+const TotalPlayerTimePerTeam = MatchDuration*5
+
+const MinPlayerTime = 10 // to avoid small times
+
 function IsValidMatch(){
 
     if(  MatchData['Dom']!=undefined &&  MatchData['Vis']!=undefined &&  MatchData['Dom'] != MatchData['Vis']  ){
@@ -100,9 +106,18 @@ function DrawTeamPlayer(Side){
 
         function InputModifs(evt){
 
+
+            if(evt.currentTarget.value > MatchDuration)
+                CreateNotification('Fail','Un match dure au maximum '+MatchDuration+' minutes')
+                evt.currentTarget.value = MatchDuration
+            
+            if(evt.currentTarget.value < MinPlayerTime)
+                CreateNotification('Fail','Ne pas mettre moins de '+MinPlayerTime+' minutes')
+                evt.currentTarget.value = MinPlayerTime
+
             if(MatchPlayerData[evt.currentTarget.Side]=='')
                 MatchPlayerData[evt.currentTarget.Side]={}
-                
+
             MatchPlayerData[evt.currentTarget.Side][evt.currentTarget.PlayerName] = evt.currentTarget.value;
             console.log(MatchPlayerData)
         }
@@ -268,3 +283,69 @@ document.getElementById('ResultsPrediction').addEventListener('click', (event) =
     let Prediction =  GetPrediction(MatchData['Dom'],MatchData['Vis'])
 
 });
+
+
+
+
+
+
+
+
+
+//Notifs
+
+
+function CreateNotification(Type='Fail',Message=''){
+
+    let Notif = {}
+    Notif['Type']= Type
+    Notif['Messages'] = [Message]
+    
+    Notify(Notif);
+
+}
+
+function Notify(Notif){
+
+    if(document.getElementById('Notif'))
+      document.getElementById('Notif').remove();
+  
+    let newDiv = document.createElement("div");
+    newDiv.id = 'Notif';
+    newDiv.classList.add('basicNotif');
+  
+    if(Notif.Type=='Success'){
+      newDiv.classList.add('SuccessNotif');
+      Notif['Messages'].push('Shape Valid');
+    }
+    else if(Notif['Type']=='Neutral')
+      newDiv.classList.add('NeutralNotif');
+    else if(Notif['Type']=='Warning')
+      newDiv.classList.add('WarningNotif');
+    else if(Notif['Type']=='Fail')
+      newDiv.classList.add('FailNotif');
+  
+    Array.prototype.forEach.call(Notif['Messages'], element => {
+      //newDiv.appendChild(document.createTextNode(''));
+      if(typeof element === 'object'){
+        for(let ii in element){
+          newDiv.innerHTML += element[ii];
+          newDiv.innerHTML += '<br>';
+        }
+      }
+      else{
+        newDiv.innerHTML += element;
+        newDiv.innerHTML += '<br>';
+      }
+    });
+  
+    document.body.appendChild(newDiv);
+  
+    d3.select('#Notif').transition().delay(50000).duration(1000)
+    .style('opacity','0')
+    .on('end',function (){
+      newDiv.remove();
+    });
+  
+  }
+  
