@@ -70,8 +70,8 @@ function ResetTeamPlayers(){
 function DrawTeamPlayer(Side){
     TeamPlayers[Side].forEach(element => {
         if(element[0]=='Name' | element[0]==undefined)
-          continue
-          
+          return //=>continue
+
         console.log(element)
         let div = document.createElement('div');
         div.classList.add("TeamPlayer")
