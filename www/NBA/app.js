@@ -69,10 +69,13 @@ function ResetTeamPlayers(){
 
 function DrawTeamPlayer(Side){
     TeamPlayers[Side].forEach(element => {
+        if(element[0]=='Name' | element[0]==undefined)
+          continue
+          
         console.log(element)
         let div = document.createElement('div');
         div.classList.add("TeamPlayer")
-        div.innerHTML = element[1]+' '+element[-1]
+        div.innerHTML = element[1]+' '+element[element.length - 1]
         parentdiv = document.getElementById('TeamPlayersVis')
         parentdiv.appendChild(div);
 
