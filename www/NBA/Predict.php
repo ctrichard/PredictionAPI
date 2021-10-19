@@ -37,11 +37,13 @@ if(isset($InputData['Dom']) && isset($InputData['Vis']) ){
         $response['Dom']  = $prediction['Dom'];
         $response['Vis']  = $prediction['Vis'];
         $response['Success'] = True;
-
+        $p = shell_exec( 'conda run -n NBAPrediction python MakePrediction.py 2021-07-20 Phoenix\ Suns Milwaukee\ Bucks 456');
+        $response['Prediction'] = file_get_contents('/home/ubuntu/Projects/ParisSportifIA/Data/Prediction/Ouputs/Prediction_456.json');
 
     }
 
 }
+
 
 
 echo json_encode($response);
