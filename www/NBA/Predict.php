@@ -41,7 +41,7 @@ function CreatePlayerListFile(&$PlayerList,$Dom,$Vis,$Season){
             if(intval($mp)>48 || intval($mp)<0)
                 throw new Exception('Minute played for player '.$p.' is '.$mp);
 
-            if($Side !='Dom' || $Side != 'Vis')
+            if($Side !='Dom' && $Side != 'Vis')
                 throw new Exception('Side for player '.$p.' is '.$Side);
 
             $totplaytime -= intval($mp);
