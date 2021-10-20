@@ -227,11 +227,11 @@ function ResetPredictions(){
 function ShowPrediction(Data){
 
 
-    document.getElementById('BarA').style.width = Data['Dom']
-    document.getElementById('BarB').style.width = Data['Vis']
+    document.getElementById('BarA').style.width = Data['Prediction'][0]
+    document.getElementById('BarB').style.width = Data['Prediction'][1]
 
-    document.getElementById('TextBarA').innerHTML =  Data['Dom']
-    document.getElementById('TextBarB').innerHTML =  Data['Vis']
+    document.getElementById('TextBarA').innerHTML =  Data['Prediction'][0]*100+'%'
+    document.getElementById('TextBarB').innerHTML =  Data['Prediction'][1]*100+'%'
 
     document.getElementById('TextBarA').style.opacity = 1
     document.getElementById('TextBarB').style.opacity = 1
