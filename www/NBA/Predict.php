@@ -96,7 +96,10 @@ class RunPrediction{
         $command .= ' '.$this->UUID.' ';
 
 
-        $this->log = shell_exec( 'conda run -n NBAPrediction python MakePrediction.py 2021-07-20 Phoenix\ Suns Milwaukee\ Bucks 456');
+        // $this->log = shell_exec( 'conda run -n NBAPrediction python MakePrediction.py 2021-07-20 Phoenix\ Suns Milwaukee\ Bucks 456');
+        $this->log += 'Executing : '.$command;
+        $this->log += '======================';
+        $this->log = shell_exec($command);
 
         
         $fp = fopen($this->PathToOutputs.'LogPrediction_'.$this->UUID.'.log', 'w');
