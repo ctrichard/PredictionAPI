@@ -56,6 +56,8 @@ class RunPrediction{
 
         $Teams = json_decode(file_get_contents('./Data.json'),true)['TEAMCodes_Names'];
 
+        print_r($this);
+        die();
 
         if(!$this->Dom || !IsValidTeamName($this->Dom,$Teams))
             throw new Exception('Bad dom team name :'.$this->Dom);
@@ -220,7 +222,7 @@ try{
     $Prediction->SetDate($response['Date']);
     $Prediction->SetModelName($response['Model']);
     $Prediction->SetPathOutputs($OutputsTempFileLocation);
-    $Prediction->SetPathInputs($IntputsTempFileLocation);
+    $Prediction->SetPathInputs($InputsTempFileLocation);
 
     $Prediction->Prepare();
 
