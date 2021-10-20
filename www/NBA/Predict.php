@@ -215,10 +215,10 @@ try{
 
 
     $Prediction = new RunPrediction();
-    $Prediction->SetDomTeam($response['Dom'])
-    $Prediction->SetVisTeam($response['Vis'])
-    $Prediction->SetDate($response['Date'])
-    $Prediction->SetModelName($response['Model'])
+    $Prediction->SetDomTeam($response['Dom']);
+    $Prediction->SetVisTeam($response['Vis']);
+    $Prediction->SetDate($response['Date']);
+    $Prediction->SetModelName($response['Model']);
 
     $Prediction->Prepare();
 
