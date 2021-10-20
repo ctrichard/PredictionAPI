@@ -46,9 +46,9 @@ function CreatePlayerListFile(&$PlayerList,$Dom,$Vis,$Season){
 
             $totplaytime -= intval($mp);
 
-            $Data['Name'].append($p);
-            $Data['MP'].append($mp.':00');
-            $Data['Side'].append($Side);
+            array_push($Data['Name'],$p);
+            array_push($Data['MP'],$mp.':00');
+            array_push($Data['Side'],$Side);
             
         }
 
