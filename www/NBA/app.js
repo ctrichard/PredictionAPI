@@ -74,6 +74,8 @@ async function UpdateTeamInfo(){
 
     DrawTeamPlayer('Dom')
     DrawTeamPlayer('Vis')
+    
+    MatchPlayerData = {Dom : '', Vis : ''}
 
     
 }
