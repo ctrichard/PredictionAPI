@@ -110,7 +110,7 @@ function CheckPlayerName($playername,$teamname,$season){
 
     $Team = GetTeamInfo(GetTeamCodeFromName($teamname),$season);
 
-    if(!in_array($playername , $Team.keys()))
+    if(!in_array($playername , array_keys($Team)))
         throw new Exception('Player '.$playername.' is not in team '.$teamname.' during season '.$season);
     
     return true;
