@@ -66,7 +66,7 @@ try{
     $InputData = json_decode(file_get_contents('php://input'),true);
 
     $response = [];
-    $response['Success'] = False;
+    // $response['Success'] = False;
     $Teams = json_decode(file_get_contents('./Data.json'),true)['TEAMCodes_Names'];
 
     $response['PlayerList'] = $InputData['PlayerList'] ?? null;

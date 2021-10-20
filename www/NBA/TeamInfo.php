@@ -8,8 +8,8 @@ try {
 
     $InputData = json_decode(file_get_contents('php://input'),true);
 
-    if(!is_numeric($InputData['Season']))
-       throw new BadSeason('Bad input : '.$InputData['Season']);
+    if(!is_numeric($InputData['Season']) || intval($InputData['Season'])<0)
+       throw new BadSeason('Bad season input : '.$InputData['Season']);
 
 
     $Season = intval($InputData['Season']);
