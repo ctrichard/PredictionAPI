@@ -99,8 +99,8 @@ class RunPrediction{
 
 
         // $this->log = shell_exec( 'conda run -n NBAPrediction python MakePrediction.py 2021-07-20 Phoenix\ Suns Milwaukee\ Bucks 456');
-        $this->log += 'Executing : '.$command;
-        $this->log += '======================';
+        $this->log .= 'Executing : '.$command;
+        $this->log .= '======================';
         $this->log = shell_exec($command);
 
         
@@ -240,7 +240,7 @@ try{
     $Prediction->Run($GLOBALS['MyUUID']);
     $Prediction->GetPredictionResults($GLOBALS['MyUUID']);
 
-    $prediction = GetPrediction($Dom,$Vis);
+    // $prediction = GetPrediction($Dom,$Vis);
     $response['Success'] = $Prediction->IsSuccess(); //True;
 
     // $response['PlayerList'] = json_encode($response['PlayerList']);
