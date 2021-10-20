@@ -189,7 +189,7 @@ function CreatePlayerListFile(&$PlayerList,$Dom,$Vis,$Season){
     if(!is_dir($path))
        throw new FileNotFound('Bad location for Player list : '.$path);
 
-    $fp = fopen($path.'PlayerList_'.$MyUUID.'.json', 'w');
+    $fp = fopen($path.'PlayerList_'.$GLOBALS['MyUUID'].'.json', 'w');
     fwrite($fp, json_encode($PlayerList));
     fclose($fp);
 
@@ -209,7 +209,7 @@ try{
     $response['Model'] =  $InputData['Model'] ?? null;
     $response['Season'] =  $InputData['Season'] ?? null;
     $response['Date'] =  $InputData['Date'] ?? null;
-    $response['UUID'] = $MyUUID;
+    $response['UUID'] = $GLOBALS['MyUUID'];
 
 
     $Prediction = new RunPrediction();
@@ -232,8 +232,8 @@ try{
     CreatePlayerListFile($response['PlayerList'],$response['Dom'],$response['Vis'],$response['Season']);
 
 
-    $Prediction->Run($MyUUID);
-    $Prediction->GetPredictionResults($MyUUID);
+    $Prediction->Run($GLOBALS['MyUUID']);
+    $Prediction->GetPredictionResults($GLOBALS['MyUUID']);
 
     $prediction = GetPrediction($Dom,$Vis);
     $response['Success'] = $Prediction->IsSuccess(); //True;
