@@ -83,7 +83,10 @@ function GetTeamCodeFromName($TeamName){
 
 function IsValidModelName($Name){
 
-    return in_array($Name,array_values(GetModels().keys()));
+
+    print_r(GetModels().keys());
+    print_r($Name);
+    return in_array($Name,GetModels().keys());
 
 }
 
