@@ -85,7 +85,7 @@ function IsValidModelName($Name){
 
 
 
-    return in_array($Name,arra_keys(GetModels()));
+    return in_array($Name,array_keys(GetModels()));
 
 }
 
