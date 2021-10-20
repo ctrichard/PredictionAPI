@@ -102,7 +102,7 @@ class RunPrediction{
 
         
         $fp = fopen($this->PathToOutputs+'LogPrediction_'.$this->UUID.'.log', 'w');
-        fwrite($fp, echo $this->log);
+        fwrite($fp, $this->log);
         fclose($fp);
 
         $this->Success = True;
