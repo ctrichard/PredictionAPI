@@ -10,7 +10,7 @@ class BadInput extends Exception{
     public function __construct(string $message = "", int $code = 0, ?Throwable $previous = null){
         // some code
     
-        $message = self->BadInputType.' : '.$message;
+        $message = $this->BadInputType.' : '.$message;
         // make sure everything is assigned properly
         parent::__construct($message, $code, $previous);
     }
