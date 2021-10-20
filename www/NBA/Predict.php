@@ -90,10 +90,12 @@ try{
     if(IsValidModelName($response['Model']))
         throw new Exception('bad model name : '.$response['Model']);
 
+        echo 'rrrrrrrrrrrrr';
+        die();
+        
     CreatePlayerListFile($response['PlayerList'],$response['Dom'],$response['Vis'],$response['Season']);
-    
-    echo 'rrrrrrrrrrrrr';
-    die();
+
+
 
     $prediction = GetPrediction($Dom,$Vis);
     $response['Success'] = True;
