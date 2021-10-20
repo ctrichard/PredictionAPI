@@ -24,24 +24,37 @@ $response = [];
 $response['Success'] = False;
 $Teams = json_decode(file_get_contents('./Data.json'),true)['TEAMCodes_Names'];
 
-$response['PlayerList'] = $InputData['PlayerList'] ?? 'Unknown';
+$response['PlayerList'] = $InputData['PlayerList'] ?? null;
+$response['Dom'] =  $InputData['Dom'] ?? null;
+$response['Vis'] =  $InputData['Vis'] ?? null;
+
+if( $response['Dom'] && $response['Vis']  && $response['PlayerList']){
+
+    if(IsValidTeamName( $response['Dom'],$Teams) && IsValidTeamName( $response['Vis'],$Teams)){
 
 
-if(isset($InputData['Dom']) && isset($InputData['Vis']) ){
-    $Dom =  htmlspecialchars($InputData['Dom']);
-    $Vis =  htmlspecialchars($InputData['Vis']);
-
-    if(IsValidTeamName($Dom,$Teams) && IsValidTeamName($Vis,$Teams)){
-
+        CreatePlayerListFile()
+        
         $prediction = GetPrediction($Dom,$Vis);
-        $response['Dom']  = $prediction['Dom'];
-        $response['Vis']  = $prediction['Vis'];
+        // $response['Dom']  = $prediction['Dom'];
+        // $response['Vis']  = $prediction['Vis'];
         $response['Success'] = True;
+
+
         $p = shell_exec( 'conda run -n NBAPrediction python MakePrediction.py 2021-07-20 Phoenix\ Suns Milwaukee\ Bucks 456');
         $response['Prediction'] = file_get_contents('/home/ubuntu/Projects/ParisSportifIA/Data/Prediction/Ouputs/Prediction_456.json');
 
     }
+    else{
 
+        $response['ErrorMessage'] = 'At least one bad team name '.$response['Dom'].' , '.$response['Vis'];
+
+    }
+
+}
+else{
+
+    $response['ErrorMessage'] = 'Missing Intput Data';
 }
 
 

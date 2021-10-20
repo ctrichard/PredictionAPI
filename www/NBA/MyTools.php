@@ -40,6 +40,9 @@ $DataLocation = '/home/ubuntu/Projects/ParisSportifIA/Data/';
 
 $TeamDataLocation = $DataLocation.'Teams/';
 
+$InputsTempFileLocation = 'Inputs/';
+$OutputsTempFileLocation = 'Outputs/';
+
 
 function GetTeamFilePath($DomCode,$Season){
     $path = $GLOBALS['TeamDataLocation'].$DomCode.'_'.$Season.'.csv';
