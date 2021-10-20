@@ -22,11 +22,10 @@ function GetPrediction($Dom,$Vis){
 
 function CreatePlayerListFile(&$PlayerList,$Dom,$Vis){
 
-    $Data = [
-        "Name" = [],
-        "MP" = [],
-        "Side" = []
-    ]
+    $Data = [];
+    $Data["Name"] = [];
+    $Data["MP"] = [];
+    $Data["Side"] = [];
 
     foreach($PlayerList as $Side=>$Players){
 
