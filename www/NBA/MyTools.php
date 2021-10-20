@@ -49,10 +49,16 @@ function GetTeamFilePath($DomCode,$Season){
     if(file_exists($path))
         return $path;
     else
-        throw new FileNotFound($path);
-
+        throw new FileNotFound('Team file missing : '.$path);
     
 }
+
+function GetModels(){
+
+    return json_decode(file_get_contents('Models.json'),true);
+}
+
+
 
 function GetTeamCodeFromName($TeamName){
 
@@ -75,6 +81,14 @@ function GetTeamCodeFromName($TeamName){
 
 
 
+function IsValidModelName($Name){
+
+    return in_array($Name,array_values(GetModels().keys()));
+
+}
+
+
+
 function IsValidTeamName($Name,$Teams){
 
     return in_array($Name,array_values($Teams));
@@ -82,3 +96,21 @@ function IsValidTeamName($Name,$Teams){
 }
 
 
+function GetTeamInfo($TeamCode,$Season){
+
+    $File = file_get_contents(GetTeamFilePath($TeamCode,$Season));
+    $Array = array_map("str_getcsv", explode("\n", $File));
+    return $Array;
+
+}
+
+function CheckPlayerName($playername,$teamname,$season){
+
+    $Team = GetTeamInfo(GetTeamCodeFromName($teamname));
+
+    if(!in_array($playername , $Team.keys())
+        throw new Exception('Player '.$playername.' is not in team '.$teamname.' during season '.$season);
+    
+    return true;
+    
+}

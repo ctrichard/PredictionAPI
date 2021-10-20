@@ -17,18 +17,9 @@ try {
     $DomCode = GetTeamCodeFromName($InputData['TeamDom']);
     $VisCode = GetTeamCodeFromName($InputData['TeamVis']);
 
-
-    $DomFile = file_get_contents(GetTeamFilePath($DomCode,$Season));
-    $VisFile = file_get_contents(GetTeamFilePath($VisCode,$Season));
-
-    $ArrayDom = array_map("str_getcsv", explode("\n", $DomFile));
-    $ArrayVis = array_map("str_getcsv", explode("\n", $VisFile));
-
+    $response['Dom'] = json_encode(GetTeamInfo($DomCode,$Season));
+    $response['Vis'] = json_encode(GetTeamInfo($VisCode,$Season));
     $response['Success'] = True; 
-    // unset($ArrayDom[0]);
-    // unset($ArrayVis[0]);
-    $response['Dom'] = json_encode($ArrayDom);
-    $response['Vis'] = json_encode($ArrayVis); 
 
 }
 // catch( BadInput | FileNotFound $e){
