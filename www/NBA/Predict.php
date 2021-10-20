@@ -61,6 +61,10 @@ function CreatePlayerListFile(&$PlayerList,$Dom,$Vis,$Season){
 
 }
 
+
+print_r(GetModels().keys());
+die();
+
 try{
 
     $InputData = json_decode(file_get_contents('php://input'),true);
@@ -76,8 +80,7 @@ try{
     $response['Season'] =  $InputData['Season'] ?? null;
 
 
-    print_r(GetModels().keys());
-    die();
+
 
     if(!is_numeric($response['Season']) || intval($response['Season'])<0)
         throw new Exception('Bad season :'.$response['Season']);
