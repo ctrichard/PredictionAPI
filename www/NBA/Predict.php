@@ -48,7 +48,7 @@ class RunPrediction{
     public function SetModelName($Name){
         $this->ModelName = $Name;
     }
-    public function IsSucces(){
+    public function IsSuccess(){
         return $this->Success;
     }
 
