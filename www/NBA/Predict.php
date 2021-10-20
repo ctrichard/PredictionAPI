@@ -16,7 +16,7 @@ class RunPrediction{
     protected $Date = '';
     protected $PathToInputs = './';
     protected $PathToOutputs = './';
-    protected $ModelName = 'TestForAPI';
+    protected $ModelName = '';
     protected $UUID = null;
     protected $Success = False;
     
