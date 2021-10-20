@@ -42,7 +42,7 @@ class RunPrediction{
     public function SetPathInputs($P){
         $this->PathToInputs = $P;
     }
-    public function SetPathInputs($P){
+    public function SetPathOutputs($P){
         $this->PathToOutputs = $P;
     }
     public function SetModelName($Name){
@@ -219,6 +219,8 @@ try{
     $Prediction->SetVisTeam($response['Vis']);
     $Prediction->SetDate($response['Date']);
     $Prediction->SetModelName($response['Model']);
+    $Prediction->SetPathOutputs($OutputsTempFileLocation);
+    $Prediction->SetPathInputs($IntputsTempFileLocation);
 
     $Prediction->Prepare();
 
