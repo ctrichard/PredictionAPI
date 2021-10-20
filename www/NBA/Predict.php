@@ -23,9 +23,9 @@ function GetPrediction($Dom,$Vis){
 function CreatePlayerListFile(&$PlayerList,$Dom,$Vis){
 
     $Data = [
-        "Name" : [],
-        "MP" : [],
-        "Side" : []
+        "Name" = [],
+        "MP" = [],
+        "Side" = []
     ]
 
     foreach($PlayerList as $Side=>$Players){
