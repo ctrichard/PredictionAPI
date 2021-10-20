@@ -9,7 +9,7 @@ $MyUUID  =  Generate_UUID(20);
 
 
 
-class RunPrediction(){
+class RunPrediction{
 
     protected $Dom ='';
     protected $Vis =''
