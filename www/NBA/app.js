@@ -255,7 +255,7 @@ function ShowPredictionError(){
 }
 
 
-async function GetPrediction(DomCode,VisCode){
+async function GetPrediction(DomCode,VisCode,Season){
 
     if(!IsValidMatch() ){
         console.error('Not valid match to fetch predictions')
@@ -274,7 +274,7 @@ async function GetPrediction(DomCode,VisCode){
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({Dom: DomCode, Vis : VisCode, PlayerList : MatchPlayerData}),
+        body: JSON.stringify({Season : Season, Dom: DomCode, Vis : VisCode, PlayerList : MatchPlayerData}),
     })
     .then(response => response.json())
 
@@ -323,7 +323,7 @@ document.getElementById('TeamselectionB').addEventListener('change', (event) => 
 
 document.getElementById('ResultsPrediction').addEventListener('click', (event) => {
 
-    let Prediction =  GetPrediction(MatchData['Dom'],MatchData['Vis'])
+    let Prediction =  GetPrediction(MatchData['Dom'],MatchData['Vis'],MatchData['Season'])
 
 });
 
