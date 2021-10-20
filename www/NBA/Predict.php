@@ -89,7 +89,7 @@ class RunPrediction{
         $command = 'conda run ';
         $command .= '-n '.$this->CondaEnv.' ';
         $command .= ' python ';
-        $command .= ' MakePrediction.py ';
+        $command .= ' ~/Projects/ParisSportifIA/MakePrediction.py ';
         $command .= ' '.$this->Date.' ';
         $command .= ' '.$this->Dom.' ';
         $command .= ' '.$this->Vis.' ';
@@ -113,7 +113,7 @@ class RunPrediction{
         $path = $this->PathToOutputs.'Prediction_'.$this->UUID.'.json';
 
         if(!file_exists($path))
-            throw new FileNotFound('Cant find prediction results : '.$this->PathToOutputs);
+            throw new FileNotFound('Cant find prediction results : '.$path );
 
         return json_decode(file_get_contents($path),true);
 
