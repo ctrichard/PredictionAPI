@@ -94,7 +94,7 @@ try{
     $response['Vis'] =  $InputData['Vis'] ?? null;
     $response['Model'] =  $InputData['Model'] ?? null;
     $response['Season'] =  $InputData['Season'] ?? null;
-
+    $response['UUID'] = $MyUUID;
 
 
 
