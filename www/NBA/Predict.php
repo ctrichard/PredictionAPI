@@ -62,9 +62,6 @@ function CreatePlayerListFile(&$PlayerList,$Dom,$Vis,$Season){
 }
 
 
-print_r(array_keys(GetModels()));
-die();
-
 try{
 
     $InputData = json_decode(file_get_contents('php://input'),true);
