@@ -38,7 +38,7 @@ function CreatePlayerListFile(&$PlayerList,$Dom,$Vis){
 
             CheckPlayerName($p,$Side=='Dom' ? $Dom : $Vis);
 
-            if(intval($mp)>48 || intval($mp)<0):
+            if(intval($mp)>48 || intval($mp)<0)
                 throw new Exception('Minute played for player '.$p.' is '.$mp);
 
             if($Side !='Dom' || $Side |= 'Vis')
