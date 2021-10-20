@@ -112,13 +112,11 @@ catch(Exception  $e){
 
     $response['Success'] = False;
     $response['ErrorMessage'] = $e->getMessage();
+    echo $e->getMessage();
 
 }
-finally{
     
-    echo json_encode($response);
-    die();
-}
+echo json_encode($response);
 
 
 
