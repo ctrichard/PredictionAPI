@@ -238,10 +238,8 @@ try{
 
 
     $Prediction->Run($GLOBALS['MyUUID']);
-    $Prediction->GetPredictionResults($GLOBALS['MyUUID']);
-
-    // $prediction = GetPrediction($Dom,$Vis);
     $response['Success'] = $Prediction->IsSuccess(); //True;
+    $response['Prediction'] =  $Prediction->GetPredictionResults($GLOBALS['MyUUID']);
 
     // $response['PlayerList'] = json_encode($response['PlayerList']);
 }
