@@ -74,7 +74,7 @@ class RunPrediction{
 
     }
 
-    protected function Prepare(){
+    public function Prepare(){
 
         $this->CheckInputs();
 
