@@ -40,8 +40,8 @@ $DataLocation = '/home/ubuntu/Projects/ParisSportifIA/Data/';
 
 $TeamDataLocation = $DataLocation.'Teams/';
 
-$InputsTempFileLocation = 'Inputs/';
-$OutputsTempFileLocation = 'Outputs/';
+$InputsTempFileLocation = './Inputs/';
+$OutputsTempFileLocation = './Outputs/';
 
 
 function GetTeamFilePath($DomCode,$Season){

@@ -5,9 +5,12 @@ require_once 'MyTools.php';
 
 $PlayTimePerTeam = 48*5;
 
+$MyUUID  =  Generate_UUID(20); 
+
 function GetPrediction($Dom,$Vis){
 
-
+    $p = shell_exec( 'conda run -n NBAPrediction python MakePrediction.py 2021-07-20 Phoenix\ Suns Milwaukee\ Bucks 456');
+    $response['Prediction'] = json_decode(file_get_contents('/home/ubuntu/Projects/ParisSportifIA/Data/Prediction/Ouputs/Prediction_456.json'),true);
     // $p = shell_exec( 'whoami ');
     // print_r($p);
     // $p = shell_exec( ' env ');
@@ -17,6 +20,13 @@ function GetPrediction($Dom,$Vis){
 
 }
 
+
+function Generate_UUID($length = 20){
+
+    $bytes = random_bytes($length);
+    return bin2hex($bytes);
+
+}
 
 
 
@@ -58,6 +68,15 @@ function CreatePlayerListFile(&$PlayerList,$Dom,$Vis,$Season){
     }
 
     $PlayerList = $Data;
+
+
+    $path = $GLOBALS['InputsTempFileLocation'];
+    if(!is_dir($path))
+       throw new FileNotFound('Bad location for Player list : '.$path);
+
+    $fp = fopen($path+'PlayerList_'+$GLOBALS['MyUUID']+'.json', 'w');
+    fwrite($fp, json_encode($PlayerList));
+    fclose($fp);
 
 }
 
@@ -101,9 +120,8 @@ try{
 
     $prediction = GetPrediction($Dom,$Vis);
     $response['Success'] = True;
-    $p = shell_exec( 'conda run -n NBAPrediction python MakePrediction.py 2021-07-20 Phoenix\ Suns Milwaukee\ Bucks 456');
-    $response['Prediction'] = json_decode(file_get_contents('/home/ubuntu/Projects/ParisSportifIA/Data/Prediction/Ouputs/Prediction_456.json'),true);
-    $response['PlayerList'] = json_encode($response['PlayerList']);
+
+    // $response['PlayerList'] = json_encode($response['PlayerList']);
 }
 catch(Exception  $e){
 
