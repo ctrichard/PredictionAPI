@@ -86,6 +86,7 @@ function IsValidModelName($Name){
 
     print_r(GetModels().keys());
     print_r($Name);
+    die();
     return in_array($Name,GetModels().keys());
 
 }
