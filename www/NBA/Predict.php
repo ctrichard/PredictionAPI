@@ -78,9 +78,8 @@ class RunPrediction{
         $this->CheckInputs();
 
 
-        $this->Dom = $this->Dom.replaceAll(' ','\ ');
-        $this->Vis = $this->Dom.replaceAll(' ','\ ');
-
+        $this->Dom = str_replace(' ','\ ',$this->Dom);
+        $this->Vis = str_replace(' ','\ ',$this->Vis);
 
     }
 
