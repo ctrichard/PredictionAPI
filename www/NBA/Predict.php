@@ -22,11 +22,11 @@ function GetPrediction($Dom,$Vis){
 
 function CreatePlayerListFile(&$PlayerList,$Dom,$Vis){
 
-    $Data = {
+    $Data = [
         "Name" : [],
         "MP" : [],
         "Side" : []
-    }
+    ]
 
     foreach($PlayerList as $Side=>$Players){
 
@@ -97,7 +97,7 @@ try{
     $response['Success'] = True;
     $p = shell_exec( 'conda run -n NBAPrediction python MakePrediction.py 2021-07-20 Phoenix\ Suns Milwaukee\ Bucks 456');
     $response['Prediction'] = file_get_contents('/home/ubuntu/Projects/ParisSportifIA/Data/Prediction/Ouputs/Prediction_456.json');
-
+    $response['PlayerList'] = json_encode($response['PlayerList']);
 }
 catch(Exception  $e){
 
