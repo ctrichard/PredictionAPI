@@ -65,7 +65,7 @@ try{
 
     $InputData = json_decode(file_get_contents('php://input'),true);
 
-    print($InputData);
+    print_r($InputData);
     die();
     $response = [];
     $response['Success'] = False;
