@@ -99,7 +99,7 @@ class RunPrediction{
         $this->log = shell_exec( 'conda run -n NBAPrediction python MakePrediction.py 2021-07-20 Phoenix\ Suns Milwaukee\ Bucks 456');
 
         
-        $fp = fopen($this->PathToOutputs+'LogPrediction_'.$this->UUID.'.log', 'w');
+        $fp = fopen($this->PathToOutputs.'LogPrediction_'.$this->UUID.'.log', 'w');
         fwrite($fp, $this->log);
         fclose($fp);
 
@@ -189,7 +189,7 @@ function CreatePlayerListFile(&$PlayerList,$Dom,$Vis,$Season){
     if(!is_dir($path))
        throw new FileNotFound('Bad location for Player list : '.$path);
 
-    $fp = fopen($path+'PlayerList_'.$MyUUID.'.json', 'w');
+    $fp = fopen($path.'PlayerList_'.$MyUUID.'.json', 'w');
     fwrite($fp, json_encode($PlayerList));
     fclose($fp);
 
