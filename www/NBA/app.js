@@ -1,4 +1,4 @@
-var MatchData = {Season : 2021}
+var MatchData = {Season : 2021, Model : 'TestForAPI'}
 var MatchPlayerData = {Dom : '', Vis : ''}
 
 var TeamPlayers =  {'Dom' : '', 'Vis' : ''}
@@ -63,7 +63,7 @@ async function UpdateTeamInfo(){
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({TeamDom: MatchData['Dom'], TeamVis : MatchData['Vis'],Season :  MatchData['Season']}),
+        body: JSON.stringify({TeamDom: MatchData['Dom'], TeamVis : MatchData['Vis'],Season :  MatchData['Season'] }),
     })
     .then(response => response.json())
 
@@ -255,7 +255,7 @@ function ShowPredictionError(){
 }
 
 
-async function GetPrediction(DomCode,VisCode,Season){
+async function GetPrediction(DomCode,VisCode,Season,Model){
 
     if(!IsValidMatch() ){
         console.error('Not valid match to fetch predictions')
@@ -274,7 +274,7 @@ async function GetPrediction(DomCode,VisCode,Season){
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({Season : Season, Dom: DomCode, Vis : VisCode, PlayerList : MatchPlayerData}),
+        body: JSON.stringify({Season : Season, Model : Model, Dom: DomCode, Vis : VisCode, PlayerList : MatchPlayerData}),
     })
     .then(response => response.json())
 
@@ -323,7 +323,7 @@ document.getElementById('TeamselectionB').addEventListener('change', (event) => 
 
 document.getElementById('ResultsPrediction').addEventListener('click', (event) => {
 
-    let Prediction =  GetPrediction(MatchData['Dom'],MatchData['Vis'],MatchData['Season'])
+    let Prediction =  GetPrediction(MatchData['Dom'],MatchData['Vis'],MatchData['Season'],MatchData['Model'])
 
 });
 
