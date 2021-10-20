@@ -37,7 +37,7 @@ class RunPrediction{
         $this->Vis = $Name;
     }
     public function SetDate($Date){
-        $this->Dom = $Date;
+        $this->Date = $Date;
     }
     public function SetPathInputs($P){
         $this->PathToInputs = $P;
