@@ -12,7 +12,7 @@ $MyUUID  =  Generate_UUID(20);
 class RunPrediction{
 
     protected $Dom ='';
-    protected $Vis =''
+    protected $Vis ='';
     protected $Date = '';
     protected $PathToInputs = './';
     protected $PathToOutputs = './';
