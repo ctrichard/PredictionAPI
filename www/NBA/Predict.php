@@ -76,23 +76,30 @@ try{
     $response['Season'] =  $InputData['Season'] ?? null;
 
     echo 'rrrrrrrrrrrrr';
-    die();
     
     if(!is_numeric($response['Season']) || intval($response['Season'])<0)
         throw new Exception('Bad season :'.$response['Season']);
 
+        echo 'aaa';
+
+
     if(!$response['Dom'] || !IsValidTeamName( $response['Dom'],$Teams))
         throw new Exception('Bad dom team name :'.$response['Dom']);
+        echo 'ddd';
 
     if(!$response['Vis'] || !IsValidTeamName( $response['Vis'],$Teams))
         throw new Exception('Bad vis team name :'.$response['Vis']);
+        echo 'dcccc';
 
     if(!$response['PlayerList'])
         throw new Exception('No player list');
+        echo 'ssss';
 
     if(IsValidModelName($response['Model']))
         throw new Exception('bad model name : '.$response['Model']);
+        echo 'gggg';
 
+        die();
 
 
     CreatePlayerListFile($response['PlayerList'],$response['Dom'],$response['Vis'],$response['Season']);
