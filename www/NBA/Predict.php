@@ -91,6 +91,9 @@ try{
         throw new Exception('bad model name : '.$response['Model']);
 
     CreatePlayerListFile($response['PlayerList'],$response['Dom'],$response['Vis'],$response['Season']);
+    
+    echo 'rrrrrrrrrrrrr';
+    die();
 
     $prediction = GetPrediction($Dom,$Vis);
     $response['Success'] = True;
