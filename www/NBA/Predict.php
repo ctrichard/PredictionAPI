@@ -65,6 +65,8 @@ try{
 
     $InputData = json_decode(file_get_contents('php://input'),true);
 
+    print($InputData);
+    die();
     $response = [];
     $response['Success'] = False;
     $Teams = json_decode(file_get_contents('./Data.json'),true)['TEAMCodes_Names'];
