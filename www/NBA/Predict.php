@@ -75,6 +75,9 @@ try{
     $response['Model'] =  $InputData['Model'] ?? null;
     $response['Season'] =  $InputData['Season'] ?? null;
 
+    echo 'rrrrrrrrrrrrr';
+    die();
+    
     if(!is_numeric($response['Season']) || intval($response['Season'])<0)
         throw new Exception('Bad season :'.$response['Season']);
 
@@ -90,9 +93,8 @@ try{
     if(IsValidModelName($response['Model']))
         throw new Exception('bad model name : '.$response['Model']);
 
-        echo 'rrrrrrrrrrrrr';
-        die();
-        
+
+
     CreatePlayerListFile($response['PlayerList'],$response['Dom'],$response['Vis'],$response['Season']);
 
 
