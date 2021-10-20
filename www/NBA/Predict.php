@@ -75,6 +75,10 @@ try{
     $response['Model'] =  $InputData['Model'] ?? null;
     $response['Season'] =  $InputData['Season'] ?? null;
 
+
+    print_r(GetModels().keys());
+    die();
+
     if(!is_numeric($response['Season']) || intval($response['Season'])<0)
         throw new Exception('Bad season :'.$response['Season']);
 
