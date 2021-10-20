@@ -20,7 +20,7 @@ function GetPrediction($Dom,$Vis){
 
 
 
-function CreatePlayerListFile(&$PlayerList,$Dom,$Vis){
+function CreatePlayerListFile(&$PlayerList,$Dom,$Vis,$Season){
 
     $Data = [];
     $Data["Name"] = [];
@@ -36,7 +36,7 @@ function CreatePlayerListFile(&$PlayerList,$Dom,$Vis){
             if(intval($mp)==0)
                 continue;
 
-            CheckPlayerName($p,$Side=='Dom' ? $Dom : $Vis);
+            CheckPlayerName($p,$Side=='Dom' ? $Dom : $Vis,$Season);
 
             if(intval($mp)>48 || intval($mp)<0)
                 throw new Exception('Minute played for player '.$p.' is '.$mp);
@@ -75,7 +75,7 @@ try{
     $response['Model'] =  $InputData['Model'] ?? null;
     $response['Season'] =  $InputData['Season'] ?? null;
 
-    if(!is_numeric($response['Season'] || $response['Season']<0))
+    if(!is_numeric($response['Season']) || intval($response['Season'])<0)
         throw new Exception('Bad season :'.$response['Season']);
 
     if(!$response['Dom'] || !IsValidTeamName( $response['Dom'],$Teams))
