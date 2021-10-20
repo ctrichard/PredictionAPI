@@ -62,7 +62,7 @@ function CreatePlayerListFile(&$PlayerList,$Dom,$Vis,$Season){
 }
 
 
-print_r(GetModels().keys());
+print_r(array_keys(GetModels()));
 die();
 
 try{
