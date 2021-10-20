@@ -101,7 +101,7 @@ try{
 catch(Exception  $e){
 
     $response['Success'] = False;
-    $response['ErrorMessage'] = $e.getMessage();
+    $response['ErrorMessage'] = $e->getMessage();
 
 }
 finally{
