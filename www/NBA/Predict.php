@@ -75,7 +75,7 @@ function CreatePlayerListFile(&$PlayerList,$Dom,$Vis,$Season){
        throw new FileNotFound('Bad location for Player list : '.$path);
 
     // $fp = fopen($path+'PlayerList_'+$MyUUID+'.json', 'w');
-    $fp = fopen($path+'rtttt.json', 'w');
+    $fp = fopen($path.'rtttt.json', 'w');
     fwrite($fp, json_encode($PlayerList));
     fclose($fp);
 
