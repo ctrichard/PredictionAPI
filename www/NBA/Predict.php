@@ -7,6 +7,123 @@ $PlayTimePerTeam = 48*5;
 
 $MyUUID  =  Generate_UUID(20); 
 
+
+
+class RunPrediction(){
+
+    protected $Dom ='';
+    protected $Vis =''
+    protected $Date = '';
+    protected $PathToInputs = './';
+    protected $PathToOutputs = './';
+    protected $ModelName = 'TestForAPI';
+    protected $UUID = null;
+    protected $Success = False;
+    
+    protected $log = '';
+
+    protected $CondaEnv = 'NBAPrediction';
+
+    public function __construct(){
+
+
+    }
+
+
+    public function SetDomTeam($Name){
+        $this->Dom = $Name;
+    }
+    public function SetVisTeam($Name){
+        $this->Vis = $Name;
+    }
+    public function SetDate($Date){
+        $this->Dom = $Date;
+    }
+    public function SetPathInputs($P){
+        $this->PathToInputs = $P;
+    }
+    public function SetPathInputs($P){
+        $this->PathToOutputs = $P;
+    }
+    public function SetModelName($Name){
+        $this->ModelName = $Name;
+    }
+    public function IsSucces(){
+        return $this->Success;
+    }
+
+    protected function CheckInputs(){
+
+        $Teams = json_decode(file_get_contents('./Data.json'),true)['TEAMCodes_Names'];
+
+
+        if(!$this->Dom || !IsValidTeamName($this->Dom,$Teams))
+            throw new Exception('Bad dom team name :'.$this->Dom);
+
+        if(!$this->Vis  || !IsValidTeamName($this->Vis,$Teams))
+           throw new Exception('Bad vis team name :'.$this->Vis);
+
+        if(!IsValidModelName($this->ModelName))
+           throw new Exception('bad model name : '.$this->ModelName);
+
+        if(!is_dir($this->PathToInputs))
+           throw new FileNotFound('Bad location for inputs : '.$this->PathToInputs);
+
+        if(!is_dir($this->PathToOutputs))
+           throw new FileNotFound('Bad location for outputs : '.$this->PathToOutputs);
+
+    }
+
+    protected function Prepare(){
+
+        $this->CheckInputs();
+
+
+        $this->Dom = $this->Dom.replaceAll(' ','\ ');
+        $this->Vis = $this->Dom.replaceAll(' ','\ ');
+
+
+    }
+
+    public function Run($UUID=0){
+
+        $this->UUID = $UUID;
+        $command = 'conda run ';
+        $command .= '-n '.$this->CondaEnv.' ';
+        $command .= ' python ';
+        $command .= ' MakePrediction.py ';
+        $command .= ' '.$this->Date.' ';
+        $command .= ' '.$this->Dom.' ';
+        $command .= ' '.$this->Vis.' ';
+        $command .= ' '.$this->UUID.' ';
+
+
+        $this->log = shell_exec( 'conda run -n NBAPrediction python MakePrediction.py 2021-07-20 Phoenix\ Suns Milwaukee\ Bucks 456');
+
+        
+        $fp = fopen($this->PathToOutputs+'LogPrediction_'.$this->UUID.'.log', 'w');
+        fwrite($fp, echo $this->log);
+        fclose($fp);
+
+        $this->Success = True;
+
+
+    }
+
+    public function GetPredictionResults(){
+
+        $path = $this->PathToOutputs.'Prediction_'.$this->UUID.'.json';
+
+        if(!file_exists($path))
+            throw new FileNotFound('Cant find prediction results : '.$this->PathToOutputs);
+
+        return json_decode(file_get_contents($path),true);
+
+    }
+
+
+}
+
 function GetPrediction($Dom,$Vis){
 
     $p = shell_exec( 'conda run -n NBAPrediction python MakePrediction.py 2021-07-20 Phoenix\ Suns Milwaukee\ Bucks 456');
@@ -74,8 +191,7 @@ function CreatePlayerListFile(&$PlayerList,$Dom,$Vis,$Season){
     if(!is_dir($path))
        throw new FileNotFound('Bad location for Player list : '.$path);
 
-    // $fp = fopen($path+'PlayerList_'+$MyUUID+'.json', 'w');
-    $fp = fopen($path.'rtttt.json', 'w');
+    $fp = fopen($path+'PlayerList_'.$MyUUID.'.json', 'w');
     fwrite($fp, json_encode($PlayerList));
     fclose($fp);
 
@@ -88,39 +204,39 @@ try{
 
     $response = [];
     // $response['Success'] = False;
-    $Teams = json_decode(file_get_contents('./Data.json'),true)['TEAMCodes_Names'];
 
     $response['PlayerList'] = $InputData['PlayerList'] ?? null;
     $response['Dom'] =  $InputData['Dom'] ?? null;
     $response['Vis'] =  $InputData['Vis'] ?? null;
     $response['Model'] =  $InputData['Model'] ?? null;
     $response['Season'] =  $InputData['Season'] ?? null;
+    $response['Date'] =  $InputData['Date'] ?? null;
     $response['UUID'] = $MyUUID;
 
+
+    $Prediction = new RunPrediction();
+    $Prediction->SetDomTeam($response['Dom'])
+    $Prediction->SetVisTeam($response['Vis'])
+    $Prediction->SetDate($response['Date'])
+    $Prediction->SetModelName($response['Model'])
+
+    $Prediction->Prepare();
 
 
     if(!is_numeric($response['Season']) || intval($response['Season'])<0)
         throw new Exception('Bad season :'.$response['Season']);
 
-    if(!$response['Dom'] || !IsValidTeamName( $response['Dom'],$Teams))
-        throw new Exception('Bad dom team name :'.$response['Dom']);
-
-    if(!$response['Vis'] || !IsValidTeamName( $response['Vis'],$Teams))
-        throw new Exception('Bad vis team name :'.$response['Vis']);
-
     if(!$response['PlayerList'])
         throw new Exception('No player list');
-
-    if(!IsValidModelName($response['Model']))
-        throw new Exception('bad model name : '.$response['Model']);
-
 
     CreatePlayerListFile($response['PlayerList'],$response['Dom'],$response['Vis'],$response['Season']);
 
 
+    $Prediction->Run($MyUUID);
+    $Prediction->GetPredictionResults($MyUUID);
 
     $prediction = GetPrediction($Dom,$Vis);
-    $response['Success'] = True;
+    $response['Success'] = $Prediction->IsSuccess(); //True;
 
     // $response['PlayerList'] = json_encode($response['PlayerList']);
 }
