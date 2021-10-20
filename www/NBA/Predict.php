@@ -65,13 +65,11 @@ try{
 
     $InputData = json_decode(file_get_contents('php://input'),true);
 
-    print_r($InputData);
-    die();
     $response = [];
     $response['Success'] = False;
     $Teams = json_decode(file_get_contents('./Data.json'),true)['TEAMCodes_Names'];
 
-    $response['PlayerList'] = json_decode($InputData['PlayerList'] ?? null,true);
+    $response['PlayerList'] = $InputData['PlayerList'] ?? null;
     $response['Dom'] =  $InputData['Dom'] ?? null;
     $response['Vis'] =  $InputData['Vis'] ?? null;
     $response['Model'] =  $InputData['Model'] ?? null;
