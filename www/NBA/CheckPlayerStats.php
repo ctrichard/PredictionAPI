@@ -35,20 +35,11 @@ try {
     $response['Results'] = [];
 
 
-    $a =$Check->Run('Dom');
-    // print($a);
-    $b = explode('++--++',$Check->Run('Dom'));
-    print_r($b);
-    foreach($b  as &$arr)
-        $arr = json_decode($arr,true);
-    print_r($b);
-    die();
-
-    $response['Results']['Dom'] = explode('\n',$Check->Run('Dom'));
+    $response['Results']['Dom'] = explode('++--++',$Check->Run('Dom'));
     foreach($response['Results']['Dom'] as &$arr)
         $arr = json_decode($arr,true);
 
-    $response['Results']['Vis'] = explode('\n',$Check->Run('Vis'));
+    $response['Results']['Vis'] = explode('++--++',$Check->Run('Vis'));
     foreach($response['Results']['Vis'] as &$arr)
         $arr = json_decode($arr,true);
     $response['Results']['Success'] = True; 
