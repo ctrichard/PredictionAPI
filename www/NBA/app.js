@@ -96,7 +96,7 @@ async function CheckPlayerDataAvailable(){
         $message =''
         ResponseData['Dom'].forEach(element=>{
             if(element ==null)
-                continue
+                return 
             console.log(element)
             console.log(element['Stats'])
             console.log(element['Success'])
