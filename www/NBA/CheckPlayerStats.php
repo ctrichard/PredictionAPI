@@ -34,22 +34,14 @@ try {
     $Check->Prepare();
     $response['Results'] = [];
 
-    $response['Results']['Success'] = True; 
-
     $response['Results']['Dom'] = explode('++--++',$Check->Run('Dom'));
     foreach($response['Results']['Dom'] as &$arr)
         $arr = json_decode($arr,true);
-        if(isset($arr) && !$arr['Success'])
-          $response['Results']['Success'] = False; 
 
 
     $response['Results']['Vis'] = explode('++--++',$Check->Run('Vis'));
     foreach($response['Results']['Vis'] as &$arr)
         $arr = json_decode($arr,true);
-        if(isset($arr) && !$arr['Success'])
-            $response['Results']['Success'] = False; 
-
-        
 
 
 }

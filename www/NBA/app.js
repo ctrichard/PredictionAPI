@@ -92,25 +92,29 @@ async function CheckPlayerDataAvailable(){
     })
     .then(response => response.json())
 
-    if(!ResponseData['Success']){
+    
+    ResponseData['Success']= true
 
-        $message =''
-        ResponseData['Dom'].forEach(element=>{
+    $message =''
+    ResponseData['Dom'].forEach(element=>{
+            if(element ==null)
+                return 
+            if(!element['Success'])
+                 $message += element['NotifMessage']+'\n'
+                 ResponseData['Success']  = false
+    })
+    ResponseData['Vis'].forEach(element=>{
             if(element ==null)
             return 
             if(!element['Success'])
-            $message += element['NotifMessage']+'\n'
-        })
-        ResponseData['Vis'].forEach(element=>{
-            if(element ==null)
-            return 
-            if(!element['Success'])
-            $message += element['NotifMessage']+'\n'
-        })       
+                $message += element['NotifMessage']+'\n'
+                ResponseData['Success'] = false
+    })       
+
+
+    if(ResponseData['Success']==false)
         CreateNotification('Fail',$message)
         
-    }
-
     return ResponseData
 
 }
