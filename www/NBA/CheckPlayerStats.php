@@ -83,7 +83,7 @@ try {
     $Prediction->SetPathOutputs($OutputsTempFileLocation);
 
     $Check->Prepare();
-    $response['Results'] = {};
+    $response['Results'] = [];
     $response['Results']['Dom'] = $Check->Run('Dom');
     $response['Results']['Vis'] = $Check->Run('Vis');
     $response['Success'] = True; 
