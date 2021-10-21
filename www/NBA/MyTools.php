@@ -21,6 +21,7 @@ class RunPrediction{
     const CheckTeamNames = True;
     const CheckModelName = True;
     const CheckPaths = True;
+    const CheckSeason = True;
 
     public function __construct(){
 
@@ -45,6 +46,9 @@ class RunPrediction{
     }
     public function SetModelName($Name){
         $this->ModelName = $Name;
+    }    
+    public function SetSeason($Season){
+        $this->Season = $Season;
     }
     public function IsSuccess(){
         return $this->Success;
@@ -68,6 +72,9 @@ class RunPrediction{
 
         if(static::CheckPaths && !is_dir($this->PathToOutputs))
            throw new FileNotFound('Bad location for outputs : '.$this->PathToOutputs);
+
+        if(static::CheckSeason && (!is_numeric($this->Season) || intval($this->Season)<0) )
+           throw new Exception('Bad season :'.$this->Season);
 
     }
 
@@ -146,6 +153,16 @@ class CheckPlayerStat extends RunPrediction{
         $this->PlayerList = $PlayerList;
     }
 
+    protected function CheckInputs(){
+
+        parent::CheckInputs();
+
+        if(!$this->PlayerList || !$this->PlayerList['Dom'] || !$this->PlayerList['Vis'])
+           throw new Exception('No player list');
+           
+    }
+
+
 
     public function Run($Side = 'Dom'){
 
@@ -156,10 +173,10 @@ class CheckPlayerStat extends RunPrediction{
         $command .= ' '.$this->Date.' ';
         $command .= ' '.$this->$Side.' ';
         $command .= ' \''.json_encode(array_keys($this->PlayerList[$Side])).'\' ';
-        // $command .= ' '.$this->Vis.' ';
+        $command .= ' '.$this->Season.' ';
         // $command .= ' '.$this->UUID.' ';
         // $command .= ' '.$this->PathToInputs.' ';
-        $command .= ' '.$this->PathToOutputs.' ';
+        // $command .= ' '.$this->PathToOutputs.' ';
 
 
         // $this->log = shell_exec( 'conda run -n NBAPrediction python MakePrediction.py 2021-07-20 Phoenix\ Suns Milwaukee\ Bucks 456');

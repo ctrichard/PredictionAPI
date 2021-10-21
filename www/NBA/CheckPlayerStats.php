@@ -13,6 +13,9 @@ try {
     $response = [];
     // $response['Success'] = False;
 
+    
+
+
     $response['PlayerList'] = $InputData['PlayerList'] ?? null;
     $response['Dom'] =  $InputData['Dom'] ?? null;
     $response['Vis'] =  $InputData['Vis'] ?? null;
@@ -26,6 +29,7 @@ try {
     $Check->SetDate($response['Date']);
     $Check->SetPlayerList($response['PlayerList']);
     $Check->SetPathOutputs($OutputsTempFileLocation);
+    $Check->SetSeason($response['Season']);
 
     $Check->Prepare();
     $response['Results'] = [];
@@ -43,7 +47,6 @@ catch( Exception $e){
 
 }
 
-echo 'oo';
 echo json_encode($response['Results']);
 
 

@@ -98,12 +98,10 @@ try{
     $Prediction->SetModelName($response['Model']);
     $Prediction->SetPathOutputs($OutputsTempFileLocation);
     $Prediction->SetPathInputs($InputsTempFileLocation);
+    $Prediction->SetSeason($response['Season']);
 
     $Prediction->Prepare();
 
-
-    if(!is_numeric($response['Season']) || intval($response['Season'])<0)
-        throw new Exception('Bad season :'.$response['Season']);
 
     if(!$response['PlayerList'])
         throw new Exception('No player list');
