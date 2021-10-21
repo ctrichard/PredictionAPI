@@ -174,7 +174,7 @@ function DrawTeamPlayer(Side){
 
             MatchPlayerData[evt.currentTarget.Side][evt.currentTarget.PlayerName] = evt.currentTarget.value;
             if(evt.currentTarget.value == 0){
-                MatchPlayerData[evt.currentTarget.Side].splice(evt.currentTarget.PlayerName, 1);
+                delete MatchPlayerData[evt.currentTarget.Side][evt.currentTarget.PlayerName]
             }
 
             console.log(MatchPlayerData)
