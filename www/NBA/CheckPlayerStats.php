@@ -36,8 +36,12 @@ try {
 
 
     $a =$Check->Run('Dom');
-    print($a);
-    print_r(explode('++--++',$Check->Run('Dom')));
+    // print($a);
+    $b = explode('++--++',$Check->Run('Dom'));
+    print_r($b);
+    foreach($b  as &$arr)
+        $arr = json_decode($arr,true);
+    print_r($b);
     die();
 
     $response['Results']['Dom'] = explode('\n',$Check->Run('Dom'));
