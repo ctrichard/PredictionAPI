@@ -92,6 +92,19 @@ async function CheckPlayerDataAvailable(){
     })
     .then(response => response.json())
 
+    if(!response['Success'])
+        $message =''
+        response['Dom'].forEach((element=>{
+            if(!element['Success'])
+                $message += element['NotifMessage']+'\n'
+        }))
+        response['Vis'].forEach((element=>{
+            if(!element['Success'])
+                $message += element['NotifMessage']+'\n'
+        }))       
+        CreateNotification('Fail',$message)
+
+
     return response
 
 }
@@ -287,8 +300,9 @@ async function GetPrediction(DomCode,VisCode,Season,Model,MatchDate){
 
     PlayersHaveData = await CheckPlayerDataAvailable()
 
-    console.log(PlayersHaveData)
-    return
+    if(!PlayersHaveData['Success'])
+        console.log(PlayersHaveData)
+        return
 
 
     const Prediction = await fetch('./Predict.php', {
