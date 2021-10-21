@@ -86,7 +86,7 @@ try {
     $response['Results'] = [];
     $response['Results']['Dom'] = $Check->Run('Dom');
     $response['Results']['Vis'] = $Check->Run('Vis');
-    $response['Success'] = True; 
+    $response['Results']['Success'] = True; 
 
 
 }
@@ -99,7 +99,7 @@ catch( Exception $e){
 }
 
 
-echo json_encode($response);
+echo json_encode($response['Results']);
 
 
 
