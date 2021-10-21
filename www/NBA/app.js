@@ -95,6 +95,7 @@ async function CheckPlayerDataAvailable(){
     if(!ResponseData['Success'])
         $message =''
         ResponseData['Dom'].forEach(element=>{
+            console.log(element)
             if(!element['Success'])
                 $message += element['NotifMessage']+'\n'
         })
