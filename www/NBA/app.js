@@ -92,20 +92,20 @@ async function CheckPlayerDataAvailable(){
     })
     .then(response => response.json())
 
-    if(!response['Success'])
+    if(!ResponseData['Success'])
         $message =''
-        response['Dom'].forEach((element=>{
+        ResponseData['Dom'].forEach((element=>{
             if(!element['Success'])
                 $message += element['NotifMessage']+'\n'
         }))
-        response['Vis'].forEach((element=>{
+        ResponseData['Vis'].forEach((element=>{
             if(!element['Success'])
                 $message += element['NotifMessage']+'\n'
         }))       
         CreateNotification('Fail',$message)
 
 
-    return response
+    return ResponseData
 
 }
 
