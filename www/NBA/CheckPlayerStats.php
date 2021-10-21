@@ -35,7 +35,7 @@ try {
     $response['Results'] = [];
 
 
-    $a =$Check->Run('Dom')
+    $a =$Check->Run('Dom');
     print($a);
     print_r(explode('\n',$Check->Run('Dom')));
     die();
