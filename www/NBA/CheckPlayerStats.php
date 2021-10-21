@@ -37,7 +37,7 @@ try {
 
     $a =$Check->Run('Dom');
     print($a);
-    print_r(explode('\n',$Check->Run('Dom')));
+    print_r(explode('++--++',$Check->Run('Dom')));
     die();
 
     $response['Results']['Dom'] = explode('\n',$Check->Run('Dom'));
