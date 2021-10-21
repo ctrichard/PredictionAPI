@@ -89,7 +89,7 @@ async function CheckPlayerDataAvailable(){
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({Dom: MatchData['Dom'], Vis : MatchData['Vis'],Season :  MatchData['Season'], Date : MatchData['Date'], PlayerList : TeamPlayers }),
+        body: JSON.stringify({Dom: MatchData['Dom'], Vis : MatchData['Vis'],Season :  MatchData['Season'], Date : MatchData['Date'], PlayerList : MatchPlayerData }),
     })
     .then(response => response.json())
 
