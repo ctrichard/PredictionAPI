@@ -314,9 +314,10 @@ async function GetPrediction(DomCode,VisCode,Season,Model,MatchDate){
 
     PlayersHaveData = await CheckPlayerDataAvailable()
 
-    if(!PlayersHaveData['Success'])
+    if(!PlayersHaveData['Success']){
         console.log(PlayersHaveData)
         return
+    }
 
 
     const Prediction = await fetch('./Predict.php', {
