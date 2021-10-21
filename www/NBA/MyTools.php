@@ -97,9 +97,9 @@ class RunPrediction{
 
 
         // $this->log = shell_exec( 'conda run -n NBAPrediction python MakePrediction.py 2021-07-20 Phoenix\ Suns Milwaukee\ Bucks 456');
-        $this->log .= 'Executing : '.$command;
-        $this->log .= '======================';
-        $this->log = shell_exec($command);
+        $this->log .= 'Executing : '.$command.PHP_EOL;
+        $this->log .= '======================'.PHP_EOL;
+        $this->log = shell_exec($command).PHP_EOL;
 
         
         $fp = fopen($this->PathToOutputs.'LogPrediction_'.$this->UUID.'.log', 'w');
@@ -163,10 +163,10 @@ class CheckPlayerStat extends RunPrediction{
 
 
         // $this->log = shell_exec( 'conda run -n NBAPrediction python MakePrediction.py 2021-07-20 Phoenix\ Suns Milwaukee\ Bucks 456');
-        $this->log .= 'Executing : '.$command;
-        $this->log .= '======================';
+        $this->log .= 'Executing : '.$command.PHP_EOL;
+        $this->log .= '======================'.PHP_EOL;
         $this->Results = shell_exec($command);
-        $this->log .= $this->Results;
+        $this->log .= $this->Results.PHP_EOL;
 
         
         $fp = fopen($this->PathToOutputs.'LogCheckPlayerData_'.$this->UUID.'.log', 'a');
