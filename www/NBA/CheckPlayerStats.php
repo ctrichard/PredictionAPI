@@ -33,8 +33,8 @@ try {
 
     $Check->Prepare();
     $response['Results'] = [];
-    $response['Results']['Dom'] = $Check->Run('Dom');
-    $response['Results']['Vis'] = $Check->Run('Vis');
+    $response['Results']['Dom'] = json_decode($Check->Run('Dom'),true);
+    $response['Results']['Vis'] = json_decode($Check->Run('Vis'),true);
     $response['Results']['Success'] = True; 
 
 
