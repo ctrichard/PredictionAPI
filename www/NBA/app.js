@@ -99,14 +99,14 @@ async function CheckPlayerDataAvailable(){
     ResponseData['Dom'].forEach(element=>{
             if(element ==null)
                 return 
-            if(!element['Success'])
+            if(element['Success'] == false)
                  $message += element['NotifMessage']+'\n'
                  ResponseData['Success']  = false
     })
     ResponseData['Vis'].forEach(element=>{
             if(element ==null)
             return 
-            if(!element['Success'])
+            if(element['Success'] == false)
                 $message += element['NotifMessage']+'\n'
                 ResponseData['Success'] = false
     })       
