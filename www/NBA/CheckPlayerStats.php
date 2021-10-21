@@ -25,7 +25,7 @@ try {
     $Check->SetVisTeam($response['Vis']);
     $Check->SetDate($response['Date']);
     $Check->SetPlayerList($response['PlayerList']);
-    $Prediction->SetPathOutputs($OutputsTempFileLocation);
+    $Check->SetPathOutputs($OutputsTempFileLocation);
 
     $Check->Prepare();
     $response['Results'] = [];
