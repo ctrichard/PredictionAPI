@@ -34,8 +34,10 @@ try {
     $Check->Prepare();
     $response['Results'] = [];
 
-    print($Check->Run('Dom'));
-    print(explode('\n',$Check->Run('Dom')));
+
+    $a =$Check->Run('Dom')
+    print($a);
+    print_r(explode('\n',$Check->Run('Dom')));
     die();
 
     $response['Results']['Dom'] = explode('\n',$Check->Run('Dom'));
