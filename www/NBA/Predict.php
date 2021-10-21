@@ -24,6 +24,11 @@ class RunPrediction{
 
     protected $CondaEnv = 'NBAPrediction';
 
+
+    const CheckTeamNames = True;
+    const CheckModelName = True;
+    const CheckPaths = True;
+
     public function __construct(){
 
 
@@ -56,19 +61,19 @@ class RunPrediction{
 
         $Teams = json_decode(file_get_contents('./Data.json'),true)['TEAMCodes_Names'];
 
-        if(!$this->Dom || !IsValidTeamName($this->Dom,$Teams))
+        if(static::CheckTeamNames &&  (  !$this->Dom || !IsValidTeamName($this->Dom,$Teams) ) )
             throw new Exception('Bad dom team name :'.$this->Dom);
 
-        if(!$this->Vis  || !IsValidTeamName($this->Vis,$Teams))
+        if(static::CheckTeamNames &&  (  !$this->Vis  || !IsValidTeamName($this->Vis,$Teams)) )
            throw new Exception('Bad vis team name :'.$this->Vis);
 
-        if(!IsValidModelName($this->ModelName))
+        if(static::CheckModelName  && !IsValidModelName($this->ModelName))
            throw new Exception('bad model name : '.$this->ModelName);
 
-        if(!is_dir($this->PathToInputs))
+        if(static::CheckPaths && !is_dir($this->PathToInputs))
            throw new FileNotFound('Bad location for inputs : '.$this->PathToInputs);
 
-        if(!is_dir($this->PathToOutputs))
+        if(static::CheckPaths && !is_dir($this->PathToOutputs))
            throw new FileNotFound('Bad location for outputs : '.$this->PathToOutputs);
 
     }

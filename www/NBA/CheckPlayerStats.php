@@ -9,6 +9,10 @@ class CheckPlayerStat extends RunPrediction{
     protected $PlayerList = [];
     protected $Results = '';
 
+
+    
+    const CheckModelName = False;
+
     public function __construct(){
 
         parent::__construct();
