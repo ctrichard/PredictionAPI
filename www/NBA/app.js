@@ -92,7 +92,7 @@ async function CheckPlayerDataAvailable(){
     })
     .then(response => response.json())
 
-    console.log('CheckData',response)
+    return response
 
 }
 
@@ -285,6 +285,11 @@ async function GetPrediction(DomCode,VisCode,Season,Model,MatchDate){
         console.log('Valid match to fetch predictions')
 
 
+    PlayersHaveData = await CheckPlayerDataAvailable()
+
+    console.log(PlayersHaveData)
+    return
+
 
     const Prediction = await fetch('./Predict.php', {
         method: 'POST',
@@ -340,8 +345,6 @@ document.getElementById('TeamselectionB').addEventListener('change', (event) => 
 // });
 
 document.getElementById('ResultsPrediction').addEventListener('click', (event) => {
-
-    await CheckPlayerDataAvailable()
 
 
     let Prediction =  GetPrediction(MatchData['Dom'],MatchData['Vis'],MatchData['Season'],MatchData['Model'],MatchData['Date'])
