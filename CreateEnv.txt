@@ -10,3 +10,4 @@ sudo a2enmod php7.4
 
 
 sudo systemctl restart apache2
+

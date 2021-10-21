@@ -77,7 +77,24 @@ async function UpdateTeamInfo(){
     
     MatchPlayerData = {Dom : '', Vis : ''}
 
+    await CheckPlayerDataAvailable()
     
+}
+
+async function CheckPlayerDataAvailable(){
+
+    let ResponseData = await fetch('./CheckPlayerStats.php', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({Dom: MatchData['Dom'], Vis : MatchData['Vis'],Season :  MatchData['Season'], Date : MatchData['Date'], PlayerList : TeamPlayers }),
+    })
+    .then(response => response.json())
+
+    console.log('CheckData',response)
+
 }
 
 function ResetTeamPlayers(Side){
