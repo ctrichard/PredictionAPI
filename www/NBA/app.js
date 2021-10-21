@@ -10,7 +10,7 @@ const TotalPlayerTimePerTeam = MatchDuration*5
 
 const MinPlayerTime = 10 // to avoid small times
 
-const NotifDuration = 10
+const NotifDuration = 5
 
 
 function IsValidMatch(){
@@ -173,6 +173,10 @@ function DrawTeamPlayer(Side){
                 MatchPlayerData[evt.currentTarget.Side]={}
 
             MatchPlayerData[evt.currentTarget.Side][evt.currentTarget.PlayerName] = evt.currentTarget.value;
+            if(evt.currentTarget.value == 0){
+                MatchPlayerData[evt.currentTarget.Side].splice(evt.currentTarget.PlayerName, 1);
+            }
+
             console.log(MatchPlayerData)
         }
 
