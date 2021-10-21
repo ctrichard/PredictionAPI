@@ -34,6 +34,9 @@ try {
     $Check->Prepare();
     $response['Results'] = [];
 
+    print($Check->Run('Dom'));
+    die();
+
     $response['Results']['Dom'] = explode('\n',$Check->Run('Dom'));
     foreach($response['Results']['Dom'] as &$arr)
         $arr = json_decode($arr,true);
