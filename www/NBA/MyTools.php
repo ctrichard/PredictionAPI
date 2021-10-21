@@ -155,7 +155,7 @@ class CheckPlayerStat extends RunPrediction{
         $command .= ' ~/Projects/ParisSportifIA/CheckPlayerHasData.py ';
         $command .= ' '.$this->Date.' ';
         $command .= ' '.$this->$Side.' ';
-        $command .= ' '.json_encode($this->Players[$Side]).' ';
+        $command .= ' '.json_encode($this->PlayerList[$Side]).' ';
         // $command .= ' '.$this->Vis.' ';
         // $command .= ' '.$this->UUID.' ';
         // $command .= ' '.$this->PathToInputs.' ';
