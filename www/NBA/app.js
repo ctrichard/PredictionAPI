@@ -305,6 +305,8 @@ function ShowPredictionError(){
 
 async function GetPrediction(DomCode,VisCode,Season,Model,MatchDate){
 
+    ResetPredictions()
+    
     if(!IsValidMatch() ){
         console.error('Not valid match to fetch predictions')
         // arclassList.add('Active');
