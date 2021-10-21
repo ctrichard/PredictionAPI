@@ -33,8 +33,14 @@ try {
 
     $Check->Prepare();
     $response['Results'] = [];
-    $response['Results']['Dom'] = json_decode($Check->Run('Dom'),true);
-    $response['Results']['Vis'] = json_decode($Check->Run('Vis'),true);
+    
+    $response['Results']['Dom'] = explode('\n',$Check->Run('Dom'))
+    foreach($response['Results']['Dom'] as &$arr)
+        $arr = json_decode($arr,true);
+
+    $response['Results']['Vis'] = explode('\n',$Check->Run('Vis'));
+    foreach($response['Results']['Vis'] as &$arr)
+        $arr = json_decode($arr,true);
     $response['Results']['Success'] = True; 
 
 
