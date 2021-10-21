@@ -77,7 +77,6 @@ async function UpdateTeamInfo(){
     
     MatchPlayerData = {Dom : '', Vis : ''}
 
-    await CheckPlayerDataAvailable()
     
 }
 
@@ -341,6 +340,9 @@ document.getElementById('TeamselectionB').addEventListener('change', (event) => 
 // });
 
 document.getElementById('ResultsPrediction').addEventListener('click', (event) => {
+
+    await CheckPlayerDataAvailable()
+
 
     let Prediction =  GetPrediction(MatchData['Dom'],MatchData['Vis'],MatchData['Season'],MatchData['Model'],MatchData['Date'])
 
