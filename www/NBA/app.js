@@ -375,7 +375,7 @@ document.getElementById('TeamselectionB').addEventListener('change', (event) => 
 
 });
 document.getElementById('matchDate').addEventListener('change', (event) => {
-    MatchData['Date'] = event.value
+    MatchData['Date'] = document.getElementById('matchDate').value
     console.log(MatchData)
 });
 
