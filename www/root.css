@@ -20,6 +20,10 @@ a{
     justify-content:center;
 }
 
+.SubTitle{
+  font-size: calc(var(--font-size) * 1.5);
+}
+
 .BigButton{
 
     height : 200px;
