@@ -374,9 +374,10 @@ document.getElementById('TeamselectionB').addEventListener('change', (event) => 
     selectLogo("LogoB",document.getElementById('TeamselectionB').value);
 
 });
-// document.getElementById('matchDate').addEventListener('change', (event) => {
-//     selectTeam("Date",document.getElementById('matchDate').value);
-// });
+document.getElementById('matchDate').addEventListener('change', (event) => {
+    MatchData['Date'] = event.value
+    console.log(MatchData)
+});
 
 document.getElementById('ResultsPrediction').addEventListener('click', (event) => {
 
