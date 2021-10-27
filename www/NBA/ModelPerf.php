@@ -56,7 +56,9 @@ catch(Exception $a){
     <script type="text/javascript" src="http://d3js.org/d3.v5.js" defer></script>
     <script type="text/javascript" src="../Graph.js"></script>
     <!-- <script type="text/javascript" src="./app.js"></script> -->
-    <script type="text/javascript" src="./appModelPerf.js"></script>
-
+    <script>
+        //CustomElements
+        customElements.define('graph-std',GraphWithAxises)
+    </script>
     </body>
     </html>

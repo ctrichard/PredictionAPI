@@ -18,8 +18,8 @@ class Point{
 
 class Graph extends HTMLElement{
 
-//   constructor(element,name,svgwidth=0,svgheight=0) {
-    constructor() {
+
+  constructor() {
 
     super()
 
@@ -29,7 +29,6 @@ class Graph extends HTMLElement{
     
     const svg = strToDom(`<svg class="StdGraph" viewBox ="-1 -1 2 2"></svg>`)
 
-
     this.paths = this.Series.map( (_,k)=>{
         const color = '#f4a261'
         const path = document.createElementNS('http://www.w3.org/2000/svg','path')
@@ -37,7 +36,6 @@ class Graph extends HTMLElement{
         svg.appendChild(path)
         return path
     })
-
 
     this.style = document.createElement('style')
     this.style.innerHTML = `
@@ -64,38 +62,14 @@ class Graph extends HTMLElement{
     shadow.appendChild(svg)
 
 
-    // this.IdDomElement = element;
-    // this.Name = name;
-    // this.DrawGradient = false; 
-    // this.DoTransition = true; 
-    // this.KeysAreX = true;
-
-
-    // this.AxisMinMarge = 0.1 ; //percent 
-    // this.AxisMaxMarge = 0.1 ; //percent 
-    // this.ExpandedAxises = false;
-
-    // this.FixedAxis = [];
-
-    // this.FilledLine = false;
-
-    // this.DrawAxises = true;
-    // this.AxisDrawn = false;
-    // this.ShrinkAxisLabelNumber={X:false,Y:true} 
-
-    // this.Npoints=0;
-    // this.ToSortPointOnX = false;
-
-    // this.CreateSvg(svgwidth,svgheight);
-
   }
 
-  //only when element is connected to dom
+
+    //only when element is connected to dom
   connectedCallback(){
       this.draw()
   }
   
-
   GetSeries(){
     this.Series = this.getAttribute('data').split(',')
     this.Series.forEach((s)=>{
@@ -103,24 +77,51 @@ class Graph extends HTMLElement{
     })
   }
 
+
   draw(){
 
     let start = new Point(1,0)
     let end  = new Point(2,3)
-    this.paths[0].setAttribute('d',`M 0 0 L ${start.toSVGPath()} ${end.toSVGPath()} 3 4`)
+    for(let i=0 ; i<this.dataset.length ; i++){
+
+      this.paths[i].setAttribute('d',`M 0 0 L ${start.toSVGPath()} ${end.toSVGPath()} 3 4`)
+    }
 
   }
 
 }
 
 
+class GraphWithAxises extends Graph{
+
+  constructor() {
+
+    super()
+    this.GetAxises()
 
 
-class LineGraph extends Graph {
+  }
+
+
+  GetAxises(){
+    this.AxisRange  = this.getAttribute('axis')?.split(',') ?? [[0,1],[0,1]]
+    this.AxisRange.forEach((s)=>{
+      s = s.split(';').map(v=>parseFloat(v))
+    })
+  }
+
+
 
 }
 
-class BarGraph extends Graph{
+
+
+
+class LineGraph extends GraphWithAxises {
+
+}
+
+class BarGraph extends GraphWithAxises{
 
     
   constructor() {
