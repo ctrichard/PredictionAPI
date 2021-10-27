@@ -43,11 +43,11 @@ catch(Exception $a){
     <body>
 
 
-        <div class="GraphContainer">
+        <!-- <div class="GraphContainer"> -->
 
             <graph-std data="0;1;2;3,1;2;3">
             </graph-std>
-        </div>
+        <!-- </div> -->
 
 
 
