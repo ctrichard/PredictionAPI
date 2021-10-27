@@ -121,12 +121,16 @@ class Graph{
   }
 
   scalePoints(Points){
+    console.log("tttttt")
+    console.log(Points)
+
     Points.forEach((d)=>{
 
       d[1] = this.yscale(d[1]);
       d[0] = this.xscale(d[0]);
     })
-
+    console.log("ttttttttt")
+    console.log(Points)
     return Points
   }
 
@@ -234,6 +238,7 @@ class Graph{
 
   }
 
+  //Points =  [ [x,y] , [x,y] ...] 
   DrawOtherLine(Points){
     if(Points==null)
       return
