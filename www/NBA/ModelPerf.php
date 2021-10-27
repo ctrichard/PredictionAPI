@@ -71,7 +71,7 @@ catch(Exception $a){
         console.log(D)
         // await LoadFunctionStaticFunctionResults("Population","OverHousingEffectOnBirth","","0","5","0.1");
 
-        // DrawGraph.DrawStaticFunctionGraph('graph_pop3',"OverHousingEffectOnBirth",OverHousingEffectOnBirth,parseInt(d3.select('#graph_pop3').style('width'))/ngraph);
+        DrawGraph.DrawStaticFunctionGraph('graph_pop3',"OverHousingEffectOnBirth",D,parseInt(d3.select('#graph_pop3').style('width'))/1);
 
 
 
