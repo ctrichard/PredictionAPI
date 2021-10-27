@@ -60,7 +60,7 @@ catch(Exception $a){
 
         var Data = <?php echo json_encode($ModelResults['DetailedResults'])?>
 
-        let Identity = []
+        let Identity = {}
         Identity[0]=0
         Identity[1]=1
 
