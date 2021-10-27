@@ -50,9 +50,7 @@ catch(Exception $a){
         <!-- </div> -->
 
 
-        <div class="   basicDiv  base-container ">
-             <div class="graph-pop" id="graph_pop3"></div>
-            </div>
+             <div class="GraphContainer" id="graph_pop3"></div>
 
 
     <script type="text/javascript" src="http://d3js.org/d3.v5.js"></script>
