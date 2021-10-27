@@ -27,13 +27,13 @@ class Graph extends HTMLElement{
 
     this.GetSeries()
     
-    const svg = strToDom(`<svg class="StdGraph" viewBox ="-1 -1 2 2"></svg>`)
+    this.svg = strToDom(`<svg class="StdGraph" viewBox ="-1 -1 2 2"></svg>`)
 
     this.paths = this.Series.map( (_,k)=>{
         const color = '#f4a261'
         const path = document.createElementNS('http://www.w3.org/2000/svg','path')
         path.setAttribute('fill',color)
-        svg.appendChild(path)
+        this.svg.appendChild(path)
         return path
     })
 
@@ -133,7 +133,7 @@ class GraphWithAxises extends Graph{
       const color = '#001219'
       const path = document.createElementNS('http://www.w3.org/2000/svg','path')
       path.setAttribute('stroke',color)
-      svg.appendChild(path)
+      this.svg.appendChild(path)
       return path
   })
 
