@@ -77,6 +77,8 @@ class Graph extends HTMLElement{
   
   GetSeries(){
     let DataKeys = this.getAttribute('data').split(';')
+    console.log('e')
+    console.log(DataKeys)
 
     this.Bins =[]
     this.Series = []
