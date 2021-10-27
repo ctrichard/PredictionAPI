@@ -98,8 +98,8 @@ class Graph extends HTMLElement{
 
       let start = new Point(this.Bins[ip][0],this.Series[ip][0])
       let path = `M ${start.toSVGPath()} L `
-      for(let i=0 ; i<this.Series.length-1 ; i++){
-        let next = new Point(this.Bins[ip][i+1],this.Series[ip][i+1])
+      for(let i=1 ; i<this.Series[ip].length ; i++){
+        let next = new Point(this.Bins[ip][i],this.Series[ip][i])
         path += `${next.toSVGPath()} `
       }
 
