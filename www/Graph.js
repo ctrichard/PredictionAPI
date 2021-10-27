@@ -111,7 +111,11 @@ class GraphWithAxises extends Graph{
     })
   }
 
-
+    //only when element is connected to dom
+    connectedCallback(){
+      this.draw()
+  }
+  
 
 }
 
