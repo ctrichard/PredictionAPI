@@ -234,14 +234,22 @@ class FileNotFound extends Exception{
 
 }
 
-
-$DataLocation = '/home/ubuntu/Projects/ParisSportifIA/Data/';
+$ProjectLocation = "/home/ubuntu/Projects/ParisSportifIA/"
+$DataLocation = $ProjectLocation.'Data/';
+$ModelLocation = $ProjectLocation.'Models/';
 
 $TeamDataLocation = $DataLocation.'Teams/';
 
 $InputsTempFileLocation = './Inputs/';
 $OutputsTempFileLocation = './Outputs/';
 
+
+function GetModelResults($ModelName){
+    
+    $ModelResults = json_decode(file_get_contents($ModelLocation.$ModelName));
+    return $ModelResults;
+
+}
 
 function GetTeamFilePath($DomCode,$Season){
     $path = $GLOBALS['TeamDataLocation'].$DomCode.'_'.$Season.'.csv';
