@@ -85,8 +85,8 @@ class Graph extends HTMLElement{
 
     DataKeys.forEach((k,i)=>{
       k = k.split('-')
-      this.Bins[i] = Data[DataKeys[k[0]]]['Bins']
-      this.Series[i] = Data[DataKeys[k[0]]][DataKeys[k[1]]]
+      this.Bins[i] = Data[k[0]]['Bins']
+      this.Series[i] = Data[k[0]][k[1]]
         // .map(v=>parseFloat(v))
     })
   }
