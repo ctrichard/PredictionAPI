@@ -52,6 +52,8 @@ class Graph{
   }
 
   setPoints(points,name=undefined){
+
+
     if(name==undefined){
       name=this.points.length
     }
@@ -89,20 +91,28 @@ class Graph{
 
     }
 
-    this.max = d3.max(this.points[name], function (d) {
+    if(!this.ScaleDefined){
+      
+      this.max = d3.max(this.points[name], function (d) {
         return d[1];
-    });
-    this.min = d3.min(this.points[name], function (d) {
+      });
+      this.min = d3.min(this.points[name], function (d) {
         return d[1];
-    });
+      });
+      
+      this.xmin = d3.min(this.points[name], function (d) {
+        return d[0];
+      });
+      
+      this.xmax = d3.max(this.points[name], function (d) {
+        return d[0];
+     });
 
-    this.xmin = d3.min(this.points[name], function (d) {
-      return d[0];
-    });
 
-    this.xmax = d3.max(this.points[name], function (d) {
-      return d[0];
-    });
+     this.CreateAxises();
+     this.ScaleDefined = true
+    }
+
 
 
     if(this.ToSortPointOnX){
@@ -119,24 +129,17 @@ class Graph{
     }
 
 
-    this.CreateAxises();
-
     this.points[name] = this.scalePoints(this.points[name])
-
 
   }
 
   scalePoints(Points){
-    console.log("tttttt")
-    console.log(Points)
 
     Points.forEach((d)=>{
 
       d[1] = this.yscale(d[1]);
       d[0] = this.xscale(d[0]);
     })
-    console.log("ttttttttt")
-    console.log(Points)
     return Points
   }
 
@@ -216,7 +219,6 @@ class Graph{
     this.yscale = d3.scaleLinear()
     .domain([miny,maxy])  
     .range([this.height, 0]);
-
 
   }
 
