@@ -148,6 +148,8 @@ class GraphWithAxises extends Graph{
     let path = `M ${start.toSVGPath()} L `
     let next = new Point( this.AxisRange[0][0], this.AxisRange[0][1])
     path += `${next.toSVGPath()} `
+    console.log('ppp')
+    console.log(path)
     this.AxisPaths[0].setAttribute('d',path)
     
     //Y axis
@@ -155,6 +157,8 @@ class GraphWithAxises extends Graph{
     path = `M ${start.toSVGPath()} L `
     next = new Point( this.AxisRange[1][0], this.AxisRange[1][1])
     path += `${next.toSVGPath()} `
+    console.log('ppp')
+    console.log(path)
     this.AxisPaths[1].setAttribute('d',path)
 
   }
