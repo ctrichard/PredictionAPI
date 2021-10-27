@@ -94,13 +94,17 @@ class Graph extends HTMLElement{
 
   draw(){
 
-    let start = new Point(this.Bins[0].x,this.Series[0].y)
-    let path = `M ${start.toSVGPath()} L `
-    for(let i=0 ; i<this.Series.length-1 ; i++){
-      let next = new Point(this.Bins[i+1].x,this.Series[i+1].y)
-      path += `${next.toSVGPath()} `
+    for(let ip=0 ; ip<this.Bins.length ; i++){
+
+      let start = new Point(this.Bins[ip][0],this.Series[ip][0])
+      let path = `M ${start.toSVGPath()} L `
+      for(let i=0 ; i<this.Series.length-1 ; i++){
+        let next = new Point(this.Bins[ip][i+1],this.Series[ip][i+1])
+        path += `${next.toSVGPath()} `
+      }
+      
+      this.paths[ip].setAttribute('d',path)
     }
-    this.paths[i].setAttribute('d',path)
 
   }
 
