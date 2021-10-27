@@ -123,8 +123,8 @@ class Graph{
   scalePoints(Points){
     Points.forEach((d)=>{
 
-      Points[1] = this.yscale(d[1]);
-      Points[0] = this.xscale(d[0]);
+      Points[1] = this.yscale(Points[1]);
+      Points[0] = this.xscale(Points[0]);
     })
 
     return Points
