@@ -157,7 +157,7 @@ class GraphWithAxises extends Graph{
     //Y axis
     start = new Point( this.AxisRange[1][0], this.AxisRange[1][0])
     path = `M ${start.toSVGPath()} L `
-    next = new Point( this.AxisRange[1][0], this.AxisRange[1][1])
+    next = new Point( this.AxisRange[1][1], this.AxisRange[1][0])
     path += `${next.toSVGPath()} `
     console.log('ppp')
     console.log(path)
