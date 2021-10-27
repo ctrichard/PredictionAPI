@@ -45,7 +45,7 @@ catch(Exception $a){
 
         <!-- <div class="GraphContainer"> -->
 
-            <graph-std data="0;1;2;3,1;2;3">
+            <graph-std data="ProbaGoodAnswerVsEstimatedProba-CountDomProba">
             </graph-std>
         <!-- </div> -->
 
@@ -60,7 +60,7 @@ catch(Exception $a){
         //CustomElements
         customElements.define('graph-std',GraphWithAxises)
 
-        const Data = <?php echo json_encode($ModelResults)?>
+        var Data = <?php echo json_encode($ModelResults['DetailedResults'])?>
 
     </script>
     </body>

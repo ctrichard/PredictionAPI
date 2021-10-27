@@ -76,20 +76,21 @@ class Graph extends HTMLElement{
   }
   
   GetSeries(){
-    this.Series = Data['DetailedResults']
-    // this.getAttribute('data').split(',')
-    this.Series.forEach((s)=>{
-        s = s.split(';').map(v=>parseFloat(v))
-    })
+    let DataKeys = this.getAttribute('data').split('-')
+    this.Series = Data[DataKeys[0]][DataKeys[1]]
+    this.Bins = Data[DataKeys[0]]['Bins']
+    // this.Series.forEach((s)=>{
+    //     s = s.split(';').map(v=>parseFloat(v))
+    // })
   }
 
 
   draw(){
 
-    let start = new Point(this.Series[0].x,this.Series[0].y)
+    let start = new Point(this.Bins[0].x,this.Series[0].y)
 
     for(let i=0 ; i<this.Series.length ; i++){
-      let start = new Point(this.Series[i].x,this.Series[i].y)
+      let start = new Point(this.Bins[i].x,this.Series[i].y)
       this.paths[i].setAttribute('d',`M 0 0 L ${start.toSVGPath()} ${end.toSVGPath()}`)
     }
 
