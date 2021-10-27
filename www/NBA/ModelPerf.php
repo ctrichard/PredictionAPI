@@ -57,10 +57,12 @@ catch(Exception $a){
     <script type="text/javascript" src="../Graph.js"></script>
     <!-- <script type="text/javascript" src="./app.js"></script> -->
     <script>
+
+        var Data = <?php echo json_encode($ModelResults['DetailedResults'])?>
+
         //CustomElements
         customElements.define('graph-std',GraphWithAxises)
 
-        var Data = <?php echo json_encode($ModelResults['DetailedResults'])?>
 
     </script>
     </body>
