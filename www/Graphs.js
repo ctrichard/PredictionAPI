@@ -33,7 +33,9 @@ class Graph{
     this.ShrinkAxisLabelNumber={X:false,Y:true} 
 
     this.Lines = []
-    this.Npoints=0;
+    this.points = []
+
+    // this.Npoints=0;
     this.ToSortPointOnX = false;
 
     this.CreateSvg(svgwidth,svgheight);
