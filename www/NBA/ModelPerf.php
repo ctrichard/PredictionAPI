@@ -65,7 +65,7 @@ catch(Exception $a){
 
         let D = []
         Data['ProbaGoodAnswerVsEstimatedProba']['Bins'].forEach( (d,i)=>{
-            D[d] = Data['ProbaGoodAnswerVsEstimatedProba']['CountDomProba']
+            D[d][i] = Data['ProbaGoodAnswerVsEstimatedProba']['CountDomProba'][i]
         })
 
         console.log(D)
