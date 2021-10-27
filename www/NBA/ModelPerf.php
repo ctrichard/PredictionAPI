@@ -55,7 +55,7 @@ catch(Exception $a){
             </div>
 
 
-    <script type="text/javascript" src="http://d3js.org/d3.v5.js" defer></script>
+    <script type="text/javascript" src="http://d3js.org/d3.v5.js"></script>
     <script type="text/javascript" src="../Graphs.js"></script>
     <!-- <script type="text/javascript" src="./app.js"></script> -->
     <script>
