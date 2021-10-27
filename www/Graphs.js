@@ -248,6 +248,9 @@ class Graph{
     if(Points==undefined){
       Points = this.points
     }
+
+    console.log("rrrrrrr")
+    console.log(Points)
       
     this.svg.append("path").attr('id','Line'+this.Name)
     .datum(Points)
