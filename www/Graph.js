@@ -85,7 +85,7 @@ class Graph extends HTMLElement{
 
     let start = new Point(1,0)
     let end  = new Point(2,3)
-    this.paths[0].setAttribute('d',`M 0 0 L ${start} ${end}`)
+    this.paths[0].setAttribute('d',`M 0 0 L ${start.toSVGPath()} ${end.toSVGPath()}`)
 
   }
 
