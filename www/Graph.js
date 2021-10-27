@@ -76,23 +76,29 @@ class Graph extends HTMLElement{
   }
   
   GetSeries(){
-    let DataKeys = this.getAttribute('data').split('-')
-    this.Series = Data[DataKeys[0]][DataKeys[1]]
-    this.Bins = Data[DataKeys[0]]['Bins']
-    // this.Series.forEach((s)=>{
-    //     s = s.split(';').map(v=>parseFloat(v))
-    // })
+    let DataKeys = this.getAttribute('data').split(';')
+
+    this.Bins =[]
+    this.Series = []
+
+    this.DataKeys.forEach((k,i)=>{
+      k = k.split('-')
+      this.Bins[i] = Data[DataKeys[k[0]]]['Bins']
+      this.Series[i] = Data[DataKeys[k[0]]][DataKeys[k[1]]]
+        // .map(v=>parseFloat(v))
+    })
   }
 
 
   draw(){
 
     let start = new Point(this.Bins[0].x,this.Series[0].y)
-
-    for(let i=0 ; i<this.Series.length ; i++){
-      let start = new Point(this.Bins[i].x,this.Series[i].y)
-      this.paths[i].setAttribute('d',`M 0 0 L ${start.toSVGPath()} ${end.toSVGPath()}`)
+    let path = `M ${start.toSVGPath()} ${end.toSVGPath()} L `
+    for(let i=0 ; i<this.Series.length-1 ; i++){
+      let end = new Point(this.Bins[i+1].x,this.Series[i+1].y)
+      path += `${end.toSVGPath()} `
     }
+    this.paths[i].setAttribute('d',`M 0 0 L ${start.toSVGPath()} ${end.toSVGPath()}`)
 
   }
 
