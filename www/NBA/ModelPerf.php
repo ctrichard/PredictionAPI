@@ -8,10 +8,11 @@ require_once 'MyTools.php';
 
 $ModelName = $_GET['ModelName'] ?? "TestForAPI" ;
 
-if(!IsValidModelName($ModelName))
-    throw new Exception('Bad Model name : '.$ModelName);
 
 try{
+
+    if(!IsValidModelName($ModelName))
+        throw new Exception('Bad Model name : '.$ModelName);
 
     $ModelResults = GetModelResults($ModelName);
     print_r($ModelResults);
@@ -19,7 +20,7 @@ try{
 }
 catch(Exception $a){
     echo 'ERROR';
-    print_r($a);
+    print_r($a->getMessage());
 }
 
 
