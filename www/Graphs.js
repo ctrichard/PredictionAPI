@@ -32,6 +32,7 @@ class Graph{
     this.AxisDrawn = false;
     this.ShrinkAxisLabelNumber={X:false,Y:true} 
 
+    this.Lines = []
     this.Npoints=0;
     this.ToSortPointOnX = false;
 
@@ -48,74 +49,77 @@ class Graph{
     this.KeysAreX = bool;
   }
 
-  setPoints(points){
+  setPoints(points,name=undefined){
+    if(name==undefined){
+      name=this.points.length
+    }
 
-    this.points = points;
-    console.log(this.points);
+    this.points[name] = points;
+    // console.log(this.points[name]);
 
 
-    if(this.points === null){
+    if(this.points[name] === null){
 
       console.Error('Graph :  setPoints received null. Emptya data');
 
-      this.points = [];
+      this.points[name] = [];
 
     }
 
-    if(typeof this.points === 'object'){
+    if(typeof this.points[name] === 'object'){
       //transform Object into array 
-      this.points = Object.entries(this.points).map(([key, value]) => ([parseFloat(key),parseFloat(value)]));
+      this.points[name] = Object.entries(this.points[name]).map(([key, value]) => ([parseFloat(key),parseFloat(value)]));
       this.KeysAreX = false;
     }
 
-    this.Npoints = this.points.length;
+    this.Npoints = this.points[name].length;
 
-    this.SavedPoints = JSON.parse(JSON.stringify(this.points)); //deep copy no reference ; maybe slow? 
+    this.SavedPoints = JSON.parse(JSON.stringify(this.points[name])); //deep copy no reference ; maybe slow? 
 
     if(this.KeysAreX){
 
-      this.points.forEach((d,i)=>{
+      this.points[name].forEach((d,i)=>{
 
         let point = [parseFloat(i),d]
-        this.points[i] = point;
+        this.points[name][i] = point;
 
       })
 
     }
 
-    this.max = d3.max(this.points, function (d) {
+    this.max = d3.max(this.points[name], function (d) {
         return d[1];
     });
-    this.min = d3.min(this.points, function (d) {
+    this.min = d3.min(this.points[name], function (d) {
         return d[1];
     });
 
-    this.xmin = d3.min(this.points, function (d) {
+    this.xmin = d3.min(this.points[name], function (d) {
       return d[0];
     });
 
-    this.xmax = d3.max(this.points, function (d) {
+    this.xmax = d3.max(this.points[name], function (d) {
       return d[0];
     });
 
 
     if(this.ToSortPointOnX){
 
-      this.points.sort((a,b) =>  a[0]-b[0]);
+      this.points[name].sort((a,b) =>  a[0]-b[0]);
 
     }
 
 
     if(this.FilledLine){
-      this.points.push([this.points[this.points.length - 1][0],this.min])
-      this.points.push([this.xmin,this.min])
-      this.points.push([this.points[0][0],this.points[0][1]])
+      this.points[name].push([this.points[name][this.points[name].length - 1][0],this.min])
+      this.points[name].push([this.xmin,this.min])
+      this.points[name].push([this.points[name][0][0],this.points[name][0][1]])
     }
 
 
     this.CreateAxises();
 
-    this.points = this.scalePoints(this.points)
+    this.points[name] = this.scalePoints(this.points[name])
 
 
   }
@@ -239,25 +243,26 @@ class Graph{
   }
 
   //Points =  [ [x,y] , [x,y] ...] 
-  DrawOtherLine(Points){
+  DrawOtherLine(Points,name=undefined){
     if(Points==null)
       return
      
-    Points =  this.scalePoints(Points) 
-    this.DrawLine(Points)
+    this.setPoints(Points,name)
+    this.DrawLine(Points,name)
     
   }
 
-  DrawLine(Points=undefined){
+  DrawLine(Points=undefined,name=undefined){
 
-    if(Points==undefined){
-      Points = this.points
+    if(name==undefined){
+      name=this.points.length-1
     }
 
-    console.log("rrrrrrr")
-    console.log(Points)
-      
-    this.svg.append("path").attr('id','Line'+this.Name)
+    Points = this.points[name]
+
+    let lineName = this.Name+'-'+name
+
+    this.Lines[name] = this.svg.append("path").attr('id','Line'+lineName)
     .datum(Points)
     .attr("fill", "none")
     // .attr("stroke", "url(#line-gradient)" )
@@ -289,7 +294,7 @@ class Graph{
         this.DrawCustomAxises();
     }
 
-    return this.svg.select('#Line'+this.Name);
+    return this.Lines[name] // this.svg.select('#Line'+this.Name);
 
   }
 
