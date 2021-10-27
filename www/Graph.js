@@ -30,7 +30,7 @@ class Graph extends HTMLElement{
     const svg = strToDom(`<svg viewBox ="-1 -1 2 2"></svg>`)
 
 
-    this.paths = data.map( (_,k)=>{
+    this.paths = this.Series.map( (_,k)=>{
         const color = '#FFF'
         const path = document.createElementNS('http://www.w3.org/2000/svg','path')
         path.setAttribute('fill',color)
