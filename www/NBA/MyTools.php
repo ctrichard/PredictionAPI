@@ -234,7 +234,7 @@ class FileNotFound extends Exception{
 
 }
 
-$ProjectLocation = "/home/ubuntu/Projects/ParisSportifIA/"
+$ProjectLocation = "/home/ubuntu/Projects/ParisSportifIA/";
 $DataLocation = $ProjectLocation.'Data/';
 $ModelLocation = $ProjectLocation.'Models/';
 
