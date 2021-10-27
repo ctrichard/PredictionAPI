@@ -115,12 +115,19 @@ class Graph{
 
     this.CreateAxises();
 
-    this.points.forEach((d)=>{
+    this.points = this.scalePoints(this.points)
 
-      d[1] = this.yscale(d[1]);
-      d[0] = this.xscale(d[0]);
+
+  }
+
+  scalePoints(Points){
+    Points.forEach((d)=>{
+
+      Points[1] = this.yscale(d[1]);
+      Points[0] = this.xscale(d[0]);
     })
 
+    return Points
   }
 
   setType(type){
@@ -231,6 +238,7 @@ class Graph{
     if(Points==null)
       return
      
+    Points =  this.scalePoints(Points) 
     this.DrawLine(Points)
     
   }
