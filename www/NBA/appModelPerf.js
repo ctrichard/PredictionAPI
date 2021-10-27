@@ -1,2 +1,2 @@
 //CustomElements
-customElements.define('Graph-std',Graph)
+customElements.define('graph-std',Graph)

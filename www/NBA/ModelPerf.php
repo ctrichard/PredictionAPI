@@ -44,8 +44,8 @@ catch(Exception $a){
 
 
 
-        <Graph-std data ='0;1;2;3,1;2;3'>
-        </Graph-std>
+        <graph-std data ='0;1;2;3,1;2;3'>
+        </graph-std>
 
 
 
