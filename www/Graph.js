@@ -27,16 +27,38 @@ class Graph extends HTMLElement{
 
     this.GetSeries()
     
-    const svg = strToDom(`<svg viewBox ="-1 -1 2 2"></svg>`)
+    const svg = strToDom(`<svg class="StdGraph" viewBox ="-1 -1 2 2"></svg>`)
 
 
     this.paths = this.Series.map( (_,k)=>{
-        const color = '#FFF'
+        const color = '#f4a261'
         const path = document.createElementNS('http://www.w3.org/2000/svg','path')
         path.setAttribute('fill',color)
         svg.appendChild(path)
         return path
     })
+
+
+    this.style = document.createElement('style')
+    this.style.innerHTML = `
+      :host : {
+        display : bloc;
+        position : relative;
+      }
+
+      svg :{
+        width : 100%;
+        height: 100%;
+      }
+      path :{
+        cursor : pointer;
+        transition : opacity .3s;
+      }
+      path:hover{
+        opacity 0.5;
+      }
+    
+    `
 
 
     shadow.appendChild(svg)
