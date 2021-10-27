@@ -55,6 +55,11 @@ class Graph extends HTMLElement{
       path:hover{
         opacity 0.5;
       }
+
+      .StdGraph{
+        width : 100%;
+        height: 100%; 
+      }
     
     `
 
