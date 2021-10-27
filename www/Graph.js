@@ -65,7 +65,7 @@ class Graph extends HTMLElement{
 
 
     shadow.appendChild(style)
-    shadow.appendChild(svg)
+    shadow.appendChild(this.svg)
 
 
   }
