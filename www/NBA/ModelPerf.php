@@ -60,7 +60,9 @@ catch(Exception $a){
 
         var Data = <?php echo json_encode($ModelResults['DetailedResults'])?>
 
-        let Identity = {0:0,1:1}
+        let Identity = []
+        Identity[0]=0
+        Identity[1]=1
 
         let D = []
         Data['ProbaGoodAnswerVsEstimatedProba']['Bins'].forEach( (d,i)=>{
