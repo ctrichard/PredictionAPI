@@ -94,7 +94,7 @@ class Graph extends HTMLElement{
 
   draw(){
 
-    for(let ip=0 ; ip<this.Bins.length ; i++){
+    for(let ip=0 ; ip<this.Bins.length ; ip++){
 
       let start = new Point(this.Bins[ip][0],this.Series[ip][0])
       let path = `M ${start.toSVGPath()} L `
@@ -102,7 +102,9 @@ class Graph extends HTMLElement{
         let next = new Point(this.Bins[ip][i+1],this.Series[ip][i+1])
         path += `${next.toSVGPath()} `
       }
-      
+
+      console.log('ppp')
+      console.log(path)
       this.paths[ip].setAttribute('d',path)
     }
 
