@@ -40,7 +40,7 @@ class Graph extends HTMLElement{
     const style = document.createElement('style')
     style.innerHTML = `
       :host : {
-        display : bloc;
+        display : block;
         position : relative;
       }
 
