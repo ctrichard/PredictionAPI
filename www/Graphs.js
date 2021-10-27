@@ -227,10 +227,21 @@ class Graph{
 
   }
 
-  DrawLine(){
+  DrawOtherLine(Points){
+    if(Point==null)
+      return
+     
+    this.DrawLine(Points)
+    
+  }
+
+  DrawLine(Points = null){
+
+    if(Point==null)
+      Points = this.points
 
     this.svg.append("path").attr('id','Line'+this.Name)
-    .datum(this.points)
+    .datum(Points)
     .attr("fill", "none")
     // .attr("stroke", "url(#line-gradient)" )
     .attr("stroke", "currentColor")
@@ -571,6 +582,7 @@ class DrawGraph{
     let line = G.DrawLine();
     line.attr('stroke-width',5);
 
+    return G
 
   }
 

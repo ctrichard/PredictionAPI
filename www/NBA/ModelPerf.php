@@ -50,7 +50,7 @@ catch(Exception $a){
         <!-- </div> -->
 
 
-             <div class="GraphContainer" id="graph_pop3"></div>
+             <div class="GraphContainer" id="GraphProbRealVsEstimated"></div>
 
 
     <script type="text/javascript" src="http://d3js.org/d3.v5.js"></script>
@@ -60,6 +60,7 @@ catch(Exception $a){
 
         var Data = <?php echo json_encode($ModelResults['DetailedResults'])?>
 
+        let Identity = {0:0,1:1}
 
         let D = []
         Data['ProbaGoodAnswerVsEstimatedProba']['Bins'].forEach( (d,i)=>{
@@ -71,8 +72,9 @@ catch(Exception $a){
         console.log(D)
         // await LoadFunctionStaticFunctionResults("Population","OverHousingEffectOnBirth","","0","5","0.1");
 
-        DrawGraph.DrawStaticFunctionGraph('graph_pop3',"OverHousingEffectOnBirth",D,parseInt(d3.select('#graph_pop3').style('width'))/1);
+        G = DrawGraph.DrawStaticFunctionGraph('GraphProbRealVsEstimated',"GraphProbRealVsEstimated",D,parseInt(d3.select('#GraphProbRealVsEstimated').style('width'))/1);
 
+        G.DrawOtherLine(Identity)
 
 
 
