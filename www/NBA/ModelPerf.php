@@ -6,7 +6,7 @@ require_once 'MyTools.php';
 
 
 
-$ModelName = $_GET['ModelName'] ?? "TestForAPI" 
+$ModelName = $_GET['ModelName'] ?? "TestForAPI" ;
 
 if(!IsValidModelName($ModelName))
     throw new Exception('Bad Model name : '.$ModelName);
