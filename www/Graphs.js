@@ -121,7 +121,7 @@ class Graph{
   }
 
   scalePoints(Points){
-    Points.forEach((d)=>{
+    Points.forEach((Points)=>{
 
       Points[1] = this.yscale(Points[1]);
       Points[0] = this.xscale(Points[0]);
