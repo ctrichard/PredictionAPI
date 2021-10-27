@@ -74,10 +74,10 @@ catch(Exception $a){
         console.log(D)
         // await LoadFunctionStaticFunctionResults("Population","OverHousingEffectOnBirth","","0","5","0.1");
 
-        G = DrawGraph.DrawStaticFunctionGraph('GraphProbRealVsEstimated',"GraphProbRealVsEstimated",D,parseInt(d3.select('#GraphProbRealVsEstimated').style('width'))/1);
+        G = DrawGraph.DrawStaticFunctionGraph('GraphProbRealVsEstimated',"GraphProbRealVsEstimated",Identity,parseInt(d3.select('#GraphProbRealVsEstimated').style('width'))/1);
 
-        G.setPoints(Identity)
-        let l = G.DrawLine()
+        // G.setPoints(Identity)
+        let l = G.DrawLine(D,'data')
         console.log(l)
         // G.DrawOtherLine(Identity)
 
