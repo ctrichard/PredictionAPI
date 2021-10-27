@@ -65,8 +65,7 @@ class Graph extends HTMLElement{
 
   }
 
-
-    //only when element is connected to dom
+  //only when element is connected to dom
   connectedCallback(){
       this.draw()
   }
@@ -83,7 +82,7 @@ class Graph extends HTMLElement{
 
     let start = new Point(1,0)
     let end  = new Point(2,3)
-    for(let i=0 ; i<this.dataset.length ; i++){
+    for(let i=0 ; i<this.Series.length ; i++){
 
       this.paths[i].setAttribute('d',`M 0 0 L ${start.toSVGPath()} ${end.toSVGPath()} 3 4`)
     }
@@ -103,7 +102,6 @@ class GraphWithAxises extends Graph{
 
   }
 
-
   GetAxises(){
     this.AxisRange  = this.getAttribute('axis')?.split(',') ?? ['0;1','0;1']
     this.AxisRange.forEach((s)=>{
@@ -111,11 +109,6 @@ class GraphWithAxises extends Graph{
     })
   }
 
-    //only when element is connected to dom
-    connectedCallback(){
-      this.draw()
-  }
-  
 
 }
 
