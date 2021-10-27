@@ -228,7 +228,7 @@ class Graph{
   }
 
   DrawOtherLine(Points){
-    if(Point==null)
+    if(Points==null)
       return
      
     this.DrawLine(Points)
@@ -237,7 +237,7 @@ class Graph{
 
   DrawLine(Points = null){
 
-    if(Point==null)
+    if(Points==null)
       Points = this.points
 
     this.svg.append("path").attr('id','Line'+this.Name)
