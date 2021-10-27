@@ -37,8 +37,8 @@ class Graph extends HTMLElement{
         return path
     })
 
-    this.style = document.createElement('style')
-    this.style.innerHTML = `
+    const style = document.createElement('style')
+    style.innerHTML = `
       :host : {
         display : bloc;
         position : relative;
@@ -59,7 +59,7 @@ class Graph extends HTMLElement{
     `
 
 
-    shadow.appendChild(this.style)
+    shadow.appendChild(style)
     shadow.appendChild(svg)
 
 
