@@ -243,11 +243,12 @@ class Graph{
     
   }
 
-  DrawLine(Points = null){
+  DrawLine(Points=undefined){
 
-    if(Points==null)
+    if(Points==undefined){
       Points = this.points
-
+    }
+      
     this.svg.append("path").attr('id','Line'+this.Name)
     .datum(Points)
     .attr("fill", "none")
