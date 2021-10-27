@@ -67,7 +67,7 @@ catch(Exception $a){
         Data['ProbaGoodAnswerVsEstimatedProba']['Bins'].forEach( (d,i)=>{
             if(Data['ProbaGoodAnswerVsEstimatedProba']['CountDomProba'][i] == null)
                 return 
-            D[parseFloat(d)+0.5] = Data['ProbaGoodAnswerVsEstimatedProba']['CountDomProba'][i]
+            D[parseFloat(d)+0.05] = Data['ProbaGoodAnswerVsEstimatedProba']['CountDomProba'][i]
         })
 
         console.log(D)
