@@ -1,4 +1,3 @@
-customElements.define('Graph',Graph)
 
 function strToDom(str){
     return document.createRange().createContextualFragment(str).firstChild
@@ -120,3 +119,7 @@ class PieGraph extends Graph{
   
   
 }
+
+
+
+

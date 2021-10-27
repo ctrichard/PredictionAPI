@@ -1,3 +1,13 @@
+
+//CustomElements
+
+customElements.define('Graph',Graph)
+
+
+
+
+
+
 var MatchData = {Season : 2021, Model : 'TestForAPI', Date : '2021-07-20'}
 var MatchPlayerData = {Dom : '', Vis : ''}
 
@@ -385,11 +395,6 @@ document.getElementById('ResultsPrediction').addEventListener('click', (event) =
     let Prediction =  GetPrediction(MatchData['Dom'],MatchData['Vis'],MatchData['Season'],MatchData['Model'],MatchData['Date'])
 
 });
-
-
-
-
-
 
 
 
