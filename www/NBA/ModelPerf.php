@@ -76,7 +76,9 @@ catch(Exception $a){
 
         G = DrawGraph.DrawStaticFunctionGraph('GraphProbRealVsEstimated',"GraphProbRealVsEstimated",D,parseInt(d3.select('#GraphProbRealVsEstimated').style('width'))/1);
 
-        G.DrawOtherLine(Identity)
+        G.setPoints(Identity)
+        G.DrawLine(Identity)
+        // G.DrawOtherLine(Identity)
 
 
 
