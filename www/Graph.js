@@ -128,6 +128,35 @@ class GraphWithAxises extends Graph{
     this.AxisRange.forEach((s)=>{
       s = s.split(';').map(v=>parseFloat(v))
     })
+
+    this.AxisPaths = this.Series.map( (_,k)=>{
+      const color = '#001219'
+      const path = document.createElementNS('http://www.w3.org/2000/svg','path')
+      path.setAttribute('stroke',color)
+      svg.appendChild(path)
+      return path
+  })
+
+  }
+
+
+  draw(){
+    super()
+
+    //X axis
+    let start = new Point( this.AxisRange[0][0], this.AxisRange[0][0])
+    let path = `M ${start.toSVGPath()} L `
+    let next = new Point( this.AxisRange[0][0], this.AxisRange[0][1])
+    path += `${next.toSVGPath()} `
+    this.AxisPaths[0].setAttribute('d',path)
+    
+    //Y axis
+    start = new Point( this.AxisRange[1][0], this.AxisRange[1][0])
+    path = `M ${start.toSVGPath()} L `
+    next = new Point( this.AxisRange[1][0], this.AxisRange[1][1])
+    path += `${next.toSVGPath()} `
+    this.AxisPaths[1].setAttribute('d',path)
+
   }
 
 
