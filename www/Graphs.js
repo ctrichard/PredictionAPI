@@ -280,11 +280,13 @@ class Graph{
 
 
     if(this.DrawGradient)  
-      this.svg.select('#Line'+this.Name)
+       this.Lines[name]
+      // this.svg.select('#Line'+this.Name)
     .attr("stroke", "url(#"+this.GradientName+")" )
 
     if(this.FilledLine){
-      this.svg.select('#Line'+this.Name)
+      // this.svg.select('#Line'+this.Name)
+      this.Lines[name]
       .attr("fill", function(){
         if(this.DrawGradient)  
           return "url(#"+this.GradientName+")" 
