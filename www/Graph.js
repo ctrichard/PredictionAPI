@@ -125,8 +125,8 @@ class GraphWithAxises extends Graph{
 
   GetAxises(){
     this.AxisRange  = this.getAttribute('axis')?.split(',') ?? ['0;1','0;1']
-    this.AxisRange.forEach((s)=>{
-      s = s.split(';').map(v=>parseFloat(v))
+    this.AxisRange.forEach((s,i)=>{
+      this.AxisRange[i] = s.split(';').map(v=>parseFloat(v))
     })
 
     this.AxisPaths = this.Series.map( (_,k)=>{
