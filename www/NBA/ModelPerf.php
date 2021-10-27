@@ -15,7 +15,7 @@ try{
         throw new Exception('Bad model name : '.$ModelName);
 
     $ModelResults = GetModelResults($ModelName);
-    print_r($ModelResults);
+    // print_r($ModelResults);
 
 }
 catch(Exception $a){
