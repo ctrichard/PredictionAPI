@@ -141,7 +141,7 @@ class GraphWithAxises extends Graph{
 
 
   draw(){
-    super()
+    super.draw()
 
     //X axis
     let start = new Point( this.AxisRange[0][0], this.AxisRange[0][0])
