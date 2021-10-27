@@ -12,14 +12,14 @@ $ModelName = $_GET['ModelName'] ?? "TestForAPI" ;
 try{
 
     if(!IsValidModelName($ModelName))
-        throw new Exception('Bad Model name : '.$ModelName);
+        throw new Exception('Bad model name : '.$ModelName);
 
     $ModelResults = GetModelResults($ModelName);
     print_r($ModelResults);
 
 }
 catch(Exception $a){
-    echo 'ERROR';
+    echo 'ERROR'.PHP_EOL;
     print_r($a->getMessage());
 }
 
@@ -44,6 +44,8 @@ catch(Exception $a){
 
 
 
+        <Graph data ='0;1;2;3,1;2;3'>
+        </Graph>
 
 
 
@@ -51,6 +53,7 @@ catch(Exception $a){
 
     <script type="text/javascript" src="http://d3js.org/d3.v5.js" defer></script>
     <script type="text/javascript" src="./app.js" defer></script>
+    <script type="text/javascript" src="../Graph.js" defer></script>
 
     </body>
     </html>
