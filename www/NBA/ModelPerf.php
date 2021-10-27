@@ -45,12 +45,14 @@ catch(Exception $a){
 
         <!-- <div class="GraphContainer"> -->
 
-            <graph-std data="ProbaGoodAnswerVsEstimatedProba-CountDomProba">
-            </graph-std>
+            <!-- <graph-std data="ProbaGoodAnswerVsEstimatedProba-CountDomProba"> -->
+            <!-- </graph-std> -->
         <!-- </div> -->
 
 
-
+        <div class="   basicDiv  base-container ">
+             <div class="graph-pop" id="graph_pop3"></div>
+            </div>
 
 
     <script type="text/javascript" src="http://d3js.org/d3.v5.js" defer></script>
@@ -60,8 +62,18 @@ catch(Exception $a){
 
         var Data = <?php echo json_encode($ModelResults['DetailedResults'])?>
 
-        //CustomElements
-        customElements.define('graph-std',GraphWithAxises)
+
+        let D = []
+        Data['ProbaGoodAnswerVsEstimatedProba']['Bins'].forEach( (d,i)=>{
+            D[d] = Data['ProbaGoodAnswerVsEstimatedProba']['CountDomProba']
+        })
+
+        console.log(D)
+        // await LoadFunctionStaticFunctionResults("Population","OverHousingEffectOnBirth","","0","5","0.1");
+
+        // DrawGraph.DrawStaticFunctionGraph('graph_pop3',"OverHousingEffectOnBirth",OverHousingEffectOnBirth,parseInt(d3.select('#graph_pop3').style('width'))/ngraph);
+
+
 
 
     </script>
