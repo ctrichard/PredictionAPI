@@ -59,6 +59,9 @@ catch(Exception $a){
     <script>
         //CustomElements
         customElements.define('graph-std',GraphWithAxises)
+
+        const Data = <?php echo json_encode($ModelResults)?>
+
     </script>
     </body>
     </html>

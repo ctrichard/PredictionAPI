@@ -76,7 +76,8 @@ class Graph extends HTMLElement{
   }
   
   GetSeries(){
-    this.Series = this.getAttribute('data').split(',')
+    this.Series = Data['DetailedResults']
+    // this.getAttribute('data').split(',')
     this.Series.forEach((s)=>{
         s = s.split(';').map(v=>parseFloat(v))
     })
@@ -85,11 +86,11 @@ class Graph extends HTMLElement{
 
   draw(){
 
-    let start = new Point(1,0)
-    let end  = new Point(2,3)
-    for(let i=0 ; i<this.Series.length ; i++){
+    let start = new Point(this.Series[0].x,this.Series[0].y)
 
-      this.paths[i].setAttribute('d',`M 0 0 L ${start.toSVGPath()} ${end.toSVGPath()} 3 4`)
+    for(let i=0 ; i<this.Series.length ; i++){
+      let start = new Point(this.Series[i].x,this.Series[i].y)
+      this.paths[i].setAttribute('d',`M 0 0 L ${start.toSVGPath()} ${end.toSVGPath()}`)
     }
 
   }
