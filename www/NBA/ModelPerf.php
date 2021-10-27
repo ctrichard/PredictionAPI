@@ -36,16 +36,18 @@ catch(Exception $a){
 
         <title>Prediction</title>
         <link rel="stylesheet" type="text/css" href="../root.css">
-        <link rel="stylesheet" type="text/css" href="../match.css">
+        <link rel="stylesheet" type="text/css" href="../perf.css">
 
     </head>
         
     <body>
 
 
+        <div class="GraphContainer">
 
-        <graph-std data="0;1;2;3,1;2;3">
-        </graph-std>
+            <graph-std data="0;1;2;3,1;2;3">
+            </graph-std>
+        </div>
 
 
 
