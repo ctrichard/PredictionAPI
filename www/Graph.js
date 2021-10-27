@@ -142,7 +142,8 @@ class GraphWithAxises extends Graph{
 
   draw(){
     super.draw()
-
+    console.log(this.AxisPaths)
+    
     //X axis
     let start = new Point( this.AxisRange[0][0], this.AxisRange[0][0])
     let path = `M ${start.toSVGPath()} L `
