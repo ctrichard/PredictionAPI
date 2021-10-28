@@ -420,6 +420,9 @@ class Graph{
 
     if(DrawErrors){
 
+      console.log('uuuuuuu')
+      console.log(this.points[name])
+
       this.DataSet['Error_'+name] = 
       this.svg.selectAll('circle')
       .data(this.points[name])
