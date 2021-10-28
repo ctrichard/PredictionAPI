@@ -78,7 +78,7 @@ class Graph{
         console.log('ooooooo')
         console.log(Object.entries(this.points[name]))
         console.log(this.points[name])
-        this.points[name] = Object.entries(this.points[name]).map(([key, value, err]) => ([parseFloat(key),parseFloat(value),parseFloat(err)]));
+        this.points[name] = Object.entries(this.points[name]).map(([key, value]) => ([parseFloat(value[0]),parseFloat(value[1]),parseFloat(value[2])]));
         console.log(this.points[name])
 
       }
