@@ -315,7 +315,8 @@ class Graph{
 
     let lineName = this.Name+'-'+name
 
-    this.Lines[name] = this.svg
+    this.Lines[name] = 
+    this.svg.selectAll('circle')
     .data(Points)
     .enter()
     .append('circle')
