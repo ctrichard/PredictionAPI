@@ -74,8 +74,10 @@ class Graph{
     if(typeof this.points[name] === 'object'){
       //transform Object into array 
 
-      if(this.points[name][0].length > 2)
-          this.points[name] = Object.entries(this.points[name]).map(([key, value, err]) => ([parseFloat(key),parseFloat(value),parseFloat(err)]));
+      if(this.points[name][0].length > 2){
+        console.log(this.points[name])
+        this.points[name] = Object.entries(this.points[name]).map(([key, value, err]) => ([parseFloat(key),parseFloat(value),parseFloat(err)]));
+      }
       else    
           this.points[name] = Object.entries(this.points[name]).map(([key, value]) => ([parseFloat(key),parseFloat(value)]));
 
