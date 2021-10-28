@@ -308,6 +308,10 @@ class Graph{
    */
   DrawLine(name,params=undefined){
 
+    if(params == undefined){
+      params=[]
+    }
+    
     let color = ('color' in params) ? params['color'] :  "currentColor"
     let width = ('width' in params) ? params['width'] :  3
     let linecap = ('linecap' in params) ? params['linecap'] :  "round"
