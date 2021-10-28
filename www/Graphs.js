@@ -679,7 +679,7 @@ class DrawGraph{
     G.ExpandAxises(false);
     G.FillLine(false);
     G.setTransition(false);
-    G.setPoints(data);
+    // G.setPoints(data);
 
     console.log(G);
     return G;
