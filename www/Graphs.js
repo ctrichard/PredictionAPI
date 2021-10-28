@@ -258,47 +258,97 @@ class Graph{
     
   }
 
-  DrawLine(Points=undefined,name=undefined){
+
+  /**
+   * 
+   * @param {array} Points   [ [x,y] , [x,y] ...]  
+   * @param {string} name 
+   * @param {string} type 
+   * @param {array} params  
+   */
+  DrawDataSet(Points,name=undefined,type="Points",params=undefined){
+
+    if(Points==undefined){
+      console.error('Dataset is empty',Points) 
+      return
+    }
+
+    this.setPoints(Points,name)
 
     if(name==undefined){
       name=this.points.length-1
     }
 
-    Points = this.points[name]
+    let drawnobject = undefined
+
+    if(type=='Points'){
+      drawnobject= this.DrawPoints(undefined,name,params)
+
+    }
+    else if(type=='Histo'){
+
+    }
+    else if(type=="Line"){
+      drawnobject= this.DrawLine(undefined,name,params)
+
+    }
+    else{
+      console.error('unknown type to draw graph :',type) 
+    }
+
+    return drawnobject 
+
+  }
+
+  /**
+   * 
+   * @param {*} name 
+   * @param {*} params  'color', 'width', 'linecap' , "DrawGradient" => 'GradientName', 'FilledLine', 'FilledLine','DrawAxises'
+   * @returns 
+   */
+  DrawLine(name,params=undefined){
+
+    let color = params['color'] ?? "currentColor"
+    let width = params['width'] ?? 3
+    let linecap = params['linecap'] ?? "round"
+    let DrawGradient = params['DrawGradient'] ?? false
+    let GradientName = params['GradientName'] ?? ""
+    let FilledLine = params['FilledLine'] ?? false
+    let DrawAxises = params['DrawAxises'] ?? true
 
     let lineName = this.Name+'-'+name
 
     this.Lines[name] = this.svg.append("path").attr('id','Line'+lineName)
-    .datum(Points)
+    .datum(this.points[name])
     .attr("fill", "none")
     // .attr("stroke", "url(#line-gradient)" )
-    .attr("stroke", "currentColor")
-    .attr("stroke-width", 3)
-    .attr("stroke-linecap","round")
+    .attr("stroke", color)
+    .attr("stroke-width", width)
+    .attr("stroke-linecap",linecap)
     .attr("d", d3.line()
       .x(function(d,i) { return d[0]; })
       .y(function(d,i) { return d[1]; })
       );
 
 
-    if(this.DrawGradient)  
+    if(DrawGradient)  
        this.Lines[name]
       // this.svg.select('#Line'+this.Name)
-    .attr("stroke", "url(#"+this.GradientName+")" )
+    .attr("stroke", "url(#"+GradientName+")" )
 
-    if(this.FilledLine){
+    if(FilledLine){
       // this.svg.select('#Line'+this.Name)
       this.Lines[name]
       .attr("fill", function(){
-        if(this.DrawGradient)  
-          return "url(#"+this.GradientName+")" 
+        if(DrawGradient)  
+          return "url(#"+GradientName+")" 
         else
-          return "currentColor";
+          return color;
         })
     }
 
 
-    if(this.DrawAxises && !this.AxisDrawn){
+    if(DrawAxises && !this.AxisDrawn){
         this.DrawCustomAxises();
     }
 
@@ -328,7 +378,8 @@ class Graph{
     .attr("stroke-linecap","round")
     .attr('cx',function(d){return d[0]})
     .attr("cy",function(d){return d[1]})
-    .attr('r',1)
+    .attr('r',1.5)
+    .attr('value',function(d){return d[1]})
 
     return this.Lines[name] // this.svg.select('#Line'+this.Name);
 
