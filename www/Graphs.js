@@ -382,6 +382,10 @@ class Graph{
       params=[]
     }
 
+    console.log('DrawPoints')
+    console.log(params)
+
+    
     let color = ('color' in params) ? params['color'] :  "currentColor"
     let strokecolor = ('strokecolor' in params) ? params['strokecolor'] : color
     let strokewidth = ('width' in params) ? params['width'] :  1
