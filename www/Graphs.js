@@ -315,10 +315,11 @@ class Graph{
 
     let lineName = this.Name+'-'+name
 
-    this.Lines[name] = this.svg.append("path").attr('id','Line'+lineName)
+    this.Lines[name] = this.svg
     .data(Points)
     .enter()
     .append('circle')
+    .attr('id','Line'+lineName)
     .attr("fill", "none")
     // .attr("stroke", "url(#line-gradient)" )
     .attr("stroke", "currentColor")
