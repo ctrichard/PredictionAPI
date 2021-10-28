@@ -83,7 +83,7 @@ class Graph{
 
       }
       else    
-          this.points[name] = Object.entries(this.points[name]).map(([key, value]) => ([parseFloat(key),parseFloat(value)]));
+          this.points[name] = Object.entries(this.points[name]).map(([key, value]) => ([parseFloat(value[0]),parseFloat(value[1])]));
 
       this.KeysAreX = false;
 
