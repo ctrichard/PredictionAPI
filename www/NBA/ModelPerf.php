@@ -76,6 +76,7 @@ catch(Exception $a){
         // await LoadFunctionStaticFunctionResults("Population","OverHousingEffectOnBirth","","0","5","0.1");
 
         G = DrawGraph.DrawStaticFunctionGraph('GraphProbRealVsEstimated',"GraphProbRealVsEstimated",Identity,parseInt(d3.select('#GraphProbRealVsEstimated').style('width'))/1);
+        G.DataKeysAreX(false);
 
         // G.setPoints(Identity)
         let l = G.DrawDataSet(D,name='test',type="Points",params={'color':'blue', 'radius':5,'DrawErrors':true})
