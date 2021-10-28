@@ -433,7 +433,7 @@ class Graph{
       // .attr("y2", function(d,i) { return d[1]-(d[2] ?? 0); })
       .attr("y2", function(d,i) { return d[1]; })
       .attr("stroke", color)
-      .attr("stroke-width", strokewidth)
+      .attr("stroke-width", 5)
       // .attr("stroke-linecap",linecap)
 
       return [this.DataSet[name] ,this.DataSet['Error_'+name]]
