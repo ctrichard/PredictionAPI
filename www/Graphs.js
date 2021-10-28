@@ -311,7 +311,7 @@ class Graph{
     if(params == undefined){
       params=[]
     }
-    
+
     let color = ('color' in params) ? params['color'] :  "currentColor"
     let width = ('width' in params) ? params['width'] :  3
     let linecap = ('linecap' in params) ? params['linecap'] :  "round"
@@ -693,8 +693,8 @@ class DrawGraph{
     // G.AddTemperatureGradient();
     // G.DrawColorBar(20,40,-15,50); //x1,x2,y1,y2
 
-    let line = G.DrawLine('tt');
-    line.attr('stroke-width',5);
+    let line = G.DrawDataSet(data,'tt');
+    // line.attr('stroke-width',5);
 
     return G
 
