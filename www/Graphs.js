@@ -417,6 +417,23 @@ class Graph{
     .attr('r',radius)
     .attr('value',function(d){return d[1]/this.ymax})
 
+      // this.DataSet['Error_'+name] 
+      let a= 
+      this.svg.selectAll('circle')
+      .data(this.points[name])
+      .enter()
+      .append('circle')
+      .attr('id',function(d,i){return DataSetName+'--'+i})
+      .attr("fill", color)
+      // .attr("stroke", "url(#line-gradient)" )
+      // .attr("stroke", strokecolor)
+      .attr("stroke-width", 0)   // stroke is for error bar !!
+      .attr('cx',function(d){return d[0]})
+      .attr("cy",function(d){return d[1]})
+      .attr('r',radius)
+      .attr('value',function(d){return d[1]/this.ymax})
+
+
 
     if(DrawErrors){
 
@@ -438,23 +455,6 @@ class Graph{
       // .attr("stroke", color)
       // .attr("stroke-width", 5)
       // // // .attr("stroke-linecap",linecap)
-
-
-      // this.DataSet['Error_'+name] 
-      let a= 
-      this.svg.selectAll('circle')
-      .data(this.points[name])
-      .enter()
-      .append('circle')
-      .attr('id',function(d,i){return DataSetName+'--'+i})
-      .attr("fill", color)
-      // .attr("stroke", "url(#line-gradient)" )
-      // .attr("stroke", strokecolor)
-      .attr("stroke-width", 0)   // stroke is for error bar !!
-      .attr('cx',function(d){return d[0]})
-      .attr("cy",function(d){return d[1]})
-      .attr('r',radius)
-      .attr('value',function(d){return d[1]/this.ymax})
 
 
 
