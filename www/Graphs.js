@@ -693,7 +693,7 @@ class DrawGraph{
     // G.AddTemperatureGradient();
     // G.DrawColorBar(20,40,-15,50); //x1,x2,y1,y2
 
-    let line = G.DrawDataSet(data,'tt');
+    let line = G.DrawDataSet(data,'tt','Line');
     // line.attr('stroke-width',5);
 
     return G
