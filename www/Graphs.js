@@ -363,8 +363,10 @@ class Graph{
     /**
    * 
    * @param {*} name 
-   * @param {*} params  'color','strokecolor' 'radius' 'strokewidth', "DrawGradient" => 'GradientName', 'FilledLine', 'FilledLine','DrawAxises'
+   * @param {*} params  'color','strokecolor' 'linecap' 'radius' 'strokewidth', "DrawGradient" => 'GradientName', 'FilledLine', 'FilledLine','DrawAxises'
    * @returns 
+   * 
+   * stroke and linecap is for error bars
    */
   DrawPoints(name=undefined,params=undefined){
 
@@ -373,13 +375,17 @@ class Graph{
     }
 
     let color = ('color' in params) ? params['color'] :  "currentColor"
-    let strokecolor = ('strokecolor' in params) ? params['strokecolor'] :  "currentColor"
+    let strokecolor = ('strokecolor' in params) ? params['strokecolor'] : color
     let strokewidth = ('width' in params) ? params['width'] :  1
     let radius = ('radius' in params) ? params['radius'] :  2
+    let linecap = ('linecap' in params) ? params['linecap'] :  "round"
+
     // let DrawGradient = ('DrawGradient' in params) ? params['DrawGradient'] :  false
     // let GradientName = ('GradientName' in params) ? params['GradientName'] :  ""
     // let FilledLine = ('FilledLine' in params) ? params['FilledLine'] :  false
     // let DrawAxises = ('DrawAxises' in params) ? params['DrawAxises'] :  true
+
+    let DrawErrors = ('DrawErrors' in params) ? params['DrawErrors'] :  false
 
 
     let DataSetName = this.Name+'-'+name
@@ -392,14 +398,35 @@ class Graph{
     .attr('id',function(d,i){return DataSetName+'-'+i})
     .attr("fill", color)
     // .attr("stroke", "url(#line-gradient)" )
-    .attr("stroke", strokecolor)
-    .attr("stroke-width", strokewidth)
+    // .attr("stroke", strokecolor)
+    .attr("stroke-width", 0)   // stroke is for error bar !!
     .attr('cx',function(d){return d[0]})
     .attr("cy",function(d){return d[1]})
     .attr('r',radius)
-    .attr('value',function(d){return d[1]})
+    .attr('value',function(d){return d[1]/this.ymax})
+
+
+    if(DrawErrors){
+
+      this.DataSet['Error_'+name] = this.svg.selectAll('line')
+      .data(this.points[name])
+      .enter()
+      .append("line")
+      .attr('id',function(d,i){return DataSetName+'-Error-'+i})
+      .attr("x1", function(d,i) { return d[0]; })
+      .attr("y1", function(d,i) { return d[1]+(d[2] ?? 0); })
+      .attr("x2", function(d,i) { return d[0]; })
+      .attr("y2", function(d,i) { return d[1]-(d[2] ?? 0); })
+      .attr("stroke", strokecolor)
+      .attr("stroke-width", strokewidth)
+      .attr("stroke-linecap",linecap)
+
+      return [this.DataSet[name] ,this.DataSet['Error_'+name]]
+
+    }
 
     return this.DataSet[name] // this.svg.select('#Line'+this.Name);
+
 
   }
 

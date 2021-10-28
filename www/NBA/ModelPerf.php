@@ -77,7 +77,7 @@ catch(Exception $a){
         G = DrawGraph.DrawStaticFunctionGraph('GraphProbRealVsEstimated',"GraphProbRealVsEstimated",Identity,parseInt(d3.select('#GraphProbRealVsEstimated').style('width'))/1);
 
         // G.setPoints(Identity)
-        let l = G.DrawDataSet(D,name='test',type="Points",params={'color':'red'})
+        let l = G.DrawDataSet(D,name='test',type="Points",params={'color':'blue', 'radius':5,})
 
         // let l = G.DrawOtherLine(D,'data')
         console.log(l)
