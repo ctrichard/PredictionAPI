@@ -423,11 +423,28 @@ class Graph{
       console.log('uuuuuuu')
       console.log(this.points[name])
 
+      // this.DataSet['Error_'+name] = 
+      // this.svg.selectAll('line')
+      // .data(this.points[name])
+      // .enter()
+      // .append("line")
+      // .attr('id',function(d,i){return DataSetName+'-Error-'+i})
+      // .attr("x1", function(d,i) { console.log(d);return  d[0]; })
+      // // .attr("y1", function(d,i) { return d[1]+(d[2] ?? 0); })
+      // .attr("y1", function(d,i) { return d[1]; })
+      // .attr("x2", function(d,i) { return d[0]; })
+      // // .attr("y2", function(d,i) { return d[1]-(d[2] ?? 0); })
+      // .attr("y2", function(d,i) { return d[1]; })
+      // .attr("stroke", color)
+      // .attr("stroke-width", 5)
+      // // // .attr("stroke-linecap",linecap)
+
+
       this.DataSet['Error_'+name] = 
-      this.svg.selectAll('circle')
+      this.svg.selectAll('line')
       .data(this.points[name])
       .enter()
-      .append("line")
+      .append("circle")
       .attr('id',function(d,i){return DataSetName+'-Error-'+i})
       .attr("x1", function(d,i) { console.log(d);return  d[0]; })
       // .attr("y1", function(d,i) { return d[1]+(d[2] ?? 0); })
@@ -435,9 +452,14 @@ class Graph{
       .attr("x2", function(d,i) { return d[0]; })
       // .attr("y2", function(d,i) { return d[1]-(d[2] ?? 0); })
       .attr("y2", function(d,i) { return d[1]; })
+      .attr('cx',function(d){return d[0]})
+      .attr("cy",function(d){return d[1]})
+      .attr('r',radius)
       .attr("stroke", color)
       .attr("stroke-width", 5)
       // // .attr("stroke-linecap",linecap)
+
+
 
       return [this.DataSet[name] ,this.DataSet['Error_'+name]]
 
