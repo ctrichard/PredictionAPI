@@ -441,7 +441,7 @@ class Graph{
 
 
       this.DataSet['Error_'+name] = 
-      this.svg.selectAll('line')
+      this.svg.selectAll('circle')
       .data(this.points[name])
       .enter()
       .append("circle")
