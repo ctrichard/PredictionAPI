@@ -34,6 +34,7 @@ class Graph{
 
     this.Lines = []
     this.points = []
+    this.SavedPoints = []
 
     // this.Npoints=0;
     this.ToSortPointOnX = false;
@@ -78,7 +79,7 @@ class Graph{
 
     this.Npoints = this.points[name].length;
 
-    this.SavedPoints = JSON.parse(JSON.stringify(this.points[name])); //deep copy no reference ; maybe slow? 
+    this.SavedPoints[name] = JSON.parse(JSON.stringify(this.points[name])); //deep copy no reference ; maybe slow? 
 
     if(this.KeysAreX){
 
@@ -248,11 +249,12 @@ class Graph{
 
   //Points =  [ [x,y] , [x,y] ...] 
   DrawOtherLine(Points,name=undefined){
-    if(Points==null)
+    if(Points==undefined)
       return
      
     this.setPoints(Points,name)
-    this.DrawLine(Points,name)
+    // return this.DrawLine(undefined,name)
+    return this.DrawHisto(undefined,name)
     
   }
 
@@ -304,35 +306,35 @@ class Graph{
 
   }
 
-  DrawHisto(){
+  DrawHisto(Points=undefined,name=undefined){
 
-    let graph = this;
+    if(name==undefined){
+      name=this.points.length-1
+    }
 
-    if(this.Npoints==0)
-      return;
 
-    let barwidth = Math.abs(this.xmax-this.xmin) / (this.Npoints-1);
+    let barwidth = Math.abs(this.xmax-this.xmin) / (this.points[name].length-1);
     
     this.svg.selectAll('rect')
-    .data(this.points)
+    .data(this.points[name])
     .enter()
     .append("rect")
     .attr('id','HistoBar'+this.Name)
     .attr("fill", "currentColor")
     // .attr("stroke", "url(#line-gradient)" )
     .attr("x",function(d,i){
-        return graph.xscale((graph.SavedPoints[i][0]-(barwidth/2)))
+        return this.xscale((this.SavedPoints[name][i][0]-(barwidth/2)))
     })
     .attr("y",function(d){
       return d[1] ;
     })
-    .attr("width",graph.xscale(barwidth))
+    .attr("width",this.xscale(barwidth))
     .attr("height",function(d,i){
-      return Math.abs(d[1]-graph.yscale(graph.min)) ;
+      return Math.abs(d[1]-this.yscale(this.min)) ;
     })
     .attr('fill',function(d,i){
-      if(graph.DrawGradient)  
-        return graph.cp.getColor(graph.SavedPoints[i][1])
+      if(this.DrawGradient)  
+        return this.cp.getColor(this.SavedPoints[name][i][1])
       else
         return 'currentColor';  
     })
