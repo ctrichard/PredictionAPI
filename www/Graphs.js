@@ -32,7 +32,7 @@ class Graph{
     this.AxisDrawn = false;
     this.ShrinkAxisLabelNumber={X:false,Y:true} 
 
-    this.Lines = []
+    this.DataSet = []
     this.points = []
     this.SavedPoints = []
 
@@ -322,7 +322,7 @@ class Graph{
 
     let lineName = this.Name+'-'+name
 
-    this.Lines[name] = this.svg.append("path").attr('id','Line'+lineName)
+    this.DataSet[name] = this.svg.append("path").attr('id','Line'+lineName)
     .datum(this.points[name])
     .attr("fill", "none")
     // .attr("stroke", "url(#line-gradient)" )
@@ -336,13 +336,13 @@ class Graph{
 
 
     if(DrawGradient)  
-       this.Lines[name]
+       this.DataSet[name]
       // this.svg.select('#Line'+this.Name)
     .attr("stroke", "url(#"+GradientName+")" )
 
     if(FilledLine){
       // this.svg.select('#Line'+this.Name)
-      this.Lines[name]
+      this.DataSet[name]
       .attr("fill", function(){
         if(DrawGradient)  
           return "url(#"+GradientName+")" 
@@ -356,10 +356,16 @@ class Graph{
         this.DrawCustomAxises();
     }
 
-    return this.Lines[name] // this.svg.select('#Line'+this.Name);
+    return this.DataSet[name] // this.svg.select('#Line'+this.Name);
 
   }
 
+    /**
+   * 
+   * @param {*} name 
+   * @param {*} params  'color','strokecolor' 'radius' 'strokewidth', "DrawGradient" => 'GradientName', 'FilledLine', 'FilledLine','DrawAxises'
+   * @returns 
+   */
   DrawPoints(name=undefined,params=undefined){
 
     if(params == undefined){
@@ -367,33 +373,33 @@ class Graph{
     }
 
     let color = ('color' in params) ? params['color'] :  "currentColor"
-    let width = ('width' in params) ? params['width'] :  3
-    let linecap = ('linecap' in params) ? params['linecap'] :  "round"
-    let DrawGradient = ('DrawGradient' in params) ? params['DrawGradient'] :  false
-    let GradientName = ('GradientName' in params) ? params['GradientName'] :  ""
-    let FilledLine = ('FilledLine' in params) ? params['FilledLine'] :  false
-    let DrawAxises = ('DrawAxises' in params) ? params['DrawAxises'] :  true
+    let strokecolor = ('strokecolor' in params) ? params['strokecolor'] :  "currentColor"
+    let strokewidth = ('width' in params) ? params['width'] :  1
+    let radius = ('radius' in params) ? params['radius'] :  2
+    // let DrawGradient = ('DrawGradient' in params) ? params['DrawGradient'] :  false
+    // let GradientName = ('GradientName' in params) ? params['GradientName'] :  ""
+    // let FilledLine = ('FilledLine' in params) ? params['FilledLine'] :  false
+    // let DrawAxises = ('DrawAxises' in params) ? params['DrawAxises'] :  true
 
 
-    let lineName = this.Name+'-'+name
+    let DataSetName = this.Name+'-'+name
 
-    this.Lines[name] = 
+    this.DataSet[name] = 
     this.svg.selectAll('circle')
     .data(this.points[name])
     .enter()
     .append('circle')
-    .attr('id','Line'+lineName)
-    .attr("fill", "none")
+    .attr('id',function(d,i){return DataSetName+'-'+i})
+    .attr("fill", color)
     // .attr("stroke", "url(#line-gradient)" )
-    .attr("stroke", "currentColor")
-    .attr("stroke-width", 3)
-    .attr("stroke-linecap","round")
+    .attr("stroke", strokecolor)
+    .attr("stroke-width", strokewidth)
     .attr('cx',function(d){return d[0]})
     .attr("cy",function(d){return d[1]})
-    .attr('r',1.5)
+    .attr('r',radius)
     .attr('value',function(d){return d[1]})
 
-    return this.Lines[name] // this.svg.select('#Line'+this.Name);
+    return this.DataSet[name] // this.svg.select('#Line'+this.Name);
 
   }
 
