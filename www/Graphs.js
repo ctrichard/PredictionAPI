@@ -73,7 +73,8 @@ class Graph{
 
     if(typeof this.points[name] === 'object'){
       //transform Object into array 
-      this.points[name] = Object.entries(this.points[name]).map(([key, value]) => ([parseFloat(key),parseFloat(value)]));
+      // this.points[name] = Object.entries(this.points[name]).map(([key, value]) => ([parseFloat(key),parseFloat(value)]));
+      
       this.KeysAreX = false;
     }
 
