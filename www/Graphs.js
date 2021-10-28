@@ -316,8 +316,9 @@ class Graph{
     let barwidth = Math.abs(this.xmax-this.xmin) / (this.points[name].length-1);
     
     this.svg.selectAll('rect')
-    .data(this.points[name])
-    .enter()
+    // .data(this.points[name])
+    .datum(this.points[name])
+    // .enter()
     .append("rect")
     .attr('id','HistoBar'+this.Name)
     .attr("fill", "currentColor")
