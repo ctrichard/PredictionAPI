@@ -446,7 +446,7 @@ class Graph{
       .data(this.points[name])
       .enter()
       .append('circle')
-      .attr('id',function(d,i){return DataSetName+'-'+i})
+      .attr('id',function(d,i){return DataSetName+'--'+i})
       .attr("fill", color)
       // .attr("stroke", "url(#line-gradient)" )
       // .attr("stroke", strokecolor)
