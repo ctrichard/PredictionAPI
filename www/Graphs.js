@@ -254,7 +254,7 @@ class Graph{
      
     this.setPoints(Points,name)
     // return this.DrawLine(undefined,name)
-    return this.DrawHisto(undefined,name)
+    return this.DrawPoints(undefined,name)
     
   }
 
@@ -306,6 +306,32 @@ class Graph{
 
   }
 
+  DrawPoints(Points=undefined,name=undefined){
+
+    if(name==undefined){
+      name=this.points.length-1
+    }
+    Points = this.points[name]
+
+    let lineName = this.Name+'-'+name
+
+    this.Lines[name] = this.svg.append("path").attr('id','Line'+lineName)
+    .data(Points)
+    .enter()
+    .append('circle')
+    .attr("fill", "none")
+    // .attr("stroke", "url(#line-gradient)" )
+    .attr("stroke", "currentColor")
+    .attr("stroke-width", 3)
+    .attr("stroke-linecap","round")
+    .attr('cx',function(d){return d[0]})
+    .attr("cy",function(d){return d[1]})
+    .attr('r',1)
+
+    return this.Lines[name] // this.svg.select('#Line'+this.Name);
+
+  }
+
   DrawHisto(Points=undefined,name=undefined){
 
     if(name==undefined){
@@ -324,7 +350,7 @@ class Graph{
     .attr("fill", "currentColor")
     // .attr("stroke", "url(#line-gradient)" )
     .attr("x",function(d,i){
-        return this.xscale((this.SavedPoints[name][i][0]-(barwidth/2)))
+        return this.xscale((d-(barwidth/2)))
     })
     .attr("y",function(d){
       return d[1] ;
