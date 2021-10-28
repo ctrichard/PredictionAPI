@@ -420,9 +420,8 @@ class Graph{
 
     if(DrawErrors){
 
-      console.log('yes')
-
-      this.DataSet['Error_'+name] = this.svg.selectAll('line')
+      this.DataSet['Error_'+name] = 
+      this.svg.selectAll('circle')
       .data(this.points[name])
       .enter()
       .append("line")
@@ -438,7 +437,6 @@ class Graph{
       return [this.DataSet[name] ,this.DataSet['Error_'+name]]
 
     }
-    console.log('no')
 
     return this.DataSet[name] // this.svg.select('#Line'+this.Name);
 
