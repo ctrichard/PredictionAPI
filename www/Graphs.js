@@ -444,20 +444,16 @@ class Graph{
       this.svg.selectAll('circle')
       .data(this.points[name])
       .enter()
-      .append("circle")
-      .attr('id',function(d,i){return DataSetName+'-Error-'+i})
-      .attr("x1", function(d,i) { console.log(d);return  d[0]; })
-      // .attr("y1", function(d,i) { return d[1]+(d[2] ?? 0); })
-      .attr("y1", function(d,i) { return d[1]; })
-      .attr("x2", function(d,i) { return d[0]; })
-      // .attr("y2", function(d,i) { return d[1]-(d[2] ?? 0); })
-      .attr("y2", function(d,i) { return d[1]; })
+      .append('circle')
+      .attr('id',function(d,i){return DataSetName+'-'+i})
+      .attr("fill", color)
+      // .attr("stroke", "url(#line-gradient)" )
+      // .attr("stroke", strokecolor)
+      .attr("stroke-width", 0)   // stroke is for error bar !!
       .attr('cx',function(d){return d[0]})
       .attr("cy",function(d){return d[1]})
       .attr('r',radius)
-      .attr("stroke", color)
-      .attr("stroke-width", 5)
-      // // .attr("stroke-linecap",linecap)
+      .attr('value',function(d){return d[1]/this.ymax})
 
 
 
