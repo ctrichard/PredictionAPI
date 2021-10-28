@@ -308,13 +308,13 @@ class Graph{
    */
   DrawLine(name,params=undefined){
 
-    let color = params['color'] ?? "currentColor"
-    let width = params['width'] ?? 3
-    let linecap = params['linecap'] ?? "round"
-    let DrawGradient = params['DrawGradient'] ?? false
-    let GradientName = params['GradientName'] ?? ""
-    let FilledLine = params['FilledLine'] ?? false
-    let DrawAxises = params['DrawAxises'] ?? true
+    let color = ('color' in params) ? params['color'] :  "currentColor"
+    let width = ('width' in params) ? params['width'] :  3
+    let linecap = ('linecap' in params) ? params['linecap'] :  "round"
+    let DrawGradient = ('DrawGradient' in params) ? params['DrawGradient'] :  false
+    let GradientName = ('GradientName' in params) ? params['GradientName'] :  ""
+    let FilledLine = ('FilledLine' in params) ? params['FilledLine'] :  false
+    let DrawAxises = ('DrawAxises' in params) ? params['DrawAxises'] :  true
 
     let lineName = this.Name+'-'+name
 
@@ -689,7 +689,7 @@ class DrawGraph{
     // G.AddTemperatureGradient();
     // G.DrawColorBar(20,40,-15,50); //x1,x2,y1,y2
 
-    let line = G.DrawLine();
+    let line = G.DrawLine('tt');
     line.attr('stroke-width',5);
 
     return G
