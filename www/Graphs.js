@@ -385,7 +385,7 @@ class Graph{
     console.log('DrawPoints')
     console.log(params)
 
-    
+
     let color = ('color' in params) ? params['color'] :  "currentColor"
     let strokecolor = ('strokecolor' in params) ? params['strokecolor'] : color
     let strokewidth = ('width' in params) ? params['width'] :  1
@@ -420,6 +420,8 @@ class Graph{
 
     if(DrawErrors){
 
+      console.log('yes')
+
       this.DataSet['Error_'+name] = this.svg.selectAll('line')
       .data(this.points[name])
       .enter()
@@ -436,6 +438,7 @@ class Graph{
       return [this.DataSet[name] ,this.DataSet['Error_'+name]]
 
     }
+    console.log('no')
 
     return this.DataSet[name] // this.svg.select('#Line'+this.Name);
 
