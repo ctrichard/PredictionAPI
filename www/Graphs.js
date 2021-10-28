@@ -266,7 +266,7 @@ class Graph{
    * @param {string} type 
    * @param {array} params  
    */
-  DrawDataSet(Points,name=undefined,type="Points",params=undefined){
+  DrawDataSet(Points,name='tt',type="Points",params=undefined){
 
     if(Points==undefined){
       console.error('Dataset is empty',Points) 
@@ -282,14 +282,14 @@ class Graph{
     let drawnobject = undefined
 
     if(type=='Points'){
-      drawnobject= this.DrawPoints(undefined,name,params)
+      drawnobject= this.DrawPoints(name,params)
 
     }
     else if(type=='Histo'){
 
     }
     else if(type=="Line"){
-      drawnobject= this.DrawLine(undefined,name,params)
+      drawnobject= this.DrawLine(name,params)
 
     }
     else{
@@ -360,18 +360,26 @@ class Graph{
 
   }
 
-  DrawPoints(Points=undefined,name=undefined){
+  DrawPoints(name=undefined,params=undefined){
 
-    if(name==undefined){
-      name=this.points.length-1
+    if(params == undefined){
+      params=[]
     }
-    Points = this.points[name]
+
+    let color = ('color' in params) ? params['color'] :  "currentColor"
+    let width = ('width' in params) ? params['width'] :  3
+    let linecap = ('linecap' in params) ? params['linecap'] :  "round"
+    let DrawGradient = ('DrawGradient' in params) ? params['DrawGradient'] :  false
+    let GradientName = ('GradientName' in params) ? params['GradientName'] :  ""
+    let FilledLine = ('FilledLine' in params) ? params['FilledLine'] :  false
+    let DrawAxises = ('DrawAxises' in params) ? params['DrawAxises'] :  true
+
 
     let lineName = this.Name+'-'+name
 
     this.Lines[name] = 
     this.svg.selectAll('circle')
-    .data(Points)
+    .data(this.points[name])
     .enter()
     .append('circle')
     .attr('id','Line'+lineName)
