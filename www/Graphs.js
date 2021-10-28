@@ -440,7 +440,8 @@ class Graph{
       // // // .attr("stroke-linecap",linecap)
 
 
-      this.DataSet['Error_'+name] = 
+      // this.DataSet['Error_'+name] 
+      let a= 
       this.svg.selectAll('circle')
       .data(this.points[name])
       .enter()
@@ -457,7 +458,7 @@ class Graph{
 
 
 
-      return [this.DataSet[name] ,this.DataSet['Error_'+name]]
+      return [this.DataSet[name] ,a]//this.DataSet['Error_'+name]]
 
     }
 
