@@ -47,21 +47,32 @@ catch(Exception $a){
             <!-- <graph-std data="ProbaGoodAnswerVsEstimatedProba-CountDomProba"> -->
             <!-- </graph-std> -->
         <!-- </div> -->
-
+        <div class="Title">
+            Performances of Model <?php $ModelName ?>
+        </div>
         <div class="BigGraphContainer">
+            <div class="SubTitle">
+                Probability of Team wins versus Estimated Win Probability
+            </div>
             <div class="GraphContainer" id="GraphProbRealVsEstimated"></div>
         </div>
         <div class="BigGraphContainer">
+            <div class="SubTitle">
+                Point Diff (mean/std) versus Estimated Win Probability
+            </div>
             <div class="GraphContainer" id="GraphDiffPTSVsEstimatedProba"></div>
         </div>
 
         <div class="BigGraphContainer">
+            <div class="SubTitle">
+                Classement Diff (mean/std) versus Estimated Win Probability
+            </div>
             <div class="GraphContainer" id="GraphDiffClassement_VsEstimatedProba"></div>
         </div>
 
 
 
-        
+
     <script type="text/javascript" src="http://d3js.org/d3.v5.js"></script>
     <script type="text/javascript" src="../Graphs.js"></script>
     <!-- <script type="text/javascript" src="./app.js"></script> -->
