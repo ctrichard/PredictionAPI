@@ -148,14 +148,19 @@ class Graph{
 
       d[1] = this.yscale(d[1]);
       d[0] = this.xscale(d[0]);
+      try{
+        d[2] = this.yscale(d[2])
+      }
+      catch(error){
+      }
     })
     return Points
   }
 
-  setType(type){
-      //line , bar, points
-    this.type = type;
-  }
+  // setType(type){
+  //     //line , bar, points
+  //   this.type = type;
+  // }
 
   setPointShape(shape){
       //only for nuage de point
