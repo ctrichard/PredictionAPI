@@ -409,7 +409,7 @@ class Graph{
     let DataSetName = this.Name+'-'+name
 
     this.DataSet[name] = 
-    this.svg.selectAll('circle')
+    this.svg.selectAll('.DataSetName')
       .data(this.points[name])
       .enter()
 
@@ -440,6 +440,7 @@ class Graph{
       // .enter()
       .append("line")
       .attr('id',function(d,i){return DataSetName+'-Error-'+i})
+      .attr('class','Error_'+DataSetName)
       .attr("x1", function(d,i) { console.log(d);return  d[0]; })
       .attr("y1", function(d,i) { return d[2]; })
       // .attr("y1", function(d,i) { return d[1]; })
