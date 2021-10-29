@@ -48,9 +48,11 @@ catch(Exception $a){
             <!-- </graph-std> -->
         <!-- </div> -->
 
-
-        <div class="GraphContainer" id="GraphProbRealVsEstimated"></div>
-        <div class="GraphContainer" id="GraphProbRealVsEstimated"></div>
+        <div class="BigGraphContainer">
+            <div class="GraphContainer" id="GraphProbRealVsEstimated"></div>
+            <div class="GraphContainer" id="GraphDiffPTSVsEstimatedProba"></div>
+        </div>
+            
 
 
     <script type="text/javascript" src="http://d3js.org/d3.v5.js"></script>
@@ -64,6 +66,9 @@ catch(Exception $a){
         Identity[0]= 0 //[0,1]
         Identity[1]= 1 //[1,1]
 
+
+        //ProbaGoodAnswerVsEstimatedProba
+        //====================================
         let D = []
         let V = []
         Data['ProbaGoodAnswerVsEstimatedProba']['Bins'].forEach( (d,i)=>{
@@ -74,13 +79,9 @@ catch(Exception $a){
             V.push([parseFloat(d)+0.05 , Data['ProbaGoodAnswerVsEstimatedProba']['CountVisProba'][i] , Math.sqrt(Data['ProbaGoodAnswerVsEstimatedProba']['CountVisGoodAnswer'][i])/Data['ProbaGoodAnswerVsEstimatedProba']['CountVisTot'][i] ])  // +0.05 to put at center of bin  ; last element = poissonian uncertainty 
         }) 
 
-        console.log(D)
-        // await LoadFunctionStaticFunctionResults("Population","OverHousingEffectOnBirth","","0","5","0.1");
-
 
         let G = DrawGraph.CreateStaticFunctionGraph('GraphProbRealVsEstimated', "GraphProbRealVsEstimated")
 
-        // G = DrawGraph.DrawStaticFunctionGraph('GraphProbRealVsEstimated',"GraphProbRealVsEstimated",Identity,parseInt(d3.select('#GraphProbRealVsEstimated').style('width'))/1);
         G.DataKeysAreX(false);
 
         let I = G.DrawDataSet(Identity,name='Identity',type="Line",params={'color': 'lightgrey', 'strokewidth':2})
@@ -90,6 +91,28 @@ catch(Exception $a){
 
 
 
+
+        //ProbaGoodAnswerVsEstimatedProba
+        //====================================
+        D = []
+        V = []
+        Data['DiffPTSVsEstimatedProba']['Bins'].forEach( (d,i)=>{
+            if(Data['DiffPTSVsEstimatedProba']['CountDomProba'][i] == null)
+                return 
+
+                D.push([parseFloat(d)+0.05 , Data['DiffPTSVsEstimatedProba']['Mean_DomProba'][i] , Data['DiffPTSVsEstimatedProba']['Std_DomProba'][i] ])  // +0.05 to put at center of bin  
+                V.push([parseFloat(d)+0.05 , Data['DiffPTSVsEstimatedProba']['Mean_VisProba'][i] , Data['DiffPTSVsEstimatedProba']['Std_VisProba'][i] ])  // +0.05 to put at center of bin  
+        }) 
+
+
+        let G = DrawGraph.CreateStaticFunctionGraph('GraphDiffPTSVsEstimatedProba', "GraphDiffPTSVsEstimatedProba")
+
+        G.DataKeysAreX(false);
+
+        let I = G.DrawDataSet(Identity,name='Identity',type="Line",params={'color': 'rgba(255,0,0,0)', 'strokewidth':2})
+
+        let ld = G.DrawDataSet(D,name='DataDom',type="Points",params={'color': 'blue', 'radius':5,'DrawErrors':true, 'strokewidth':2})
+        let lv = G.DrawDataSet(V,name='DataVis',type="Points",params={'color': 'red', 'radius':5,'DrawErrors':true, 'strokewidth':2})
 
     </script>
     </body>
