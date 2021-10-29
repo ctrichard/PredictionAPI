@@ -139,15 +139,15 @@ catch(Exception $a){
         }) 
 
 
-        let G2 = DrawGraph.CreateStaticFunctionGraph('GraphDiffClassement_VsEstimatedProba', "GraphDiffClassement_VsEstimatedProba")
-        G2.FixAxis('Y',-20,20);
+        let G3 = DrawGraph.CreateStaticFunctionGraph('GraphDiffClassement_VsEstimatedProba', "GraphDiffClassement_VsEstimatedProba")
+        G3.FixAxis('Y',-20,20);
 
-        G2.DataKeysAreX(false);
+        G3.DataKeysAreX(false);
 
-        I = G2.DrawDataSet(Identity,name='Identity',type="Line",params={'color': 'rgba(255,0,0,0)', 'strokewidth':2})
+        I = G3.DrawDataSet(Identity,name='Identity',type="Line",params={'color': 'rgba(255,0,0,0)', 'strokewidth':2})
 
-        ld = G2.DrawDataSet(D,name='DataDom',type="Points",params={'color': 'blue', 'radius':5,'DrawErrors':true, 'strokewidth':2})
-        lv = G2.DrawDataSet(V,name='DataVis',type="Points",params={'color': 'red', 'radius':5,'DrawErrors':true, 'strokewidth':2})
+        ld = G3.DrawDataSet(D,name='DataDom',type="Points",params={'color': 'blue', 'radius':5,'DrawErrors':true, 'strokewidth':2})
+        lv = G3.DrawDataSet(V,name='DataVis',type="Points",params={'color': 'red', 'radius':5,'DrawErrors':true, 'strokewidth':2})
 
 
 
