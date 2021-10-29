@@ -69,7 +69,7 @@ catch(Exception $a){
             if(Data['ProbaGoodAnswerVsEstimatedProba']['CountDomProba'][i] == null)
                 return 
             // D[parseFloat(d)+0.05] = Data['ProbaGoodAnswerVsEstimatedProba']['CountDomProba'][i]
-            D.push([parseFloat(d)+0.05 , Data['ProbaGoodAnswerVsEstimatedProba']['CountDomProba'][i] , sqrt(Data['ProbaGoodAnswerVsEstimatedProba']['CountDomGoodAnswer'][i])/Data['ProbaGoodAnswerVsEstimatedProba']['CountDomTot'][i] ])
+            D.push([parseFloat(d)+0.05 , Data['ProbaGoodAnswerVsEstimatedProba']['CountDomProba'][i] , Math.sqrt(Data['ProbaGoodAnswerVsEstimatedProba']['CountDomGoodAnswer'][i])/Data['ProbaGoodAnswerVsEstimatedProba']['CountDomTot'][i] ])
         })
 
         console.log(D)
