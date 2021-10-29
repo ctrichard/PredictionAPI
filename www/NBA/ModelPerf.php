@@ -48,25 +48,27 @@ catch(Exception $a){
             <!-- </graph-std> -->
         <!-- </div> -->
         <div class="Title">
-            Performances of Model <?php $ModelName ?>
+            Performances of Model <?php echo $ModelName ?>
+        </div>
+
+        <div class="SubTitle">
+            Probability of Team wins versus Estimated Win Probability
         </div>
         <div class="BigGraphContainer">
-            <div class="SubTitle">
-                Probability of Team wins versus Estimated Win Probability
-            </div>
             <div class="GraphContainer" id="GraphProbRealVsEstimated"></div>
         </div>
+        <div class="SubTitle">
+            Point Diff (mean/std) versus Estimated Win Probability
+        </div>
         <div class="BigGraphContainer">
-            <div class="SubTitle">
-                Point Diff (mean/std) versus Estimated Win Probability
-            </div>
+
             <div class="GraphContainer" id="GraphDiffPTSVsEstimatedProba"></div>
         </div>
 
+        <div class="SubTitle">
+            Classement Diff (mean/std) versus Estimated Win Probability
+        </div>
         <div class="BigGraphContainer">
-            <div class="SubTitle">
-                Classement Diff (mean/std) versus Estimated Win Probability
-            </div>
             <div class="GraphContainer" id="GraphDiffClassement_VsEstimatedProba"></div>
         </div>
 
