@@ -75,7 +75,7 @@ class Graph{
       //transform Object into array 
 
       if(this.points[name][0].length > 2){
-        this.points[name] = Object.entries(this.points[name]).map(([key, value]) => ([parseFloat(value[0]),parseFloat(value[1]),parseFloat(value[2])]));
+        this.points[name] = Object.entries(this.points[name]).map(([key, value]) => ([parseFloat(value[0]),parseFloat(value[1]),parseFloat(value[1])+parseFloat(value[2]),parseFloat(value[1])-parseFloat(value[2])]));
       }
       else{
         this.points[name] = Object.entries(this.points[name]).map(([key, value]) => ([parseFloat(key),parseFloat(value)]));
@@ -150,6 +150,7 @@ class Graph{
       d[0] = this.xscale(d[0]);
       try{
         d[2] = this.yscale(d[2])
+        d[3] = this.yscale(d[3])
       }
       catch(error){
       }
@@ -440,10 +441,10 @@ class Graph{
       .append("line")
       .attr('id',function(d,i){return DataSetName+'-Error-'+i})
       .attr("x1", function(d,i) { console.log(d);return  d[0]; })
-      .attr("y1", function(d,i) { return d[1]+(d[2] ?? 0); })
+      .attr("y1", function(d,i) { return d[2]; })
       // .attr("y1", function(d,i) { return d[1]; })
       .attr("x2", function(d,i) { return d[0]; })
-      .attr("y2", function(d,i) { return d[1]-(d[2] ?? 0); })
+      .attr("y2", function(d,i) { return d[3]; })
       // .attr("y2", function(d,i) { return d[1]; })
       .attr("stroke", color)
       .attr("stroke-width", 5)
