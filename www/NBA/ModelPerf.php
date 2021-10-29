@@ -50,9 +50,11 @@ catch(Exception $a){
 
         <div class="BigGraphContainer">
             <div class="GraphContainer" id="GraphProbRealVsEstimated"></div>
+        </div>
+        <div class="BigGraphContainer">
             <div class="GraphContainer" id="GraphDiffPTSVsEstimatedProba"></div>
         </div>
-            
+
 
 
     <script type="text/javascript" src="http://d3js.org/d3.v5.js"></script>
@@ -96,6 +98,8 @@ catch(Exception $a){
         //====================================
         D = []
         V = []
+        Identity[0]= -20 //[0,1]
+        Identity[1]= 20 //[1,1]
         Data['DiffPTSVsEstimatedProba']['Bins'].forEach( (d,i)=>{
             if(Data['DiffPTSVsEstimatedProba']['Mean_DomProba'][i] == null)
                 return 
