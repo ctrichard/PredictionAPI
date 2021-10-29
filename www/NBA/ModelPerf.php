@@ -97,7 +97,7 @@ catch(Exception $a){
         D = []
         V = []
         Data['DiffPTSVsEstimatedProba']['Bins'].forEach( (d,i)=>{
-            if(Data['DiffPTSVsEstimatedProba']['CountDomProba'][i] == null)
+            if(Data['DiffPTSVsEstimatedProba']['Mean_DomProba'][i] == null)
                 return 
 
                 D.push([parseFloat(d)+0.05 , Data['DiffPTSVsEstimatedProba']['Mean_DomProba'][i] , Data['DiffPTSVsEstimatedProba']['Std_DomProba'][i] ])  // +0.05 to put at center of bin  
