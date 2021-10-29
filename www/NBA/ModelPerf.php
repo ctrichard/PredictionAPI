@@ -55,6 +55,9 @@ catch(Exception $a){
             <div class="GraphContainer" id="GraphDiffPTSVsEstimatedProba"></div>
         </div>
 
+        <div class="BigGraphContainer">
+            <div class="GraphContainer" id="GraphDiffClassement_VsEstimatedProba"></div>
+        </div>
 
 
     <script type="text/javascript" src="http://d3js.org/d3.v5.js"></script>
@@ -118,6 +121,39 @@ catch(Exception $a){
 
         ld = G2.DrawDataSet(D,name='DataDom',type="Points",params={'color': 'blue', 'radius':5,'DrawErrors':true, 'strokewidth':2})
         lv = G2.DrawDataSet(V,name='DataVis',type="Points",params={'color': 'red', 'radius':5,'DrawErrors':true, 'strokewidth':2})
+
+
+
+        //DiffClassement_VsEstimatedProba
+        //====================================
+        D = []
+        V = []
+        Identity[0]= -20 //[0,1]
+        Identity[1]= 20 //[1,1]
+        Data['DiffClassement_VsEstimatedProba']['Bins'].forEach( (d,i)=>{
+            if(Data['DiffClassement_VsEstimatedProba']['Mean_DomProba'][i] == null)
+                return 
+
+                D.push([parseFloat(d)+0.05 , Data['DiffClassement_VsEstimatedProba']['Mean_DomProba'][i] , Data['DiffClassement_VsEstimatedProba']['Std_DomProba'][i] ])  // +0.05 to put at center of bin  
+                V.push([parseFloat(d)+0.05 , Data['DiffClassement_VsEstimatedProba']['Mean_VisProba'][i] , Data['DiffClassement_VsEstimatedProba']['Std_VisProba'][i] ])  // +0.05 to put at center of bin  
+        }) 
+
+
+        let G2 = DrawGraph.CreateStaticFunctionGraph('GraphDiffClassement_VsEstimatedProba', "GraphDiffClassement_VsEstimatedProba")
+        G2.FixAxis('Y',-20,20);
+
+        G2.DataKeysAreX(false);
+
+        I = G2.DrawDataSet(Identity,name='Identity',type="Line",params={'color': 'rgba(255,0,0,0)', 'strokewidth':2})
+
+        ld = G2.DrawDataSet(D,name='DataDom',type="Points",params={'color': 'blue', 'radius':5,'DrawErrors':true, 'strokewidth':2})
+        lv = G2.DrawDataSet(V,name='DataVis',type="Points",params={'color': 'red', 'radius':5,'DrawErrors':true, 'strokewidth':2})
+
+
+
+
+        
+
 
     </script>
     </body>
