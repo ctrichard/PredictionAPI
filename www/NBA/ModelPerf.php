@@ -68,20 +68,25 @@ catch(Exception $a){
         Data['ProbaGoodAnswerVsEstimatedProba']['Bins'].forEach( (d,i)=>{
             if(Data['ProbaGoodAnswerVsEstimatedProba']['CountDomProba'][i] == null)
                 return 
-            // D[parseFloat(d)+0.05] = Data['ProbaGoodAnswerVsEstimatedProba']['CountDomProba'][i]
-            D.push([parseFloat(d)+0.05 , Data['ProbaGoodAnswerVsEstimatedProba']['CountDomProba'][i] , Math.sqrt(Data['ProbaGoodAnswerVsEstimatedProba']['CountDomGoodAnswer'][i])/Data['ProbaGoodAnswerVsEstimatedProba']['CountDomTot'][i] ])
-        })
+
+            D.push([parseFloat(d)+0.05 , Data['ProbaGoodAnswerVsEstimatedProba']['CountDomProba'][i] , Math.sqrt(Data['ProbaGoodAnswerVsEstimatedProba']['CountDomGoodAnswer'][i])/Data['ProbaGoodAnswerVsEstimatedProba']['CountDomTot'][i] ])  // +0.05 to put at center of bin  ; last element = poissonian uncertainty 
+        }) 
 
         console.log(D)
         // await LoadFunctionStaticFunctionResults("Population","OverHousingEffectOnBirth","","0","5","0.1");
 
-        G = DrawGraph.DrawStaticFunctionGraph('GraphProbRealVsEstimated',"GraphProbRealVsEstimated",Identity,parseInt(d3.select('#GraphProbRealVsEstimated').style('width'))/1);
+
+        let G = DrawGraph.CreateStaticFunctionGraph('GraphProbRealVsEstimated', "GraphProbRealVsEstimated")
+
+        // G = DrawGraph.DrawStaticFunctionGraph('GraphProbRealVsEstimated',"GraphProbRealVsEstimated",Identity,parseInt(d3.select('#GraphProbRealVsEstimated').style('width'))/1);
         G.DataKeysAreX(false);
 
-        // G.setPoints(Identity)
-        let l = G.DrawDataSet(D,name='test',type="Points",params={'color':'blue', 'radius':5,'DrawErrors':true})
+        let I = G.DrawDataSet(Identity,name='Identity',type="Line",params={'color': 'black', 'strokewidth':2})
+
+        let l = G.DrawDataSet(D,name='Data',type="Points",params={'color': 'black', 'radius':5,'DrawErrors':true, 'strokewidth':2})
 
         // let l = G.DrawOtherLine(D,'data')
+        console.log(I)
         console.log(l)
         // G.DrawOtherLine(Identity)
 

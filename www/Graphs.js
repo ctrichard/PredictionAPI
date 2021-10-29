@@ -739,7 +739,7 @@ class DrawGraph{
   //StaticFunction 
   //==========================
 
-  static CreateStaticFunctionGraph(DomIdElement, Name,data,svgwidth=0,svgheight=0){
+  static CreateStaticFunctionGraph(DomIdElement, Name,svgwidth=0,svgheight=0){
     let G = new Graph('#'+DomIdElement,Name,svgwidth,svgheight);
     G.DataKeysAreX(true);
     G.ShrinkAxisLabel('X',false);
@@ -758,7 +758,7 @@ class DrawGraph{
 
   static DrawStaticFunctionGraph(DomIdElement,Name='',data=[],svgwidth=0,svgheight=0){
 
-    let G = this.CreateStaticFunctionGraph(DomIdElement,Name,data,svgwidth,svgheight);
+    let G = this.CreateStaticFunctionGraph(DomIdElement,Name,svgwidth,svgheight);
 
     // G.AddTemperatureGradient();
     // G.DrawColorBar(20,40,-15,50); //x1,x2,y1,y2
