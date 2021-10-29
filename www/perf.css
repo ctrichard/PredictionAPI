@@ -9,9 +9,10 @@
 
 .GraphContainer{
 
+    flex : auto;
 
-    width: 100%;
-    min-width: 100%;
+    max-width: 80%;
+    min-width: 50%;
     /* height : 500px; */
     height: calc((100vw) * 0.5625);  /* 16/9 */
 
