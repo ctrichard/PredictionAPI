@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     flex-direction: row ;
+    
     /* flex-wrap: nowrap ; */
 
 }
@@ -14,9 +15,10 @@
     max-width: 80%;
     min-width: 50%;
     /* height : 500px; */
-    height: calc((100vw) * 0.5625);  /* 16/9 */
+    /* height: calc((100vw) * 0.5625);  16/9 */
 
-    max-height : 100vh;
+    /* max-height : 100vh; */
+    max-height : 80%;
 }
 
 
