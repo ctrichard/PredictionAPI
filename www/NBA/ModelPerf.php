@@ -95,8 +95,8 @@ catch(Exception $a){
             if(Data['ProbaGoodAnswerVsEstimatedProba']['CountDomProba'][i] == null)
                 return 
 
-            D.push([parseFloat(d)+0.05 , Data['ProbaGoodAnswerVsEstimatedProba']['CountDomProba'][i] , Math.sqrt(Data['ProbaGoodAnswerVsEstimatedProba']['CountDomGoodAnswer'][i])/Data['ProbaGoodAnswerVsEstimatedProba']['CountDomTot'][i] ])  // +0.05 to put at center of bin  ; last element = poissonian uncertainty 
-            V.push([parseFloat(d)+0.05 , Data['ProbaGoodAnswerVsEstimatedProba']['CountVisProba'][i] , Math.sqrt(Data['ProbaGoodAnswerVsEstimatedProba']['CountVisGoodAnswer'][i])/Data['ProbaGoodAnswerVsEstimatedProba']['CountVisTot'][i] ])  // +0.05 to put at center of bin  ; last element = poissonian uncertainty 
+            D.push([parseFloat(d)+0.025 , Data['ProbaGoodAnswerVsEstimatedProba']['CountDomProba'][i] , Math.sqrt(Data['ProbaGoodAnswerVsEstimatedProba']['CountDomGoodAnswer'][i])/Data['ProbaGoodAnswerVsEstimatedProba']['CountDomTot'][i] ])  // +0.05 to put at center of bin  ; last element = poissonian uncertainty 
+            V.push([parseFloat(d)+0.025 , Data['ProbaGoodAnswerVsEstimatedProba']['CountVisProba'][i] , Math.sqrt(Data['ProbaGoodAnswerVsEstimatedProba']['CountVisGoodAnswer'][i])/Data['ProbaGoodAnswerVsEstimatedProba']['CountVisTot'][i] ])  // +0.05 to put at center of bin  ; last element = poissonian uncertainty 
         }) 
 
 
