@@ -25,7 +25,6 @@ catch(Exception $a){
 
 
 
-
 ?>
 
 
@@ -50,7 +49,8 @@ catch(Exception $a){
         <!-- </div> -->
 
 
-             <div class="GraphContainer" id="GraphProbRealVsEstimated"></div>
+        <div class="GraphContainer" id="GraphProbRealVsEstimated"></div>
+        <div class="GraphContainer" id="GraphProbRealVsEstimated"></div>
 
 
     <script type="text/javascript" src="http://d3js.org/d3.v5.js"></script>
@@ -65,11 +65,13 @@ catch(Exception $a){
         Identity[1]= 1 //[1,1]
 
         let D = []
+        let V = []
         Data['ProbaGoodAnswerVsEstimatedProba']['Bins'].forEach( (d,i)=>{
             if(Data['ProbaGoodAnswerVsEstimatedProba']['CountDomProba'][i] == null)
                 return 
 
             D.push([parseFloat(d)+0.05 , Data['ProbaGoodAnswerVsEstimatedProba']['CountDomProba'][i] , Math.sqrt(Data['ProbaGoodAnswerVsEstimatedProba']['CountDomGoodAnswer'][i])/Data['ProbaGoodAnswerVsEstimatedProba']['CountDomTot'][i] ])  // +0.05 to put at center of bin  ; last element = poissonian uncertainty 
+            V.push([parseFloat(d)+0.05 , Data['ProbaGoodAnswerVsEstimatedProba']['CountVisProba'][i] , Math.sqrt(Data['ProbaGoodAnswerVsEstimatedProba']['CountVisGoodAnswer'][i])/Data['ProbaGoodAnswerVsEstimatedProba']['CountVisTot'][i] ])  // +0.05 to put at center of bin  ; last element = poissonian uncertainty 
         }) 
 
         console.log(D)
@@ -83,12 +85,9 @@ catch(Exception $a){
 
         let I = G.DrawDataSet(Identity,name='Identity',type="Line",params={'color': 'lightgrey', 'strokewidth':2})
 
-        let l = G.DrawDataSet(D,name='Data',type="Points",params={'color': 'black', 'radius':5,'DrawErrors':true, 'strokewidth':2})
+        let ld = G.DrawDataSet(D,name='DataDom',type="Points",params={'color': 'blue', 'radius':5,'DrawErrors':true, 'strokewidth':2})
+        let lv = G.DrawDataSet(V,name='DataVis',type="Points",params={'color': 'red', 'radius':5,'DrawErrors':true, 'strokewidth':2})
 
-        // let l = G.DrawOtherLine(D,'data')
-        console.log(I)
-        console.log(l)
-        // G.DrawOtherLine(Identity)
 
 
 
