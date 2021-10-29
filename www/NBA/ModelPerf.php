@@ -110,6 +110,7 @@ catch(Exception $a){
 
 
         let G2 = DrawGraph.CreateStaticFunctionGraph('GraphDiffPTSVsEstimatedProba', "GraphDiffPTSVsEstimatedProba")
+        G2.FixAxis('Y',-20,20);
 
         G2.DataKeysAreX(false);
 
