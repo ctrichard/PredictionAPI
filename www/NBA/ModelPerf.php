@@ -105,14 +105,14 @@ catch(Exception $a){
         }) 
 
 
-        let G = DrawGraph.CreateStaticFunctionGraph('GraphDiffPTSVsEstimatedProba', "GraphDiffPTSVsEstimatedProba")
+        let G2 = DrawGraph.CreateStaticFunctionGraph('GraphDiffPTSVsEstimatedProba', "GraphDiffPTSVsEstimatedProba")
 
-        G.DataKeysAreX(false);
+        G2.DataKeysAreX(false);
 
-        let I = G.DrawDataSet(Identity,name='Identity',type="Line",params={'color': 'rgba(255,0,0,0)', 'strokewidth':2})
+        I = G2.DrawDataSet(Identity,name='Identity',type="Line",params={'color': 'rgba(255,0,0,0)', 'strokewidth':2})
 
-        let ld = G.DrawDataSet(D,name='DataDom',type="Points",params={'color': 'blue', 'radius':5,'DrawErrors':true, 'strokewidth':2})
-        let lv = G.DrawDataSet(V,name='DataVis',type="Points",params={'color': 'red', 'radius':5,'DrawErrors':true, 'strokewidth':2})
+        ld = G2.DrawDataSet(D,name='DataDom',type="Points",params={'color': 'blue', 'radius':5,'DrawErrors':true, 'strokewidth':2})
+        lv = G2.DrawDataSet(V,name='DataVis',type="Points",params={'color': 'red', 'radius':5,'DrawErrors':true, 'strokewidth':2})
 
     </script>
     </body>
