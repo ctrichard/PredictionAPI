@@ -552,8 +552,8 @@ class Graph{
     .attr("class", "Yaxis")
     .call(yaxis)
 
-    this.yAxis.attr('stroke','yellow')
-    d3.select(".domain").attr('stroke','red')
+    // this.yAxis.attr('stroke','yellow')
+    // d3.selectAll(".domain").attr('stroke','red')
 
   }
 
