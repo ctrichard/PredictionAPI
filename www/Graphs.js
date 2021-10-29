@@ -446,11 +446,9 @@ class Graph{
       .attr("x2", function(d,i) { return d[0]; })
       .attr("y2", function(d,i) { return d[3]; })
       // .attr("y2", function(d,i) { return d[1]; })
-      .attr("stroke", color)
-      .attr("stroke-width", 5)
+      .attr("stroke", strokecolor)
+      .attr("stroke-width", strokewidth)
       // // // .attr("stroke-linecap",linecap)
-
-
 
       return [this.DataSet[name] ,this.DataSet['Error_'+name]]
 
