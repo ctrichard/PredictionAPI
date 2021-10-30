@@ -246,8 +246,10 @@ $OutputsTempFileLocation = './Outputs/';
 
 function GetModelResults($ModelName){
     $path = $GLOBALS['ModelLocation'].$ModelName.'/ModelResults.json';
-    print($path);
     $ModelResults = json_decode(file_get_contents($path),true);
+    print(file_get_contents($path));
+    print($ModelResults);
+
     return $ModelResults;
 
 }
