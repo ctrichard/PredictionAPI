@@ -11,8 +11,8 @@ $ModelName = $_GET['ModelName'] ?? "TestForAPI" ;
 
 try{
 
-    if(!IsValidModelName($ModelName))
-        throw new Exception('Bad model name : '.$ModelName);
+    // if(!IsValidModelName($ModelName))
+        // throw new Exception('Bad model name : '.$ModelName);
 
     $ModelResults = GetModelResults($ModelName);
     // print_r($ModelResults);
