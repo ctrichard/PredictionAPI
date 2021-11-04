@@ -99,8 +99,6 @@ catch(Exception $a){
         el.innerHTML += totalaccuracy.toFixed(2) 
         el.innerHTML += '<br>' 
 
-        el.innerHTML += '<br>' 
-        el.innerHTML += '<br>' 
 
         el.innerHTML += '>70% : '
         el.innerHTML += '<br>' 
@@ -112,7 +110,16 @@ catch(Exception $a){
         totalaccuracy = ComputeAccuracyAboveX(Data,Side='Vis',Proba=0.7)
         el.innerHTML += totalaccuracy.toFixed(2)
         el.innerHTML += '<br>' 
-
+        el.innerHTML += '>80% : '
+        el.innerHTML += '<br>' 
+        el.innerHTML += 'Dom Accuracy : '
+        totalaccuracy = ComputeAccuracyAboveX(Data,Side='Dom',Proba=0.8)
+        el.innerHTML += totalaccuracy.toFixed(2)
+        el.innerHTML += '<br>' 
+        el.innerHTML += 'Vis Accuracy : '
+        totalaccuracy = ComputeAccuracyAboveX(Data,Side='Vis',Proba=0.8)
+        el.innerHTML += totalaccuracy.toFixed(2)
+        el.innerHTML += '<br>' 
 
         let Identity = []
         Identity[0]= 0 //[0,1]
