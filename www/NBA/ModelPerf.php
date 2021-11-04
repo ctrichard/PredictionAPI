@@ -90,11 +90,15 @@ catch(Exception $a){
         el.innerHTML += totalaccuracy.toFixed(2)
         el.innerHTML += '<br>' 
         el.innerHTML += 'Vis Accuracy : '
-        goodanswer = Data['ProbaGoodAnswerVsEstimatedProba']['CountVisGoodAnswer'].slice((Data['ProbaGoodAnswerVsEstimatedProba']['CountVisGoodAnswer'].length-1)/2).reduce((partial_sum, a) => partial_sum + a, 0);
-        totalaccuracy = goodanswer /  Data['ProbaGoodAnswerVsEstimatedProba']['CountVisTot'].slice((Data['ProbaGoodAnswerVsEstimatedProba']['CountVisTot'].length-1)/2).reduce((partial_sum, a) => partial_sum + a, 0);
+        // goodanswer = Data['ProbaGoodAnswerVsEstimatedProba']['CountVisGoodAnswer'].slice((Data['ProbaGoodAnswerVsEstimatedProba']['CountVisGoodAnswer'].length-1)/2).reduce((partial_sum, a) => partial_sum + a, 0);
+        // totalaccuracy = goodanswer /  Data['ProbaGoodAnswerVsEstimatedProba']['CountVisTot'].slice((Data['ProbaGoodAnswerVsEstimatedProba']['CountVisTot'].length-1)/2).reduce((partial_sum, a) => partial_sum + a, 0);
 
+        totalaccuracy = ComputeAccuracyAboveX(Data,Side='Dom',Proba=0.5)
         el.innerHTML += totalaccuracy.toFixed(2) 
         el.innerHTML += '<br>' 
+
+
+        function {
 
 
         let Identity = []
@@ -183,6 +187,34 @@ catch(Exception $a){
         lv = G3.DrawDataSet(V,name='DataVis',type="Points",params={'color': 'red', 'radius':5,'DrawErrors':true, 'strokewidth':2})
 
 
+        function ComputeAccuracyAboveX(Data,Side='Dom',Proba=0.5){
+
+            let acc = 0
+            let goodanswer = 0
+            let totanswer =0
+            Data['ProbaGoodAnswerVsEstimatedProba']['Bins'].forEach((d,i)=>{
+
+                if(d<Proba){
+                    return
+                }
+
+                if(d>=1){
+                    return
+                }
+
+
+                goodanswer += Data['ProbaGoodAnswerVsEstimatedProba']['CountDomGoodAnswer'][i]
+                totanswer += Data['ProbaGoodAnswerVsEstimatedProba']['CountDomTot'][i]
+
+            })
+
+            acc = totanswer / goodanswer
+            
+            return acc
+
+
+
+        }
 
 
         
