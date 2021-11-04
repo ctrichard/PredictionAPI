@@ -102,9 +102,9 @@ catch(Exception $a){
         el.innerHTML += '<br>' 
         el.innerHTML += '<br>' 
 
-        el.innerHTML = '>70% : '
+        el.innerHTML += '>70% : '
         el.innerHTML += '<br>' 
-        el.innerHTML = 'Dom Accuracy : '
+        el.innerHTML += 'Dom Accuracy : '
         totalaccuracy = ComputeAccuracyAboveX(Data,Side='Dom',Proba=0.7)
         el.innerHTML += totalaccuracy.toFixed(2)
         el.innerHTML += '<br>' 
