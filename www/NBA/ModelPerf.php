@@ -93,7 +93,7 @@ catch(Exception $a){
         // goodanswer = Data['ProbaGoodAnswerVsEstimatedProba']['CountVisGoodAnswer'].slice((Data['ProbaGoodAnswerVsEstimatedProba']['CountVisGoodAnswer'].length-1)/2).reduce((partial_sum, a) => partial_sum + a, 0);
         // totalaccuracy = goodanswer /  Data['ProbaGoodAnswerVsEstimatedProba']['CountVisTot'].slice((Data['ProbaGoodAnswerVsEstimatedProba']['CountVisTot'].length-1)/2).reduce((partial_sum, a) => partial_sum + a, 0);
 
-        totalaccuracy = ComputeAccuracyAboveX(Data,Side='Dom',Proba=0.5)
+        totalaccuracy = ComputeAccuracyAboveX(Data,Side='Vis',Proba=0.5)
         el.innerHTML += totalaccuracy.toFixed(2) 
         el.innerHTML += '<br>' 
 
@@ -200,13 +200,14 @@ catch(Exception $a){
                 }
 
 
-                goodanswer += Data['ProbaGoodAnswerVsEstimatedProba']['CountDomGoodAnswer'][i]
-                totanswer += Data['ProbaGoodAnswerVsEstimatedProba']['CountDomTot'][i]
+                goodanswer += Data['ProbaGoodAnswerVsEstimatedProba']['Count'+Side+'GoodAnswer'][i]
+                totanswer += Data['ProbaGoodAnswerVsEstimatedProba']['Count'Side'Tot'][i]
 
             })
 
             acc = totanswer / goodanswer
             
+            console.log("Acc=",acc,Side,totanswer,goodanswer)
             return acc
 
 
