@@ -98,9 +98,6 @@ catch(Exception $a){
         el.innerHTML += '<br>' 
 
 
-        function {
-
-
         let Identity = []
         Identity[0]= 0 //[0,1]
         Identity[1]= 1 //[1,1]
