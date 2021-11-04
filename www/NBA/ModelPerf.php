@@ -50,7 +50,8 @@ catch(Exception $a){
         <div class="Title">
             Performances of Model <?php echo $ModelName ?>
         </div>
-
+        <div class="SubTitle" id="accuracy">
+        </div>
         <div class="SubTitle">
             Probability of Team wins versus Estimated Win Probability
         </div>
@@ -81,6 +82,19 @@ catch(Exception $a){
     <script>
 
         var Data = <?php echo json_encode($ModelResults['DetailedResults'])?>
+
+        let el = d3.select('#accuracy')
+        el.innerHTML = 'Dom Accuracy : '+ 
+        let goodanswer = Data['ProbaGoodAnswerVsEstimatedProba']['CountDomGoodAnswer'].reduce((partial_sum, a) => partial_sum + a, 0);
+        let totalaccuracy = sum / Data['ProbaGoodAnswerVsEstimatedProba']['CountDomTot'].reduce((partial_sum, a) => partial_sum + a, 0);
+        el.innerHTML += totalaccuracy 
+        el.innerHTML += '<br>' 
+        el.innerHTML = 'Vis Accuracy : '+ 
+        goodanswer = Data['ProbaGoodAnswerVsEstimatedProba']['CountVisGoodAnswer'].reduce((partial_sum, a) => partial_sum + a, 0);
+        totalaccuracy = sum / Data['ProbaGoodAnswerVsEstimatedProba']['CountVisTot'].reduce((partial_sum, a) => partial_sum + a, 0);
+        el.innerHTML += totalaccuracy 
+        el.innerHTML += '<br>' 
+
 
         let Identity = []
         Identity[0]= 0 //[0,1]
