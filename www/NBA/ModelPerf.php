@@ -201,7 +201,7 @@ catch(Exception $a){
 
 
                 goodanswer += Data['ProbaGoodAnswerVsEstimatedProba']['Count'+Side+'GoodAnswer'][i]
-                totanswer += Data['ProbaGoodAnswerVsEstimatedProba']['Count'Side'Tot'][i]
+                totanswer += Data['ProbaGoodAnswerVsEstimatedProba']['Count'+Side+'Tot'][i]
 
             })
 
