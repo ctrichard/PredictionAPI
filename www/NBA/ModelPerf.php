@@ -90,7 +90,7 @@ catch(Exception $a){
         el.innerHTML += totalaccuracy.toFixed(2)
         el.innerHTML += '<br>' 
         el.innerHTML += 'Vis Accuracy : '
-        goodanswer = Data['ProbaGoodAnswerVsEstimatedProba']['CountVisGoodAnswer']..slice((Data['ProbaGoodAnswerVsEstimatedProba']['CountVisGoodAnswer'].length-1)/2)reduce((partial_sum, a) => partial_sum + a, 0);
+        goodanswer = Data['ProbaGoodAnswerVsEstimatedProba']['CountVisGoodAnswer'].slice((Data['ProbaGoodAnswerVsEstimatedProba']['CountVisGoodAnswer'].length-1)/2)reduce((partial_sum, a) => partial_sum + a, 0);
         totalaccuracy = goodanswer / Data['ProbaGoodAnswerVsEstimatedProba']['CountVisTot'].reduce((partial_sum, a) => partial_sum + a, 0);
         el.innerHTML += totalaccuracy.toFixed(2) 
         el.innerHTML += '<br>' 
