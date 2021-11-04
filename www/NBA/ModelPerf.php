@@ -85,7 +85,9 @@ catch(Exception $a){
         let Identity = []
         Identity[0]= 0 //[0,1]
         Identity[1]= 1 //[1,1]
-
+        let horizontal05 = []
+        horizontal05[0]= 0.5 //[0,1]
+        horizontal05[1]= 0.5 //[1,1]
 
         //ProbaGoodAnswerVsEstimatedProba
         //====================================
@@ -105,6 +107,7 @@ catch(Exception $a){
         G.DataKeysAreX(false);
 
         let I = G.DrawDataSet(Identity,name='Identity',type="Line",params={'color': 'lightgrey', 'strokewidth':2})
+        let I = G.DrawDataSet(horizontal05,name='horizontal05',type="Line",params={'color': 'lightgrey', 'strokewidth':1.5})
 
         let ld = G.DrawDataSet(D,name='DataDom',type="Points",params={'color': 'blue', 'radius':5,'DrawErrors':true, 'strokewidth':2})
         let lv = G.DrawDataSet(V,name='DataVis',type="Points",params={'color': 'red', 'radius':5,'DrawErrors':true, 'strokewidth':2})
