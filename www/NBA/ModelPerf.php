@@ -86,12 +86,12 @@ catch(Exception $a){
         let el = d3.select('#accuracy')
         el.innerHTML = 'Dom Accuracy : '
         let goodanswer = Data['ProbaGoodAnswerVsEstimatedProba']['CountDomGoodAnswer'].reduce((partial_sum, a) => partial_sum + a, 0);
-        let totalaccuracy = sum / Data['ProbaGoodAnswerVsEstimatedProba']['CountDomTot'].reduce((partial_sum, a) => partial_sum + a, 0);
+        let totalaccuracy = goodanswer / Data['ProbaGoodAnswerVsEstimatedProba']['CountDomTot'].reduce((partial_sum, a) => partial_sum + a, 0);
         el.innerHTML += totalaccuracy 
         el.innerHTML += '<br>' 
         el.innerHTML = 'Vis Accuracy : '
         goodanswer = Data['ProbaGoodAnswerVsEstimatedProba']['CountVisGoodAnswer'].reduce((partial_sum, a) => partial_sum + a, 0);
-        totalaccuracy = sum / Data['ProbaGoodAnswerVsEstimatedProba']['CountVisTot'].reduce((partial_sum, a) => partial_sum + a, 0);
+        totalaccuracy = goodanswer / Data['ProbaGoodAnswerVsEstimatedProba']['CountVisTot'].reduce((partial_sum, a) => partial_sum + a, 0);
         el.innerHTML += totalaccuracy 
         el.innerHTML += '<br>' 
 
