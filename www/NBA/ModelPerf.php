@@ -85,8 +85,10 @@ catch(Exception $a){
 
         let el = d3.select('#accuracy').node()
         el.innerHTML = 'Dom Accuracy : '
-        let goodanswer = Data['ProbaGoodAnswerVsEstimatedProba']['CountDomGoodAnswer'].slice((Data['ProbaGoodAnswerVsEstimatedProba']['CountDomGoodAnswer'].length-1)/2).reduce((partial_sum, a) => partial_sum + a, 0); //sum
-        let totalaccuracy = goodanswer /  Data['ProbaGoodAnswerVsEstimatedProba']['CountDomTot'].slice((Data['ProbaGoodAnswerVsEstimatedProba']['CountDomTot'].length-1)/2).reduce((partial_sum, a) => partial_sum + a, 0);
+        let totalaccuracy = ComputeAccuracyAboveX(Data,Side='Dom',Proba=0.5)
+
+        // let goodanswer = Data['ProbaGoodAnswerVsEstimatedProba']['CountDomGoodAnswer'].slice((Data['ProbaGoodAnswerVsEstimatedProba']['CountDomGoodAnswer'].length-1)/2).reduce((partial_sum, a) => partial_sum + a, 0); //sum
+        // let totalaccuracy = goodanswer /  Data['ProbaGoodAnswerVsEstimatedProba']['CountDomTot'].slice((Data['ProbaGoodAnswerVsEstimatedProba']['CountDomTot'].length-1)/2).reduce((partial_sum, a) => partial_sum + a, 0);
         el.innerHTML += totalaccuracy.toFixed(2)
         el.innerHTML += '<br>' 
         el.innerHTML += 'Vis Accuracy : '
@@ -95,6 +97,20 @@ catch(Exception $a){
 
         totalaccuracy = ComputeAccuracyAboveX(Data,Side='Vis',Proba=0.5)
         el.innerHTML += totalaccuracy.toFixed(2) 
+        el.innerHTML += '<br>' 
+
+        el.innerHTML += '<br>' 
+        el.innerHTML += '<br>' 
+
+        el.innerHTML = '>70% : '
+        el.innerHTML += '<br>' 
+        el.innerHTML = 'Dom Accuracy : '
+        totalaccuracy = ComputeAccuracyAboveX(Data,Side='Dom',Proba=0.7)
+        el.innerHTML += totalaccuracy.toFixed(2)
+        el.innerHTML += '<br>' 
+        el.innerHTML += 'Vis Accuracy : '
+        totalaccuracy = ComputeAccuracyAboveX(Data,Side='Vis',Proba=0.7)
+        el.innerHTML += totalaccuracy.toFixed(2)
         el.innerHTML += '<br>' 
 
 
@@ -187,8 +203,8 @@ catch(Exception $a){
         function ComputeAccuracyAboveX(Data,Side='Dom',Proba=0.5){
 
             let acc = 0
-            let goodanswer = 0
-            let totanswer =0
+            let ganswer = 0
+            let tanswer =0
             Data['ProbaGoodAnswerVsEstimatedProba']['Bins'].forEach((d,i)=>{
 
                 if(d<Proba){
@@ -199,15 +215,16 @@ catch(Exception $a){
                     return
                 }
 
-
-                goodanswer += Data['ProbaGoodAnswerVsEstimatedProba']['Count'+Side+'GoodAnswer'][i]
-                totanswer += Data['ProbaGoodAnswerVsEstimatedProba']['Count'+Side+'Tot'][i]
+                if(Data['ProbaGoodAnswerVsEstimatedProba']['Count'+Side+'Tot'][i]>0){
+                    tanswer += Data['ProbaGoodAnswerVsEstimatedProba']['Count'+Side+'Tot'][i]
+                    ganswer += Data['ProbaGoodAnswerVsEstimatedProba']['Count'+Side+'GoodAnswer'][i]
+                }
 
             })
 
-            acc = totanswer / goodanswer
+            acc  =  ganswer /tanswer
             
-            console.log("Acc=",acc,Side,totanswer,goodanswer)
+            console.log("Acc=",acc,Side,tanswer,ganswer)
             return acc
 
 
