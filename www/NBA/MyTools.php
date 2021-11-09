@@ -50,6 +50,7 @@ class RunPrediction{
     public function SetSeason($Season){
         $this->Season = $Season;
     }
+    
     public function IsSuccess(){
         return $this->Success;
     }

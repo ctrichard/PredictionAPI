@@ -8,7 +8,7 @@
 
 
 
-var MatchData = {Season : 2021, Model : 'TestForAPI', Date : '2021-07-20'}
+var MatchData = {Season : 2021, Model : 'TrainWo_2021', Date : '2021-07-20'}
 var MatchPlayerData = {Dom : '', Vis : ''}
 
 var TeamPlayers =  {'Dom' : '', 'Vis' : ''}
