@@ -11,7 +11,7 @@ var CurrentDateStr = CurrentDate.getFullYear()+'-'
 if( (CurrentDate.getMonth()+1)<10) 
     CurrentDateStr+='0'
 CurrentDateStr+=(CurrentDate.getMonth()+1)+'-'
-if( CurrentDate.getDate<10) 
+if( CurrentDate.getDate()<10) 
     CurrentDateStr+='0'
 CurrentDateStr+=CurrentDate.getDate()
 
