@@ -96,7 +96,7 @@ catch(Exception $a){
         // totalaccuracy = goodanswer /  Data['ProbaGoodAnswerVsEstimatedProba']['CountVisTot'].slice((Data['ProbaGoodAnswerVsEstimatedProba']['CountVisTot'].length-1)/2).reduce((partial_sum, a) => partial_sum + a, 0);
 
         acc = ComputeAccuracyAboveX(Data,Side='Vis',Proba=0.5)
-        el.innerHTML += acc[0].toFixed(2) + '('+str(acc[1])+'/'+str(acc[2])+')'
+        el.innerHTML += acc[0].toFixed(2) + '('+acc[1]+'/'+acc[2]+')'
         el.innerHTML += '<br>' 
 
 
@@ -104,21 +104,21 @@ catch(Exception $a){
         el.innerHTML += '<br>' 
         el.innerHTML += 'Dom Accuracy : '
         acc = ComputeAccuracyAboveX(Data,Side='Dom',Proba=0.7)
-        el.innerHTML += acc[0].toFixed(2) + '('+str(acc[1])+'/'+str(acc[2])+')'
+        el.innerHTML += acc[0].toFixed(2) + '('+acc[1]+'/'+acc[2]+')'
         el.innerHTML += '<br>' 
         el.innerHTML += 'Vis Accuracy : '
         acc = ComputeAccuracyAboveX(Data,Side='Vis',Proba=0.7)
-        el.innerHTML += acc[0].toFixed(2) + '('+str(acc[1])+'/'+str(acc[2])+')'
+        el.innerHTML += acc[0].toFixed(2) + '('+acc[1]+'/'+acc[2]+')'
         el.innerHTML += '<br>' 
         el.innerHTML += '>80% : '
         el.innerHTML += '<br>' 
         el.innerHTML += 'Dom Accuracy : '
         acc = ComputeAccuracyAboveX(Data,Side='Dom',Proba=0.8)
-        el.innerHTML += acc[0].toFixed(2) + '('+str(acc[1])+'/'+str(acc[2])+')'
+        el.innerHTML += acc[0].toFixed(2) + '('+acc[1]+'/'+acc[2]+')'
         el.innerHTML += '<br>' 
         el.innerHTML += 'Vis Accuracy : '
         acc = ComputeAccuracyAboveX(Data,Side='Vis',Proba=0.8)
-        el.innerHTML += acc[0].toFixed(2) + '('+str(acc[1])+'/'+str(acc[2])+')'
+        el.innerHTML += acc[0].toFixed(2) + '('+acc[1]+'/'+acc[2]+')'
         el.innerHTML += '<br>' 
 
         let Identity = []
