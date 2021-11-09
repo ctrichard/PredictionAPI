@@ -85,40 +85,40 @@ catch(Exception $a){
 
         let el = d3.select('#accuracy').node()
         el.innerHTML = 'Dom Accuracy : '
-        let totalaccuracy, ngood, n = ComputeAccuracyAboveX(Data,Side='Dom',Proba=0.5)
-
+        let acc = ComputeAccuracyAboveX(Data,Side='Dom',Proba=0.5)  //  [totalaccuracy , ngood , n ]
+  
         // let goodanswer = Data['ProbaGoodAnswerVsEstimatedProba']['CountDomGoodAnswer'].slice((Data['ProbaGoodAnswerVsEstimatedProba']['CountDomGoodAnswer'].length-1)/2).reduce((partial_sum, a) => partial_sum + a, 0); //sum
         // let totalaccuracy = goodanswer /  Data['ProbaGoodAnswerVsEstimatedProba']['CountDomTot'].slice((Data['ProbaGoodAnswerVsEstimatedProba']['CountDomTot'].length-1)/2).reduce((partial_sum, a) => partial_sum + a, 0);
-        el.innerHTML += totalaccuracy.toFixed(2) + '('+str(ngood)+'/'+str(n)+')'
+        el.innerHTML += acc[0].toFixed(2) + '('+str(acc[1])+'/'+str(acc[2])+')'
         el.innerHTML += '<br>' 
         el.innerHTML += 'Vis Accuracy : '
         // goodanswer = Data['ProbaGoodAnswerVsEstimatedProba']['CountVisGoodAnswer'].slice((Data['ProbaGoodAnswerVsEstimatedProba']['CountVisGoodAnswer'].length-1)/2).reduce((partial_sum, a) => partial_sum + a, 0);
         // totalaccuracy = goodanswer /  Data['ProbaGoodAnswerVsEstimatedProba']['CountVisTot'].slice((Data['ProbaGoodAnswerVsEstimatedProba']['CountVisTot'].length-1)/2).reduce((partial_sum, a) => partial_sum + a, 0);
 
-        totalaccuracy, ngood, n = ComputeAccuracyAboveX(Data,Side='Vis',Proba=0.5)
-        el.innerHTML += totalaccuracy.toFixed(2) + '('+str(ngood)+'/'+str(n)+')'
+        acc = ComputeAccuracyAboveX(Data,Side='Vis',Proba=0.5)
+        el.innerHTML += acc[0].toFixed(2) + '('+str(acc[1])+'/'+str(acc[2])+')'
         el.innerHTML += '<br>' 
 
 
         el.innerHTML += '>70% : '
         el.innerHTML += '<br>' 
         el.innerHTML += 'Dom Accuracy : '
-        totalaccuracy, ngood, n = ComputeAccuracyAboveX(Data,Side='Dom',Proba=0.7)
-        el.innerHTML += totalaccuracy.toFixed(2) + '('+str(ngood)+'/'+str(n)+')'
+        acc = ComputeAccuracyAboveX(Data,Side='Dom',Proba=0.7)
+        el.innerHTML += acc[0].toFixed(2) + '('+str(acc[1])+'/'+str(acc[2])+')'
         el.innerHTML += '<br>' 
         el.innerHTML += 'Vis Accuracy : '
-        totalaccuracy, ngood, n = ComputeAccuracyAboveX(Data,Side='Vis',Proba=0.7)
-        el.innerHTML += totalaccuracy.toFixed(2) + '('+str(ngood)+'/'+str(n)+')' 
+        acc = ComputeAccuracyAboveX(Data,Side='Vis',Proba=0.7)
+        el.innerHTML += acc[0].toFixed(2) + '('+str(acc[1])+'/'+str(acc[2])+')'
         el.innerHTML += '<br>' 
         el.innerHTML += '>80% : '
         el.innerHTML += '<br>' 
         el.innerHTML += 'Dom Accuracy : '
-        totalaccuracy, ngood, n = ComputeAccuracyAboveX(Data,Side='Dom',Proba=0.8)
-        el.innerHTML += totalaccuracy.toFixed(2) + '('+str(ngood)+'/'+str(n)+')'
+        acc = ComputeAccuracyAboveX(Data,Side='Dom',Proba=0.8)
+        el.innerHTML += acc[0].toFixed(2) + '('+str(acc[1])+'/'+str(acc[2])+')'
         el.innerHTML += '<br>' 
         el.innerHTML += 'Vis Accuracy : '
-        totalaccuracy, ngood, n = ComputeAccuracyAboveX(Data,Side='Vis',Proba=0.8)
-        el.innerHTML += totalaccuracy.toFixed(2) + '('+str(ngood)+'/'+str(n)+')'
+        acc = ComputeAccuracyAboveX(Data,Side='Vis',Proba=0.8)
+        el.innerHTML += acc[0].toFixed(2) + '('+str(acc[1])+'/'+str(acc[2])+')'
         el.innerHTML += '<br>' 
 
         let Identity = []
@@ -235,7 +235,7 @@ catch(Exception $a){
             acc  =  ganswer /tanswer
             
             console.log("Acc=",acc,Side,tanswer,ganswer)
-            return acc, ganswer, tanswer
+            return [acc, ganswer, tanswer]
 
 
 
