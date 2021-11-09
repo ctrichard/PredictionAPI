@@ -6,9 +6,9 @@
 
 
 
+var CurrentDate = new Date()
 
-
-var MatchData = {Season : 2021, Model : 'TrainWo_2021', Date : '2021-07-20'}
+var MatchData = {Season : 2022, Model : 'TrainWo_2021', Date : CurrentDate.getFullYear()+'-'+CurrentDate.getMonth()+'-'+CurrentDate.getDay()}
 var MatchPlayerData = {Dom : '', Vis : ''}
 
 var TeamPlayers =  {'Dom' : '', 'Vis' : ''}
