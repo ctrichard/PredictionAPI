@@ -7,8 +7,15 @@
 
 
 var CurrentDate = new Date()
+var CurrentDateStr = CurrentDate.getFullYear()+'-'
+if( (CurrentDate.getMonth()+1)<10) 
+    CurrentDateStr+='0'
+CurrentDateStr+=(CurrentDate.getMonth()+1)+'-'
+if( CurrentDate.getDate<10) 
+    CurrentDateStr+='0'
+CurrentDateStr+=CurrentDate.getDate()
 
-var MatchData = {Season : 2022, Model : 'TrainWo_2021', Date : CurrentDate.getFullYear()+'-'+(CurrentDate.getMonth()+1)+'-'+CurrentDate.getDate()}
+var MatchData = {Season : 2022, Model : 'TrainWo_2021', Date : CurrentDateStr}
 var MatchPlayerData = {Dom : '', Vis : ''}
 
 var TeamPlayers =  {'Dom' : '', 'Vis' : ''}
