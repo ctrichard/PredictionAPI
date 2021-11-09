@@ -30,6 +30,7 @@ const MinPlayerTime = 10 // to avoid small times
 const NotifDuration = 5
 
 document.getElementById('matchDate').value =  MatchData['Date']
+document.getElementById('seasonindicator').innerHTML +=  MatchData['Season']
 
 
 function IsValidMatch(){
