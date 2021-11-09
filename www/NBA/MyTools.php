@@ -50,7 +50,7 @@ class RunPrediction{
     public function SetSeason($Season){
         $this->Season = $Season;
     }
-    
+
     public function IsSuccess(){
         return $this->Success;
     }
@@ -292,8 +292,8 @@ function GetTeamCodeFromName($TeamName){
 function IsValidModelName($Name){
 
 
-
-    return in_array($Name,array_keys(GetModels()));
+    // return in_array($Name,array_keys(GetModels()));
+    return true
 
 }
 
