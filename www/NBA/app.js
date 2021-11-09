@@ -398,6 +398,10 @@ document.getElementById('matchDate').addEventListener('change', (event) => {
     MatchData['Date'] = document.getElementById('matchDate').value
     console.log(MatchData)
 });
+document.getElementById('modelname').addEventListener('change', (event) => {
+    MatchData['Model'] = document.getElementById('modelname').value
+    console.log(MatchData)
+});
 
 document.getElementById('ResultsPrediction').addEventListener('click', (event) => {
 
