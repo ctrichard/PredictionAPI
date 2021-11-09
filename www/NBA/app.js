@@ -8,7 +8,7 @@
 
 var CurrentDate = new Date()
 
-var MatchData = {Season : 2022, Model : 'TrainWo_2021', Date : CurrentDate.getFullYear()+'-'+CurrentDate.getMonth()+'-'+CurrentDate.getDay()}
+var MatchData = {Season : 2022, Model : 'TrainWo_2021', Date : CurrentDate.getFullYear()+'-'+(CurrentDate.getMonth()+1)+'-'+CurrentDate.getDate()}
 var MatchPlayerData = {Dom : '', Vis : ''}
 
 var TeamPlayers =  {'Dom' : '', 'Vis' : ''}
@@ -21,6 +21,8 @@ const TotalPlayerTimePerTeam = MatchDuration*5
 const MinPlayerTime = 10 // to avoid small times
 
 const NotifDuration = 5
+
+document.getElementById('matchDate').value =  MatchData['Date']
 
 
 function IsValidMatch(){
