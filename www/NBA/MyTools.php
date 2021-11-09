@@ -293,7 +293,7 @@ function IsValidModelName($Name){
 
 
     // return in_array($Name,array_keys(GetModels()));
-    return true
+    return true;
 
 }
 
