@@ -89,7 +89,7 @@ catch(Exception $a){
   
         // let goodanswer = Data['ProbaGoodAnswerVsEstimatedProba']['CountDomGoodAnswer'].slice((Data['ProbaGoodAnswerVsEstimatedProba']['CountDomGoodAnswer'].length-1)/2).reduce((partial_sum, a) => partial_sum + a, 0); //sum
         // let totalaccuracy = goodanswer /  Data['ProbaGoodAnswerVsEstimatedProba']['CountDomTot'].slice((Data['ProbaGoodAnswerVsEstimatedProba']['CountDomTot'].length-1)/2).reduce((partial_sum, a) => partial_sum + a, 0);
-        el.innerHTML += acc[0].toFixed(2) + '('+str(acc[1])+'/'+str(acc[2])+')'
+        el.innerHTML += acc[0].toFixed(2) + '('+acc[1]+'/'+acc[2]+')'
         el.innerHTML += '<br>' 
         el.innerHTML += 'Vis Accuracy : '
         // goodanswer = Data['ProbaGoodAnswerVsEstimatedProba']['CountVisGoodAnswer'].slice((Data['ProbaGoodAnswerVsEstimatedProba']['CountVisGoodAnswer'].length-1)/2).reduce((partial_sum, a) => partial_sum + a, 0);
