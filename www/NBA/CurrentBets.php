@@ -47,7 +47,8 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
         let Date = [<?php  echo '"'.$TodayDate.'","'.$TomorrowDate.'"' ?> ]
     
         async function LoadData(){
-              const PredictionData = await fetch('../Prediction/Data/PredictionData.csv', {
+                // const PredictionData = await fetch('../Prediction/Data/PredictionData.csv', {
+                const PredictionData = await fetch('GetData?Data=PredictionData', {
                     headers: {
                         'Accept': 'application/json'
                     }
