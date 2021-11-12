@@ -82,11 +82,11 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
             
             let logoAcontainer = document.createElement("div");
-            logoAcontainer.className  = "LogoContainer";
+            logoAcontainer.className  = "LogoAContainer";
             logoAcontainer.id  = "LogoAContainer_"+BetData['UUID'];
             divres.appendChild(logoAcontainer);
             let logoBcontainer = document.createElement("div");
-            logoBcontainer.className  = "LogoContainer";
+            logoBcontainer.className  = "LogoBContainer";
             logoBcontainer.id  = "LogoBContainer_"+BetData['UUID'];
             divres.appendChild(logoBcontainer);
 
