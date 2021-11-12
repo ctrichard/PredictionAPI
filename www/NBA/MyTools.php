@@ -242,8 +242,8 @@ $ModelLocation = $ProjectLocation.'Models/';
 
 $TeamDataLocation = $DataLocation.'Teams/';
 
-$InputsTempFileLocation = './Inputs/';
-$OutputsTempFileLocation = './Outputs/';
+$InputsTempFileLocation = '../../Prediction/Inputs/';
+$OutputsTempFileLocation = '../../Prediction/Outputs/';
 
 
 function GetModelResults($ModelName){
