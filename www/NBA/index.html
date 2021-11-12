@@ -110,6 +110,10 @@
     <script type="text/javascript" src="./app.js" defer></script>
 
     <script>
+
+        document.getElementById('matchDate').value =  MatchData['Date']
+        document.getElementById('seasonindicator').innerHTML +=  MatchData['Season']
+
         LoadData();
 
         document.getElementById('TeamselectionA').addEventListener('change', (event) => {
@@ -130,7 +134,7 @@
             MatchData['Model'] = document.getElementById('modelname').value
             console.log(MatchData)
         });
-        
+
         document.getElementById('ResultsPrediction').addEventListener('click', (event) => {
         
             let Prediction =  GetPrediction(MatchData['Dom'],MatchData['Vis'],MatchData['Season'],MatchData['Model'],MatchData['Date'])
