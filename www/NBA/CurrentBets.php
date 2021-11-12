@@ -100,8 +100,12 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
             let divextrainfo = document.createElement("div");
             divextrainfo.className  = "BetInfoContainer";
-            divextrainfo.innerHTML = BetData['BetValue']+' : '+BetData['Prediction']+'</br>'
-            divextrainfo.innerHTML = BetData['BetOddalue']+' : '+BetData['Prediction']+'</br>'
+            divextrainfo.innerHTML = BetData['BetValue']+' : '+BetData['Prediction'].toFixed(2)+'</br>'
+            divextrainfo.innerHTML += BetData['BetOdds']+'</br>'
+
+            let rentability = BetData['BetOdds']*BetData['Prediction']
+            divextrainfo.innerHTML += rentability+'</br>'
+            
             div.appendChild(divextrainfo);
 
 
