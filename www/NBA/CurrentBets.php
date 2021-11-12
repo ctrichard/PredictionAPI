@@ -80,15 +80,25 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             div.appendChild(divextrainfo);
 
 
+            
+            let logoAcontainer = document.createElement("div");
+            logoAcontainer.className  = "LogoContainer";
+            logoAcontainer.id  = "LogoAContainer_"+BetData['UUID'];
+            divres.appendChild(logoAcontainer);
+            let logoBcontainer = document.createElement("div");
+            logoBcontainer.className  = "LogoContainer";
+            logoBcontainer.id  = "LogoBContainer_"+BetData['UUID'];
+            divres.appendChild(logoBcontainer);
+
             let imgdom= document.createElement('img');
-            imgdom.id = 'LogoA';
+            imgdom.id = 'LogoA_'+BetData['UUID'];
             divres.appendChild(imgdom)
             let imgvis= document.createElement('img');
-            imgvis.id = 'LogoB';
+            imgvis.id = 'LogoB_'+BetData['UUID'];
             divres.appendChild(imgvis)
 
-            selectLogo('LogoA',BetData['Dom'])
-            selectLogo('LogoB',BetData['Vis'])
+            selectLogo('LogoA_'+BetData['UUID'],BetData['Dom'])
+            selectLogo('LogoB_'+BetData['UUID'],BetData['Vis'])
 
 
         }
