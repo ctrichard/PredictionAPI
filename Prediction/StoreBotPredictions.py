@@ -80,13 +80,13 @@ def StorePredictions(UUID,BetInfo):
     now = datetime.datetime.now()#BetScraper_timezone)
 
     Side =None
-    if(MyTools.TeamNameProof(BetInfo['BetValue']) == str(prediction_inputs['Dom'][0] ) ):
+    if(BetInfo['BetValue'] == BetInfo['Dom'] ):
         Side = 'Dom'
-    elif(MyTools.TeamNameProof(BetInfo['BetValue']) ==  str(prediction_inputs['Vis'][0])):    
+    elif(BetInfo['BetValue'] ==  BetInfo['Vis']):    
         Side = 'Vis'
     else:
         print(BetInfo)
-        raise ValueError('Wrong bet info !')    
+        raise ValueError('Wrong bet info !')    #only for  win bet
 
     B = BetPrediction()
 
