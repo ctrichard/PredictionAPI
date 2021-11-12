@@ -11,7 +11,7 @@ import json
 import datetime
 
 
-from MakeBotPredictions import GetListMatches
+from MakeBotPredictions import GetListBets
 
 Storage_path = 'Data/PredictionData.csv'
 
@@ -61,7 +61,7 @@ def StorePredictionOutputs(PredictionBet):
 
 
 
-def StorePredictions(UUID):
+def StorePredictions(UUID,BetInfo):
 
     prediction_outputs = MyTools.GetPredictionOutput(UUID,PathPredictionOutputs)
     prediction_inputs = MyTools.GetPredictionInput(UUID,PathPredictionInputs)
@@ -79,22 +79,32 @@ def StorePredictions(UUID):
 
     now = datetime.datetime.now()#BetScraper_timezone)
 
-    for i,Side in enumerate(['Dom','Vis']):
-        B = BetPrediction()
+    Side =None
+    if(BetInfo['BetValue'] == str(prediction_inputs['Dom'][0] ) ):
+        Side = 'Dom'
+    elif(BetInfo['BetValue'] ==  str(prediction_inputs['Vis'][0])):    
+        Side = 'Vis'
+    else:
+        print(BetInfo)
+        raise ValueError('Wrong bet info !')    
 
-        B.SetData({
+    B = BetPrediction()
+
+    B.SetData({
             'UUID' : UUID,
             'Date' : now.strftime('%Y:%m:%d %H:%M'),
             'Match' : str(prediction_inputs['Dom'][0])+' - '+str(prediction_inputs['Vis'][0]),  # je sais pas trop pourquoi les valeurs sont dans des tableaux...
+            'Dom' : str(prediction_inputs['Dom'][0]), 
+            'Vis' : str(prediction_inputs['Vis'][0]), 
             'MatchDate': prediction_inputs['Date'][0],
             'BetType': 'Win',
-            'BetValue' : prediction_inputs[Side][0],
-            'Prediction' : prediction_outputs[int(i)],
-        })  
+            'BetValue' : BetInfo['BetValue'], #prediction_inputs[Side][0],
+            'Prediction' : prediction_outputs[(0 if Side=='Dom' else 1)],
+    })  
 
 
 
-        StorePredictionOutputs(B)
+    StorePredictionOutputs(B)
 
 
 if __name__ == '__main__':
@@ -116,12 +126,13 @@ if __name__ == '__main__':
         Date = datetime.datetime.now()+datetime.timedelta(days=1)
 
 
-    Matches = GetListMatches(Date)
+    Bets = GetListBets(Date)
 
+    print(Bets)
 
-    for i,row in Matches.iterrows():
+    for i,row in Bets.iterrows():
         try:
-            StorePredictions(UUID+'_'+str(i))
+            StorePredictions(UUID+'_'+str(i),row)
         except FileNotFoundError:    #because prediction failed
             print("ERROR  =========================== Prediction failed")
             print(row)

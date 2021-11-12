@@ -23,7 +23,7 @@ def FullOddDataPath(MatchDate):
     return BetScrapper_location+GetOddDataPath(MatchDate)
 
 
-def GetListMatches(MatchDate):
+def GetListBets(MatchDate):
 
     df  = None
 
@@ -46,7 +46,7 @@ def make_predict(Date,VisName,DomName,UUID="0",PathInputs='',PathOutputs='',Mode
 
 def MakeBotPredictions(UUID,MatchDate,PathInputs='',PathOutputs='',ModelName='TrainWo_2022',Season='2022'):
 
-    Matches = GetListMatches(MatchDate)
+    Matches = GetListBets(MatchDate)
 
     print(Matches)
 
