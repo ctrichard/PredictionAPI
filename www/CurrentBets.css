@@ -3,7 +3,7 @@
 .BigContainer{
 
     background-color: black;
-
+    margin:auto;
     width:80%;
     height:100%;
     color:blanchedalmond
@@ -15,10 +15,19 @@
 
     height : 100px;
     width:100%;
-    border-bottom: darkgrey;
     /* background-color: black; */
     font-size: 120%;
 
-    
-    
+}
+
+.BetContainer:hover{
+
+
+    height : 100px;
+    width:100%;
+    border-top: darkgrey;
+    border-bottom: darkgrey;
+    border-width: 1;
+    background-color: rgb(17, 17, 17);
+
 }
