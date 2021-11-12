@@ -10,7 +10,7 @@ echo '=='
 source ~/.conda_init
 
 
-cd  ~/Projects/PredictionAPI/Prediction/
+# cd  ~/Projects/PredictionAPI/Prediction/
 
 here=`pwd`
 
