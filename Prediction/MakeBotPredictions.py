@@ -16,7 +16,7 @@ import datetime
 Storage_path = 'Data/PredictionData.csv'
 
 
-BetScrapper_location = '~/Projects/Sports-betting/'  
+BetScrapper_location = '/home/ubuntu/Projects/Sports-betting/'  
 
 
 def FullOddDataPath(MatchDate):
