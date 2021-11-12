@@ -11,6 +11,7 @@ source ~/.conda_init
 
 
 # cd  ~/Projects/PredictionAPI/Prediction/
+cd /var/www/PredictionAPI/Prediction
 
 here=`pwd`
 
