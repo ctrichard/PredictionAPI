@@ -36,7 +36,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
         <div class="SubTitle" id="accuracy">
         </div>
 
-        <div class="BetContainer" id='BigContainer'>
+        <div class="BigContainer" id='BigContainer'>
         </div> 
 
 
