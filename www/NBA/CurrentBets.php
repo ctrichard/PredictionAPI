@@ -67,10 +67,10 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             d3.select('#BigContainer')
 
             var div = document.createElement("div");
-            div.style.width = "100%";
-            div.style.height = "100px";
-            div.style.background = "red";
-            div.style.color = "white";
+            div.className  = "BetContainer";
+            // div.style.height = "100px";
+            // div.style.background = "red";
+            // div.style.color = "white";
             div.innerHTML = BetData['Match'];
 
             document.getElementById("BigContainer").appendChild(div);
