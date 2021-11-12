@@ -23,9 +23,7 @@ UUID=`uuidgen`
 PathToInputs=${here}'/Inputs/'
 PathToOutputs=${here}'/Outputs/'
 
-echo $PathToInputs
-echo $PathToOutputs
-exit
+
 
 Season='2022'
 BetType='Win'
