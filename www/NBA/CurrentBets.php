@@ -18,7 +18,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
         <title>Prediction</title>
         <link rel="stylesheet" type="text/css" href="../root.css">
-        <link rel="stylesheet" type="text/css" href="../perf.css">
+        <link rel="stylesheet" type="text/css" href="../CurrentBets.css">
 
     </head>
         

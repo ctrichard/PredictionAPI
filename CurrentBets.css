@@ -1,0 +1,22 @@
+
+
+.BigContainer{
+
+    background-color: black;
+
+    width:80%;
+    color:blanchedalmond
+
+}
+
+.BetContainer{
+
+
+    height : 100px;
+    width:100%;
+    border-bottom: darkgrey;
+    /* background-color: black; */
+
+    
+    
+}
