@@ -33,6 +33,8 @@ class BetPrediction(Bet):  #Sports-betting/BotBetScraper.py
     
             self.DataCols.append('Prediction')
             self.DataCols.append('UUID')
+            self.DataCols.append('BetOddDate')
+            self.DataCols.append('PredictionDate')
         except ValueError:
             pass #already removed
 
@@ -49,13 +51,12 @@ class BetPrediction(Bet):  #Sports-betting/BotBetScraper.py
 
 
 
-def StorePredictionOutputs(PredictionBet):
+def StorePredictionOutputs(PredictionBet,First):
 
-    IsNewFile = False
     ArxivIsNewFile = False
 
     if(not os.path.exists(Storage_path)):
-        IsNewFile = True
+        First = True
 
     if(not os.path.exists(ArxivStorage_path)):
         ArxivIsNewFile = True
@@ -66,12 +67,12 @@ def StorePredictionOutputs(PredictionBet):
         f.write(PredictionBet.to_csv(PrintCols = ArxivIsNewFile))
 
     #rewrite file. To have only this file read by API
-    with open(Storage_path,'w') as f:
-        f.write(PredictionBet.to_csv(PrintCols = IsNewFile))
+    with open(Storage_path,'a') as f:
+        f.write(PredictionBet.to_csv(PrintCols = First))
 
 
 
-def StorePredictions(UUID,BetInfo):
+def StorePredictions(UUID,BetInfo,First):
 
     prediction_outputs = MyTools.GetPredictionOutput(UUID,PathPredictionOutputs)
     prediction_inputs = MyTools.GetPredictionInput(UUID,PathPredictionInputs)
@@ -102,7 +103,8 @@ def StorePredictions(UUID,BetInfo):
 
     B.SetData({
             'UUID' : UUID,
-            'Date' : now.strftime('%Y:%m:%d %H:%M'),
+            'BetOddDate' : now.strftime('%Y:%m:%d %H:%M'),
+            'PredictionDate' : BetInfo['Date'],
             'Match' : str(prediction_inputs['Dom'][0])+' - '+str(prediction_inputs['Vis'][0]),  # je sais pas trop pourquoi les valeurs sont dans des tableaux...
             'Dom' : str(prediction_inputs['Dom'][0]), 
             'Vis' : str(prediction_inputs['Vis'][0]), 
@@ -114,7 +116,7 @@ def StorePredictions(UUID,BetInfo):
 
 
 
-    StorePredictionOutputs(B)
+    StorePredictionOutputs(B,First)
 
 
 if __name__ == '__main__':
@@ -139,10 +141,11 @@ if __name__ == '__main__':
     Bets = GetListBets(Date)
 
     print(Bets)
-
+    First=True
     for i,row in Bets.iterrows():
         try:
-            StorePredictions(UUID+'_'+str(i),row)
+            StorePredictions(UUID+'_'+str(i),row,First)
+            First=False
         except FileNotFoundError:    #because prediction failed
             print("ERROR  =========================== Prediction failed")
             print(row)

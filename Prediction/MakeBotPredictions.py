@@ -29,7 +29,7 @@ def GetListBets(MatchDate):
 
     with open(FullOddDataPath(MatchDate),'r') as f:
         df = pd.read_csv(f)
-        df.drop_duplicates(subset=['Match','MatchDate','BetType','BetValue'] ,keep='last',inplace=True)
+        df.drop_duplicates(subset=['Match','MatchDate','BetType','BetValue'] ,keep='last',inplace=True,ignore_index=True)
 
 
 
