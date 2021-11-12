@@ -4,8 +4,8 @@
 require_once 'MyTools.php';
 
 $DateStr =  date("j F Y");         
+$TodayDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d"), date("Y")));
 $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y")));
-echo $TomorrowDate;
 
 ?>
 
@@ -43,7 +43,32 @@ echo $TomorrowDate;
     <script type="text/javascript" src="../Graphs.js"></script>
     <!-- <script type="text/javascript" src="./app.js"></script> -->
     <script>
+
+        let Date = [<?php  echo '"'.$TodayDate.'","'.$TomorrowDate.'"' ?> ]
     
+        async function LoadData(){
+              const PredictionData = await fetch('../Prediction/Data/PredictionData.csv', {
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => response.text())
+
+                // .then(response => response.json());
+            
+            //   CreateTeamSelectionOptions('A',NBAData)
+            //   CreateTeamSelectionOptions('B',NBAData)
+            
+          }
+  
+        LoadData();
+  
+
+    d3.csv(PredictionData, function(data){
+
+        console.log(Data)
+    //code dealing with data here
+    });
 
     </script>
     </body>
