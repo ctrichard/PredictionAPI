@@ -14,6 +14,7 @@ import datetime
 from MakeBotPredictions import GetListBets
 
 Storage_path = 'Data/PredictionData.csv'
+ArxivStorage_path = 'Data/AxivPredictionData.csv'
 
 
 class BetPrediction(Bet):  #Sports-betting/BotBetScraper.py
@@ -51,12 +52,21 @@ class BetPrediction(Bet):  #Sports-betting/BotBetScraper.py
 def StorePredictionOutputs(PredictionBet):
 
     IsNewFile = False
+    ArxivIsNewFile = False
 
     if(not os.path.exists(Storage_path)):
         IsNewFile = True
 
+    if(not os.path.exists(ArxivStorage_path)):
+        ArxivIsNewFile = True
 
-    with open(Storage_path,'a') as f:
+
+    #append to arxiv
+    with open(ArxivStorage_path,'a') as f:
+        f.write(PredictionBet.to_csv(PrintCols = ArxivIsNewFile))
+
+    #rewrite file. To have only this file read by API
+    with open(Storage_path,'w') as f:
         f.write(PredictionBet.to_csv(PrintCols = IsNewFile))
 
 
@@ -98,7 +108,7 @@ def StorePredictions(UUID,BetInfo):
             'Vis' : str(prediction_inputs['Vis'][0]), 
             'MatchDate': prediction_inputs['Date'][0],
             'BetType': 'Win',
-            'BetValue' : BetInfo['BetValue'], #prediction_inputs[Side][0],
+            'BetValue' : str(prediction_inputs[Side][0]), #to keep name consistancy
             'Prediction' : prediction_outputs[(0 if Side=='Dom' else 1)],
     })  
 
