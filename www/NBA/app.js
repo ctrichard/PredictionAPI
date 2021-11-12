@@ -382,34 +382,6 @@ async function LoadData(){
 
 }
 
-LoadData();
-
-document.getElementById('TeamselectionA').addEventListener('change', (event) => {
-    selectTeam("Dom",document.getElementById('TeamselectionA').value);
-    selectLogo("LogoA",document.getElementById('TeamselectionA').value);
-
-});
-document.getElementById('TeamselectionB').addEventListener('change', (event) => {
-    selectTeam("Vis",document.getElementById('TeamselectionB').value);
-    selectLogo("LogoB",document.getElementById('TeamselectionB').value);
-
-});
-document.getElementById('matchDate').addEventListener('change', (event) => {
-    MatchData['Date'] = document.getElementById('matchDate').value
-    console.log(MatchData)
-});
-document.getElementById('modelname').addEventListener('change', (event) => {
-    MatchData['Model'] = document.getElementById('modelname').value
-    console.log(MatchData)
-});
-
-document.getElementById('ResultsPrediction').addEventListener('click', (event) => {
-
-
-    let Prediction =  GetPrediction(MatchData['Dom'],MatchData['Vis'],MatchData['Season'],MatchData['Model'],MatchData['Date'])
-
-});
-
 
 
 

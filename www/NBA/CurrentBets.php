@@ -44,7 +44,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
     <script type="text/javascript" src="http://d3js.org/d3.v5.js"></script>
     <script type="text/javascript" src="../Graphs.js"></script>
-    <!-- <script type="text/javascript" src="./app.js"></script> -->
+    <script type="text/javascript" src="./app.js"></script>
     <script>
 
         let Date = [<?php  echo '"'.$TodayDate.'","'.$TomorrowDate.'"' ?> ]
@@ -66,14 +66,29 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
             d3.select('#BigContainer')
 
-            var div = document.createElement("div");
+            let div = document.createElement("div");
             div.className  = "BetContainer";
-            // div.style.height = "100px";
-            // div.style.background = "red";
-            // div.style.color = "white";
-            div.innerHTML = BetData['Match'];
-
+            // div.innerHTML = BetData['Match'];
             document.getElementById("BigContainer").appendChild(div);
+
+            let divres = document.createElement("div");
+            div.className  = "BetResultsContainer";
+            div.appendChild(div);
+
+            let divextrainfo = document.createElement("div");
+            div.className  = "BetInfoContainer";
+            div.appendChild(div);
+
+
+            let imgdom= document.createElement('img');
+            imgdom.id = 'LogoA';
+            divres.appendChild(imgdom)
+            let imgvis= document.createElement('img');
+            imgvis.id = 'LogoB';
+            divres.appendChild(imgvis)
+
+            selectLogo('LogoA',BetData['Dom'])
+            selectLogo('LogoB',BetData['Vis'])
 
 
         }

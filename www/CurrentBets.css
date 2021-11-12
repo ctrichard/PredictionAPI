@@ -30,3 +30,18 @@
     background-color: rgb(17, 17, 17);
 
 }
+
+
+.BetResultsContainer{
+
+    height:100%;
+    width :75%;
+
+}
+
+
+.BetInfoContainer{
+
+    height:100%;
+    width :25%;
+}
