@@ -72,12 +72,12 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             document.getElementById("BigContainer").appendChild(div);
 
             let divres = document.createElement("div");
-            div.className  = "BetResultsContainer";
-            div.appendChild(div);
+            divres.className  = "BetResultsContainer";
+            div.appendChild(divres);
 
             let divextrainfo = document.createElement("div");
-            div.className  = "BetInfoContainer";
-            div.appendChild(div);
+            divextrainfo.className  = "BetInfoContainer";
+            div.appendChild(divextrainfo);
 
 
             let imgdom= document.createElement('img');
