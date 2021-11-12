@@ -38,7 +38,9 @@
 .BetResultsContainer{
 
     height:100%;
-    width :75%;
+    width :50%;
+    background-color: white;
+
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

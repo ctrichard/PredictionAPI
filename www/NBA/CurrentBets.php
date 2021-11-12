@@ -75,11 +75,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             divres.className  = "BetResultsContainer";
             div.appendChild(divres);
 
-            let divextrainfo = document.createElement("div");
-            divextrainfo.className  = "BetInfoContainer";
-            div.appendChild(divextrainfo);
-
-
+     
             
             let logoAcontainer = document.createElement("div");
             logoAcontainer.className  = "LogoAContainer";
@@ -99,6 +95,17 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
             selectLogo('LogoA_'+BetData['UUID'],BetData['Dom'])
             selectLogo('LogoB_'+BetData['UUID'],BetData['Vis'])
+
+
+
+            let divextrainfo = document.createElement("div");
+            divextrainfo.className  = "BetInfoContainer";
+            divextrainfo.innerHTML = BetData['BetValue']+' : '+BetData['Prediction']+'</br>'
+            divextrainfo.innerHTML = BetData['BetOddalue']+' : '+BetData['Prediction']+'</br>'
+            div.appendChild(divextrainfo);
+
+
+
 
 
         }

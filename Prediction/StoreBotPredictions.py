@@ -28,7 +28,7 @@ class BetPrediction(Bet):  #Sports-betting/BotBetScraper.py
         try:
             self.DataCols.remove('SiteMatchId')
             self.DataCols.remove('Site')
-            self.DataCols.remove('BetOdds')
+            # self.DataCols.remove('BetOdds')
             self.DataCols.remove('%SiteBet')
             self.DataCols.remove('Date')
     
@@ -105,6 +105,7 @@ def StorePredictions(UUID,BetInfo,First):
     B.SetData({
             'UUID' : UUID,
             'BetOddDate' : BetInfo['Date'],
+            'BetOdds' : BetInfo['BetOdds'],
             'PredictionDate' : now.strftime('%Y:%m:%d %H:%M') ,
             'Match' : str(prediction_inputs['Dom'][0])+' - '+str(prediction_inputs['Vis'][0]),  # je sais pas trop pourquoi les valeurs sont dans des tableaux...
             'Dom' : str(prediction_inputs['Dom'][0]), 
