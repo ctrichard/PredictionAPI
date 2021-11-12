@@ -12,6 +12,7 @@ source ~/.conda_init
 
 cd  ~/Projects/PredictionAPI/Prediction/
 
+here=`pwd`
 
 
 CondaEnv='BetScraper'
@@ -19,8 +20,13 @@ MatchDate=$1
 # DomTeam=$2
 # VisTeam=$3
 UUID=`uuidgen`
-PathToInputs='./Inputs/'
-PathToOutputs='./Outputs/'
+PathToInputs=${here}'/Inputs/'
+PathToOutputs=${here}'/Outputs/'
+
+echo $PathToInputs
+echo $PathToOutputs
+exit
+
 Season='2022'
 BetType='Win'
 
