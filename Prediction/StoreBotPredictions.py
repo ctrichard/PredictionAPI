@@ -80,9 +80,9 @@ def StorePredictions(UUID,BetInfo):
     now = datetime.datetime.now()#BetScraper_timezone)
 
     Side =None
-    if(BetInfo['BetValue'] == str(prediction_inputs['Dom'][0] ) ):
+    if(MyTools.TeamNameProof(BetInfo['BetValue']) == str(prediction_inputs['Dom'][0] ) ):
         Side = 'Dom'
-    elif(BetInfo['BetValue'] ==  str(prediction_inputs['Vis'][0])):    
+    elif(MyTools.TeamNameProof(BetInfo['BetValue']) ==  str(prediction_inputs['Vis'][0])):    
         Side = 'Vis'
     else:
         print(BetInfo)
