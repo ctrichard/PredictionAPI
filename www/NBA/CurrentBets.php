@@ -36,6 +36,9 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
         <div class="SubTitle" id="accuracy">
         </div>
 
+        <div class="BetContainer" id='BigContainer'>
+        </div> 
+
 
 
 
@@ -47,31 +50,33 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
         let Date = [<?php  echo '"'.$TodayDate.'","'.$TomorrowDate.'"' ?> ]
     
         async function LoadData(){
-                // const PredictionData = await fetch('../Prediction/Data/PredictionData.csv', {
-                const PredictionData = await fetch('GetData.php?Data=PredictionData', {
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                })
-                .then(response => response.text())
-
-                // .then(response => response.json());
-            
-            //   CreateTeamSelectionOptions('A',NBAData)
-            //   CreateTeamSelectionOptions('B',NBAData)
-            
 
             d3.csv('GetData.php?Data=PredictionData', function(data){
 
                 console.log(data)
-                //code dealing with data here
-                });
+                DrawBet(data)
+            });
 
           }
   
         LoadData();
   
 
+        function DrawBet(BetData){
+
+            d3.select('#BigContainer')
+
+            var div = document.createElement("div");
+            div.style.width = "100%";
+            div.style.height = "100px";
+            div.style.background = "red";
+            div.style.color = "white";
+            div.innerHTML = BetData['Match'];
+
+            document.getElementById("BigContainer").appendChild(div);
+
+
+        }
 
 
     </script>
