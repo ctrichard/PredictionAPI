@@ -4,7 +4,7 @@
 require_once 'MyTools.php';
 
 $DateStr =  date("F j, Y, g:i a");         
-$Date =  date("Y-M-D");
+$Date =  date("Y-m-d");
 echo $Date;
 
 ?>
