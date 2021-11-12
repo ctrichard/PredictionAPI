@@ -30,6 +30,7 @@ class BetPrediction(Bet):  #Sports-betting/BotBetScraper.py
             self.DataCols.remove('Site')
             self.DataCols.remove('BetOdds')
             self.DataCols.remove('%SiteBet')
+            self.DataCols.remove('Date')
     
             self.DataCols.append('Prediction')
             self.DataCols.append('UUID')
@@ -67,7 +68,7 @@ def StorePredictionOutputs(PredictionBet,First):
         f.write(PredictionBet.to_csv(PrintCols = ArxivIsNewFile))
 
     #rewrite file. To have only this file read by API
-    with open(Storage_path,'a') as f:
+    with open(Storage_path,'w' if First else 'a') as f:
         f.write(PredictionBet.to_csv(PrintCols = First))
 
 
@@ -103,8 +104,8 @@ def StorePredictions(UUID,BetInfo,First):
 
     B.SetData({
             'UUID' : UUID,
-            'BetOddDate' : now.strftime('%Y:%m:%d %H:%M'),
-            'PredictionDate' : BetInfo['Date'],
+            'BetOddDate' : BetInfo['Date'],
+            'PredictionDate' : now.strftime('%Y:%m:%d %H:%M') ,
             'Match' : str(prediction_inputs['Dom'][0])+' - '+str(prediction_inputs['Vis'][0]),  # je sais pas trop pourquoi les valeurs sont dans des tableaux...
             'Dom' : str(prediction_inputs['Dom'][0]), 
             'Vis' : str(prediction_inputs['Vis'][0]), 
