@@ -28,6 +28,9 @@
     border : solid 1px;
     border-color : blanchedalmond;
     background-color: rgb(17, 17, 17);
+        display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 
 }
 
@@ -36,8 +39,10 @@
 
     height:100%;
     width :75%;
-
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
 
 }
 
