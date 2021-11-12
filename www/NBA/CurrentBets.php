@@ -61,7 +61,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             //   CreateTeamSelectionOptions('B',NBAData)
             
 
-            d3.csv(PredictionData, function(data){
+            d3.csv('GetData.php?Data=PredictionData', function(data){
 
                 console.log(Data)
                 //code dealing with data here
