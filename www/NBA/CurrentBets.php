@@ -3,9 +3,9 @@
 
 require_once 'MyTools.php';
 
-$DateStr =  date("F j, Y, g:i a");         
-$Date =  date("Y-m-d");
-echo $Date;
+$DateStr =  date("j F Y");         
+$TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y")));
+echo $TomorrowDate;
 
 ?>
 
@@ -31,7 +31,7 @@ echo $Date;
             <!-- </graph-std> -->
         <!-- </div> -->
         <div class="Title">
-            Paris en cours : <?php echo $Date ?>
+            Paris en cours : <?php echo $DateStr ?>
         </div>
         <div class="SubTitle" id="accuracy">
         </div>
