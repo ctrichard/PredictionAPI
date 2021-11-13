@@ -103,6 +103,7 @@ class RunPrediction{
         $command .= ' '.$this->PathToInputs.' ';
         $command .= ' '.$this->PathToOutputs.' ';
         $command .= ' '.$this->Season.' ';
+        $command .= ' '.$this->ModelName.' ';
 
 
         // $this->log = shell_exec( 'conda run -n NBAPrediction python MakePrediction.py 2021-07-20 Phoenix\ Suns Milwaukee\ Bucks 456');
