@@ -84,16 +84,19 @@ async function UpdateTeamInfo(){
     })
     .then(response => response.json())
 
-    console.log(MatchData)
-    console.log(ResponseData)
-    
-    TeamPlayers['Dom'] = JSON.parse(ResponseData['Dom'])
-    TeamPlayers['Vis'] = JSON.parse(ResponseData['Vis'])
+    if(MatchData['Dom'] != undefined && MatchData['Vis'] != undefined){
 
-
-    DrawTeamPlayer('Dom')
-    DrawTeamPlayer('Vis')
-    
+        console.log(MatchData)
+        console.log(ResponseData)
+        
+        TeamPlayers['Dom'] = JSON.parse(ResponseData['Dom'])
+        TeamPlayers['Vis'] = JSON.parse(ResponseData['Vis'])
+        
+        
+        DrawTeamPlayer('Dom')
+        DrawTeamPlayer('Vis')
+        
+    }
     MatchPlayerData = {Dom : '', Vis : ''}
 
     
