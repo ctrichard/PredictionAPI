@@ -35,7 +35,8 @@ function IsValidMatch(){
     lefttimeVis = CheckTeamTotalTimePlayed('Vis')
 
     if(  MatchData['Dom']!=undefined &&  MatchData['Vis']!=undefined &&  MatchData['Dom'] != MatchData['Vis'] 
-            && lefttimeDom==0 && lefttimeVis==0){
+            && ( (lefttimeDom== TotalPlayerTimePerTeam && lefttimeVis==TotalPlayerTimePerTeam) || (lefttimeDom==0 && lefttimeVis==0) ) 
+            ) {
 
         return true;
     }
@@ -97,6 +98,7 @@ async function UpdateTeamInfo(){
         DrawTeamPlayer('Vis')
         
     }
+    
     MatchPlayerData = {Dom : '', Vis : ''}
 
     
