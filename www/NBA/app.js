@@ -18,7 +18,7 @@ CurrentDateStr+=CurrentDate.getDate()
 var MatchData = {Season : 2022, Model : 'TrainWo_2021', Date : CurrentDateStr}
 var MatchPlayerData = {Dom : '', Vis : ''}
 
-var TeamPlayers =  {'Dom' : '', 'Vis' : ''}
+var TeamPlayers =  {'Dom' : [], 'Vis' : []}
 
 
 
@@ -227,6 +227,7 @@ function DrawTeamPlayer(Side){
 function CheckTeamTotalTimePlayed(Side){
 
     TotalTimePlayed = TotalPlayerTimePerTeam
+
 
     TeamPlayers[Side].forEach(playerdata => {
         if(playerdata[1]=='Name' | playerdata[0]==undefined)
