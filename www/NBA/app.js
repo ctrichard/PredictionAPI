@@ -60,6 +60,9 @@ function UpdatePredictButton(){
 
 function selectTeam(Side='Dom',value){
 
+    ResetTeamPlayers('Dom')
+    ResetTeamPlayers("Vis")
+    
     MatchData[Side] = value
     console.log(MatchData)
     ResetPredictions()
@@ -72,8 +75,7 @@ function selectTeam(Side='Dom',value){
 
 async function UpdateTeamInfo(){
 
-    ResetTeamPlayers('Dom')
-    ResetTeamPlayers("Vis")
+
     
     let ResponseData = await fetch('./TeamInfo.php', {
         method: 'POST',
