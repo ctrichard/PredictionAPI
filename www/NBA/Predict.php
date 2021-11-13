@@ -23,6 +23,20 @@ function GetPrediction($Dom,$Vis){
 }
 
 
+function IsValidPlayerList($Playerlist){
+
+    try{
+
+        if(!$PlayerList['Name']  || !$PlayerList['MP'] || !$PlayerList['Side'] ){
+            return False;
+        }
+        return True;
+    }
+    catch(Exception  $e){
+        return False;
+    }
+}
+
 
 function CreatePlayerListFile(&$PlayerList,$Dom,$Vis,$Season){
 
@@ -58,7 +72,7 @@ function CreatePlayerListFile(&$PlayerList,$Dom,$Vis,$Season){
 
         if($totplaytime !=0 && $totplaytime!=$GLOBALS['PlayTimePerTeam'])
             throw new Exception('Total play time left for team '.$Side.' is '.$totplaytime.'. It should be ==0  or =='.$GLOBALS['PlayTimePerTeam'].'.');
-            
+
 
     }
 
@@ -69,9 +83,11 @@ function CreatePlayerListFile(&$PlayerList,$Dom,$Vis,$Season){
     if(!is_dir($path))
        throw new FileNotFound('Bad location for Player list : '.$path);
 
-    $fp = fopen($path.'PlayerList_'.$GLOBALS['MyUUID'].'.json', 'w');
-    fwrite($fp, json_encode($PlayerList));
-    fclose($fp);
+    if(IsValidPlayerList($PlayerList)){
+        $fp = fopen($path.'PlayerList_'.$GLOBALS['MyUUID'].'.json', 'w');
+        fwrite($fp, json_encode($PlayerList));
+        fclose($fp);
+    }
 
 }
 
