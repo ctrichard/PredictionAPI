@@ -62,7 +62,7 @@ function selectTeam(Side='Dom',value){
 
     ResetTeamPlayers('Dom')
     ResetTeamPlayers("Vis")
-    
+
     MatchData[Side] = value
     console.log(MatchData)
     ResetPredictions()
@@ -218,7 +218,6 @@ function DrawTeamPlayer(Side){
         document.getElementById(input.id).addEventListener('change', (event) => {
 
             InputModifs(event);
-            // CheckTeamTotalTimePlayed(event.currentTarget.Side)
             UpdatePredictButton()
         });
 
@@ -236,7 +235,9 @@ function CheckTeamTotalTimePlayed(Side){
           return //=>continue
 
         let element = document.getElementById('TimeInput'+playerdata[1])
-        TotalTimePlayed -= element.value
+        if(element!=undefined){
+            TotalTimePlayed -= element.value
+        }
 
     })
 
