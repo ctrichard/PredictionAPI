@@ -141,7 +141,6 @@ class CheckPlayerStat extends RunPrediction{
     protected $PlayerList = [];
     protected $Results = '';
 
-
     
     const CheckModelName = False;
 
@@ -153,14 +152,17 @@ class CheckPlayerStat extends RunPrediction{
 
     public function SetPlayerList($PlayerList){
         $this->PlayerList = $PlayerList;
+
+        if($this->PlayerList['Dom']=='' && $this->PlayerList['Vis']=='')
+            $this->PlayerList=null;
     }
 
     protected function CheckInputs(){
 
         parent::CheckInputs();
 
-        if(!$this->PlayerList || !$this->PlayerList['Dom'] || !$this->PlayerList['Vis'])
-           throw new Exception('No player list');
+        if($this->PlayerList && ( !$this->PlayerList['Dom'] || !$this->PlayerList['Vis']) )
+           throw new Exception('Bad player list');
            
     }
 
