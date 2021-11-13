@@ -56,8 +56,9 @@ function CreatePlayerListFile(&$PlayerList,$Dom,$Vis,$Season){
             
         }
 
-        if($totplaytime !=0)
-            throw new Exception('Total play time left for team '.$Side.' is '.$totplaytime.'. It should be ==0');
+        if($totplaytime !=0 && $totplaytime!=$GLOBALS['PlayTimePerTeam'])
+            throw new Exception('Total play time left for team '.$Side.' is '.$totplaytime.'. It should be ==0  or =='.$GLOBALS['PlayTimePerTeam'].'.');
+            
 
     }
 
