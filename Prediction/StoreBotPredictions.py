@@ -55,13 +55,15 @@ class BetPrediction(Bet):  #Sports-betting/BotBetScraper.py
             self.DataCols.append('BetOddDate')
             self.DataCols.append('PredictionDate')
 
-            self.MinimalCols.append('UUID')
-            self.MinimalCols.append('PredictionDate')
-            self.MinimalCols.append('Prediction')
 
 
         except ValueError:
             pass #already removed
+
+        self.MinimalCols.append('UUID')
+        self.MinimalCols.append('PredictionDate')
+        self.MinimalCols.append('Prediction')
+
 
         super().__init__()
 
