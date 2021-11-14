@@ -49,7 +49,6 @@ do
     done
 done
 
-exit
 # python ~/Projects/ParisSportifIA/MakePrediction.py ${MatchDate} "$DomTeam" "$VisTeam" $UUID $PathToInputs $PathToOutputs $Season
 
 python MakeBotPredictions.py $PathToInputs $PathToOutputs $Season $UUID $ModelName ${MatchDate}
