@@ -49,7 +49,7 @@ do
         ModelName=$BaseModelName$ModelYear
         echo $ModelName
 
-        $ModelNames+=($ModelName)
+        ModelNames+=($ModelName)
 
     done
 done
