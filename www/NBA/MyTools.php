@@ -253,12 +253,21 @@ $LogFile = '../Logs/log_'.date("j.n.Y").'.log';
 
 function LogThis($message,$Tag=''){
 
+    if(!is_string($message)){
+        try{
+            $message=json_encode($message);
+        }
+        catch(Exception $e){
+            $message='Tried to json_encode object but failed...';
+        }
+    }
+
     if($Tag){
         if(is_string($message)){
             $message = $Tag.' :: '.$message;
         }
         else{
-            file_put_contents($GLOBALS['LogFile'], $Tag.' ::  See below :', FILE_APPEND);
+            file_put_contents($GLOBALS['LogFile'], $Tag.' ::  See below :'.PHP_EOL, FILE_APPEND);
         }
     }
 
