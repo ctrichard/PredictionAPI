@@ -24,6 +24,7 @@ function GetPrediction($Dom,$Vis){
 
 
 function IsValidPlayerList($Playerlist){
+    LogThis($PlayerList);
 
     try{
 

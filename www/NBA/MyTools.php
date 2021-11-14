@@ -254,7 +254,6 @@ $LogFile = '../Logs/log_'.date("j.n.Y").'.log';
 function LogThis($message,$Tag=''){
 
     if(!is_string($message)){
-        file_put_contents($GLOBALS['LogFile'], 'Custom message ::  See below :'.PHP_EOL, FILE_APPEND);
 
         try{
             $message=json_encode($message);
@@ -273,7 +272,7 @@ function LogThis($message,$Tag=''){
         }
     }
 
-    file_put_contents($GLOBALS['LogFile'], $message, FILE_APPEND);
+    file_put_contents($GLOBALS['LogFile'], $message.PHP_EOL, FILE_APPEND);
 }
 
 function LogError($message){
