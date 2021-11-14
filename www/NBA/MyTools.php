@@ -248,6 +248,31 @@ $TeamDataLocation = $DataLocation.'Teams/';
 $InputsTempFileLocation = '../../Prediction/Inputs/';
 $OutputsTempFileLocation = '../../Prediction/Outputs/';
 
+$LogFile = '../Logs/log_'.date("j.n.Y").'.log';
+
+
+function LogThis($message,$Tag=''){
+
+    if($Tag){
+        if(is_string($message)){
+            $message = $Tag.' :: '.$message
+        }
+        else{
+            file_put_contents($GLOBALS['LogFile'], $Tag.' ::  See below :', FILE_APPEND);
+        }
+    }
+
+    file_put_contents($GLOBALS['LogFile'], $message, FILE_APPEND);
+}
+
+function LogError($message){
+    LogThis($message,'ERROR');
+}
+
+function LogWarning($message){
+    LogThis($message,'WARNING');
+}
+
 
 function GetModelResults($ModelName){
     $path = $GLOBALS['ModelLocation'].$ModelName.'/ModelResults.json';
