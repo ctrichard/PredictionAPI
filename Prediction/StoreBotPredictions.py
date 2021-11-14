@@ -100,6 +100,8 @@ def StorePredictionOutputs(PredictionBet,First,MainModel=False):
     Short=True
     if(MainModel):
         Short=False
+
+
     with open(GetStoragePath(PredictionBet.ModelName,MainModel),'w' if First else 'a') as f:
         f.write(PredictionBet.to_csv(PrintCols = First, Short=Short))
 
@@ -109,6 +111,10 @@ def StorePredictionOutputs(PredictionBet,First,MainModel=False):
         print(GetStoragePath(PredictionBet.ModelName,MainModel))
         print(PredictionBet.to_csv(PrintCols = First, Short=Short))
         print(PredictionBet.ModelName)
+
+    if(MainModel):  #To save also in specific model file
+        with open(GetStoragePath(PredictionBet.ModelName,False),'w' if First else 'a') as f:
+            f.write(PredictionBet.to_csv(PrintCols = First, Short=Short))
 
 
 
