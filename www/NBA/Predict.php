@@ -23,8 +23,7 @@ function GetPrediction($Dom,$Vis){
 }
 
 
-function IsValidPlayerList($Playerlist){
-    LogThis($PlayerList);
+function IsValidPlayerList($PlayerList){
 
     try{
 
