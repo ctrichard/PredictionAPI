@@ -255,7 +255,7 @@ function LogThis($message,$Tag=''){
 
     if($Tag){
         if(is_string($message)){
-            $message = $Tag.' :: '.$message
+            $message = $Tag.' :: '.$message;
         }
         else{
             file_put_contents($GLOBALS['LogFile'], $Tag.' ::  See below :', FILE_APPEND);
