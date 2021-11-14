@@ -13,13 +13,22 @@ import datetime
 
 from MakeBotPredictions import GetListBets
 
-Storage_path = 'Data/PredictionData_'
+#!!!!!!!!!!!!!!!
+MainModelName='TrainWo_2022'
+
+
+Storage_path = 'Data/PredictionData'
 ArxivStorage_path = 'Data/AxivPredictionData.csv'
 
 
-def GetStoragePath(ModelName):
-    Path = Storage_path+ModelName+'.csv'
+def GetStoragePath(ModelName,MainModel=False):
+    if(MainModel):
+        Path = Storage_path+'.csv'
+    else:
+        Path = Storage_path+'_'+ModelName+'.csv'
+
     return Path
+
 
 
 class BetPrediction(Bet):  #Sports-betting/BotBetScraper.py
@@ -69,7 +78,8 @@ class BetPrediction(Bet):  #Sports-betting/BotBetScraper.py
 
 
 
-def StorePredictionOutputs(PredictionBet,First):
+def StorePredictionOutputs(PredictionBet,First,MainModel=False):
+
 
     ArxivIsNewFile = False
 
@@ -85,12 +95,15 @@ def StorePredictionOutputs(PredictionBet,First):
         f.write(PredictionBet.to_csv(PrintCols = ArxivIsNewFile))
 
     #rewrite file. To have only this file read by API
-    with open(GetStoragePath(PredictionBet.ModelName),'w' if First else 'a') as f:
-        f.write(PredictionBet.to_csv(PrintCols = First, Short=True))
+    Short=True
+    if(MainModel):
+        Short=False
+    with open(GetStoragePath(PredictionBet.ModelName,MainModel),'w' if First else 'a') as f:
+        f.write(PredictionBet.to_csv(PrintCols = First, Short=Short))
 
 
 
-def StorePredictions(UUID,BetInfo,First,ModelName=''):
+def StorePredictions(UUID,BetInfo,First,ModelName='',MainModel=False):
 
     prediction_outputs = MyTools.GetPredictionOutput(UUID,PathPredictionOutputs)
     prediction_inputs = MyTools.GetPredictionInput(UUID,PathPredictionInputs)
@@ -135,7 +148,7 @@ def StorePredictions(UUID,BetInfo,First,ModelName=''):
 
 
 
-    StorePredictionOutputs(B,First)
+    StorePredictionOutputs(B,First,MainModel)
 
 
 if __name__ == '__main__':
@@ -153,6 +166,9 @@ if __name__ == '__main__':
 
     ModelName=sys.argv[5]
 
+    IsMainModel=False
+    if(ModelName==MainModelName):
+        IsMainModel=True
     try:
         Date = datetime.date(*map(int,sys.argv[6].split('-')))
     except : 
@@ -165,7 +181,7 @@ if __name__ == '__main__':
     First=True
     for i,row in Bets.iterrows():
         try:
-            StorePredictions(UUID+'_'+str(i),row,First,ModelName)
+            StorePredictions(UUID+'_'+str(i),row,First,ModelName,IsMainModel)
             First=False
         except FileNotFoundError:    #because prediction failed
             print("ERROR  =========================== Prediction failed")
