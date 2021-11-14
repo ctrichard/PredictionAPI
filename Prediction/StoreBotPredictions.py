@@ -13,16 +13,23 @@ import datetime
 
 from MakeBotPredictions import GetListBets
 
-Storage_path = 'Data/PredictionData.csv'
+Storage_path = 'Data/PredictionData_'
 ArxivStorage_path = 'Data/AxivPredictionData.csv'
+
+
+def GetStoragePath(ModelName):
+    Path = Storage_path+ModelName+'.csv'
+    return Path
 
 
 class BetPrediction(Bet):  #Sports-betting/BotBetScraper.py
 
 
 
-    def __init__(self):
+    def __init__(self,ModelName):
 
+
+        self.ModelName = ModelName
 
         print(self.DataCols)
         try:
@@ -48,7 +55,9 @@ class BetPrediction(Bet):  #Sports-betting/BotBetScraper.py
             return True
 
         else : 
-            return False    
+            return False  
+
+
 
 
 
@@ -56,7 +65,7 @@ def StorePredictionOutputs(PredictionBet,First):
 
     ArxivIsNewFile = False
 
-    if(not os.path.exists(Storage_path)):
+    if(not os.path.exists(GetStoragePath(PredictionBet.ModelName))):
         First = True
 
     if(not os.path.exists(ArxivStorage_path)):
@@ -68,12 +77,12 @@ def StorePredictionOutputs(PredictionBet,First):
         f.write(PredictionBet.to_csv(PrintCols = ArxivIsNewFile))
 
     #rewrite file. To have only this file read by API
-    with open(Storage_path,'w' if First else 'a') as f:
+    with open(GetStoragePath(PredictionBet.ModelName),'w' if First else 'a') as f:
         f.write(PredictionBet.to_csv(PrintCols = First))
 
 
 
-def StorePredictions(UUID,BetInfo,First):
+def StorePredictions(UUID,BetInfo,First,ModelName=''):
 
     prediction_outputs = MyTools.GetPredictionOutput(UUID,PathPredictionOutputs)
     prediction_inputs = MyTools.GetPredictionInput(UUID,PathPredictionInputs)
@@ -100,7 +109,7 @@ def StorePredictions(UUID,BetInfo,First):
         print(BetInfo)
         raise ValueError('Wrong bet info !')    #only for  win bet
 
-    B = BetPrediction()
+    B = BetPrediction(ModelName)
 
     B.SetData({
             'UUID' : UUID,
@@ -134,8 +143,10 @@ if __name__ == '__main__':
     PathPredictionInputs = sys.argv[3] 
     PathPredictionOutputs = sys.argv[4] 
 
+    ModelName=sys.argv[5]
+
     try:
-        Date = datetime.date(*map(int,sys.argv[5].split('-')))
+        Date = datetime.date(*map(int,sys.argv[6].split('-')))
     except : 
         Date = datetime.datetime.now()+datetime.timedelta(days=1)
 
@@ -146,7 +157,7 @@ if __name__ == '__main__':
     First=True
     for i,row in Bets.iterrows():
         try:
-            StorePredictions(UUID+'_'+str(i),row,First)
+            StorePredictions(UUID+'_'+str(i),row,First,ModelName)
             First=False
         except FileNotFoundError:    #because prediction failed
             print("ERROR  =========================== Prediction failed")

@@ -68,12 +68,14 @@ if __name__ == '__main__':
     PathInputs  = sys.argv[1]
     PathOuputs = sys.argv[2]
     Season=sys.argv[3]
-    ModelName='TrainWo_'+Season
 
     UUID = sys.argv[4]
 
+    ModelName=sys.argv[5]
+    # 'TrainWo_'+Season
+
     try:
-        Date = datetime.date(*map(int,sys.argv[5].split('-')))
+        Date = datetime.date(*map(int,sys.argv[6].split('-')))
     except : 
         Date = datetime.datetime.now()+datetime.timedelta(days=1)
 
