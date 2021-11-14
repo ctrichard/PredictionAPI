@@ -3,7 +3,7 @@ from typing import Match
 
 sys.path.insert(0, '/home/ubuntu/Projects/ParisSportifIA')
 from MyTools import MyTools
-from MakePrediction import MakePrediction
+from MakePrediction import MakeMultipleModelPredictions
 sys.path.insert(0, '/home/ubuntu/Projects/Sports-betting')
 from BotBetScraper import GetOddDataPath
 
@@ -38,13 +38,14 @@ def GetListBets(MatchDate):
 
 
 
-def make_predict(Date,VisName,DomName,UUID="0",PathInputs='',PathOutputs='',ModelName='TrainWo_2022',Season='2022'):
+def make_predict(Date,VisName,DomName,UUID="0",PathInputs='',PathOutputs='',ModelNames=['TrainWo_2022'],Season='2022'):
 
-    MakePrediction(Date,VisName,DomName,UUID=UUID,PathInputs=PathInputs,PathOutputs=PathOutputs,ModelName=ModelName,Season=Season)
+    # MakePrediction(Date,VisName,DomName,UUID=UUID,PathInputs=PathInputs,PathOutputs=PathOutputs,ModelName=ModelName,Season=Season)
+    MakeMultipleModelPredictions(Date,VisName,DomName,UUID,PathInputs,PathOutputs,ModelNames,Season)
 
 
 
-def MakeBotPredictions(UUID,MatchDate,PathInputs='',PathOutputs='',ModelName='TrainWo_2022',Season='2022'):
+def MakeBotPredictions(UUID,MatchDate,PathInputs='',PathOutputs='',ModelNamse=['TrainWo_2022'],Season='2022'):
 
     Matches = GetListBets(MatchDate)
 
@@ -57,7 +58,7 @@ def MakeBotPredictions(UUID,MatchDate,PathInputs='',PathOutputs='',ModelName='Tr
         Date = row['MatchDate'].split(' ')[0]  # just YYY-MM-DD
         VisName = row['Vis']
         DomName = row['Dom']
-        make_predict(Date=Date,VisName=VisName,DomName=DomName,UUID=UUID+'_'+str(i),PathInputs=PathInputs,PathOutputs=PathOutputs,ModelName=ModelName)
+        make_predict(Date=Date,VisName=VisName,DomName=DomName,UUID=UUID+'_'+str(i),PathInputs=PathInputs,PathOutputs=PathOutputs,ModelName=ModelNames)
 
 
 if __name__ == '__main__':
@@ -71,8 +72,10 @@ if __name__ == '__main__':
 
     UUID = sys.argv[4]
 
-    ModelName=sys.argv[5]
+    ModelNames=sys.argv[5]
     # 'TrainWo_'+Season
+
+    ModelNames=ModelNames.split(' ')
 
     try:
         Date = datetime.date(*map(int,sys.argv[6].split('-')))
@@ -81,7 +84,7 @@ if __name__ == '__main__':
 
 
 
-    MakeBotPredictions(UUID,Date,PathInputs=PathInputs,PathOutputs=PathOuputs,ModelName=ModelName,Season=Season)
+    MakeBotPredictions(UUID,Date,PathInputs=PathInputs,PathOutputs=PathOuputs,ModelName=ModelNames,Season=Season)
 
 
 
