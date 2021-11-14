@@ -46,14 +46,16 @@ do
     do
         ModelName=$BaseModelName$ModelYear
         echo $ModelName
+
+        # python ~/Projects/ParisSportifIA/MakePrediction.py ${MatchDate} "$DomTeam" "$VisTeam" $UUID $PathToInputs $PathToOutputs $Season
+
+        python MakeBotPredictions.py $PathToInputs $PathToOutputs $Season $UUID $ModelName ${MatchDate}
+        # a=`grep "UUID====" $UUID_finder`
+
+        # echo $a
+
+        python StoreBotPredictions.py $UUID $BetType $PathToInputs $PathToOutputs $ModelName ${MatchDate}
+
     done
 done
 
-# python ~/Projects/ParisSportifIA/MakePrediction.py ${MatchDate} "$DomTeam" "$VisTeam" $UUID $PathToInputs $PathToOutputs $Season
-
-python MakeBotPredictions.py $PathToInputs $PathToOutputs $Season $UUID $ModelName ${MatchDate}
-# a=`grep "UUID====" $UUID_finder`
-
-# echo $a
-
-python StoreBotPredictions.py $UUID $BetType $PathToInputs $PathToOutputs $ModelName ${MatchDate}
