@@ -38,9 +38,18 @@ conda activate $CondaEnv
 rm -rf $PathToOutputs/Prediction*
 rm -rf $PathToInputs/MatchList_*
 
-
 env
 
+for BaseModelName in 'TrainWo_' 'TrainLast5Years_' 'TrainUpTo' 'TrainLast3Years_'
+do
+    for ModelYear in 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022
+    do
+        ModelName=$BaseModelNameModelYear
+        echo ModelName
+    done
+done
+
+exit
 # python ~/Projects/ParisSportifIA/MakePrediction.py ${MatchDate} "$DomTeam" "$VisTeam" $UUID $PathToInputs $PathToOutputs $Season
 
 python MakeBotPredictions.py $PathToInputs $PathToOutputs $Season $UUID $ModelName ${MatchDate}
