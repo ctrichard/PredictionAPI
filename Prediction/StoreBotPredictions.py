@@ -31,6 +31,8 @@ class BetPrediction(Bet):  #Sports-betting/BotBetScraper.py
 
         self.ModelName = ModelName
 
+        self.MinimalCols = []
+
         print(self.DataCols)
         try:
             self.DataCols.remove('SiteMatchId')
@@ -43,6 +45,12 @@ class BetPrediction(Bet):  #Sports-betting/BotBetScraper.py
             self.DataCols.append('UUID')
             self.DataCols.append('BetOddDate')
             self.DataCols.append('PredictionDate')
+
+            self.MinimalCols.append('UUID')
+            self.MinimalCols.append('PredictionDate')
+            self.MinimalCols.append('Prediction')
+
+
         except ValueError:
             pass #already removed
 
@@ -78,7 +86,7 @@ def StorePredictionOutputs(PredictionBet,First):
 
     #rewrite file. To have only this file read by API
     with open(GetStoragePath(PredictionBet.ModelName),'w' if First else 'a') as f:
-        f.write(PredictionBet.to_csv(PrintCols = First))
+        f.write(PredictionBet.to_csv(PrintCols = First, Short=True))
 
 
 
