@@ -45,7 +45,7 @@ def make_predict(Date,VisName,DomName,UUID="0",PathInputs='',PathOutputs='',Mode
 
 
 
-def MakeBotPredictions(UUID,MatchDate,PathInputs='',PathOutputs='',ModelNamse=['TrainWo_2022'],Season='2022'):
+def MakeBotPredictions(UUID,MatchDate,PathInputs='',PathOutputs='',ModelNames=['TrainWo_2022'],Season='2022'):
 
     Matches = GetListBets(MatchDate)
 
@@ -58,7 +58,7 @@ def MakeBotPredictions(UUID,MatchDate,PathInputs='',PathOutputs='',ModelNamse=['
         Date = row['MatchDate'].split(' ')[0]  # just YYY-MM-DD
         VisName = row['Vis']
         DomName = row['Dom']
-        make_predict(Date=Date,VisName=VisName,DomName=DomName,UUID=UUID+'_'+str(i),PathInputs=PathInputs,PathOutputs=PathOutputs,ModelName=ModelNames)
+        make_predict(Date=Date,VisName=VisName,DomName=DomName,UUID=UUID+'_'+str(i),PathInputs=PathInputs,PathOutputs=PathOutputs,ModelNames=ModelNames)
 
 
 if __name__ == '__main__':
@@ -84,7 +84,7 @@ if __name__ == '__main__':
 
 
 
-    MakeBotPredictions(UUID,Date,PathInputs=PathInputs,PathOutputs=PathOuputs,ModelName=ModelNames,Season=Season)
+    MakeBotPredictions(UUID,Date,PathInputs=PathInputs,PathOutputs=PathOuputs,ModelNames=ModelNames,Season=Season)
 
 
 
