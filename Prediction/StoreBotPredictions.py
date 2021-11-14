@@ -101,6 +101,13 @@ def StorePredictionOutputs(PredictionBet,First,MainModel=False):
     with open(GetStoragePath(PredictionBet.ModelName,MainModel),'w' if First else 'a') as f:
         f.write(PredictionBet.to_csv(PrintCols = First, Short=Short))
 
+        print('----------------------')
+        print('------')
+        print(PredictionBet.Data)
+        print(GetStoragePath(PredictionBet.ModelName,MainModel))
+        print(PredictionBet.to_csv(PrintCols = First, Short=Short))
+        print(PredictionBet.ModelName)
+
 
 
 def StorePredictions(UUID,BetInfo,First,ModelName='',MainModel=False):
