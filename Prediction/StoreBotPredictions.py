@@ -85,7 +85,7 @@ def StorePredictionOutputs(PredictionBet,First,MainModel=False):
 
     ArxivIsNewFile = False
 
-    if(not os.path.exists(GetStoragePath(PredictionBet.ModelName))):
+    if(not os.path.exists(GetStoragePath(PredictionBet.ModelName,MainModel))):
         First = True
 
     if(not os.path.exists(ArxivStorage_path)):
