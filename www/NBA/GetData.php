@@ -4,6 +4,8 @@
 
 $ModelListNames = ['TrainWo_','TrainUpTo','TrainLast3Years_','TrainLast5Years_'];
 $ModelList = [];
+print_r($ModelListNames);
+print_r($GlOBALS['ModelListNames']);
 
 function DefineModelList(){
 
