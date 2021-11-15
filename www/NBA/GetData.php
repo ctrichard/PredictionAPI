@@ -8,6 +8,8 @@ $ModelList = [];
 function DefineModelList(){
 
     echo 'Define !';
+    print_r($ModelListNames);
+    print_r($GlOBALS['ModelListNames']);
     foreach($GlOBALS['ModelListNames'] as $ModelBaseName){
 
         echo $ModelBaseName;
