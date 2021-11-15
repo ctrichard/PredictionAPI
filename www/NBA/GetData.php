@@ -33,14 +33,19 @@ if($_GET['Data']=='PredictionDataWithAllModels'){
     $PredictionList = [];
 
     
+
     foreach ($GLOBALS['ModelList'] as $ModelName){
 
         $PredictionList[$ModelName] = array();
 
         LogThis($ModelName,'Model');
 
+        $Path = "../../Prediction/Data/PredictionData_'.$ModelName.'.csv";
 
-        $handle = fopen("../../Prediction/Data/PredictionData_'.$ModelName.'.csv", "r");
+        print($Path);
+
+        $handle = fopen($Path, "r");
+
         if($handle){
             while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
                 print_r($data);
