@@ -40,7 +40,7 @@ if($_GET['Data']=='PredictionDataWithAllModels'){
 
         LogThis($ModelName,'Model');
 
-        $Path = "../../Prediction/Data/PredictionData_'.$ModelName.'.csv";
+        $Path = "../../Prediction/Data/PredictionData_".$ModelName.".csv";
 
         print($Path);
 
