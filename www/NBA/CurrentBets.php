@@ -42,7 +42,9 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
 
 
-    <script type="text/javascript" src="http://d3js.org/d3.v5.js"></script>
+    <!-- <script type="text/javascript" src="http://d3js.org/d3.v5.js"></script> -->
+    <script src="https://d3js.org/d3.v6.js"></script>
+
     <script type="text/javascript" src="../Graphs.js"></script>
     <script type="text/javascript" src="./app.js"></script>
     <script>
@@ -57,7 +59,18 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
                 DrawBet(data)
             });
 
+
+            const AllModels = await fetch('GetData.php?Data=PredictionDataWithAllModels', {
+            headers: {
+                'Accept': 'application/json'
+            }
+            })
+            .then(response => response.json());
+
+            
+
           }
+
   
         LoadData();
   
@@ -74,6 +87,11 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             let divres = document.createElement("div");
             divres.className  = "BetResultsContainer";
             div.appendChild(divres);
+
+            let divgraph = document.createElement("div");
+            divgraph.className  = "BetGraphContainer";
+            divgraph.id = "GraphContainer_"+BetData['UUID'];
+            div.appendChild(divgraph);
 
      
             
@@ -108,6 +126,14 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             
             div.appendChild(divextrainfo);
 
+
+
+            const svg = d3.select("#GraphContainer_"+BetData['UUID']")
+                          .append("svg")
+                            .attr("width", "100%") //width + margin.left + margin.right)
+                            .attr("height","100%") //height + margin.top + margin.bottom)
+                          .append("g")
+                            // .attr("transform", `translate(${width/2},${height/2+100})`); // Add 100 on Y translation, cause upper bars are longer
 
 
 

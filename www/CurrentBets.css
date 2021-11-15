@@ -39,7 +39,7 @@
 .BetResultsContainer{
 
     height:100%;
-    width :50%;
+    width :25%;
     background-color: white;
 
     display: flex;
@@ -49,6 +49,18 @@
 
 }
 
+.BetGraphContainer{
+
+    height:100%;
+    width :25%;
+    background-color: white;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+}
 
 .BetInfoContainer{
 
