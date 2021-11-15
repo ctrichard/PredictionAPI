@@ -38,11 +38,9 @@ if($_GET['Data']=='PredictionDataWithAllModels'){
 
         $PredictionList[$ModelName] = array();
 
-        LogThis($ModelName,'Model');
+        // LogThis($ModelName,'Model');
 
         $Path = "../../Prediction/Data/PredictionData_".$ModelName.".csv";
-
-        print($Path);
 
         $handle = fopen($Path, "r");
 
