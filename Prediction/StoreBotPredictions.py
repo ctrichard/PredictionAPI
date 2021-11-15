@@ -120,7 +120,7 @@ def StorePredictionOutputs(PredictionBet,First,MainModel=False):
 
 def StorePredictions(UUID,BetInfo,First,ModelName='',MainModel=False):
 
-    prediction_outputs = MyTools.GetPredictionOutput(UUID,PathPredictionOutputs)
+    prediction_outputs = MyTools.GetPredictionOutput(UUID,PathPredictionOutputs,ModelName)
     prediction_inputs = MyTools.GetPredictionInput(UUID,PathPredictionInputs)
     try:
         prediction_playerlist = MyTools.GetPlayerListForPrediction(UUID,PathPredictionInputs)

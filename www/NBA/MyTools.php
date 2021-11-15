@@ -123,7 +123,8 @@ class RunPrediction{
 
     public function GetPredictionResults(){
 
-        $path = $this->PathToOutputs.'Prediction_'.$this->UUID.'.json';
+        //! use python fct !! GetPredictionOutput  !!
+        $path = $this->PathToOutputs.'Prediction_'.$this->UUID.'_'.$this->ModelName.'.json';
 
         if(!file_exists($path))
             throw new FileNotFound('Cant find prediction results : '.$path );
