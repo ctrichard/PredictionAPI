@@ -4,21 +4,14 @@
 
 $ModelListNames = ['TrainWo_','TrainUpTo','TrainLast3Years_','TrainLast5Years_'];
 $ModelList = [];
-print_r($ModelListNames);
-print_r($GlOBALS['ModelListNames']);
 
 function DefineModelList(){
 
-    echo 'Define !';
-    print_r($ModelListNames);
-    print_r($GlOBALS['ModelListNames']);
-    foreach($GlOBALS['ModelListNames'] as $ModelBaseName){
+    foreach($GLOBALS['ModelListNames'] as $ModelBaseName){
 
-        echo $ModelBaseName;
         foreach(range(2004,2022) as $Year){
          
-            array_push($GlOBALS['ModelList'],$ModelBaseName.$Year);
-            echo $ModelBaseName.$Year;
+            array_push($GLOBALS['ModelList'],$ModelBaseName.$Year);
 
         }
     }
@@ -39,7 +32,6 @@ if($_GET['Data']=='PredictionDataWithAllModels'){
 
     $PredictionList = [];
 
-    print_r($GLOBALS['ModelList']);
     
     foreach ($GlOBALS['ModelList'] as $ModelName){
 
