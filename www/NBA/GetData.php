@@ -32,7 +32,7 @@ if($_GET['Data']=='PredictionDataWithAllModels'){
 
     $PredictionList = [];
 
-    echo $GLOBALS['ModelList'];
+    print_r($GLOBALS['ModelList']);
     
     foreach ($GlOBALS['ModelList'] as $ModelName){
 
