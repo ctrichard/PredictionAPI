@@ -59,7 +59,7 @@ ModelNamesInStr=$(IFS=$' '; echo "${ModelNames[@]}" )
 # python ~/Projects/ParisSportifIA/MakePrediction.py ${MatchDate} "$DomTeam" "$VisTeam" $UUID $PathToInputs $PathToOutputs $Season
 python MakeBotPredictions.py $PathToInputs $PathToOutputs $Season $UUID "$ModelNamesInStr" ${MatchDate}
 
-for ModelName in $ModelNames
+for ModelName in ${ModelNames[@]}
 do
     python StoreBotPredictions.py $UUID $BetType $PathToInputs $PathToOutputs $ModelName ${MatchDate}
 done    
