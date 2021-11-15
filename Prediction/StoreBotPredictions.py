@@ -120,6 +120,16 @@ def StorePredictionOutputs(PredictionBet,First,MainModel=False):
 
 def StorePredictions(UUID,BetInfo,First,ModelName='',MainModel=False):
 
+
+    print()
+    print('===================')
+    print('Storing predictions')
+    print()
+    print(ModelName)
+    print(BetInfo)
+    print(UUID)
+
+
     prediction_outputs = MyTools.GetPredictionOutput(UUID,PathPredictionOutputs,ModelName)
     prediction_inputs = MyTools.GetPredictionInput(UUID,PathPredictionInputs)
     try:
@@ -184,6 +194,7 @@ if __name__ == '__main__':
     IsMainModel=False
     if(ModelName==MainModelName):
         IsMainModel=True
+
     try:
         Date = datetime.date(*map(int,sys.argv[6].split('-')))
     except : 
