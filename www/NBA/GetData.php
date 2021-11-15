@@ -33,7 +33,7 @@ if($_GET['Data']=='PredictionDataWithAllModels'){
     $PredictionList = [];
 
     
-    foreach ($GlOBALS['ModelList'] as $ModelName){
+    foreach ($GLOBALS['ModelList'] as $ModelName){
 
         $PredictionList[$ModelName] = file_get_contents('../../Prediction/Data/PredictionData_'.$ModelName.'.csv');
 
