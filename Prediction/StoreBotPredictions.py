@@ -114,7 +114,7 @@ def StorePredictionOutputs(PredictionBet,First,MainModel=False):
 
     if(MainModel):  #To save also in specific model file
         with open(GetStoragePath(PredictionBet.ModelName,False),'w' if First else 'a') as f:
-            f.write(PredictionBet.to_csv(PrintCols = First, Short=Short))
+            f.write(PredictionBet.to_csv(PrintCols = First, Short=True))
 
 
 
