@@ -7,11 +7,15 @@ $ModelList = [];
 
 function DefineModelList(){
 
+    echo 'Define !';
     foreach($GlOBALS['ModelListNames'] as $ModelBaseName){
 
+        echo $ModelBaseName;
         foreach(range(2004,2022) as $Year){
          
             array_push($GlOBALS['ModelList'],$ModelBaseName.$Year);
+            echo $ModelBaseName.$Year;
+
         }
     }
 
