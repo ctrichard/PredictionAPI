@@ -128,7 +128,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
 
 
-            const svg = d3.select("#GraphContainer_"+BetData['UUID']")
+            const svg = d3.select("#GraphContainer_"+BetData['UUID'])
                           .append("svg")
                             .attr("width", "100%") //width + margin.left + margin.right)
                             .attr("height","100%") //height + margin.top + margin.bottom)
