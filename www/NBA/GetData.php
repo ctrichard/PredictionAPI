@@ -35,16 +35,10 @@ if($_GET['Data']=='PredictionDataWithAllModels'){
     
     foreach ($GLOBALS['ModelList'] as $ModelName){
 
-        try{
 
-        }
-        catch(){
-
-        }
-
-        $handle = fopen("../../Prediction/Data/PredictionData_'.$ModelName.'.csv", "r")
+        $handle = fopen("../../Prediction/Data/PredictionData_'.$ModelName.'.csv", "r");
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-            array_push($PredictionList[$ModelName],$data)
+            array_push($PredictionList[$ModelName],$data);
         }
         fclose($handle);
 
