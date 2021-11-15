@@ -43,6 +43,7 @@ if($_GET['Data']=='PredictionDataWithAllModels'){
         $handle = fopen("../../Prediction/Data/PredictionData_'.$ModelName.'.csv", "r");
         if($handle){
             while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                print_r($data);
                 array_push($PredictionList[$ModelName],$data);
             }
             fclose($handle);
