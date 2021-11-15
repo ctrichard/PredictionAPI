@@ -5,21 +5,20 @@
 $ModelListNames = ['TrainWo_','TrainUpTo','TrainLast3Years_','TrainLast5Years_'];
 $ModelList = [];
 
-function DefineModelist(){
+function DefineModelList(){
 
     foreach($GlOBALS['ModelListNames'] as $ModelBaseName){
 
         foreach(range(2004,2022) as $Year){
          
-            $GlOBALS['ModelList'].append($ModelBaseName.$Year);
-            
+            array_push($GlOBALS['ModelList'],$ModelBaseName.$Year)
         }
     }
 
 }
 
 
-DefineModelist();
+DefineModelList();
 
 
 if($_GET['Data']=='PredictionData'){
