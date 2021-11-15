@@ -67,6 +67,8 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             })
             .then(response => response.json());
 
+            DrawGraphs(AllModels)
+
             
 
           }
@@ -137,6 +139,13 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
 
 
+
+        }
+
+        function DrawGraphs(AllModelPredictions){
+
+
+            console.log(AllModelPredictions)
 
         }
 
