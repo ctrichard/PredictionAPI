@@ -7,7 +7,7 @@ $ModelList = [];
 
 function DefineModelist(){
 
-    foreach($ModelListNames as $ModelBaseName){
+    foreach($GlOBALS['ModelListNames'] as $ModelBaseName){
 
         foreach(range(2004,2022) as $Year){
          
