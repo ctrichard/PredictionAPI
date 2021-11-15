@@ -55,6 +55,9 @@ def MakeBotPredictions(UUID,MatchDate,PathInputs='',PathOutputs='',ModelNames=['
 
         print('......................................')
         print(row)
+        print('..............')
+        print(ModelNames)
+        print('................................')
         Date = row['MatchDate'].split(' ')[0]  # just YYY-MM-DD
         VisName = row['Vis']
         DomName = row['Dom']
