@@ -11,7 +11,7 @@ function DefineModelList(){
 
         foreach(range(2004,2022) as $Year){
          
-            array_push($GlOBALS['ModelList'],$ModelBaseName.$Year)
+            array_push($GlOBALS['ModelList'],$ModelBaseName.$Year);
         }
     }
 
