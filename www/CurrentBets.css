@@ -19,8 +19,7 @@ body{
     display: flex;
     flex-direction: row;
     flex-wrap : wrap ;
-    justify-content: space-between;
-
+    justify-content: space-evenly;
 
 }
 
@@ -37,9 +36,10 @@ body{
 
     overflow: hidden;
 
-    min-width:27%;
+    min-width:250px;
     max-width:80%;
     border-radius: .4rem;
+    padding-top : 1%;
 
 }
 
@@ -96,6 +96,7 @@ body{
     padding:1%;
     display: flex;
     justify-content: center;
+    height:fit-content;
 }
 
 .Good{
