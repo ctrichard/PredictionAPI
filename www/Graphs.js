@@ -510,12 +510,13 @@ class Graph{
       .attr("data",function(d,i){return d[0]+'_'+d[1]})
       // .attr('x',function(d){return d[0]})
       .attr("x",function(d,i){
-        return xscale((d[1]-(barwidth/2)))
+        return xscale((d[0]-(barwidth/2)))
       })
       .attr("y",function(d){return d[1]})
       .attr("width",xscale(barwidth))
       .attr("height",function(d,i){
-        return Math.abs(d[1]-yscale(minheight)) ;
+        return yscale(d[1])
+        // return Math.abs(d[1]-yscale(minheight)) ;
       })
       // .attr('value',function(d){return d[1]/this.ymax})
   
