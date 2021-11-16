@@ -129,10 +129,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             // selectLogo('LogoB_'+BetData['UUID'],BetData['Vis'])
 
 
-            let divgraph = document.createElement("div");
-            divgraph.className  = "BetGraphContainer";
-            divgraph.id = "GraphContainer_"+BetData['UUID'];
-            div.appendChild(divgraph);
+
 
 
             let divextrainfo = document.createElement("div");
@@ -176,6 +173,16 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             
             divres.appendChild(divextrainfo);
 
+
+            let divgraphs = document.createElement("div");
+            divgraphs.className  = "BetGraphsContainer";
+            div.appendChild(divgraphs);
+
+            let divgraph = document.createElement("div");
+            divgraph.className  = "BetGraphContainer";
+            divgraph.id = "GraphContainer_"+BetData['UUID'];
+            divgraphs.appendChild(divgraph);
+            
 
 
             // const svg = d3.select("#GraphContainer_"+BetData['UUID'])
