@@ -99,11 +99,11 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             divrestitle.innerHTML = WriteBetTitle(BetData)
             div.appendChild(divrestitle);
 
+            let divres = document.createElement("div");
+            divres.className  = "BetResultsContainer";
+            div.appendChild(divres);
+            
             // div with logos -----------
-            // let divres = document.createElement("div");
-            // divres.className  = "BetResultsContainer";
-            // div.appendChild(divres);
-
             // let logoAcontainer = document.createElement("div");
             // logoAcontainer.className  = "LogoAContainer";
             // logoAcontainer.id  = "LogoAContainer_"+BetData['UUID'];
@@ -136,7 +136,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             let rentability = (parseFloat(BetData['BetOdds'])*parseFloat(BetData['Prediction']) -1 )*100
             divextrainfo.innerHTML += 'R : '+(rentability.toFixed(0))+'% </br>'
             
-            div.appendChild(divextrainfo);
+            divres.appendChild(divextrainfo);
 
 
 

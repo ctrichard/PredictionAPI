@@ -41,17 +41,20 @@
 .BetTitleContainer{
     height:25%;
     width :100%;
+    margin :5%;
+    display:flex;
+    justify-content: center;
+    font-weight: bold;
 }
 
 .BetResultsContainer{
 
-    height:100%;
-    width :25%;
-    background-color: white;
+    height:fit-content;
+    width :100%;
 
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: space-between;
 
 }
