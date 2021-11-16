@@ -179,7 +179,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
             Object.entries(AllModelAllBetPredictions).forEach(entry => {
                 const [BetName, ModelPreds] = entry;
-                let G = DrawGraph.CreateStaticFunctionGraph("GraphContainer_"+BetName, "Graph_"+BetName)
+                let G = DrawGraph.CreateStaticFunctionGraph("GraphContainer_"+BetName, "Graph_BarPlot")
 
                 G.DataKeysAreX(false);
 
