@@ -173,6 +173,8 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
         function DrawGraphs(AllModelAllBetPredictions){
 
+            console.log('DrawGraph')
+
             console.log(AllModelAllBetPredictions)
 
             Object.entries(AllModelAllBetPredictions).forEach(entry => {
@@ -181,9 +183,14 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
                 G.DataKeysAreX(false);
 
+                console.log('AllModelAllBetPredictions')
+                console.log(entry)
+
                 let data = []
                 Object.entries(ModelPreds).forEach(el => {
                     
+                    console.log('data')
+                    console.log(data)
                     data.push(el[0]) 
                     
                 })
