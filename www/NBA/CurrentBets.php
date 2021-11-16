@@ -97,10 +97,14 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             let divrestitle = document.createElement("div");
             divrestitle.className  = "BetTitleContainer";
             divrestitle.innerHTML = WriteBetTitle(BetData)
-            divrestitle.innerHTML +='<br>'
-            divrestitle.innerHTML +=BetData['BetValue']+' Win<br>'
-            
             div.appendChild(divrestitle);
+
+            let divressubtitle = document.createElement("div");
+            divressubtitle.className  = "BetTitleContainer";
+            divressubtitle.className  += " BetSubTitleContainer";
+            divressubtitle.innerHTML = BetData['BetValue']+' Win<br>'
+            div.appendChild(divressubtitle);
+
 
             let divres = document.createElement("div");
             divres.className  = "BetResultsContainer";
@@ -246,7 +250,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
         function WriteBetTitle(BetData){
 
             html = BetData['Dom']+' - '+BetData['Vis']
-            return html
+            return html+'<br>'
         }
 
     </script>
