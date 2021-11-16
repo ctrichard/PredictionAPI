@@ -491,6 +491,8 @@ class Graph{
       .data(this.points[name])
       .enter()
 
+    let xscale = this.xscale
+
     this.DataSet[name]
       .append('rect')
       .attr('id',function(d,i){return DataSetName+'-'+i})
@@ -501,10 +503,10 @@ class Graph{
       .attr("stroke-width", 0)
       // .attr('x',function(d){return d[0]})
       .attr("x",function(d,i){
-        return this.xscale((d-(barwidth/2)))
+        return xscale((d-(barwidth/2)))
       })
       .attr("y",function(d){return d[1]})
-      .attr("width",this.xscale(barwidth))
+      .attr("width",xscale(barwidth))
       .attr("height",function(d,i){
         return Math.abs(d[1]-this.yscale(this.min)) ;
       })
