@@ -191,7 +191,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
                     
                     console.log('data')
                     console.log(el)
-                    data.push(el[0]) 
+                    data.push(el['Prediction']) 
                     
                 })
                 // let I = G.DrawDataSet(Identity,name='Identity',type="Line",params={'color': 'lightgrey', 'strokewidth':2})
