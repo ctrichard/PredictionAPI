@@ -495,6 +495,8 @@ class Graph{
     let xscale = this.xscale
     let yscale = this.yscale
 
+    console.log('barwidth',barwidth)
+
     this.DataSet[name]
       .append('rect')
       .attr('id',function(d,i){return DataSetName+'-'+i})
@@ -503,7 +505,7 @@ class Graph{
       // .attr("stroke", "url(#line-gradient)" )
       // .attr("stroke", strokecolor)
       .attr("stroke-width", 0)
-      .attr("data",function(d,i){return d[1]+'_'+d[2]})
+      .attr("data",function(d,i){return d[0]+'_'+d[1]})
       // .attr('x',function(d){return d[0]})
       .attr("x",function(d,i){
         return xscale((d[1]-(barwidth/2)))
