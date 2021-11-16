@@ -369,7 +369,7 @@ class Graph{
 
 
     if(DrawAxises && !this.AxisDrawn){
-        this.DrawCustomAxises();
+        this.DrawCustomAxises(params);
     }
 
     return this.DataSet[name] // this.svg.select('#Line'+this.Name);
@@ -459,7 +459,7 @@ class Graph{
     }
 
     if(DrawAxises && !this.AxisDrawn){
-      this.DrawCustomAxises();
+      this.DrawCustomAxises(params);
     }
 
 
@@ -539,7 +539,7 @@ class Graph{
       // .attr('value',function(d){return d[1]/this.ymax})
   
     if(DrawAxises && !this.AxisDrawn){
-      this.DrawCustomAxises();
+      this.DrawCustomAxises(params);
     }
   
     // this.svg.selectAll('rect')
@@ -600,7 +600,7 @@ class Graph{
      
   }
 
-  DrawCustomAxises(params){
+  DrawCustomAxises(params={}){
 
     let XAxisColor = ('XAxisColor' in params) ? params['XAxisColor'] :  'currentColor' 
     let YAxisColor = ('YAxisColor' in params) ? params['YAxisColor'] :  'currentColor' 
