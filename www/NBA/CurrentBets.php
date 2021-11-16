@@ -177,15 +177,21 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
             Object.entries(AllModelAllBetPredictions).forEach(entry => {
                 const [BetName, ModelPreds] = entry;
-                let G = DrawGraph.CreateStaticFunctionGraph('GraphProbRealVsEstimated', "GraphProbRealVsEstimated")
+                let G = DrawGraph.CreateStaticFunctionGraph("#GraphContainer_"+BetName, "GraphProbRealVsEstimated")
 
                 G.DataKeysAreX(false);
 
+                let data = []
+                Object.entries(ModelPreds).forEach(el => {
+                    
+                    data.push(el[0]) 
+                    
+                })
                 // let I = G.DrawDataSet(Identity,name='Identity',type="Line",params={'color': 'lightgrey', 'strokewidth':2})
-                G.DrawDataSet(horizontal05,name='horizontal05',type="Histo",params={'color': 'lightgrey', 'strokewidth':1.5})
+                G.DrawDataSet(data,name='data_'+BetName,type="Histo",params={'color': 'lightgrey', 'strokewidth':1.5})
 
-                let ld = G.DrawDataSet(D,name='DataDom',type="Points",params={'color': 'blue', 'radius':5,'DrawErrors':true, 'strokewidth':2})
-                let lv = G.DrawDataSet(V,name='DataVis',type="Points",params={'color': 'red', 'radius':5,'DrawErrors':true, 'strokewidth':2})
+                // let ld = G.DrawDataSet(D,name='DataDom',type="Points",params={'color': 'blue', 'radius':5,'DrawErrors':true, 'strokewidth':2})
+                // let lv = G.DrawDataSet(V,name='DataVis',type="Points",params={'color': 'red', 'radius':5,'DrawErrors':true, 'strokewidth':2})
 
 
 
