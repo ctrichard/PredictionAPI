@@ -487,16 +487,17 @@ class Graph{
 
     let DataSetName = this.Name+'-'+name
 
+    let xscale = this.xscale
+    let yscale = this.yscale
 
-    let barwidth = Math.abs(this.xmax-this.xmin) / (this.points[name].length-1);
+    let barwidth = Math.abs(xscale(this.xmax)-xscale(this.xmin)) / (this.points[name].length-1);
     
     this.DataSet[name] = 
     this.svg.selectAll('.'+name)
       .data(this.points[name])
       .enter()
 
-    let xscale = this.xscale
-    let yscale = this.yscale
+
 
     console.log(name)
     console.log('barwidth',barwidth)
