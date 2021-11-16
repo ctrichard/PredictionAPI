@@ -503,7 +503,7 @@ class Graph{
       // .attr("stroke", "url(#line-gradient)" )
       // .attr("stroke", strokecolor)
       .attr("stroke-width", 0)
-      .attr("data", d)
+      .attr("data",function(d,i){return d[1]+'_'+d[2]})
       // .attr('x',function(d){return d[0]})
       .attr("x",function(d,i){
         return xscale((d[1]-(barwidth/2)))
