@@ -516,7 +516,8 @@ class Graph{
       .attr("data",function(d,i){return d[0]+'_'+d[1]})
       // .attr('x',function(d){return d[0]})
       .attr("x",function(d,i){
-        return xscale((d[0]-(barwidth/2)))
+        // return xscale((d[0]-(barwidth/2)))
+        return (d[0]-(barwidth/2))
       })
       .attr("y",function(d){return d[1]})
       .attr("width",xscale(barwidth))
