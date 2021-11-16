@@ -28,9 +28,6 @@
 
 .BetContainer:hover{
 
-
-    height : 100px;
-    width:100%;
     border : solid 1px;
     border-color : blanchedalmond;
     background-color: rgb(17, 17, 17);
