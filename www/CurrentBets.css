@@ -1,7 +1,13 @@
+:root{
+    --color:blanchedalmond;
+    --alternativecolor : black;
+}
+
+
 body{
 
     background-color: black;
-    color:blanchedalmond;
+    color: var(--color);
 
 }
 
@@ -61,6 +67,30 @@ body{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+
+}
+
+.BetInfoButton{
+
+    background: var(--color);
+    color: var(--alternativecolor);
+    border-radius: .4rem;
+}
+
+.BetInfoButton .Good{
+
+    background: greenyellow;
+    color:darkgreen;
+}
+.BetInfoButton .Bad{
+
+    background: rgb(255, 0, 0);
+    color:black;
+}
+.BetInfoButton .Warning{
+
+    background: rgb(255, 173, 50);
+    color:black;
 
 }
 

@@ -130,11 +130,34 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
             let divextrainfo = document.createElement("div");
             // divextrainfo.className  = "BetInfoContainer";
-            divextrainfo.innerHTML = BetData['BetValue']+' Win : '+(parseFloat(BetData['Prediction']).toFixed(2))+'</br>'
-            divextrainfo.innerHTML += 'Odd : '+BetData['BetOdds']+'</br>'
+
+            let button = document.createElement("div");
+            button.innerHTML = BetData['BetValue']+' Win : '+(parseFloat(BetData['Prediction']).toFixed(2))+'</br>'
+            button.className  = "BetInfoButton ";
+            divextrainfo.appendChild(button);
+
+
+
+            button = document.createElement("div");
+            button.className  = "BetInfoButton ";
+            button.innerHTML = 'Odd : '+BetData['BetOdds']+'</br>'
+            divextrainfo.appendChild(button);
+
+
+            button = document.createElement("div");
+            button.className  = "BetInfoButton ";
 
             let rentability = (parseFloat(BetData['BetOdds'])*parseFloat(BetData['Prediction']) -1 )*100
-            divextrainfo.innerHTML += 'R : '+(rentability.toFixed(0))+'% </br>'
+            button.innerHTML += (rentability.toFixed(0))+'% </br>'
+
+            if(rentability>25)
+                button.className +="Good ";
+            else if(rentability>0)
+                button.className +="Warning ";
+            else
+                button.className  = "Bad ";
+            divextrainfo.appendChild(button);
+
             
             divres.appendChild(divextrainfo);
 
