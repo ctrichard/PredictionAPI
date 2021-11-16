@@ -478,6 +478,8 @@ class Graph{
     let linecap = ('linecap' in params) ? params['linecap'] :  "round"
     let minheight = ('minheight' in params) ? params['minheight'] :  0
 
+    let classname  = ('classname' in params) ? params['classname'] :   this.Name+'-'+name
+
 
     let DrawErrors = ('DrawErrors' in params) ? params['DrawErrors'] :  false
 
@@ -488,7 +490,7 @@ class Graph{
     let barwidth = Math.abs(this.xmax-this.xmin) / (this.points[name].length-1);
     
     this.DataSet[name] = 
-    this.svg.selectAll('.DataSetName')
+    this.svg.selectAll('.'+name)
       .data(this.points[name])
       .enter()
 
@@ -501,7 +503,7 @@ class Graph{
       .append('rect')
       .attr('id',function(d,i){return DataSetName+'-'+i})
       .attr("fill", color)
-      .attr('class',DataSetName)
+      .attr('class',classname)
       // .attr("stroke", "url(#line-gradient)" )
       // .attr("stroke", strokecolor)
       .attr("stroke-width", 0)
