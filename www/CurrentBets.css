@@ -26,7 +26,7 @@ body{
 
 
     height : 200px;
-    width:27%;
+    /* width:27%; */
     margin: 3%;
     /* background-color: black; */
     font-size: 120%;
@@ -35,6 +35,8 @@ body{
     flex-wrap: wrap;
 
     overflow: hidden;
+
+    min-width:27%;
 
 }
 
@@ -84,7 +86,8 @@ body{
     background: var(--color);
     color: var(--alternativecolor);
     border-radius: .4rem;
-    margin:1%;
+    min-width: 30%;
+    padding:3%;
 }
 
 .Good{
