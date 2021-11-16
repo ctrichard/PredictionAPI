@@ -173,6 +173,8 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
         function DrawGraphs(AllModelAllBetPredictions){
 
+            console.log(AllModelAllBetPredictions)
+
             Object.entries(AllModelAllBetPredictions).forEach(entry => {
                 const [BetName, ModelPreds] = entry;
                 let G = DrawGraph.CreateStaticFunctionGraph('GraphProbRealVsEstimated', "GraphProbRealVsEstimated")
