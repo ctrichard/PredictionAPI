@@ -497,7 +497,9 @@ class Graph{
     let xscale = this.xscale
     let yscale = this.yscale
 
+    console.log(name)
     console.log('barwidth',barwidth)
+    console.log('points',this.points[name])
 
     this.DataSet[name]
       .append('rect')

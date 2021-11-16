@@ -173,23 +173,15 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
         function DrawGraphs(AllModelAllBetPredictions){
 
-            console.log('DrawGraph')
-
-            console.log(AllModelAllBetPredictions)
-
             Object.entries(AllModelAllBetPredictions).forEach(entry => {
                 const [BetName, ModelPreds] = entry;
                 let G = DrawGraph.CreateStaticFunctionGraph("GraphContainer_"+BetName, "Graph_BarPlot")
 
                 G.DataKeysAreX(false);
 
-                console.log('AllModelAllBetPredictions')
-                console.log(entry)
-
                 let data = []
                 Object.entries(ModelPreds).forEach(el => {
                     
-                    console.log(el)
                     let d = parseInt(el[1]['Prediction'])
                     if(d<0)
                         d=0
@@ -198,7 +190,6 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
                 })
 
                 console.log('drawing '+'data_'+BetName)
-                console.log(data)
                 // let I = G.DrawDataSet(Identity,name='Identity',type="Line",params={'color': 'lightgrey', 'strokewidth':2})
                 G.DrawDataSet(data,name='data_'+BetName,type="Histo",params={'color': 'lightgrey', 'strokewidth':1.5, 'classname' : 'BarPlot'})
 
