@@ -256,6 +256,7 @@ class Graph{
     this.svg =  d3.select(this.IdDomElement).append("svg").attr('id', this.Name)
     .attr("width", this.width + this.margin.left + this.margin.right)
     .attr("height", this.height + this.margin.top + this.margin.bottom)
+    // .attr("viewbox", "0 0 1 1")
     .append("g")
     .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
 
@@ -500,6 +501,8 @@ class Graph{
     console.log(name)
     console.log('barwidth',barwidth)
     console.log('points',this.points[name])
+    console.log('xmin',this.xmin)
+    console.log('xmax',this.xmax)
 
     this.DataSet[name]
       .append('rect')
