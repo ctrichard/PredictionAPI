@@ -135,6 +135,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             // divextrainfo.className  = "BetInfoContainer";
 
             let button = document.createElement("div");
+            button.className  = "BetInfoButton ";
             let prediction = parseFloat(BetData['Prediction'])
             button.innerHTML = prediction.toFixed(2)*100+'%'
             if(prediction>0.70)
@@ -144,7 +145,6 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             else if(prediction<30)
                 button.className  += "Bad ";
 
-            button.className  = "BetInfoButton ";
             divextrainfo.appendChild(button);
 
 

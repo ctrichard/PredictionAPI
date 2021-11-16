@@ -70,11 +70,21 @@ body{
 
 }
 
+.divextrainfo{  
+    height:100%;
+    width :100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 .BetInfoButton{
 
     background: var(--color);
     color: var(--alternativecolor);
     border-radius: .4rem;
+    margin:1%;
 }
 
 .Good{
