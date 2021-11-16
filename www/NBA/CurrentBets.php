@@ -111,27 +111,20 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             // logoBcontainer.className  = "LogoBContainer";
             // logoBcontainer.id  = "LogoBContainer_"+BetData['UUID'];
             // divres.appendChild(logoBcontainer);
-
+            // let imgdom= document.createElement('img');
+            // imgdom.id = 'LogoA_'+BetData['UUID'];
+            // logoAcontainer.appendChild(imgdom)
+            // let imgvis= document.createElement('img');
+            // imgvis.id = 'LogoB_'+BetData['UUID'];
+            // logoBcontainer.appendChild(imgvis)
+            // selectLogo('LogoA_'+BetData['UUID'],BetData['Dom'])
+            // selectLogo('LogoB_'+BetData['UUID'],BetData['Vis'])
 
 
             let divgraph = document.createElement("div");
             divgraph.className  = "BetGraphContainer";
             divgraph.id = "GraphContainer_"+BetData['UUID'];
             div.appendChild(divgraph);
-
-     
-            
-
-            let imgdom= document.createElement('img');
-            imgdom.id = 'LogoA_'+BetData['UUID'];
-            logoAcontainer.appendChild(imgdom)
-            let imgvis= document.createElement('img');
-            imgvis.id = 'LogoB_'+BetData['UUID'];
-            logoBcontainer.appendChild(imgvis)
-
-            selectLogo('LogoA_'+BetData['UUID'],BetData['Dom'])
-            selectLogo('LogoB_'+BetData['UUID'],BetData['Vis'])
-
 
 
             let divextrainfo = document.createElement("div");
