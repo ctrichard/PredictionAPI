@@ -49,6 +49,8 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
     <script type="text/javascript" src="./app.js"></script>
     <script>
 
+        var AllModelAllBetPredictions={}
+
         let Date = [<?php  echo '"'.$TodayDate.'","'.$TomorrowDate.'"' ?> ]
     
         async function LoadData(){
@@ -67,7 +69,10 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             })
             .then(response => response.json());
 
-            DrawGraphs(AllModels)
+            SortModelPredictions(AllModels)
+
+            console.log(AllModelAllBetPredictions)
+            // DrawGraphs(AllModels)
 
             
 
@@ -76,6 +81,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
   
         LoadData();
   
+
 
         function DrawBet(BetData){
 
@@ -139,6 +145,25 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
 
 
+
+        }
+
+        function SortModelPredictions(ModelPredictions){
+            AllModelAllBetPredictions ={}
+
+            Object.entries(ModelPredictions).forEach(entry => {
+                const [ModelName, ModelPreds] = entry;
+                ModelPreds.forEach(el=>{
+                    if(el[0]=='UUID')
+                     return   //== premiere ligne du .cvs
+
+                    if(AllModelAllBetPredictions[el[0]]==undefined)
+                         AllModelAllBetPredictions[el[0]] ={}
+
+                    AllModelAllBetPredictions[el[0]][ModelName] = {'Prediction' : el[2], 'Date':el[1]} 
+
+                })
+            });
 
         }
 
