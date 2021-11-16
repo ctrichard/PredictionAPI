@@ -476,6 +476,7 @@ class Graph{
     let strokewidth = ('width' in params) ? params['width'] :  1
     let radius = ('radius' in params) ? params['radius'] :  2
     let linecap = ('linecap' in params) ? params['linecap'] :  "round"
+    let minheight = ('minheight' in params) ? params['minheight'] :  0
 
 
     let DrawErrors = ('DrawErrors' in params) ? params['DrawErrors'] :  false
@@ -509,9 +510,9 @@ class Graph{
       .attr("y",function(d){return d[1]})
       .attr("width",xscale(barwidth))
       .attr("height",function(d,i){
-        return Math.abs(d[1]-yscale(this.min)) ;
+        return Math.abs(d[1]-yscale(minheight)) ;
       })
-      .attr('value',function(d){return d[1]/this.ymax})
+      // .attr('value',function(d){return d[1]/this.ymax})
   
 
     // this.svg.selectAll('rect')
