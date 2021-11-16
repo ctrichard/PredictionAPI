@@ -95,8 +95,24 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             document.getElementById("BigContainer").appendChild(div);
 
             let divres = document.createElement("div");
-            divres.className  = "BetResultsContainer";
+            divres.className  = "BetTitleContainer";
             div.appendChild(divres);
+
+            // div with logos -----------
+            // let divres = document.createElement("div");
+            // divres.className  = "BetResultsContainer";
+            // div.appendChild(divres);
+
+            // let logoAcontainer = document.createElement("div");
+            // logoAcontainer.className  = "LogoAContainer";
+            // logoAcontainer.id  = "LogoAContainer_"+BetData['UUID'];
+            // divres.appendChild(logoAcontainer);
+            // let logoBcontainer = document.createElement("div");
+            // logoBcontainer.className  = "LogoBContainer";
+            // logoBcontainer.id  = "LogoBContainer_"+BetData['UUID'];
+            // divres.appendChild(logoBcontainer);
+
+
 
             let divgraph = document.createElement("div");
             divgraph.className  = "BetGraphContainer";
@@ -105,14 +121,6 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
      
             
-            let logoAcontainer = document.createElement("div");
-            logoAcontainer.className  = "LogoAContainer";
-            logoAcontainer.id  = "LogoAContainer_"+BetData['UUID'];
-            divres.appendChild(logoAcontainer);
-            let logoBcontainer = document.createElement("div");
-            logoBcontainer.className  = "LogoBContainer";
-            logoBcontainer.id  = "LogoBContainer_"+BetData['UUID'];
-            divres.appendChild(logoBcontainer);
 
             let imgdom= document.createElement('img');
             imgdom.id = 'LogoA_'+BetData['UUID'];

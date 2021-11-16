@@ -7,6 +7,9 @@
     width:80%;
     height:100%;
     color:blanchedalmond
+    display: flex;
+    flex-direction: row;
+    flex-wrap : wrap ;
 
 }
 
@@ -14,7 +17,7 @@
 
 
     height : 100px;
-    width:100%;
+    width:33%;
     /* background-color: black; */
     font-size: 120%;
     display: flex;
@@ -35,6 +38,11 @@
 
 }
 
+
+.BetTitleContainer{
+    height:25%;
+    width :100%;
+}
 
 .BetResultsContainer{
 
