@@ -300,6 +300,7 @@ class Graph{
 
     }
     else if(type=='Histo'){
+      drawnobject= this.DrawHisto(name,params)
 
     }
     else if(type=="Line"){
@@ -460,45 +461,86 @@ class Graph{
 
   }
 
-  DrawHisto(Points=undefined,name=undefined){
+  // DrawHisto(Points=undefined,name=undefined){
+  DrawHisto(name=undefined,params=undefined){
 
-    if(name==undefined){
-      name=this.points.length-1
+    if(params == undefined){
+      params=[]
     }
+
+    console.log('DrawHisto')
+    console.log(params)
+
+    let color = ('color' in params) ? params['color'] :  "currentColor"
+    let strokecolor = ('strokecolor' in params) ? params['strokecolor'] : color
+    let strokewidth = ('width' in params) ? params['width'] :  1
+    let radius = ('radius' in params) ? params['radius'] :  2
+    let linecap = ('linecap' in params) ? params['linecap'] :  "round"
+
+
+    let DrawErrors = ('DrawErrors' in params) ? params['DrawErrors'] :  false
+
+
+    let DataSetName = this.Name+'-'+name
 
 
     let barwidth = Math.abs(this.xmax-this.xmin) / (this.points[name].length-1);
     
-    this.svg.selectAll('rect')
-    // .data(this.points[name])
-    .datum(this.points[name])
-    // .enter()
-    .append("rect")
-    .attr('id','HistoBar'+this.Name)
-    .attr("fill", "currentColor")
-    // .attr("stroke", "url(#line-gradient)" )
-    .attr("x",function(d,i){
+    this.DataSet[name] = 
+    this.svg.selectAll('.DataSetName')
+      .data(this.points[name])
+      .enter()
+
+    this.DataSet[name]
+      .append('rect')
+      .attr('id',function(d,i){return DataSetName+'-'+i})
+      .attr("fill", color)
+      .attr('class',DataSetName)
+      // .attr("stroke", "url(#line-gradient)" )
+      // .attr("stroke", strokecolor)
+      .attr("stroke-width", 0)
+      // .attr('x',function(d){return d[0]})
+      .attr("x",function(d,i){
         return this.xscale((d-(barwidth/2)))
-    })
-    .attr("y",function(d){
-      return d[1] ;
-    })
-    .attr("width",this.xscale(barwidth))
-    .attr("height",function(d,i){
-      return Math.abs(d[1]-this.yscale(this.min)) ;
-    })
-    .attr('fill',function(d,i){
-      if(this.DrawGradient)  
-        return this.cp.getColor(this.SavedPoints[name][i][1])
-      else
-        return 'currentColor';  
-    })
-    .attr('stroke-width',0)
+      })
+      .attr("y",function(d){return d[1]})
+      .attr("width",this.xscale(barwidth))
+      .attr("height",function(d,i){
+        return Math.abs(d[1]-this.yscale(this.min)) ;
+      })
+      .attr('value',function(d){return d[1]/this.ymax})
+  
+
+    // this.svg.selectAll('rect')
+    // // .data(this.points[name])
+    // .datum(this.points[name])
+    // // .enter()
+    // .append("rect")
+    // .attr('id','HistoBar'+this.Name)
+    // .attr("fill", "currentColor")
+    // // .attr("stroke", "url(#line-gradient)" )
+    // .attr("x",function(d,i){
+    //     return this.xscale((d-(barwidth/2)))
+    // })
+    // .attr("y",function(d){
+    //   return d[1] ;
+    // })
+    // .attr("width",this.xscale(barwidth))
+    // .attr("height",function(d,i){
+    //   return Math.abs(d[1]-this.yscale(this.min)) ;
+    // })
+    // .attr('fill',function(d,i){
+    //   if(this.DrawGradient)  
+    //     return this.cp.getColor(this.SavedPoints[name][i][1])
+    //   else
+    //     return 'currentColor';  
+    // })
+    // .attr('stroke-width',0)
 
 
-    if(this.DrawAxises && !this.AxisDrawn){
-      this.DrawCustomAxises();
-    }
+    // if(this.DrawAxises && !this.AxisDrawn){
+    //   this.DrawCustomAxises();
+    // }
 
   }
 

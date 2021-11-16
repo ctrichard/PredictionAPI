@@ -49,7 +49,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
     <script type="text/javascript" src="./app.js"></script>
     <script>
 
-        var AllModelAllBetPredictions={}
+        // var AllModelAllBetPredictions={}
 
         let Date = [<?php  echo '"'.$TodayDate.'","'.$TomorrowDate.'"' ?> ]
     
@@ -69,10 +69,12 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             })
             .then(response => response.json());
 
-            SortModelPredictions(AllModels)
+            const AllModelAllBetPredictions = SortModelPredictions(AllModels)
 
+            console.log(AllModels)
             console.log(AllModelAllBetPredictions)
-            // DrawGraphs(AllModels)
+
+            DrawGraphs(AllModelAllBetPredictions)
 
             
 
@@ -140,6 +142,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
                           .append("svg")
                             .attr("width", "100%") //width + margin.left + margin.right)
                             .attr("height","100%") //height + margin.top + margin.bottom)
+                            .attr("id",'graph_predictions_'+BetData['UUID'])
                           .append("g")
                             // .attr("transform", `translate(${width/2},${height/2+100})`); // Add 100 on Y translation, cause upper bars are longer
 
@@ -149,7 +152,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
         }
 
         function SortModelPredictions(ModelPredictions){
-            AllModelAllBetPredictions ={}
+            let AllModelAllBetPredictions ={}
 
             Object.entries(ModelPredictions).forEach(entry => {
                 const [ModelName, ModelPreds] = entry;
@@ -165,12 +168,27 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
                 })
             });
 
+            return AllModelAllBetPredictions
         }
 
-        function DrawGraphs(AllModelPredictions){
+        function DrawGraphs(AllModelAllBetPredictions){
+
+            Object.entries(AllModelAllBetPredictions).forEach(entry => {
+                const [BetName, ModelPreds] = entry;
+                let G = DrawGraph.CreateStaticFunctionGraph('GraphProbRealVsEstimated', "GraphProbRealVsEstimated")
+
+                G.DataKeysAreX(false);
+
+                // let I = G.DrawDataSet(Identity,name='Identity',type="Line",params={'color': 'lightgrey', 'strokewidth':2})
+                G.DrawDataSet(horizontal05,name='horizontal05',type="Histo",params={'color': 'lightgrey', 'strokewidth':1.5})
+
+                let ld = G.DrawDataSet(D,name='DataDom',type="Points",params={'color': 'blue', 'radius':5,'DrawErrors':true, 'strokewidth':2})
+                let lv = G.DrawDataSet(V,name='DataVis',type="Points",params={'color': 'red', 'radius':5,'DrawErrors':true, 'strokewidth':2})
 
 
-            console.log(AllModelPredictions)
+
+            });
+
 
         }
 
