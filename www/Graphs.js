@@ -490,7 +490,8 @@ class Graph{
     let xscale = this.xscale
     let yscale = this.yscale
 
-    let barwidth = Math.abs(xscale(this.xmax)-xscale(this.xmin)) / (this.points[name].length-1);
+    // let barwidth = Math.abs(xscale(this.xmax)-xscale(this.xmin)) / (this.points[name].length-1);
+    let barwidth = Math.abs(this.xmax-this.xmin) / (this.points[name].length-1);
     
     this.DataSet[name] = 
     this.svg.selectAll('.'+name)
@@ -517,7 +518,7 @@ class Graph{
       // .attr('x',function(d){return d[0]})
       .attr("x",function(d,i){
         // return xscale((d[0]-(barwidth/2)))
-        return (d[0]-(barwidth/2))
+        return (d[0]-xscale((barwidth/2)))
       })
       .attr("y",function(d){return d[1]})
       .attr("width",xscale(barwidth))
