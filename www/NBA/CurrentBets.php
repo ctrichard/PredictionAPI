@@ -183,10 +183,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
                 console.log('data:')
                 Object.entries(ModelPreds).forEach(el => {
                     
-                    let d = parseInt(el['1']['Prediction'])
-                    console.log(el)
-                    console.log(el[1])
-                    console.log(el['1'])
+                    let d = parseFloat(el['1']['Prediction'])
                     console.log(d)
                     if(d<0){
                         d=0
