@@ -190,7 +190,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
                 Object.entries(ModelPreds).forEach(el => {
                     
                     console.log('data')
-                    console.log(data)
+                    console.log(el)
                     data.push(el[0]) 
                     
                 })
