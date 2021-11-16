@@ -399,6 +399,7 @@ class Graph{
     let strokewidth = ('width' in params) ? params['width'] :  1
     let radius = ('radius' in params) ? params['radius'] :  2
     let linecap = ('linecap' in params) ? params['linecap'] :  "round"
+    let DrawAxises = ('DrawAxises' in params) ? params['DrawAxises'] :  true
 
     // let DrawGradient = ('DrawGradient' in params) ? params['DrawGradient'] :  false
     // let GradientName = ('GradientName' in params) ? params['GradientName'] :  ""
@@ -457,6 +458,11 @@ class Graph{
 
     }
 
+    if(DrawAxises && !this.AxisDrawn){
+      this.DrawCustomAxises();
+    }
+
+
     return this.DataSet[name] // this.svg.select('#Line'+this.Name);
 
 
@@ -478,6 +484,7 @@ class Graph{
     let radius = ('radius' in params) ? params['radius'] :  2
     let linecap = ('linecap' in params) ? params['linecap'] :  "round"
     let minheight = ('minheight' in params) ? params['minheight'] :  0
+    let DrawAxises = ('DrawAxises' in params) ? params['DrawAxises'] :  true
 
     let classname  = ('classname' in params) ? params['classname'] :   this.Name+'-'+name
 
@@ -490,7 +497,6 @@ class Graph{
     let xscale = this.xscale
     let yscale = this.yscale
 
-    // let barwidth = Math.abs(xscale(this.xmax)-xscale(this.xmin)) / (this.points[name].length-1);
     let barwidth = Math.abs(this.xmax-this.xmin) / (this.points[name].length-1);
     
     this.DataSet[name] = 
@@ -527,7 +533,10 @@ class Graph{
       })
       // .attr('value',function(d){return d[1]/this.ymax})
   
-
+    if(DrawAxises && !this.AxisDrawn){
+      this.DrawCustomAxises();
+    }
+  
     // this.svg.selectAll('rect')
     // // .data(this.points[name])
     // .datum(this.points[name])
@@ -558,6 +567,7 @@ class Graph{
     // if(this.DrawAxises && !this.AxisDrawn){
     //   this.DrawCustomAxises();
     // }
+    return this.DataSet[name] // this.svg.select('#Line'+this.Name);
 
   }
 
