@@ -129,7 +129,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
 
             let divextrainfo = document.createElement("div");
-            divextrainfo.className  = "BetInfoContainer";
+            // divextrainfo.className  = "BetInfoContainer";
             divextrainfo.innerHTML = BetData['BetValue']+' Win : '+(parseFloat(BetData['Prediction']).toFixed(2))+'</br>'
             divextrainfo.innerHTML += 'Odd : '+BetData['BetOdds']+'</br>'
 
