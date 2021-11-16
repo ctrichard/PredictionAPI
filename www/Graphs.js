@@ -515,8 +515,7 @@ class Graph{
       .attr("y",function(d){return d[1]})
       .attr("width",xscale(barwidth))
       .attr("height",function(d,i){
-        return yscale(d[1])
-        // return Math.abs(d[1]-yscale(minheight)) ;
+        return Math.abs(d[1]-yscale(minheight)) ;
       })
       // .attr('value',function(d){return d[1]/this.ymax})
   
