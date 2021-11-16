@@ -485,6 +485,7 @@ class Graph{
     let linecap = ('linecap' in params) ? params['linecap'] :  "round"
     let minheight = ('minheight' in params) ? params['minheight'] :  0
     let DrawAxises = ('DrawAxises' in params) ? params['DrawAxises'] :  true
+    let XValueAtCenter = ('XValueAtCenter' in params) ? params['XValueAtCenter'] :  true  //draw histo with center bar at x value otherwise at left border
 
     let classname  = ('classname' in params) ? params['classname'] :   this.Name+'-'+name
 
@@ -524,7 +525,11 @@ class Graph{
       // .attr('x',function(d){return d[0]})
       .attr("x",function(d,i){
         // return xscale((d[0]-(barwidth/2)))
-        return (d[0]-xscale((barwidth/2)))
+        if(XValueAtCenter)
+          return (d[0]-xscale((barwidth/2)))
+        else
+          return (d[0])
+
       })
       .attr("y",function(d){return d[1]})
       .attr("width",xscale(barwidth))
@@ -595,7 +600,16 @@ class Graph{
      
   }
 
-  DrawCustomAxises(){
+  DrawCustomAxises(params){
+
+    let XAxisColor = ('XAxisColor' in params) ? params['XAxisColor'] :  'currentColor' 
+    let YAxisColor = ('YAxisColor' in params) ? params['YAxisColor'] :  'currentColor' 
+    let AxisColor = ('AxisColor' in params) ? params['AxisColor'] :  false
+    if(AxisColor){
+      XAxisColor=AxisColor
+      YAxisColor=AxisColor
+    } 
+    
 
 
     if(this.AxisDrawn)
@@ -617,13 +631,17 @@ class Graph{
     .attr("class", "Xaxis")
     .attr('transform','translate(0,'+this.height+')') 
     .call(xaxis)
+    .attr('stroke',XAxisColor)
+
     
     this.yAxis = this.svg.append("g")
     .attr("class", "Yaxis")
     .call(yaxis)
+    .attr('stroke',XAxisColor)
 
     // this.yAxis.attr('stroke','yellow')
     // d3.selectAll(".domain").attr('stroke','red')
+
 
   }
 

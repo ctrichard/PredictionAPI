@@ -53,7 +53,7 @@
 
     height:100%;
     width :25%;
-    background-color: white;
+    background: none;
 
     display: flex;
     flex-direction: row;

@@ -195,7 +195,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
                 console.log('drawing '+'data_'+BetName)
                 console.log(data)
                 // let I = G.DrawDataSet(Identity,name='Identity',type="Line",params={'color': 'lightgrey', 'strokewidth':2})
-                G.DrawDataSet(data,name='data_'+BetName,type="Histo",params={'color': 'lightgrey', 'strokewidth':1.5, 'classname' : 'BarPlot'})
+                G.DrawDataSet(data,name='data_'+BetName,type="Histo",params={'XValueAtCenter': false, 'color': 'lightgrey', 'strokewidth':1.5, 'classname' : 'BarPlot'})
 
                 // let ld = G.DrawDataSet(D,name='DataDom',type="Points",params={'color': 'blue', 'radius':5,'DrawErrors':true, 'strokewidth':2})
                 // let lv = G.DrawDataSet(V,name='DataVis',type="Points",params={'color': 'red', 'radius':5,'DrawErrors':true, 'strokewidth':2})
