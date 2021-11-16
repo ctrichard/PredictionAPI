@@ -94,9 +94,10 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             // div.innerHTML = BetData['Match'];
             document.getElementById("BigContainer").appendChild(div);
 
-            let divres = document.createElement("div");
-            divres.className  = "BetTitleContainer";
-            div.appendChild(divres);
+            let divrestitle = document.createElement("div");
+            divrestitle.className  = "BetTitleContainer";
+            divrestitle.innerHTML = WriteBetTitle(BetData)
+            div.appendChild(divrestitle);
 
             // div with logos -----------
             // let divres = document.createElement("div");
@@ -208,6 +209,11 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
         }
 
+        function WriteBetTitle(BetData){
+
+            html = BetData['Dom']+' - '+BetData['Vis']
+            return html
+        }
 
     </script>
     </body>

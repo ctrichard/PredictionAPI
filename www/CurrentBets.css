@@ -6,7 +6,7 @@
     margin:auto;
     width:80%;
     height:100%;
-    color:blanchedalmond
+    color:blanchedalmond;
     display: flex;
     flex-direction: row;
     flex-wrap : wrap ;
