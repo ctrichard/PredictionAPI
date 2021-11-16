@@ -19,6 +19,8 @@ body{
     display: flex;
     flex-direction: row;
     flex-wrap : wrap ;
+    justify-content: space-between;
+
 
 }
 
@@ -37,6 +39,7 @@ body{
     overflow: hidden;
 
     min-width:27%;
+    max-width:80%;
 
 }
 
@@ -87,7 +90,9 @@ body{
     color: var(--alternativecolor);
     border-radius: .4rem;
     min-width: 30%;
-    padding:3%;
+    padding:1%;
+    display: flex;
+    justify-content: center;
 }
 
 .Good{
