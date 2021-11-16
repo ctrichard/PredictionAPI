@@ -97,6 +97,9 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             let divrestitle = document.createElement("div");
             divrestitle.className  = "BetTitleContainer";
             divrestitle.innerHTML = WriteBetTitle(BetData)
+            divrestitle.innerHTML +='<br>'
+            divrestitle.innerHTML +=BetData['BetValue']+' Win<br>'
+            
             div.appendChild(divrestitle);
 
             let divres = document.createElement("div");
@@ -132,7 +135,15 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             // divextrainfo.className  = "BetInfoContainer";
 
             let button = document.createElement("div");
-            button.innerHTML = BetData['BetValue']+' Win : '+(parseFloat(BetData['Prediction']).toFixed(2))+'</br>'
+            let prediction = parseFloat(BetData['Prediction'])
+            button.innerHTML = prediction.toFixed(2)*100+'%'
+            if(prediction>0.70)
+                button.className +="Good ";
+            else if(prediction>50)
+                button.className +="Warning ";
+            else if(prediction<30)
+                button.className  += "Bad ";
+
             button.className  = "BetInfoButton ";
             divextrainfo.appendChild(button);
 
