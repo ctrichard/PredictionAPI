@@ -155,7 +155,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             else if(rentability>0)
                 button.className +="Warning ";
             else
-                button.className  = "Bad ";
+                button.className  += "Bad ";
             divextrainfo.appendChild(button);
 
             
