@@ -2,7 +2,7 @@
 
 require_once 'MyTools.php';
 
-$ModelListNames = ['TrainWo_','TrainUpTo']//,'TrainLast3Years_','TrainLast5Years_'];
+$ModelListNames = ['TrainWo_','TrainUpTo'];//,'TrainLast3Years_','TrainLast5Years_'];
 $ModelList = [];
 
 function DefineModelList(){
