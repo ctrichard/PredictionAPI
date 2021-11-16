@@ -138,13 +138,13 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
 
 
-            const svg = d3.select("#GraphContainer_"+BetData['UUID'])
-                          .append("svg")
-                            .attr("width", "100%") //width + margin.left + margin.right)
-                            .attr("height","100%") //height + margin.top + margin.bottom)
-                            .attr("id",'graph_predictions_'+BetData['UUID'])
-                          .append("g")
-                            // .attr("transform", `translate(${width/2},${height/2+100})`); // Add 100 on Y translation, cause upper bars are longer
+            // const svg = d3.select("#GraphContainer_"+BetData['UUID'])
+            //               .append("svg")
+            //                 .attr("width", "100%") //width + margin.left + margin.right)
+            //                 .attr("height","100%") //height + margin.top + margin.bottom)
+            //                 .attr("id",'graph_predictions_'+BetData['UUID'])
+            //               .append("g")
+            //                 // .attr("transform", `translate(${width/2},${height/2+100})`); // Add 100 on Y translation, cause upper bars are longer
 
 
 
