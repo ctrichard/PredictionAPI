@@ -10,6 +10,8 @@ echo '=='
 source ~/.conda_init
 
 
+DoPrediction=$1  # false to juste update bet odds
+
 # cd  ~/Projects/PredictionAPI/Prediction/
 cd /var/www/PredictionAPI/Prediction
 
@@ -29,9 +31,6 @@ PathToOutputs=${here}'/Outputs/'
 Season='2022'
 BetType='Win'
 
-echo $1
-echo $2
-echo $3
 
 conda activate $CondaEnv
 
@@ -56,8 +55,12 @@ done
 
 ModelNamesInStr=$(IFS=$' '; echo "${ModelNames[@]}" )
 
-# python ~/Projects/ParisSportifIA/MakePrediction.py ${MatchDate} "$DomTeam" "$VisTeam" $UUID $PathToInputs $PathToOutputs $Season
-python MakeBotPredictions.py $PathToInputs $PathToOutputs $Season $UUID "$ModelNamesInStr" ${MatchDate}
+
+if [$DoPrediction =='True']
+then
+    # python ~/Projects/ParisSportifIA/MakePrediction.py ${MatchDate} "$DomTeam" "$VisTeam" $UUID $PathToInputs $PathToOutputs $Season
+    python MakeBotPredictions.py $PathToInputs $PathToOutputs $Season $UUID "$ModelNamesInStr" ${MatchDate}
+fi
 
 for ModelName in ${ModelNames[@]}
 do
