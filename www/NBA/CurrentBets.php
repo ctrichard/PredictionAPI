@@ -141,10 +141,10 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             button.innerHTML = 'P : '+prediction.toFixed(0)+'%'
             if(prediction>70)
                 button.className +="Good ";
-            else if(prediction>50)
-                button.className +="Warning ";
             else if(prediction<30)
                 button.className  += "Bad ";
+            else if(prediction<50)
+                button.className +="Warning ";
 
             divextrainfo.appendChild(button);
 
