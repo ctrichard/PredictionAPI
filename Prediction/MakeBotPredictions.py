@@ -3,7 +3,7 @@ from typing import Match
 
 sys.path.insert(0, '/home/ubuntu/Projects/ParisSportifIA')
 from MyTools import MyTools
-from MakePrediction import MakeMultipleModelPredictions
+from MakePrediction import MakeMultipleModelPredictions,MakeMultipleModelPredictionsFomCustomMatch
 sys.path.insert(0, '/home/ubuntu/Projects/Sports-betting')
 from BotBetScraper import GetOddDataPath
 
