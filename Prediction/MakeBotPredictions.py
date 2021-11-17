@@ -41,7 +41,7 @@ def GetListBets(MatchDate):
 def make_predict(Date,VisName,DomName,UUID="0",PathInputs='',PathOutputs='',ModelNames=['TrainWo_2022'],Season='2022'):
 
     # MakePrediction(Date,VisName,DomName,UUID=UUID,PathInputs=PathInputs,PathOutputs=PathOutputs,ModelName=ModelName,Season=Season)
-    MakeMultipleModelPredictions(Date,VisName,DomName,UUID,PathInputs,PathOutputs,ModelNames,Season)
+    MakeMultipleModelPredictionsFomCustomMatch(Date,VisName,DomName,UUID,PathInputs,PathOutputs,ModelNames,Season)
 
 
 

@@ -9,7 +9,7 @@ echo '=='
 
 source ~/.conda_init
 
-
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 DoPrediction=$1  # false to juste update bet odds
 
 # cd  ~/Projects/PredictionAPI/Prediction/
@@ -34,8 +34,7 @@ BetType='Win'
 
 conda activate $CondaEnv
 
-rm -rf $PathToOutputs/Prediction*
-rm -rf $PathToInputs/MatchList_*
+
 
 env
 
@@ -58,10 +57,18 @@ ModelNamesInStr=$(IFS=$' '; echo "${ModelNames[@]}" )
 
 if [ $DoPrediction == 'True' ]
 then
+    rm -rf $PathToOutputs/Prediction*
+    rm -rf $PathToInputs/MatchList_*
     # python ~/Projects/ParisSportifIA/MakePrediction.py ${MatchDate} "$DomTeam" "$VisTeam" $UUID $PathToInputs $PathToOutputs $Season
     python MakeBotPredictions.py $PathToInputs $PathToOutputs $Season $UUID "$ModelNamesInStr" ${MatchDate}
 else
+    echo ''
+    echo '----------------------------------------'
+    echo ''
     echo 'Not making prediction ! Only updating bet odds !'    
+    echo ''
+    echo '----------------------------------------'
+    echo ''
 fi
 
 for ModelName in ${ModelNames[@]}
