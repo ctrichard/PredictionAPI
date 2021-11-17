@@ -56,12 +56,12 @@ done
 ModelNamesInStr=$(IFS=$' '; echo "${ModelNames[@]}" )
 
 
-if [$DoPrediction =='True']
+if [ $DoPrediction == 'True' ]
 then
     # python ~/Projects/ParisSportifIA/MakePrediction.py ${MatchDate} "$DomTeam" "$VisTeam" $UUID $PathToInputs $PathToOutputs $Season
     python MakeBotPredictions.py $PathToInputs $PathToOutputs $Season $UUID "$ModelNamesInStr" ${MatchDate}
 else
-    echo 'Not making prediction ! Only updating vet odds !'    
+    echo 'Not making prediction ! Only updating bet odds !'    
 fi
 
 for ModelName in ${ModelNames[@]}
