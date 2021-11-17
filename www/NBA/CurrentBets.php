@@ -138,12 +138,12 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             let button = document.createElement("div");
             button.className  = "BetInfoButton ";
             let prediction = parseFloat(BetData['Prediction'])
-            button.innerHTML = prediction.toFixed(2)*100+'%'
+            button.innerHTML = 'P : '+prediction.toFixed(2)*100+'%'
             if(prediction>0.70)
                 button.className +="Good ";
-            else if(prediction>50)
+            else if(prediction>0.50)
                 button.className +="Warning ";
-            else if(prediction<30)
+            else if(prediction<0.30)
                 button.className  += "Bad ";
 
             divextrainfo.appendChild(button);
@@ -160,7 +160,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             button.className  = "BetInfoButton ";
 
             let rentability = (parseFloat(BetData['BetOdds'])*parseFloat(BetData['Prediction']) -1 )*100
-            button.innerHTML += (rentability.toFixed(0))+'% </br>'
+            button.innerHTML = 'R : '+(rentability.toFixed(0))+'% </br>'
 
             if(rentability>25)
                 button.className +="Good ";
