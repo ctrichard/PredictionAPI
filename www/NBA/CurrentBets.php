@@ -138,7 +138,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
             let button = document.createElement("div");
             button.className  = "BetInfoButton ";
             let prediction = parseFloat(BetData['Prediction'])
-            button.innerHTML = 'P : '+prediction.toFixed(2)*100+'%'
+            button.innerHTML = 'P : '+parseFloat(prediction).toFixed(2)*100+'%'
             if(prediction>0.70)
                 button.className +="Good ";
             else if(prediction>0.50)
