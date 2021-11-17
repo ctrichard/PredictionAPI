@@ -60,6 +60,8 @@ if [$DoPrediction =='True']
 then
     # python ~/Projects/ParisSportifIA/MakePrediction.py ${MatchDate} "$DomTeam" "$VisTeam" $UUID $PathToInputs $PathToOutputs $Season
     python MakeBotPredictions.py $PathToInputs $PathToOutputs $Season $UUID "$ModelNamesInStr" ${MatchDate}
+else
+    echo 'Not making prediction ! Only updating vet odds !'    
 fi
 
 for ModelName in ${ModelNames[@]}
