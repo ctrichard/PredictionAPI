@@ -213,6 +213,10 @@ if __name__ == '__main__':
     First=True
     for i,row in Bets.iterrows():
         try:
+            row['Dom']  = MyTools.TeamNameProof(row['Dom'])  #! fix should be useless with latest version of sportbetting
+            row['Vis']  = MyTools.TeamNameProof(row['Vis'])
+            row['Match']  = row['Dom']+' - '+row['Vis']
+
             StorePredictions(UUID,row,First,ModelName,IsMainModel)
             First=False
         except FileNotFoundError:    #because prediction failed
