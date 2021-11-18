@@ -143,7 +143,7 @@ def StorePredictions(UUID,BetInfo,First,ModelName='',MainModel=False):
     prediction_inputs,UUID_key = MyTools.GetPredictionInput(UUID,PathPredictionInputs,BetInfo['Match'])
     if(Side=='Vis'):
         UUID_key+=1
-    UUID+='_'+UUID_key
+    UUID+='_'+str(UUID_key)
 
     print(prediction_inputs)
     print(UUID)
