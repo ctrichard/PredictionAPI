@@ -228,6 +228,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
                 let data = []
                 console.log('data:')
+                
                 Object.entries(ModelPreds).forEach(el => {
                     
                     let d = parseFloat(el['1']['Prediction'])
@@ -241,8 +242,14 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
                 console.log('drawing '+'data_'+BetName)
                 console.log(data)
-                // let I = G.DrawDataSet(Identity,name='Identity',type="Line",params={'color': 'lightgrey', 'strokewidth':2})
+
+                let Line075=[0.75,0.75]
+                let Line05=[0.5,0.5]
+                let mean = data.reduce((a, b) => a + b, 0)/data.length
+                let Mean=[mean,mean]
                 G.DrawDataSet(data,name='data_'+BetName,type="Histo",params={'XValueAtCenter': false, 'color': 'lightgrey', 'strokewidth':1.5, 'classname' : 'BarPlot'})
+                G.DrawDataSet(Line075,name='Line075',type="Line",params={'color': 'lightgrey', 'strokewidth':2})
+                G.DrawDataSet(Mean,name='Mean',type="Line",params={'color': 'yellow', 'strokewidth':2})
 
                 // let ld = G.DrawDataSet(D,name='DataDom',type="Points",params={'color': 'blue', 'radius':5,'DrawErrors':true, 'strokewidth':2})
                 // let lv = G.DrawDataSet(V,name='DataVis',type="Points",params={'color': 'red', 'radius':5,'DrawErrors':true, 'strokewidth':2})
