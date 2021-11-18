@@ -528,6 +528,9 @@ class Graph{
         console.log("fill !!!!!!!!!!!!!!!!!!!!!!!!!'")
         console.log(AddClassYValueBased)
         console.log(d)
+        console.log(el)
+        console.log(yscale(el[0]),yscale(el[1]))
+        
         AddClassYValueBased.forEach(el=>{
           if(d[1]>yscale(el[0]) && d[1]<yscale(el[1]) ){
             totalclassname += el[2]+' '
