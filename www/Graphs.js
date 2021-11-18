@@ -529,12 +529,12 @@ class Graph{
         console.log(AddClassYValueBased)
         console.log(d)
         AddClassYValueBased.forEach(el=>{
-          if(d[1]>el[0] && d[1]<el[1]){
+          if(d[1]>yscale(el[0]) && d[1]<yscale(el[1]) ){
             totalclassname += el[2]+' '
           }
         })
         AddClassXValueBased.forEach(el=>{
-          if(d[0]>el[0] && d[0]<el[1]){
+          if(d[0]>xscale(el[0]) && d[0]<xscale(el[1])){
             totalclassname += el[2]+' '
           }
         })
