@@ -536,6 +536,7 @@ class Graph{
 
           if(d[1]>yscale(el[0]) && d[1]<yscale(el[1]) ){
             totalclassname += el[2]+' '
+            console.log('yes',el[2],totalclassname)
           }
         })
         AddClassXValueBased.forEach(el=>{
@@ -544,6 +545,7 @@ class Graph{
           }
         })
 
+        console.log(totalclassname)
         return totalclassname
       })
       // .attr("stroke", "url(#line-gradient)" )
