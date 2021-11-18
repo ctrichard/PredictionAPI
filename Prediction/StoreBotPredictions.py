@@ -131,7 +131,8 @@ def StorePredictions(UUID,BetInfo,First,ModelName='',MainModel=False):
 
 
     prediction_outputs = MyTools.GetPredictionOutput(UUID,PathPredictionOutputs,ModelName)
-    prediction_inputs = MyTools.GetPredictionInput(UUID,PathPredictionInputs)
+    prediction_inputs,UUID_key = MyTools.GetPredictionInput(UUID,PathPredictionInputs,BetInfo['Match'])
+    UUID+='_'+UUID_key
     try:
         prediction_playerlist = MyTools.GetPlayerListForPrediction(UUID,PathPredictionInputs)
     except FileNotFoundError:
@@ -207,7 +208,7 @@ if __name__ == '__main__':
     First=True
     for i,row in Bets.iterrows():
         try:
-            StorePredictions(UUID+'_'+str(i),row,First,ModelName,IsMainModel)
+            StorePredictions(UUID,row,First,ModelName,IsMainModel)
             First=False
         except FileNotFoundError:    #because prediction failed
             print("ERROR  =========================== Prediction failed")
