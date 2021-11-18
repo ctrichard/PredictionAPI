@@ -52,6 +52,8 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
         // var AllModelAllBetPredictions={}
 
         let Date = [<?php  echo '"'.$TodayDate.'","'.$TomorrowDate.'"' ?> ]
+
+        var PredictionJudgement=[[0,0.3,'Bad'],[0.5,0.6,'Warning'],[0.6,1.1,'Good']]
     
         async function LoadData(){
 
@@ -137,14 +139,14 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
             let button = document.createElement("div");
             button.className  = "BetInfoButton ";
-            let prediction = parseFloat(BetData['Prediction'])*100
+            let prediction = parseFloat(BetData['Prediction'])//*100
+            PredictionJudgement.forEach(el=>{
+                if(prediction > el[0] && prediction<el[1]){
+                    button.className +=el[2]+" ";
+                }
+            })
+            prediction = prediction*100
             button.innerHTML = 'P : '+prediction.toFixed(0)+'%'
-            if(prediction>70)
-                button.className +="Good ";
-            else if(prediction<30)
-                button.className  += "Bad ";
-            else if(prediction<50)
-                button.className +="Warning ";
 
             divextrainfo.appendChild(button);
 
@@ -247,7 +249,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
                 let Line05=[0.5,0.5]
                 let mean = data.reduce((a, b) => a + b, 0)/data.length
                 let Mean=[mean,mean]
-                G.DrawDataSet(data,name='data_'+BetName,type="Histo",params={'XValueAtCenter': false, 'color': 'lightgrey', 'strokewidth':1.5, 'classname' : 'BarPlot'})
+                G.DrawDataSet(data,name='data_'+BetName,type="Histo",params={'BinYValueClass': PredictionJudgement ,'XValueAtCenter': false, 'strokewidth':1.5, 'classname' : 'BarPlot'})
                 G.DrawDataSet(Line075,name='Line075',type="Line",params={'color': 'lightgrey', 'strokewidth':2})
                 G.DrawDataSet(Mean,name='Mean',type="Line",params={'color': 'yellow', 'strokewidth':2})
 

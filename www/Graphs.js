@@ -487,6 +487,9 @@ class Graph{
     let DrawAxises = ('DrawAxises' in params) ? params['DrawAxises'] :  true
     let XValueAtCenter = ('XValueAtCenter' in params) ? params['XValueAtCenter'] :  true  //draw histo with center bar at x value otherwise at left border
 
+    let AddClassYValueBased = ('BinYValueClass' in params) ? params['BinYValueClass'] :  [0,0,'']
+    let AddClassXValueBased = ('BinXValueClass' in params) ? params['BinXValueClass'] :  [0,0,'']
+    
     let classname  = ('classname' in params) ? params['classname'] :   this.Name+'-'+name
 
 
@@ -517,7 +520,19 @@ class Graph{
       .append('rect')
       .attr('id',function(d,i){return DataSetName+'-'+i})
       .attr("fill", color)
-      .attr('class',classname)
+      .attr('class',function(d){
+        let totalclassname = classname
+        AddClassYValueBased.forEach(el=>{
+          if(d>el[0] && d<el[1]){
+            totalclassname += el[2]+' '
+          }
+        })
+        AddClassXValueBased.forEach(el=>{
+          if(d>el[0] && d<el[1]){
+            totalclassname += el[2]+' '
+          }
+        })
+      })
       // .attr("stroke", "url(#line-gradient)" )
       // .attr("stroke", strokecolor)
       .attr("stroke-width", 0)
@@ -572,6 +587,10 @@ class Graph{
     // if(this.DrawAxises && !this.AxisDrawn){
     //   this.DrawCustomAxises();
     // }
+
+    this.DataSet[name]
+
+
     return this.DataSet[name] // this.svg.select('#Line'+this.Name);
 
   }

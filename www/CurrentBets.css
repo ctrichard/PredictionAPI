@@ -1,6 +1,10 @@
 :root{
     --color:blanchedalmond;
     --alternativecolor : black;
+
+    --colorgood : greenyellow;
+    --colorbad :red;
+    --colorwarning : rgb(255, 173, 50);
 }
 
 
@@ -101,17 +105,17 @@ body{
 
 .Good{
 
-    background: greenyellow;
+    background: var(--colorgood);
     color:darkgreen;
 }
 .Bad{
 
-    background: rgb(255, 0, 0);
+    background: var(--colorbad);
     color:black;
 }
 .Warning{
 
-    background: rgb(255, 173, 50);
+    background:var(--colorwarning);
     color:black;
 
 }
@@ -163,4 +167,15 @@ body{
     max-height:100%;
     width: auto;
     height: auto;
+}
+
+
+.FillWarning{
+    fill:var(--colorwarning);
+}
+.FillBad{
+    fill:var(--colorbad);
+}
+.FillGood{
+    fill:var(--colorgood);
 }

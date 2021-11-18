@@ -73,7 +73,7 @@ else
     echo ''
     echo '----------------------------------------'
     echo ''
-    UUID=`cat ${PathToOutputs}_UUID.txt`
+    UUID=`cat ${PathToOutputs}/UUID.txt`
 fi
 
 for ModelName in ${ModelNames[@]}
