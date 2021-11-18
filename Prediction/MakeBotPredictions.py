@@ -3,7 +3,7 @@ from typing import Match
 
 sys.path.insert(0, '/home/ubuntu/Projects/ParisSportifIA')
 from MyTools import MyTools
-from MakePrediction import MakeMultipleModelPredictions,MakeMultipleModelPredictionsFomCustomMatch
+from MakePrediction import MakeModelPoolPredictionsFomCustomMatch, FillModelPool
 sys.path.insert(0, '/home/ubuntu/Projects/Sports-betting')
 from BotBetScraper import GetOddDataPath
 
@@ -38,11 +38,11 @@ def GetListBets(MatchDate):
 
 
 
-def make_predict(Date,VisName,DomName,UUID="0",PathInputs='',PathOutputs='',ModelNames=['TrainWo_2022'],Season='2022'):
+def make_predict(Date,VisName,DomName,UUID="0",PathInputs='',PathOutputs='',ModelPool=[],Season='2022'):
 
-    # MakePrediction(Date,VisName,DomName,UUID=UUID,PathInputs=PathInputs,PathOutputs=PathOutputs,ModelName=ModelName,Season=Season)
-    MakeMultipleModelPredictionsFomCustomMatch(Date,VisName,DomName,UUID,PathInputs,PathOutputs,ModelNames,Season)
+    # MakeMultipleModelPredictionsFomCustomMatch(Date,VisName,DomName,UUID,PathInputs,PathOutputs,ModelNames,Season)
 
+    MakeModelPoolPredictionsFomCustomMatch((Date,VisName,DomName,UUID,PathInputs,PathOutputs,ModelPool,Season))
 
 
 def MakeBotPredictions(UUID,MatchDate,PathInputs='',PathOutputs='',ModelNames=['TrainWo_2022'],Season='2022'):
@@ -50,6 +50,8 @@ def MakeBotPredictions(UUID,MatchDate,PathInputs='',PathOutputs='',ModelNames=['
     Matches = GetListBets(MatchDate)
 
     print(Matches)
+
+    ModelPool=FillModelPool(ModelNames)
 
     for i,row in Matches.iterrows():
 
@@ -61,7 +63,7 @@ def MakeBotPredictions(UUID,MatchDate,PathInputs='',PathOutputs='',ModelNames=['
         Date = row['MatchDate'].split(' ')[0]  # just YYY-MM-DD
         VisName = row['Vis']
         DomName = row['Dom']
-        make_predict(Date=Date,VisName=VisName,DomName=DomName,UUID=UUID+'_'+str(i),PathInputs=PathInputs,PathOutputs=PathOutputs,ModelNames=ModelNames)
+        make_predict(Date=Date,VisName=VisName,DomName=DomName,UUID=UUID+'_'+str(i),PathInputs=PathInputs,PathOutputs=PathOutputs,ModelPool=ModelPool,Season=Season)
 
 
 if __name__ == '__main__':

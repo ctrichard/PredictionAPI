@@ -58,9 +58,13 @@ ModelNamesInStr=$(IFS=$' '; echo "${ModelNames[@]}" )
 if [ $DoPrediction == 'True' ]
 then
     rm -rf $PathToOutputs/Prediction*
+    rm -rf $PathToOutputs/UUID*
     rm -rf $PathToInputs/MatchList_*
+
     # python ~/Projects/ParisSportifIA/MakePrediction.py ${MatchDate} "$DomTeam" "$VisTeam" $UUID $PathToInputs $PathToOutputs $Season
     python MakeBotPredictions.py $PathToInputs $PathToOutputs $Season $UUID "$ModelNamesInStr" ${MatchDate}
+
+    echo $UUID > ${PathToOutputs}/UUID.txt
 else
     echo ''
     echo '----------------------------------------'
@@ -69,6 +73,7 @@ else
     echo ''
     echo '----------------------------------------'
     echo ''
+    UUID=`cat ${PathToOutputs}_UUID.txt`
 fi
 
 for ModelName in ${ModelNames[@]}
