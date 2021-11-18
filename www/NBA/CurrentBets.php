@@ -53,7 +53,7 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
 
         let Date = [<?php  echo '"'.$TodayDate.'","'.$TomorrowDate.'"' ?> ]
 
-        var PredictionJudgement=[[0,0.3,'Bad'],[0.5,0.6,'Warning'],[0.6,1.1,'Good']]
+        var PredictionJudgement=[[0,0.3,'Bad'],[0.3,0.5,'Warning'],[0.6,1.1,'Good']]
     
         async function LoadData(){
 

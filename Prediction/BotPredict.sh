@@ -54,6 +54,7 @@ done
 
 ModelNamesInStr=$(IFS=$' '; echo "${ModelNames[@]}" )
 
+rm -rf  Data/PredictionData*
 
 if [ $DoPrediction == 'True' ]
 then
