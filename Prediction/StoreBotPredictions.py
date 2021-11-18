@@ -133,6 +133,8 @@ def StorePredictions(UUID,BetInfo,First,ModelName='',MainModel=False):
     prediction_outputs = MyTools.GetPredictionOutput(UUID,PathPredictionOutputs,ModelName)
     prediction_inputs,UUID_key = MyTools.GetPredictionInput(UUID,PathPredictionInputs,BetInfo['Match'])
     UUID+='_'+UUID_key
+
+
     try:
         prediction_playerlist = MyTools.GetPlayerListForPrediction(UUID,PathPredictionInputs)
     except FileNotFoundError:
@@ -143,6 +145,9 @@ def StorePredictions(UUID,BetInfo,First,ModelName='',MainModel=False):
     print(prediction_outputs)
     print(prediction_inputs)
     print(prediction_playerlist)
+    print(UUID)
+
+    exit()
 
 
     now = datetime.datetime.now()#BetScraper_timezone)
