@@ -537,6 +537,8 @@ class Graph{
             totalclassname += el[2]+' '
           }
         })
+
+        return totalclassname
       })
       // .attr("stroke", "url(#line-gradient)" )
       // .attr("stroke", strokecolor)
