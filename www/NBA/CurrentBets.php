@@ -253,7 +253,8 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
                 let Mean={'0' : mean}
                     Mean[data.length]=mean
                 G.DrawDataSet(data,name='data_'+BetName,type="Histo",params={'BinYValueClass': PredictionJudgement ,'XValueAtCenter': false, 'strokewidth':1.5, 'classname' : 'BarPlot'})
-                G.DrawDataSet(Line075,name='Line075',type="Line",params={'color': 'lightgrey', 'strokewidth':2})
+                G.DrawDataSet(Line075,name='Line075',type="Line",params={'color': 'lightgrey', 'strokewidth':1,'StrokeDasharray': "4 1"})
+                G.DrawDataSet(Line05,name='Line075',type="Line",params={'color': 'lightgrey', 'strokewidth':1,"StrokeDasharray":'4 1'})
                 G.DrawDataSet(Mean,name='Mean',type="Line",params={'color': 'yellow', 'strokewidth':2})
 
                 // let ld = G.DrawDataSet(D,name='DataDom',type="Points",params={'color': 'blue', 'radius':5,'DrawErrors':true, 'strokewidth':2})

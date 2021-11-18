@@ -335,6 +335,8 @@ class Graph{
     let GradientName = ('GradientName' in params) ? params['GradientName'] :  ""
     let FilledLine = ('FilledLine' in params) ? params['FilledLine'] :  false
     let DrawAxises = ('DrawAxises' in params) ? params['DrawAxises'] :  true
+    let StrokeDasharray = ('StrokeDasharray' in params) ? params['StrokeDasharray'] :  "none"
+
 
     let lineName = this.Name+'-'+name
 
@@ -348,7 +350,8 @@ class Graph{
     .attr("d", d3.line()
       .x(function(d,i) { return d[0]; })
       .y(function(d,i) { return d[1]; })
-      );
+      )
+    .attr('stroke-dasharray',StrokeDasharray)  
 
 
     if(DrawGradient)  
@@ -521,7 +524,9 @@ class Graph{
       .attr('id',function(d,i){return DataSetName+'-'+i})
       .attr("fill", color)
       .attr('class',function(d){
-        let totalclassname = classname
+        let totalclassname = classname+' '
+        console.log("fill !!!!!!!!!!!!!!!!!!!!!!!!!'")
+        console.log(AddClassYValueBased)
         AddClassYValueBased.forEach(el=>{
           if(d>el[0] && d<el[1]){
             totalclassname += el[2]+' '
