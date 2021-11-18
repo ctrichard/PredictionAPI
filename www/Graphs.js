@@ -527,13 +527,14 @@ class Graph{
         let totalclassname = classname+' '
         console.log("fill !!!!!!!!!!!!!!!!!!!!!!!!!'")
         console.log(AddClassYValueBased)
+        console.log(d)
         AddClassYValueBased.forEach(el=>{
-          if(d>el[0] && d<el[1]){
+          if(d[1]>el[0] && d[1]<el[1]){
             totalclassname += el[2]+' '
           }
         })
         AddClassXValueBased.forEach(el=>{
-          if(d>el[0] && d<el[1]){
+          if(d[0]>el[0] && d[0]<el[1]){
             totalclassname += el[2]+' '
           }
         })
