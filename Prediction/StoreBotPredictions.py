@@ -216,6 +216,7 @@ if __name__ == '__main__':
             row['Dom']  = MyTools.TeamNameProof(row['Dom'])  #! fix should be useless with latest version of sportbetting
             row['Vis']  = MyTools.TeamNameProof(row['Vis'])
             row['Match']  = row['Dom']+' - '+row['Vis']
+            row['BetValue']  = MyTools.TeamNameProof(row['BetValue'])
 
             StorePredictions(UUID,row,First,ModelName,IsMainModel)
             First=False
