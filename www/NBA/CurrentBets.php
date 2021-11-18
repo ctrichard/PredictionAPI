@@ -245,10 +245,10 @@ $TomorrowDate =  date("Y-m-d",mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"
                 console.log('drawing '+'data_'+BetName)
                 console.log(data)
 
-                let Line075=[0.75,0.75]
-                let Line05=[0.5,0.5]
+                let Line075={'0' : 0.75,  data.length : 0.75}
+                let Line05={'0' : 0.5,  data.length : 0.5}
                 let mean = data.reduce((a, b) => a + b, 0)/data.length
-                let Mean=[mean,mean]
+                let Mean={'0' : mean,  data.length : mean}
                 G.DrawDataSet(data,name='data_'+BetName,type="Histo",params={'BinYValueClass': PredictionJudgement ,'XValueAtCenter': false, 'strokewidth':1.5, 'classname' : 'BarPlot'})
                 G.DrawDataSet(Line075,name='Line075',type="Line",params={'color': 'lightgrey', 'strokewidth':2})
                 G.DrawDataSet(Mean,name='Mean',type="Line",params={'color': 'yellow', 'strokewidth':2})
