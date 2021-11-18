@@ -42,7 +42,7 @@ def make_predict(Date,VisName,DomName,UUID="0",PathInputs='',PathOutputs='',Mode
 
     # MakeMultipleModelPredictionsFomCustomMatch(Date,VisName,DomName,UUID,PathInputs,PathOutputs,ModelNames,Season)
 
-    MakeModelPoolPredictionsFomCustomMatch((Date,VisName,DomName,UUID,PathInputs,PathOutputs,ModelPool,Season))
+    MakeModelPoolPredictionsFomCustomMatch(Date,VisName,DomName,UUID,PathInputs,PathOutputs,ModelPool,Season)
 
 
 def MakeBotPredictions(UUID,MatchDate,PathInputs='',PathOutputs='',ModelNames=['TrainWo_2022'],Season='2022'):
