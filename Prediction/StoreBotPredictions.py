@@ -135,9 +135,9 @@ def StorePredictions(UUID,BetInfo,First,ModelName='',MainModel=False):
 
     print(prediction_inputs)
     print(UUID)
-    exit()
 
     prediction_outputs = MyTools.GetPredictionOutput(UUID,PathPredictionOutputs,ModelName)
+    print(prediction_outputs)
 
     try:
         prediction_playerlist = MyTools.GetPlayerListForPrediction(UUID,PathPredictionInputs)
@@ -146,7 +146,6 @@ def StorePredictions(UUID,BetInfo,First,ModelName='',MainModel=False):
 
 
         
-    print(prediction_outputs)
     print(prediction_playerlist)
 
 
