@@ -533,8 +533,8 @@ class Graph{
           console.log(el)
 
           console.log(yscale(el[0]),yscale(el[1]))
-
-          if(d[1]>yscale(el[0]) && d[1]<yscale(el[1]) ){
+ 
+          if(d[1]<yscale(el[0]) && d[1]>yscale(el[1]) ){   // because Y axis is inverted
             totalclassname += el[2]+' '
             console.log('yes',el[2],totalclassname)
           }
