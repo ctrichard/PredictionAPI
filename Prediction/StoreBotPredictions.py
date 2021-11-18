@@ -130,7 +130,19 @@ def StorePredictions(UUID,BetInfo,First,ModelName='',MainModel=False):
     print(UUID)
 
 
+    Side =None
+    if(BetInfo['BetValue'] == BetInfo['Dom'] ):
+        Side = 'Dom'
+    elif(BetInfo['BetValue'] ==  BetInfo['Vis']):    
+        Side = 'Vis'
+    else:
+        print(BetInfo)
+        raise ValueError('Wrong bet info !')    #only for  win bet
+
+
     prediction_inputs,UUID_key = MyTools.GetPredictionInput(UUID,PathPredictionInputs,BetInfo['Match'])
+    if(Side=='Vis'):
+        UUID_key+=1
     UUID+='_'+UUID_key
 
     print(prediction_inputs)
@@ -151,15 +163,6 @@ def StorePredictions(UUID,BetInfo,First,ModelName='',MainModel=False):
 
 
     now = datetime.datetime.now()#BetScraper_timezone)
-
-    Side =None
-    if(BetInfo['BetValue'] == BetInfo['Dom'] ):
-        Side = 'Dom'
-    elif(BetInfo['BetValue'] ==  BetInfo['Vis']):    
-        Side = 'Vis'
-    else:
-        print(BetInfo)
-        raise ValueError('Wrong bet info !')    #only for  win bet
 
     B = BetPrediction(ModelName)
 
